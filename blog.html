@@ -550,6 +550,7 @@
         </div>
     </footer>
 
+    <script src="config.js"></script>
     <script src="script.js?v=3"></script>
 
     <!-- ══════════════════════════════════════════════════════
@@ -719,7 +720,7 @@
 
                 // Fetch blog posts from API
                 useEffect(() => {
-                    fetch('/api/blogs')
+                    fetch(config.apiBaseUrl + '/api/blogs')
                         .then(res => res.json())
                         .then(data => { setPosts(data); setLoading(false); })
                         .catch(() => { setLoading(false); });

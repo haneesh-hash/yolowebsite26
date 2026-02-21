@@ -10,21 +10,23 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="assets/icons/favicon.png">
 
-    <link rel="canonical" href="https://theyolocollective.com/experience.html">
+  <link rel="canonical" href="https://theyolocollective.com/experience.html">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://theyolocollective.com/experience.html">
-    <meta property="og:title" content="The YOLO Experience — Curated Stays in the Himalayas">
-    <meta property="og:description" content="Curated mountain experiences — valley escapes, guided hikes, stargazing, river rafting, yoga, and more. Discover the Himalayas beyond the ordinary.">
-    <meta property="og:image" content="https://theyolocollective.com/assets/images/domecover.JPG">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theyolocollective.com/experience.html">
+  <meta property="og:title" content="The YOLO Experience — Curated Stays in the Himalayas">
+  <meta property="og:description"
+    content="Curated mountain experiences — valley escapes, guided hikes, stargazing, river rafting, yoga, and more. Discover the Himalayas beyond the ordinary.">
+  <meta property="og:image" content="https://theyolocollective.com/assets/images/domecover.JPG">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://theyolocollective.com/experience.html">
-    <meta property="twitter:title" content="The YOLO Experience — Curated Stays in the Himalayas">
-    <meta property="twitter:description" content="Curated mountain experiences — valley escapes, guided hikes, stargazing, river rafting, yoga, and more. Discover the Himalayas beyond the ordinary.">
-    <meta property="twitter:image" content="https://theyolocollective.com/assets/images/domecover.JPG">
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://theyolocollective.com/experience.html">
+  <meta property="twitter:title" content="The YOLO Experience — Curated Stays in the Himalayas">
+  <meta property="twitter:description"
+    content="Curated mountain experiences — valley escapes, guided hikes, stargazing, river rafting, yoga, and more. Discover the Himalayas beyond the ordinary.">
+  <meta property="twitter:image" content="https://theyolocollective.com/assets/images/domecover.JPG">
 </head>
 
 <body>
@@ -305,6 +307,7 @@
     </a>
   </nav>
 
+  <script src="config.js"></script>
   <script src="script.js?v=3"></script>
   <script>
     // Dynamic experience loading from API
@@ -312,7 +315,7 @@
       const grid = document.getElementById('expGrid');
       const tabs = document.querySelectorAll('.exp-filter-tab');
 
-      fetch('/api/experiences')
+      fetch(config.apiBaseUrl + '/api/experiences')
         .then(function (res) { return res.json(); })
         .then(function (experiences) {
           // Render cards
@@ -360,8 +363,8 @@
     })();
   </script>
 
-    <!-- JSON-LD Schema -->
-    <script type="application/ld+json">
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "TouristAttraction",

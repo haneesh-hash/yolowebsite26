@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const helmet = require('helmet');
 const basicAuth = require('express-basic-auth');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -20,6 +21,7 @@ const IMAGES_DIR = path.join(__dirname, 'assets/images');
 });
 
 // ─── Middleware ───
+app.use(cors());
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ extended: true }));

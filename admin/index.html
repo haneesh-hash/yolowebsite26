@@ -975,6 +975,7 @@
     <!-- Toast Container -->
     <div class="toast-container" id="toastContainer"></div>
 
+    <script src="../config.js"></script>
     <script>
         // ─── State ───
         let blogs = [];
@@ -1006,7 +1007,7 @@
 
         async function loadBlogs() {
             try {
-                const res = await fetch('/api/blogs');
+                const res = await fetch(config.apiBaseUrl + '/api/blogs');
                 blogs = await res.json();
                 renderBlogTable();
                 renderBlogStats();
@@ -1107,7 +1108,7 @@
             if (imageFile) formData.append('image', imageFile);
 
             try {
-                const url = editId ? `/api/blogs/${editId}` : '/api/blogs';
+                const url = config.apiBaseUrl + (editId ? `/api/blogs/${editId}` : '/api/blogs');
                 const method = editId ? 'PUT' : 'POST';
                 const res = await fetch(url, { method, body: formData });
                 if (!res.ok) throw new Error(await res.text());
@@ -1122,7 +1123,7 @@
         async function deleteBlog(id) {
             if (!confirm('Delete this blog post?')) return;
             try {
-                const res = await fetch(`/api/blogs/${id}`, { method: 'DELETE' });
+                const res = await fetch(config.apiBaseUrl + `/api/blogs/${id}`, { method: 'DELETE' });
                 if (!res.ok) throw new Error('Delete failed');
                 showToast('Blog deleted');
                 loadBlogs();
@@ -1137,7 +1138,7 @@
 
         async function loadExperiences() {
             try {
-                const res = await fetch('/api/experiences');
+                const res = await fetch(config.apiBaseUrl + '/api/experiences');
                 experiences = await res.json();
                 renderExpTable();
                 renderExpStats();
@@ -1231,7 +1232,7 @@
             if (imageFile) formData.append('image', imageFile);
 
             try {
-                const url = editId ? `/api/experiences/${editId}` : '/api/experiences';
+                const url = config.apiBaseUrl + (editId ? `/api/experiences/${editId}` : '/api/experiences');
                 const method = editId ? 'PUT' : 'POST';
                 const res = await fetch(url, { method, body: formData });
                 if (!res.ok) throw new Error(await res.text());
@@ -1246,7 +1247,7 @@
         async function deleteExp(id) {
             if (!confirm('Delete this experience?')) return;
             try {
-                const res = await fetch(`/api/experiences/${id}`, { method: 'DELETE' });
+                const res = await fetch(config.apiBaseUrl + `/api/experiences/${id}`, { method: 'DELETE' });
                 if (!res.ok) throw new Error('Delete failed');
                 showToast('Experience deleted');
                 loadExperiences();
@@ -1268,7 +1269,7 @@
 
         async function loadPropertyImages() {
             try {
-                const res = await fetch('/api/properties');
+                const res = await fetch(config.apiBaseUrl + '/api/properties');
                 propertyImages = await res.json();
                 renderPropertyImages();
             } catch (e) {
@@ -1286,9 +1287,11 @@
             grid.innerHTML = images.map(img => {
                 const safeFilename = img.filename.replace(/'/g, "\\'").replace(/"/g, '&quot;');
                 const displayFilename = img.filename.length > 16 ? img.filename.slice(0, 16) + '...' : img.filename;
+                // Prepend base URL for images rendered in the admin dashboard so they load correctly from backend
+                const imageUrl = config.apiBaseUrl ? `${config.apiBaseUrl}/${encodeURI(img.path)}` : `/${encodeURI(img.path)}`;
                 return `
                 <div class="image-card">
-                    <img src="/${encodeURI(img.path)}" alt="${img.filename.replace(/"/g, '&quot;')}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 fill=%22gray%22>Error</text></svg>'">
+                    <img src="${imageUrl}" alt="${img.filename.replace(/"/g, '&quot;')}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><text x=%2250%%22 y=%2250%%22 text-anchor=%22middle%22 fill=%22gray%22>Error</text></svg>'">
                     <div class="image-card-info">
                         <span title="${escHtml(img.filename)}">${escHtml(displayFilename)}</span>
                         <button class="image-card-delete" onclick="deletePropertyImage('${currentProperty}','${safeFilename}')" title="Delete">✕</button>
@@ -1312,7 +1315,7 @@
             formData.append('image', file);
 
             try {
-                const res = await fetch(`/api/properties/${currentProperty}/images`, {
+                const res = await fetch(config.apiBaseUrl + `/api/properties/${currentProperty}/images`, {
                     method: 'POST',
                     body: formData
                 });
@@ -1329,7 +1332,7 @@
         async function deletePropertyImage(prop, filename) {
             if (!confirm(`Delete ${filename}?`)) return;
             try {
-                const res = await fetch(`/api/properties/${prop}/images/${encodeURIComponent(filename)}`, { method: 'DELETE' });
+                const res = await fetch(config.apiBaseUrl + `/api/properties/${prop}/images/${encodeURIComponent(filename)}`, { method: 'DELETE' });
                 if (!res.ok) throw new Error('Delete failed');
                 showToast('Image deleted');
                 loadPropertyImages();
