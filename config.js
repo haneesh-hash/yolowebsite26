@@ -5,12 +5,12 @@
 
 const config = {
     // Current environment: 'local' | 'production'
-    env: 'local',
+    env: 'production',
 
     // API Endpoints
     apiUrls: {
         local: '',
-        production: 'https://yolo-backend-example.onrender.com' // TODO: Replace with your actual Render URL later
+        production: 'https://yolocollective-api.onrender.com'
     },
 
     get apiBaseUrl() {
