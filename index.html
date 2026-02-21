@@ -220,6 +220,11 @@
                 </div>
             </div>
             <style>
+                .vibe-section {
+                    padding-bottom: 8rem;
+                    /* Added padding to prevent overlap */
+                }
+
                 .vibe-subtitle {
                     font-family: 'Inter', sans-serif;
                     font-size: 1.05rem;
@@ -235,7 +240,8 @@
                     flex-direction: column;
                     align-items: center;
                     gap: 1.5rem;
-                    margin: 2rem 0 4rem;
+                    margin: 2rem 0 6rem;
+                    /* Increased bottom margin */
                 }
 
                 .vibe-typo-link {
@@ -248,7 +254,8 @@
 
                 .vibe-typo-text {
                     font-family: 'Outfit', sans-serif;
-                    font-size: clamp(4rem, 10vw, 8rem);
+                    font-size: clamp(3rem, 8vw, 6.5rem);
+                    /* Slightly reduced font size to prevent overlapping boundaries */
                     font-weight: 900;
                     line-height: 1.15;
                     letter-spacing: -0.04em;
