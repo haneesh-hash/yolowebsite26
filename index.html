@@ -10,6 +10,7 @@
     <!-- SEO -->
     <meta name="description"
         content="Experience the pulse of the Himalayas with The YOLO Collective. Choose from social hostels in Manali, luxury glamping in Jispa, or riverside sanctuaries in Kasol. Join the tribe.">
+    <meta name="google-site-verification" content="dtK3R6rCRzu7J7F4ZqNCMyYaLVHUpqOq2zE_K_XG2Us" />
 
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
@@ -198,33 +199,54 @@
                 <div class="vibe-header">
                     <h2>Choose Your Vibe</h2>
                 </div>
-                <p class="vibe-subtitle">Hover to reveal. Click to explore.</p>
+                <div class="vibe-bubbles">
+                    <!-- Social -->
+                    <a class="vibe-bubble" href="#explore">
+                        <div class="vibe-emoji vibe-color-social">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <span class="vibe-label">Social</span>
+                    </a>
 
-                <div class="vibe-typo-container">
-                    <a href="#explore" class="vibe-typo-link">
-                        <span class="vibe-typo-text" data-text="SOCIAL"
-                            style="background-image: url('assets/images/threepane_social.JPG');">SOCIAL</span>
+                    <!-- Outdoors (Geodesic Dome prominently) -->
+                    <a class="vibe-bubble vibe-bubble--center" href="#explore">
+                        <div class="vibe-emoji vibe-color-outdoors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="54" height="54" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M3 19h18" />
+                                <path d="M3 19a9 9 0 0 1 18 0" />
+                                <path d="M7 19l2.5-6.5L12 10l2.5 2.5L17 19" />
+                                <path d="M4.5 14l5-1.5L12 10l2.5 2.5 5 1.5" />
+                                <path d="M9.5 12.5L12 19l2.5-6.5" />
+                            </svg>
+                        </div>
+                        <span class="vibe-label">Outdoors</span>
                     </a>
-                    <a href="#explore" class="vibe-typo-link">
-                        <span class="vibe-typo-text" data-text="OUTDOORS"
-                            style="background-image: url('assets/images/domecover.JPG');">OUTDOORS</span>
-                    </a>
-                    <a href="#explore" class="vibe-typo-link">
-                        <span class="vibe-typo-text" data-text="HOMES"
-                            style="background-image: url('assets/images/threepane_homes.JPG');">HOMES</span>
-                    </a>
-                </div>
 
-                <div class="vibe-scroll-hint">
-                    <span>↓</span>
+                    <!-- Homes -->
+                    <a class="vibe-bubble" href="#explore">
+                        <div class="vibe-emoji vibe-color-homes">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                        </div>
+                        <span class="vibe-label">Homes</span>
+                    </a>
                 </div>
             </div>
-            <style>
-                .vibe-section {
-                    padding-bottom: 8rem;
-                    /* Added padding to prevent overlap */
-                }
 
+            <style>
                 .vibe-subtitle {
                     font-family: 'Inter', sans-serif;
                     font-size: 1.05rem;
@@ -235,102 +257,139 @@
                     text-transform: uppercase;
                 }
 
-                .vibe-typo-container {
+                .vibe-bubbles {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 3rem;
+                    margin: 2rem auto;
+                }
+
+                .vibe-bubble {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    gap: 1.5rem;
-                    margin: 2rem 0 6rem;
-                    /* Increased bottom margin */
-                }
-
-                .vibe-typo-link {
                     text-decoration: none;
-                    display: block;
-                    position: relative;
-                    padding: 0.5rem 1rem;
-                    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                    gap: 1rem;
+                    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
                 }
 
-                .vibe-typo-text {
-                    font-family: 'Outfit', sans-serif;
-                    font-size: clamp(3rem, 8vw, 6.5rem);
-                    /* Slightly reduced font size to prevent overlapping boundaries */
-                    font-weight: 900;
-                    line-height: 1.15;
-                    letter-spacing: -0.04em;
-                    display: block;
-                    color: transparent;
-                    -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.15);
-                    position: relative;
-                    background-size: cover;
-                    background-position: center;
-                    background-clip: text;
-                    -webkit-background-clip: text;
-                    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-                }
-
-                /* This creates the solid fill overlay that fades out on hover */
-                .vibe-typo-text::before {
-                    content: attr(data-text);
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    width: 100%;
-                    height: 100%;
+                .vibe-emoji {
+                    width: 90px;
+                    height: 90px;
+                    background: var(--white);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 3rem;
                     color: var(--black);
-                    -webkit-text-stroke: 0;
-                    background-clip: unset;
-                    -webkit-background-clip: unset;
-                    background-image: none;
-                    transition: opacity 0.4s ease, transform 0.4s ease;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+                    border: 1px solid rgba(0, 0, 0, 0.05);
+                    transition: all 0.4s ease;
                 }
 
-                .vibe-typo-link:hover {
-                    transform: scale(1.05);
-                    z-index: 10;
+                .vibe-bubble--center .vibe-emoji {
+                    width: 110px;
+                    height: 110px;
+                    font-size: 3.5rem;
+                    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
                 }
 
-                /* Show image on hover by hiding the solid overlay */
-                .vibe-typo-link:hover .vibe-typo-text::before {
-                    opacity: 0;
-                    transform: scale(1.02);
+                .vibe-label {
+                    font-family: var(--font-heading);
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    color: var(--black);
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    opacity: 0.8;
+                    transition: opacity 0.3s ease;
                 }
 
-                /* Dim siblings when hovering one */
-                .vibe-typo-container:hover .vibe-typo-link:not(:hover) .vibe-typo-text::before {
-                    color: rgba(0, 0, 0, 0.08);
-                    -webkit-text-stroke: 0;
+                /* --- Colorful SVG Icon Styles --- */
+                .vibe-color-social {
+                    color: #FF5A5F;
+                    /* Vibrant Coral Red */
+                    box-shadow: 0 10px 30px rgba(255, 90, 95, 0.15);
                 }
 
-                .vibe-scroll-hint {
-                    text-align: center;
+                .vibe-color-outdoors {
+                    color: #00A699;
+                    /* Vibrant Teal/Emerald */
+                    box-shadow: 0 15px 40px rgba(0, 166, 153, 0.2);
                 }
 
-                .vibe-scroll-hint span {
-                    display: inline-block;
-                    font-size: 1.6rem;
-                    color: rgba(0, 0, 0, 0.2);
-                    animation: bounceDown 1.5s ease-in-out infinite;
+                .vibe-color-homes {
+                    color: #FC642D;
+                    /* Vibrant Sunset Orange */
+                    box-shadow: 0 10px 30px rgba(252, 100, 45, 0.15);
                 }
 
-                @keyframes bounceDown {
+                /* Hover States */
+                .vibe-bubble:hover {
+                    transform: translateY(-10px);
+                }
+
+                .vibe-bubble:hover .vibe-color-social {
+                    transform: scale(1.1);
+                    box-shadow: 0 15px 35px rgba(255, 90, 95, 0.3);
+                }
+
+                .vibe-bubble:hover .vibe-color-outdoors {
+                    transform: scale(1.1);
+                    box-shadow: 0 20px 45px rgba(0, 166, 153, 0.35);
+                }
+
+                .vibe-bubble:hover .vibe-color-homes {
+                    transform: scale(1.1);
+                    box-shadow: 0 15px 35px rgba(252, 100, 45, 0.3);
+                }
+
+                .vibe-bubble:hover .vibe-label {
+                    opacity: 1;
+                }
+
+                /* Floating Animation loops */
+                .vibe-bubble:nth-child(1) .vibe-emoji {
+                    animation: floatBubble 4s ease-in-out infinite;
+                }
+
+                .vibe-bubble:nth-child(2) .vibe-emoji {
+                    animation: floatBubble 5s ease-in-out infinite 1s;
+                }
+
+                .vibe-bubble:nth-child(3) .vibe-emoji {
+                    animation: floatBubble 4.5s ease-in-out infinite 0.5s;
+                }
+
+                @keyframes floatBubble {
 
                     0%,
                     100% {
                         transform: translateY(0);
-                        opacity: 0.3;
                     }
 
                     50% {
-                        transform: translateY(10px);
-                        opacity: 0.8;
+                        transform: translateY(-8px);
                     }
                 }
 
-                @media(max-width: 480px) {
-                    .vibe-typo-text {
-                        font-size: clamp(2.5rem, 14vw, 4rem);
+                @media(max-width: 768px) {
+                    .vibe-bubbles {
+                        gap: 1.5rem;
+                    }
+
+                    .vibe-emoji {
+                        width: 72px;
+                        height: 72px;
+                        font-size: 2.6rem;
+                    }
+
+                    .vibe-bubble--center .vibe-emoji {
+                        width: 80px;
+                        height: 80px;
+                        font-size: 2.8rem;
                     }
                 }
             </style>
@@ -714,19 +773,54 @@
       "@graph": [
         {
           "@type": "Organization",
+          "@id": "https://theyolocollective.com/#organization",
           "name": "The YOLO Collective",
           "url": "https://theyolocollective.com",
-          "logo": "https://theyolocollective.com/assets/images/Logo.png",
+          "logo": "https://theyolocollective.com/logo.svg",
           "contactPoint": {
             "@type": "ContactPoint",
-            "telephone": "+91-1234567890",
+            "telephone": "+91-7018591758",
             "contactType": "customer service"
-          }
+          },
+          "sameAs": [
+            "https://www.instagram.com/theyolocollective"
+          ]
         },
         {
           "@type": "WebSite",
+          "@id": "https://theyolocollective.com/#website",
+          "url": "https://theyolocollective.com",
+          "name": "The YOLO Collective | Curated Stays and Experiences",
+          "publisher": {
+            "@id": "https://theyolocollective.com/#organization"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://theyolocollective.com/"
+            }
+          ]
+        },
+        {
+          "@type": "LodgingBusiness",
+          "@id": "https://theyolocollective.com/#lodging",
           "name": "The YOLO Collective",
-          "url": "https://theyolocollective.com"
+          "description": "Experience the pulse of the Himalayas with The YOLO Collective. Choose from social hostels in Manali, luxury glamping in Jispa, or riverside sanctuaries in Kasol.",
+          "url": "https://theyolocollective.com",
+          "telephone": "+91-7018591758",
+          "image": "https://theyolocollective.com/assets/images/IMG_3229.webp",
+          "priceRange": "$$",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Manali",
+            "addressRegion": "Himachal Pradesh",
+            "addressCountry": "IN"
+          }
         }
       ]
     }
