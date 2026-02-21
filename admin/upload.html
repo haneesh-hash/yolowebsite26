@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="../assets/icons/favicon.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Image Upload | YOLO Living</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .upload-container {
+            max-width: 600px;
+            margin: 5rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        input[type="file"] {
+            padding: 1rem;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            padding: 1rem;
+            border: none;
+            background: var(--color-skyblue);
+            color: #fff;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .btn-submit:hover {
+            background: var(--color-skyblue-hover);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="upload-container">
+        <h2>Upload New Image</h2>
+        <p>Choose an image to add to the YOLO Living assets.</p>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <button type="submit" class="btn-submit">Upload to assets/images</button>
+        </form>
+        <div style="margin-top: 2rem;">
+            <a href="/" style="color: var(--color-skyblue);">Back to Home</a>
+        </div>
+    </div>
+</body>
+
+</html>

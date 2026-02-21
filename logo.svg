@@ -1,0 +1,27 @@
+<svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+    <!-- YOLO Living V6A Final - Dark Mode Optimized (White Text) -->
+    <rect width="600" height="300" fill="none"/>
+    <g transform="translate(80, 50)">
+        <!-- Text changed to White -->
+        <text x="0" y="150" font-family="Arial, sans-serif" font-weight="900" font-size="140" fill="#FFFFFF" letter-spacing="-5">YO</text>
+        
+        <!-- River L Icon Group -->
+        <g transform="translate(-40, 0)"> 
+            <!-- The River L (Keep Blue) -->
+            <path d="M260,30 L300,30 L300,120 Q300,150 330,150 L370,150 L370,180 L330,180 Q270,180 260,120 Z" fill="#039BE5" />
+            <!-- The Mountain Background (Lighter Grey for dark bg) -->
+            <path d="M320,150 L370,60 L420,150" fill="#CFD8DC" opacity="0.8"/>
+            <!-- The Hiker (White for visibility) -->
+            <g transform="translate(320, 80) scale(0.9)">
+                    <circle cx="5" cy="0" r="6" fill="#FFFFFF"/>
+                    <path d="M0,8 L10,30 L-10,30 Z" fill="#FFFFFF"/>
+                    <line x1="8" y1="15" x2="20" y2="40" stroke="#FFFFFF" stroke-width="2"/>
+            </g>
+        </g>
+        
+        <!-- Text changed to White -->
+        <text x="340" y="150" font-family="Arial, sans-serif" font-weight="900" font-size="140" fill="#FFFFFF">O</text>
+        
+        <text x="220" y="240" font-family="Arial, sans-serif" font-weight="300" font-size="40" fill="#FFFFFF" letter-spacing="8" text-anchor="middle">LIVING</text>
+    </g>
+</svg>
