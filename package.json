@@ -1,7 +1,7 @@
 {
     "name": "yolo-living-backend",
     "version": "1.0.0",
-    "description": "Backend for YOLO Living website to handle image uploads.",
+    "description": "Backend for The YOLO Collective website to handle image uploads.",
     "main": "server.js",
     "scripts": {
         "start": "node server.js",

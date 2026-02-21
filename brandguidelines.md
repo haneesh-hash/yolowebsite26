@@ -6,7 +6,7 @@ Tone of Voice: Sophisticated, intentional, warm, and grounded. We are the "well-
 Primary Keywords: Curated, Sanctuary, Architectural, Himalayan, Stillness, Community.
 
 2. BRAND ARCHITECTURE
-The YOLO Living is a "House of Brands" with three distinct spirits:
+The YOLO Collective is a "House of Brands" with three distinct spirits:
 
 A. YOLO SOCIAL (The Hostels)
 

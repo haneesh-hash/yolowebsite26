@@ -1,5 +1,5 @@
 /* 
-  YOLO Living — Tesla-Inspired Interactions
+  The YOLO Collective — Tesla-Inspired Interactions
   GSAP ScrollTrigger + 3D Tilt + Booking Overlay
 */
 

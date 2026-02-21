@@ -1,6 +1,6 @@
-# The YOLO Living
+# The YOLO Collective
 
-Luxury hostels and glamping in the Himalayas. Marketing website for YOLO Living properties in Manali, Kasol, and Jispa.
+Luxury hostels and glamping in the Himalayas. Marketing website for The YOLO Collective properties in Manali, Kasol, and Jispa.
 
 ## Local Development
 

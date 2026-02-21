@@ -327,6 +327,6 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`🚀 YOLO Living server running at http://localhost:${PORT}`);
+    console.log(`🚀 The YOLO Collective server running at http://localhost:${PORT}`);
     console.log(`📋 Admin panel: http://localhost:${PORT}/admin`);
 });
