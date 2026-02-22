@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const PARALLAX_SCALE = 1.05;
     const LOGO_STAGGER_MS = 150;
 
-
     // ═══════════════════════════════════════════
     // 1. HERO VIDEO — Cinematic Slow-Mo
     // ═══════════════════════════════════════════
@@ -30,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
         heroVideo.playbackRate = HERO_PLAYBACK_RATE;
     }
 
-
     // ═══════════════════════════════════════════
     // 2. GLASSMORPHISM HEADER — Scroll Behavior
     // ═══════════════════════════════════════════
@@ -38,19 +36,22 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastScrollY = 0;
     let ticking = false;
 
-    window.addEventListener('scroll', () => {
-        lastScrollY = window.scrollY;
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                if (header) {
-                    header.classList.toggle('scrolled', lastScrollY > SCROLL_THRESHOLD);
-                }
-                ticking = false;
-            });
-            ticking = true;
-        }
-    }, { passive: true });
-
+    window.addEventListener(
+        'scroll',
+        () => {
+            lastScrollY = window.scrollY;
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    if (header) {
+                        header.classList.toggle('scrolled', lastScrollY > SCROLL_THRESHOLD);
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        },
+        { passive: true }
+    );
 
     // ═══════════════════════════════════════════
     // 3. MOBILE NAVIGATION
@@ -67,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Close on link click
-        mobileNavDrawer.querySelectorAll('a').forEach(link => {
+        mobileNavDrawer.querySelectorAll('a').forEach((link) => {
             link.addEventListener('click', () => {
                 if (!link.classList.contains('mobile-dropdown-toggle')) {
                     mobileMenuToggle.classList.remove('active');
@@ -79,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Mobile dropdown sub-menus
-    mobileDropdownToggles.forEach(toggle => {
+    mobileDropdownToggles.forEach((toggle) => {
         toggle.addEventListener('click', (e) => {
             e.preventDefault();
             const subMenu = toggle.nextElementSibling;
@@ -88,14 +89,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Close mobile menu on resize to desktop
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > TABLET_BREAKPOINT && mobileNavDrawer && mobileNavDrawer.classList.contains('active')) {
-            mobileMenuToggle.classList.remove('active');
-            mobileNavDrawer.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    }, { passive: true });
-
+    window.addEventListener(
+        'resize',
+        () => {
+            if (
+                window.innerWidth > TABLET_BREAKPOINT &&
+                mobileNavDrawer &&
+                mobileNavDrawer.classList.contains('active')
+            ) {
+                mobileMenuToggle.classList.remove('active');
+                mobileNavDrawer.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        },
+        { passive: true }
+    );
 
     // ═══════════════════════════════════════════
     // 4. BOOKING OVERLAY — Slide-Over Panel
@@ -103,7 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const bookingOverlay = document.getElementById('booking-overlay');
     const bookingBackdrop = document.getElementById('booking-backdrop');
     const bookingClose = document.getElementById('booking-close');
-    const bookingTriggers = document.querySelectorAll('#booking-trigger, #booking-trigger-mobile, #booking-trigger-bottom, #final-booking-trigger');
+    const bookingTriggers = document.querySelectorAll(
+        '#booking-trigger, #booking-trigger-mobile, #booking-trigger-bottom, #final-booking-trigger'
+    );
 
     let bookingTriggerElement = null; // Track which element opened the overlay
 
@@ -140,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    bookingTriggers.forEach(trigger => {
+    bookingTriggers.forEach((trigger) => {
         trigger.addEventListener('click', openBooking);
     });
 
@@ -153,7 +163,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Focus trap: keep Tab within the overlay when open
         if (e.key === 'Tab' && bookingOverlay && bookingOverlay.classList.contains('active')) {
-            const focusable = bookingOverlay.querySelectorAll('button, [href], input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])');
+            const focusable = bookingOverlay.querySelectorAll(
+                'button, [href], input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])'
+            );
             if (focusable.length === 0) return;
             const first = focusable[0];
             const last = focusable[focusable.length - 1];
@@ -172,13 +184,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-
     // ═══════════════════════════════════════════
     // 5. 3D TILT CARDS — Cursor-Based Rotation
     // ═══════════════════════════════════════════
     const tiltCards = document.querySelectorAll('[data-tilt]');
 
-    tiltCards.forEach(card => {
+    tiltCards.forEach((card) => {
         card.addEventListener('mousemove', (e) => {
             if (window.innerWidth < MOBILE_BREAKPOINT) return;
 
@@ -201,26 +212,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
     // ═══════════════════════════════════════════
     // 6. LAZY LOADING — Images Fade-In
     // ═══════════════════════════════════════════
-    const lazyImages = document.querySelectorAll('.gallery-card img[loading="lazy"], .brand-panel-bg img[loading="lazy"]');
+    const lazyImages = document.querySelectorAll(
+        '.gallery-card img[loading="lazy"], .brand-panel-bg img[loading="lazy"]'
+    );
 
     if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('loaded');
-                    imageObserver.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '100px'
-        });
+        const imageObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('loaded');
+                        imageObserver.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.1,
+                rootMargin: '100px'
+            }
+        );
 
-        lazyImages.forEach(img => {
+        lazyImages.forEach((img) => {
             // If already loaded (cached), mark immediately
             if (img.complete) {
                 img.classList.add('loaded');
@@ -231,40 +246,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     } else {
         // Fallback: just show all images
-        lazyImages.forEach(img => img.classList.add('loaded'));
+        lazyImages.forEach((img) => img.classList.add('loaded'));
     }
-
 
     // ═══════════════════════════════════════════
     // 7. TRUST LOGOS — Scroll Reveal
     // ═══════════════════════════════════════════
     const trustLogos = document.querySelectorAll('.trust-logo');
     if (trustLogos.length > 0) {
-        const logoObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    // Stagger the reveal
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, index * LOGO_STAGGER_MS);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.2,
-            rootMargin: '0px 0px -40px 0px'
-        });
+        const logoObserver = new IntersectionObserver(
+            (entries, observer) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Stagger the reveal
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * LOGO_STAGGER_MS);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.2,
+                rootMargin: '0px 0px -40px 0px'
+            }
+        );
 
-        trustLogos.forEach(logo => logoObserver.observe(logo));
+        trustLogos.forEach((logo) => logoObserver.observe(logo));
     }
-
 
     // ═══════════════════════════════════════════
     // 8. BRAND PANEL — 3D Parallax Push Effect
     // ═══════════════════════════════════════════
     const brandPanels = document.querySelectorAll('.brand-panel');
 
-    brandPanels.forEach(panel => {
+    brandPanels.forEach((panel) => {
         const bg = panel.querySelector('.brand-panel-bg');
 
         panel.addEventListener('mousemove', (e) => {
@@ -288,7 +304,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
     // ═══════════════════════════════════════════
     // 9. GSAP SCROLL ANIMATIONS
     // ═══════════════════════════════════════════
@@ -303,8 +318,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Reveal elements
         const reveals = document.querySelectorAll('.reveal');
-        reveals.forEach(el => {
-            gsap.fromTo(el,
+        reveals.forEach((el) => {
+            gsap.fromTo(
+                el,
                 { opacity: 0, y: 50 },
                 {
                     opacity: 1,
@@ -324,7 +340,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Hero content entrance
         const heroContent = document.querySelector('.hero-content');
         if (heroContent) {
-            gsap.fromTo(heroContent,
+            gsap.fromTo(
+                heroContent,
                 { opacity: 0, y: 30 },
                 { opacity: 1, y: 0, duration: 1.5, delay: 0.3, ease: 'power3.out' }
             );
@@ -333,7 +350,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Gallery cards stagger
         const galleryCards = document.querySelectorAll('.gallery-card');
         if (galleryCards.length > 0) {
-            gsap.fromTo(galleryCards,
+            gsap.fromTo(
+                galleryCards,
                 { opacity: 0, y: 60, scale: 0.95 },
                 {
                     opacity: 1,
@@ -354,7 +372,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Concierge cards stagger
         const conciergeCards = document.querySelectorAll('.concierge-card');
         if (conciergeCards.length > 0) {
-            gsap.fromTo(conciergeCards,
+            gsap.fromTo(
+                conciergeCards,
                 { opacity: 0, y: 40 },
                 {
                     opacity: 1,
@@ -374,7 +393,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Testimonial cards stagger
         const testimonialCards = document.querySelectorAll('.testimonial-card');
         if (testimonialCards.length > 0) {
-            gsap.fromTo(testimonialCards,
+            gsap.fromTo(
+                testimonialCards,
                 { opacity: 0, y: 40 },
                 {
                     opacity: 1,
@@ -394,7 +414,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Brand panels entrance
         const brandPanelEls = document.querySelectorAll('.brand-panel');
         if (brandPanelEls.length > 0) {
-            gsap.fromTo(brandPanelEls,
+            gsap.fromTo(
+                brandPanelEls,
                 { opacity: 0, scale: 0.98 },
                 {
                     opacity: 1,
@@ -428,10 +449,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Experience blocks (if on experience page)
         const expBlocks = document.querySelectorAll('.experience-block');
-        expBlocks.forEach(block => {
+        expBlocks.forEach((block) => {
             const content = block.querySelector('.experience-block-content');
             if (content) {
-                gsap.fromTo(content,
+                gsap.fromTo(
+                    content,
                     { opacity: 0, x: -60 },
                     {
                         opacity: 1,
@@ -473,16 +495,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // Trigger when stack comes into view
         ScrollTrigger.create({
             trigger: stack,
-            start: "top 75%",
+            start: 'top 75%',
             onEnter: () => {
-                gsap.fromTo(blocks,
+                gsap.fromTo(
+                    blocks,
                     { y: -300, opacity: 0 },
                     {
                         y: 0,
                         opacity: 1,
                         duration: 0.8,
                         stagger: 0.2,
-                        ease: "bounce.out", // A heavy thud
+                        ease: 'bounce.out', // A heavy thud
                         onComplete: () => {
                             // Camera Shake on last drop
                             stack.classList.add('camera-shake');
@@ -494,7 +517,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // B. INTERACTION (EXPAND / COLLAPSE)
-        blocks.forEach(block => {
+        blocks.forEach((block) => {
             const header = block.querySelector('.cairn-header');
             const body = block.querySelector('.cairn-body');
 
@@ -502,7 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const isExpanded = block.classList.contains('cairn-expanded');
 
                 // 1. Collapse all others first (Accordion style)
-                blocks.forEach(other => {
+                blocks.forEach((other) => {
                     if (other !== block && other.classList.contains('cairn-expanded')) {
                         collapseBlock(other);
                     }
@@ -529,7 +552,7 @@ document.addEventListener('DOMContentLoaded', () => {
             gsap.to(body, {
                 height: contentHeight,
                 duration: 0.6,
-                ease: "elastic.out(1, 0.75)"
+                ease: 'elastic.out(1, 0.75)'
             });
         }
 
@@ -541,7 +564,7 @@ document.addEventListener('DOMContentLoaded', () => {
             gsap.to(body, {
                 height: 0,
                 duration: 0.4,
-                ease: "power2.out"
+                ease: 'power2.out'
             });
         }
     }
@@ -550,12 +573,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // initPostcardStack(); -> Removed
     initCairnStack();
 
-
     // ═══════════════════════════════════════════
     // 12. ACCORDION (Policies & FAQ)
     // ═══════════════════════════════════════════
     const accordions = document.querySelectorAll('.accordion-header');
-    accordions.forEach(acc => {
+    accordions.forEach((acc) => {
         acc.addEventListener('click', function () {
             this.classList.toggle('active');
             const content = this.nextElementSibling;
@@ -572,7 +594,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ═══════════════════════════════════════════
     function initPropertyGallery() {
         // Open lightbox
-        document.querySelectorAll('.gallery-view-all-btn').forEach(btn => {
+        document.querySelectorAll('.gallery-view-all-btn').forEach((btn) => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const lightbox = document.querySelector('.gallery-lightbox');
@@ -584,7 +606,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Also open lightbox when clicking gallery items
-        document.querySelectorAll('.property-gallery-grid .gallery-item').forEach(item => {
+        document.querySelectorAll('.property-gallery-grid .gallery-item').forEach((item) => {
             item.addEventListener('click', () => {
                 const lightbox = document.querySelector('.gallery-lightbox');
                 if (lightbox) {
@@ -595,7 +617,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Close lightbox
-        document.querySelectorAll('.gallery-lightbox-close').forEach(btn => {
+        document.querySelectorAll('.gallery-lightbox-close').forEach((btn) => {
             btn.addEventListener('click', () => {
                 const lightbox = btn.closest('.gallery-lightbox');
                 if (lightbox) {
@@ -618,5 +640,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     initPropertyGallery();
-
 });

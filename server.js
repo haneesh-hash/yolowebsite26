@@ -16,7 +16,7 @@ const EXPERIENCES_FILE = path.join(DATA_DIR, 'experiences.json');
 const IMAGES_DIR = path.join(__dirname, 'assets/images');
 
 // Ensure directories exist
-[DATA_DIR, IMAGES_DIR].forEach(dir => {
+[DATA_DIR, IMAGES_DIR].forEach((dir) => {
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 });
 
@@ -38,9 +38,7 @@ const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         // Support sub-folders for property images
         const subfolder = req.params.property || '';
-        const uploadPath = subfolder
-            ? path.join(IMAGES_DIR, subfolder)
-            : IMAGES_DIR;
+        const uploadPath = subfolder ? path.join(IMAGES_DIR, subfolder) : IMAGES_DIR;
         if (!fs.existsSync(uploadPath)) fs.mkdirSync(uploadPath, { recursive: true });
         cb(null, uploadPath);
     },
@@ -80,7 +78,7 @@ function writeJSON(filePath, data) {
 
 function getNextId(items) {
     if (items.length === 0) return 1;
-    return Math.max(...items.map(i => i.id)) + 1;
+    return Math.max(...items.map((i) => i.id)) + 1;
 }
 
 // ─── Static files ───
@@ -112,7 +110,7 @@ app.get('/api/blogs', (req, res) => {
 // GET single blog (public)
 app.get('/api/blogs/:id', (req, res) => {
     const blogs = readJSON(BLOGS_FILE);
-    const blog = blogs.find(b => b.id === parseInt(req.params.id));
+    const blog = blogs.find((b) => b.id === parseInt(req.params.id));
     if (!blog) return res.status(404).json({ error: 'Blog not found' });
     res.json(blog);
 });
@@ -125,11 +123,12 @@ app.post('/api/blogs', adminAuth, upload.single('image'), (req, res) => {
         featured: req.body.featured === 'true',
         category: req.body.category || '',
         tag: req.body.tag || '',
-        date: req.body.date || new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+        date:
+            req.body.date || new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
         readTime: req.body.readTime || '5 min read',
         title: req.body.title || '',
         excerpt: req.body.excerpt || '',
-        image: req.file ? `assets/images/${req.file.filename}` : (req.body.image || ''),
+        image: req.file ? `assets/images/${req.file.filename}` : req.body.image || '',
         imageAlt: req.body.imageAlt || '',
         url: req.body.url || '',
         body: req.body.body ? (typeof req.body.body === 'string' ? JSON.parse(req.body.body) : req.body.body) : []
@@ -142,7 +141,7 @@ app.post('/api/blogs', adminAuth, upload.single('image'), (req, res) => {
 // PUT update blog (admin)
 app.put('/api/blogs/:id', adminAuth, upload.single('image'), (req, res) => {
     const blogs = readJSON(BLOGS_FILE);
-    const index = blogs.findIndex(b => b.id === parseInt(req.params.id));
+    const index = blogs.findIndex((b) => b.id === parseInt(req.params.id));
     if (index === -1) return res.status(404).json({ error: 'Blog not found' });
 
     const existing = blogs[index];
@@ -155,10 +154,14 @@ app.put('/api/blogs/:id', adminAuth, upload.single('image'), (req, res) => {
         readTime: req.body.readTime || existing.readTime,
         title: req.body.title || existing.title,
         excerpt: req.body.excerpt || existing.excerpt,
-        image: req.file ? `assets/images/${req.file.filename}` : (req.body.image || existing.image),
+        image: req.file ? `assets/images/${req.file.filename}` : req.body.image || existing.image,
         imageAlt: req.body.imageAlt !== undefined ? req.body.imageAlt : existing.imageAlt,
         url: req.body.url !== undefined ? req.body.url : existing.url,
-        body: req.body.body ? (typeof req.body.body === 'string' ? JSON.parse(req.body.body) : req.body.body) : existing.body
+        body: req.body.body
+            ? typeof req.body.body === 'string'
+                ? JSON.parse(req.body.body)
+                : req.body.body
+            : existing.body
     };
     writeJSON(BLOGS_FILE, blogs);
     res.json(blogs[index]);
@@ -167,7 +170,7 @@ app.put('/api/blogs/:id', adminAuth, upload.single('image'), (req, res) => {
 // DELETE blog (admin)
 app.delete('/api/blogs/:id', adminAuth, (req, res) => {
     let blogs = readJSON(BLOGS_FILE);
-    const index = blogs.findIndex(b => b.id === parseInt(req.params.id));
+    const index = blogs.findIndex((b) => b.id === parseInt(req.params.id));
     if (index === -1) return res.status(404).json({ error: 'Blog not found' });
     const deleted = blogs.splice(index, 1)[0];
     writeJSON(BLOGS_FILE, blogs);
@@ -187,7 +190,7 @@ app.get('/api/experiences', (req, res) => {
 // GET single experience (public)
 app.get('/api/experiences/:id', (req, res) => {
     const experiences = readJSON(EXPERIENCES_FILE);
-    const exp = experiences.find(e => e.id === parseInt(req.params.id));
+    const exp = experiences.find((e) => e.id === parseInt(req.params.id));
     if (!exp) return res.status(404).json({ error: 'Experience not found' });
     res.json(exp);
 });
@@ -203,7 +206,7 @@ app.post('/api/experiences', adminAuth, upload.single('image'), (req, res) => {
         meta: req.body.meta || '',
         title: req.body.title || '',
         excerpt: req.body.excerpt || '',
-        image: req.file ? `assets/images/${req.file.filename}` : (req.body.image || ''),
+        image: req.file ? `assets/images/${req.file.filename}` : req.body.image || '',
         link: req.body.link || '#',
         featured: req.body.featured === 'true',
         wide: req.body.wide === 'true'
@@ -216,7 +219,7 @@ app.post('/api/experiences', adminAuth, upload.single('image'), (req, res) => {
 // PUT update experience (admin)
 app.put('/api/experiences/:id', adminAuth, upload.single('image'), (req, res) => {
     const experiences = readJSON(EXPERIENCES_FILE);
-    const index = experiences.findIndex(e => e.id === parseInt(req.params.id));
+    const index = experiences.findIndex((e) => e.id === parseInt(req.params.id));
     if (index === -1) return res.status(404).json({ error: 'Experience not found' });
 
     const existing = experiences[index];
@@ -228,7 +231,7 @@ app.put('/api/experiences/:id', adminAuth, upload.single('image'), (req, res) =>
         meta: req.body.meta || existing.meta,
         title: req.body.title || existing.title,
         excerpt: req.body.excerpt || existing.excerpt,
-        image: req.file ? `assets/images/${req.file.filename}` : (req.body.image || existing.image),
+        image: req.file ? `assets/images/${req.file.filename}` : req.body.image || existing.image,
         link: req.body.link || existing.link,
         featured: req.body.featured !== undefined ? req.body.featured === 'true' : existing.featured,
         wide: req.body.wide !== undefined ? req.body.wide === 'true' : existing.wide
@@ -240,7 +243,7 @@ app.put('/api/experiences/:id', adminAuth, upload.single('image'), (req, res) =>
 // DELETE experience (admin)
 app.delete('/api/experiences/:id', adminAuth, (req, res) => {
     let experiences = readJSON(EXPERIENCES_FILE);
-    const index = experiences.findIndex(e => e.id === parseInt(req.params.id));
+    const index = experiences.findIndex((e) => e.id === parseInt(req.params.id));
     if (index === -1) return res.status(404).json({ error: 'Experience not found' });
     const deleted = experiences.splice(index, 1)[0];
     writeJSON(EXPERIENCES_FILE, experiences);
@@ -256,12 +259,13 @@ const PROPERTIES = ['manali', 'kasol', 'jispa', 'general'];
 // GET list properties and their images
 app.get('/api/properties', (req, res) => {
     const result = {};
-    PROPERTIES.forEach(prop => {
+    PROPERTIES.forEach((prop) => {
         const propDir = prop === 'general' ? IMAGES_DIR : path.join(IMAGES_DIR, prop);
         if (fs.existsSync(propDir)) {
-            result[prop] = fs.readdirSync(propDir)
-                .filter(f => /\.(jpe?g|png|webp|gif|svg)$/i.test(f))
-                .map(f => ({
+            result[prop] = fs
+                .readdirSync(propDir)
+                .filter((f) => /\.(jpe?g|png|webp|gif|svg)$/i.test(f))
+                .map((f) => ({
                     filename: f,
                     path: prop === 'general' ? `assets/images/${f}` : `assets/images/${prop}/${f}`,
                     size: fs.statSync(path.join(propDir, f)).size
@@ -281,9 +285,10 @@ app.post('/api/properties/:property/images', adminAuth, upload.single('image'), 
     if (!req.file) {
         return res.status(400).json({ error: 'No file uploaded' });
     }
-    const relativePath = req.params.property === 'general'
-        ? `assets/images/${req.file.filename}`
-        : `assets/images/${req.params.property}/${req.file.filename}`;
+    const relativePath =
+        req.params.property === 'general'
+            ? `assets/images/${req.file.filename}`
+            : `assets/images/${req.params.property}/${req.file.filename}`;
     res.status(201).json({
         message: 'Image uploaded',
         filename: req.file.filename,
@@ -297,9 +302,10 @@ app.delete('/api/properties/:property/images/:filename', adminAuth, (req, res) =
         return res.status(400).json({ error: 'Invalid property' });
     }
     const safeName = path.basename(req.params.filename);
-    const filePath = req.params.property === 'general'
-        ? path.join(IMAGES_DIR, safeName)
-        : path.join(IMAGES_DIR, req.params.property, safeName);
+    const filePath =
+        req.params.property === 'general'
+            ? path.join(IMAGES_DIR, safeName)
+            : path.join(IMAGES_DIR, req.params.property, safeName);
 
     if (!fs.existsSync(filePath)) {
         return res.status(404).json({ error: 'File not found' });

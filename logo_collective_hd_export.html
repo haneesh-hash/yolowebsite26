@@ -1,85 +1,141 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>YOLO Collective Logo HD Export</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 50px;
+                background: transparent;
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+            }
 
-<head>
-    <meta charset="UTF-8">
-    <title>YOLO Collective Logo HD Export</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 50px;
-            background: transparent;
-            display: flex;
-            flex-direction: column;
-            gap: 50px;
-        }
+            .export-container {
+                width: 2400px;
+                /* 4K resolution width */
+                padding: 100px;
+                background: transparent;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
 
-        .export-container {
-            width: 2400px;
-            /* 4K resolution width */
-            padding: 100px;
-            background: transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+            svg {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        </style>
+    </head>
 
-        svg {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-    </style>
-</head>
-
-<body>
-    <!-- Standard (Black Text) HD Logo -->
-    <div id="logo_hd_standard" class="export-container" tabindex="0">
-        <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
-            <g transform="translate(80, 50)">
-                <text x="0" y="150" font-family="Arial, sans-serif" font-weight="900" font-size="140" fill="#212121"
-                    letter-spacing="-5">YO</text>
-                <g transform="translate(-40, 0)">
-                    <path d="M260,30 L300,30 L300,120 Q300,150 330,150 L370,150 L370,180 L330,180 Q270,180 260,120 Z"
-                        fill="#039BE5" />
-                    <path d="M320,150 L370,60 L420,150" fill="#B0BEC5" opacity="0.5" />
-                    <g transform="translate(320, 80) scale(0.9)">
-                        <circle cx="5" cy="0" r="6" fill="#212121" />
-                        <path d="M0,8 L10,30 L-10,30 Z" fill="#212121" />
-                        <line x1="8" y1="15" x2="20" y2="40" stroke="#212121" stroke-width="2" />
+    <body>
+        <!-- Standard (Black Text) HD Logo -->
+        <div id="logo_hd_standard" class="export-container" tabindex="0">
+            <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(80, 50)">
+                    <text
+                        x="0"
+                        y="150"
+                        font-family="Arial, sans-serif"
+                        font-weight="900"
+                        font-size="140"
+                        fill="#212121"
+                        letter-spacing="-5"
+                    >
+                        YO
+                    </text>
+                    <g transform="translate(-40, 0)">
+                        <path
+                            d="M260,30 L300,30 L300,120 Q300,150 330,150 L370,150 L370,180 L330,180 Q270,180 260,120 Z"
+                            fill="#039BE5"
+                        />
+                        <path d="M320,150 L370,60 L420,150" fill="#B0BEC5" opacity="0.5" />
+                        <g transform="translate(320, 80) scale(0.9)">
+                            <circle cx="5" cy="0" r="6" fill="#212121" />
+                            <path d="M0,8 L10,30 L-10,30 Z" fill="#212121" />
+                            <line x1="8" y1="15" x2="20" y2="40" stroke="#212121" stroke-width="2" />
+                        </g>
                     </g>
+                    <text
+                        x="340"
+                        y="150"
+                        font-family="Arial, sans-serif"
+                        font-weight="900"
+                        font-size="140"
+                        fill="#212121"
+                    >
+                        O
+                    </text>
+                    <text
+                        x="220"
+                        y="240"
+                        font-family="Arial, sans-serif"
+                        font-weight="300"
+                        font-size="32"
+                        fill="#212121"
+                        letter-spacing="6"
+                        text-anchor="middle"
+                    >
+                        COLLECTIVE
+                    </text>
                 </g>
-                <text x="340" y="150" font-family="Arial, sans-serif" font-weight="900" font-size="140"
-                    fill="#212121">O</text>
-                <text x="220" y="240" font-family="Arial, sans-serif" font-weight="300" font-size="32" fill="#212121"
-                    letter-spacing="6" text-anchor="middle">COLLECTIVE</text>
-            </g>
-        </svg>
-    </div>
+            </svg>
+        </div>
 
-    <!-- White Text HD Logo -->
-    <div id="logo_hd_white" class="export-container" tabindex="0">
-        <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
-            <g transform="translate(80, 50)">
-                <text x="0" y="150" font-family="Arial, sans-serif" font-weight="900" font-size="140" fill="#FFFFFF"
-                    letter-spacing="-5">YO</text>
-                <g transform="translate(-40, 0)">
-                    <path d="M260,30 L300,30 L300,120 Q300,150 330,150 L370,150 L370,180 L330,180 Q270,180 260,120 Z"
-                        fill="#039BE5" />
-                    <path d="M320,150 L370,60 L420,150" fill="#CFD8DC" opacity="0.8" />
-                    <g transform="translate(320, 80) scale(0.9)">
-                        <circle cx="5" cy="0" r="6" fill="#FFFFFF" />
-                        <path d="M0,8 L10,30 L-10,30 Z" fill="#FFFFFF" />
-                        <line x1="8" y1="15" x2="20" y2="40" stroke="#FFFFFF" stroke-width="2" />
+        <!-- White Text HD Logo -->
+        <div id="logo_hd_white" class="export-container" tabindex="0">
+            <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(80, 50)">
+                    <text
+                        x="0"
+                        y="150"
+                        font-family="Arial, sans-serif"
+                        font-weight="900"
+                        font-size="140"
+                        fill="#FFFFFF"
+                        letter-spacing="-5"
+                    >
+                        YO
+                    </text>
+                    <g transform="translate(-40, 0)">
+                        <path
+                            d="M260,30 L300,30 L300,120 Q300,150 330,150 L370,150 L370,180 L330,180 Q270,180 260,120 Z"
+                            fill="#039BE5"
+                        />
+                        <path d="M320,150 L370,60 L420,150" fill="#CFD8DC" opacity="0.8" />
+                        <g transform="translate(320, 80) scale(0.9)">
+                            <circle cx="5" cy="0" r="6" fill="#FFFFFF" />
+                            <path d="M0,8 L10,30 L-10,30 Z" fill="#FFFFFF" />
+                            <line x1="8" y1="15" x2="20" y2="40" stroke="#FFFFFF" stroke-width="2" />
+                        </g>
                     </g>
+                    <text
+                        x="340"
+                        y="150"
+                        font-family="Arial, sans-serif"
+                        font-weight="900"
+                        font-size="140"
+                        fill="#FFFFFF"
+                    >
+                        O
+                    </text>
+                    <text
+                        x="220"
+                        y="240"
+                        font-family="Arial, sans-serif"
+                        font-weight="300"
+                        font-size="32"
+                        fill="#FFFFFF"
+                        letter-spacing="6"
+                        text-anchor="middle"
+                    >
+                        COLLECTIVE
+                    </text>
                 </g>
-                <text x="340" y="150" font-family="Arial, sans-serif" font-weight="900" font-size="140"
-                    fill="#FFFFFF">O</text>
-                <text x="220" y="240" font-family="Arial, sans-serif" font-weight="300" font-size="32" fill="#FFFFFF"
-                    letter-spacing="6" text-anchor="middle">COLLECTIVE</text>
-            </g>
-        </svg>
-    </div>
-</body>
-
+            </svg>
+        </div>
+    </body>
 </html>

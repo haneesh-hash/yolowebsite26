@@ -1,133 +1,136 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Logo Transparency Test</title>
+        <style>
+            body {
+                font-family: sans-serif;
+                padding: 2rem;
+                background: #333;
+                color: white;
+            }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logo Transparency Test</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            padding: 2rem;
-            background: #333;
-            color: white;
-        }
+            .test-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
 
-        .test-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
+            .test-case {
+                border: 1px solid #ccc;
+                padding: 1rem;
+                text-align: center;
+            }
 
-        .test-case {
-            border: 1px solid #ccc;
-            padding: 1rem;
-            text-align: center;
-        }
+            .test-case h3 {
+                margin-top: 0;
+                color: #ccc;
+                font-size: 0.9rem;
+            }
 
-        .test-case h3 {
-            margin-top: 0;
-            color: #ccc;
-            font-size: 0.9rem;
-        }
+            .logo-box {
+                width: 200px;
+                height: 200px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px dashed #666;
+            }
 
-        .logo-box {
-            width: 200px;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px dashed #666;
-        }
+            .logo-box img {
+                max-width: 100%;
+                max-height: 100%;
+            }
 
-        .logo-box img {
-            max-width: 100%;
-            max-height: 100%;
-        }
+            /* Backgrounds */
+            .bg-white {
+                background-color: white;
+            }
 
-        /* Backgrounds */
-        .bg-white {
-            background-color: white;
-        }
+            .bg-black {
+                background-color: black;
+            }
 
-        .bg-black {
-            background-color: black;
-        }
+            .bg-header {
+                background-color: rgba(255, 255, 255, 0.8);
+            }
 
-        .bg-header {
-            background-color: rgba(255, 255, 255, 0.8);
-        }
+            /* The header color */
+            .bg-lime {
+                background-color: lime;
+            }
 
-        /* The header color */
-        .bg-lime {
-            background-color: lime;
-        }
+            /* Highlights white/grey blocks */
+            .bg-red {
+                background-color: red;
+            }
 
-        /* Highlights white/grey blocks */
-        .bg-red {
-            background-color: red;
-        }
+            /* Highlights other artifacts */
+            .bg-checkered {
+                background-image:
+                    linear-gradient(45deg, #ccc 25%, transparent 25%),
+                    linear-gradient(-45deg, #ccc 25%, transparent 25%),
+                    linear-gradient(45deg, transparent 75%, #ccc 75%),
+                    linear-gradient(-45deg, transparent 75%, #ccc 75%);
+                background-size: 20px 20px;
+                background-color: white;
+                background-position:
+                    0 0,
+                    0 10px,
+                    10px -10px,
+                    -10px 0px;
+            }
+        </style>
+    </head>
 
-        /* Highlights other artifacts */
-        .bg-checkered {
-            background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),
-                linear-gradient(-45deg, #ccc 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, #ccc 75%),
-                linear-gradient(-45deg, transparent 75%, #ccc 75%);
-            background-size: 20px 20px;
-            background-color: white;
-            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-        }
-    </style>
-</head>
+    <body>
+        <h1>Logo Transparency Debugger</h1>
+        <p>Testing file: <code>assets/icons/header_logo.webp</code></p>
 
-<body>
-    <h1>Logo Transparency Debugger</h1>
-    <p>Testing file: <code>assets/icons/header_logo.webp</code></p>
+        <div class="test-container">
+            <div class="test-case">
+                <h3>White Background</h3>
+                <div class="logo-box bg-white">
+                    <img src="logo.svg?v=1771706725" alt="Logo" />
+                </div>
+            </div>
 
-    <div class="test-container">
-        <div class="test-case">
-            <h3>White Background</h3>
-            <div class="logo-box bg-white">
-                <img src="logo.svg?v=1771706725" alt="Logo">
+            <div class="test-case">
+                <h3>Header Color (rgba(255,255,255,0.8))</h3>
+                <div class="logo-box bg-header">
+                    <img src="logo.svg?v=1771706725" alt="Logo" />
+                </div>
+            </div>
+
+            <div class="test-case">
+                <h3>Black Background</h3>
+                <div class="logo-box bg-black">
+                    <img src="logo.svg?v=1771706725" alt="Logo" />
+                </div>
+            </div>
+
+            <div class="test-case">
+                <h3>Lime Green (Reveals white blocks)</h3>
+                <div class="logo-box bg-lime">
+                    <img src="logo.svg?v=1771706725" alt="Logo" />
+                </div>
+            </div>
+
+            <div class="test-case">
+                <h3>Red (Reveals halos)</h3>
+                <div class="logo-box bg-red">
+                    <img src="logo.svg?v=1771706725" alt="Logo" />
+                </div>
+            </div>
+
+            <div class="test-case">
+                <h3>Checkered (Simulates transparence)</h3>
+                <div class="logo-box bg-checkered">
+                    <img src="logo.svg?v=1771706725" alt="Logo" />
+                </div>
             </div>
         </div>
-
-        <div class="test-case">
-            <h3>Header Color (rgba(255,255,255,0.8))</h3>
-            <div class="logo-box bg-header">
-                <img src="logo.svg?v=1771706725" alt="Logo">
-            </div>
-        </div>
-
-        <div class="test-case">
-            <h3>Black Background</h3>
-            <div class="logo-box bg-black">
-                <img src="logo.svg?v=1771706725" alt="Logo">
-            </div>
-        </div>
-
-        <div class="test-case">
-            <h3>Lime Green (Reveals white blocks)</h3>
-            <div class="logo-box bg-lime">
-                <img src="logo.svg?v=1771706725" alt="Logo">
-            </div>
-        </div>
-
-        <div class="test-case">
-            <h3>Red (Reveals halos)</h3>
-            <div class="logo-box bg-red">
-                <img src="logo.svg?v=1771706725" alt="Logo">
-            </div>
-        </div>
-
-        <div class="test-case">
-            <h3>Checkered (Simulates transparence)</h3>
-            <div class="logo-box bg-checkered">
-                <img src="logo.svg?v=1771706725" alt="Logo">
-            </div>
-        </div>
-    </div>
-</body>
-
+    </body>
 </html>

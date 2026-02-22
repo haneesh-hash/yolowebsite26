@@ -1,816 +1,910 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <link rel="icon" type="image/svg+xml" href="logo.svg?v=1771706725" />
 
-<head>
-    <link rel="icon" type="image/svg+xml" href="logo.svg?v=1771706725">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>The YOLO Blog | Travel Tips & Stories</title>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The YOLO Blog | Travel Tips & Stories</title>
+        <!-- SEO Meta Tags -->
+        <meta
+            name="description"
+            content="Read stories from the tribe. Travel tips for Spiti and Lahaul, digital nomad guides, and tales from the YOLO community."
+        />
 
-    <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Read stories from the tribe. Travel tips for Spiti and Lahaul, digital nomad guides, and tales from the YOLO community.">
+        <!-- Open Graph / Social -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="The YOLO Blog | Travel Tips & Stories" />
+        <meta
+            property="og:description"
+            content="Read stories from the tribe. Travel tips for Spiti and Lahaul, digital nomad guides, and tales from the YOLO community."
+        />
+        <meta property="og:image" content="https://theyolocollective.com/assets/images/IMG_3229.webp" />
+        <meta property="og:url" content="https://theyolocollective.com/blog.html" />
+        <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Open Graph / Social -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="The YOLO Blog | Travel Tips & Stories">
-    <meta property="og:description"
-        content="Read stories from the tribe. Travel tips for Spiti and Lahaul, digital nomad guides, and tales from the YOLO community.">
-    <meta property="og:image" content="https://theyolocollective.com/assets/images/IMG_3229.webp">
-    <meta property="og:url" content="https://theyolocollective.com/blog.html">
-    <meta name="twitter:card" content="summary_large_image">
+        <!-- Styles -->
+        <link rel="stylesheet" href="style.css?v=3" />
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="style.css?v=3">
+        <!-- React + Framer Motion via CDN (no build step) -->
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script src="https://unpkg.com/framer-motion@11/dist/framer-motion.js"></script>
 
-    <!-- React + Framer Motion via CDN (no build step) -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/framer-motion@11/dist/framer-motion.js"></script>
+        <style>
+            /* ─── Material Journal — Shifting Stack Blog Engine ─── */
 
-    <style>
-        /* ─── Material Journal — Shifting Stack Blog Engine ─── */
-
-        /* Filter bar */
-        .journal-section {
-            padding: 5rem 0 8rem;
-            background: #fff;
-        }
-
-        .journal-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .journal-eyebrow {
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 0.7rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: #74ACDF;
-            margin-bottom: 0.75rem;
-        }
-
-        .journal-title {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 800;
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: #000;
-            margin: 0;
-        }
-
-        /* Filter pills */
-        .filter-bar {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 3.5rem;
-            padding: 0 1rem;
-        }
-
-        .filter-pill {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.78rem;
-            font-weight: 500;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 0.5rem 1.25rem;
-            border-radius: 100px;
-            border: 1.5px solid #000;
-            background: transparent;
-            color: #000;
-            cursor: pointer;
-            transition: background 0.2s, color 0.2s, border-color 0.2s;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .filter-pill:hover {
-            background: #000;
-            color: #fff;
-        }
-
-        .filter-pill.active {
-            background: #000;
-            color: #fff;
-        }
-
-        .filter-pill.active-sky {
-            background: #74ACDF;
-            color: #fff;
-            border-color: #74ACDF;
-        }
-
-        /* Shifting Stack grid */
-        .stack-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            padding: 0 4rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        @media (max-width: 1100px) {
-            .stack-grid {
-                grid-template-columns: repeat(2, 1fr);
-                padding: 0 2rem;
+            /* Filter bar */
+            .journal-section {
+                padding: 5rem 0 8rem;
+                background: #fff;
             }
-        }
 
-        @media (max-width: 680px) {
-            .stack-grid {
-                grid-template-columns: 1fr;
-                padding: 0 1.25rem;
-                gap: 1.5rem;
+            .journal-header {
+                text-align: center;
+                margin-bottom: 4rem;
             }
-        }
 
-        /* Material card — the hero interaction element */
-        .material-card {
-            position: relative;
-            background: #fff;
-            border-radius: 4px;
-            overflow: hidden;
-            cursor: pointer;
+            .journal-eyebrow {
+                font-family: 'Inter', sans-serif;
+                font-weight: 500;
+                font-size: 0.7rem;
+                letter-spacing: 0.25em;
+                text-transform: uppercase;
+                color: #74acdf;
+                margin-bottom: 0.75rem;
+            }
 
-            /* 3D tactile depth — layered box-shadows give "lifted paper" feel */
-            box-shadow:
-                0 1px 2px rgba(0, 0, 0, 0.07),
-                0 4px 8px rgba(0, 0, 0, 0.07),
-                0 8px 16px rgba(0, 0, 0, 0.06),
-                0 16px 32px rgba(0, 0, 0, 0.05);
+            .journal-title {
+                font-family: 'Outfit', sans-serif;
+                font-weight: 800;
+                font-size: clamp(2rem, 4vw, 3rem);
+                color: #000;
+                margin: 0;
+            }
 
-            /* Crisp paper edge */
-            outline: 1px solid rgba(0, 0, 0, 0.06);
-        }
+            /* Filter pills */
+            .filter-bar {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                margin-bottom: 3.5rem;
+                padding: 0 1rem;
+            }
 
-        .card-image-wrap {
-            position: relative;
-            overflow: hidden;
-            aspect-ratio: 4/3;
-        }
+            .filter-pill {
+                font-family: 'Inter', sans-serif;
+                font-size: 0.78rem;
+                font-weight: 500;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                padding: 0.5rem 1.25rem;
+                border-radius: 100px;
+                border: 1.5px solid #000;
+                background: transparent;
+                color: #000;
+                cursor: pointer;
+                transition:
+                    background 0.2s,
+                    color 0.2s,
+                    border-color 0.2s;
+                -webkit-tap-highlight-color: transparent;
+            }
 
-        .card-image-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
+            .filter-pill:hover {
+                background: #000;
+                color: #fff;
+            }
 
-        .material-card:hover .card-image-wrap img {
-            transform: scale(1.04);
-        }
+            .filter-pill.active {
+                background: #000;
+                color: #fff;
+            }
 
-        /* Category badge — skyblue accent */
-        .card-badge {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 600;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: #fff;
-            background: #74ACDF;
-            padding: 0.3rem 0.75rem;
-            border-radius: 2px;
-        }
+            .filter-pill.active-sky {
+                background: #74acdf;
+                color: #fff;
+                border-color: #74acdf;
+            }
 
-        .card-body {
-            padding: 1.5rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.06);
-        }
+            /* Shifting Stack grid */
+            .stack-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+                padding: 0 4rem;
+                max-width: 1400px;
+                margin: 0 auto;
+            }
 
-        .card-meta {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.72rem;
-            font-weight: 400;
-            color: rgba(0, 0, 0, 0.45);
-            letter-spacing: 0.04em;
-        }
+            @media (max-width: 1100px) {
+                .stack-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                    padding: 0 2rem;
+                }
+            }
 
-        .card-meta-dot {
-            width: 3px;
-            height: 3px;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.3);
-            flex-shrink: 0;
-        }
+            @media (max-width: 680px) {
+                .stack-grid {
+                    grid-template-columns: 1fr;
+                    padding: 0 1.25rem;
+                    gap: 1.5rem;
+                }
+            }
 
-        .card-heading {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            font-size: clamp(1rem, 1.8vw, 1.2rem);
-            line-height: 1.35;
-            color: #000;
-            margin: 0 0 0.75rem;
-        }
+            /* Material card — the hero interaction element */
+            .material-card {
+                position: relative;
+                background: #fff;
+                border-radius: 4px;
+                overflow: hidden;
+                cursor: pointer;
 
-        .card-excerpt {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.875rem;
-            line-height: 1.7;
-            color: rgba(0, 0, 0, 0.6);
-            margin: 0 0 1.25rem;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
+                /* 3D tactile depth — layered box-shadows give "lifted paper" feel */
+                box-shadow:
+                    0 1px 2px rgba(0, 0, 0, 0.07),
+                    0 4px 8px rgba(0, 0, 0, 0.07),
+                    0 8px 16px rgba(0, 0, 0, 0.06),
+                    0 16px 32px rgba(0, 0, 0, 0.05);
 
-        .card-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #000;
-            text-decoration: none;
-            border-bottom: 1.5px solid #000;
-            padding-bottom: 1px;
-            transition: color 0.2s, border-color 0.2s;
-        }
+                /* Crisp paper edge */
+                outline: 1px solid rgba(0, 0, 0, 0.06);
+            }
 
-        .card-cta:hover {
-            color: #74ACDF;
-            border-color: #74ACDF;
-        }
+            .card-image-wrap {
+                position: relative;
+                overflow: hidden;
+                aspect-ratio: 4/3;
+            }
 
-        .card-cta-arrow {
-            transition: transform 0.2s;
-        }
+            .card-image-wrap img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
 
-        .card-cta:hover .card-cta-arrow {
-            transform: translateX(3px);
-        }
+            .material-card:hover .card-image-wrap img {
+                transform: scale(1.04);
+            }
 
-        /* Featured card — spans 2 columns on desktop */
-        .material-card.featured {
-            grid-column: span 2;
-        }
+            /* Category badge — skyblue accent */
+            .card-badge {
+                position: absolute;
+                top: 1rem;
+                left: 1rem;
+                font-family: 'Inter', sans-serif;
+                font-size: 0.65rem;
+                font-weight: 600;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: #fff;
+                background: #74acdf;
+                padding: 0.3rem 0.75rem;
+                border-radius: 2px;
+            }
 
-        .material-card.featured .card-image-wrap {
-            aspect-ratio: 16/7;
-        }
+            .card-body {
+                padding: 1.5rem;
+                border-top: 1px solid rgba(0, 0, 0, 0.06);
+            }
 
-        @media (max-width: 1100px) {
+            .card-meta {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                margin-bottom: 0.75rem;
+                font-family: 'Inter', sans-serif;
+                font-size: 0.72rem;
+                font-weight: 400;
+                color: rgba(0, 0, 0, 0.45);
+                letter-spacing: 0.04em;
+            }
+
+            .card-meta-dot {
+                width: 3px;
+                height: 3px;
+                border-radius: 50%;
+                background: rgba(0, 0, 0, 0.3);
+                flex-shrink: 0;
+            }
+
+            .card-heading {
+                font-family: 'Outfit', sans-serif;
+                font-weight: 600;
+                font-size: clamp(1rem, 1.8vw, 1.2rem);
+                line-height: 1.35;
+                color: #000;
+                margin: 0 0 0.75rem;
+            }
+
+            .card-excerpt {
+                font-family: 'Inter', sans-serif;
+                font-size: 0.875rem;
+                line-height: 1.7;
+                color: rgba(0, 0, 0, 0.6);
+                margin: 0 0 1.25rem;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .card-cta {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.4rem;
+                font-family: 'Inter', sans-serif;
+                font-size: 0.78rem;
+                font-weight: 600;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: #000;
+                text-decoration: none;
+                border-bottom: 1.5px solid #000;
+                padding-bottom: 1px;
+                transition:
+                    color 0.2s,
+                    border-color 0.2s;
+            }
+
+            .card-cta:hover {
+                color: #74acdf;
+                border-color: #74acdf;
+            }
+
+            .card-cta-arrow {
+                transition: transform 0.2s;
+            }
+
+            .card-cta:hover .card-cta-arrow {
+                transform: translateX(3px);
+            }
+
+            /* Featured card — spans 2 columns on desktop */
             .material-card.featured {
                 grid-column: span 2;
             }
-        }
-
-        @media (max-width: 680px) {
-            .material-card.featured {
-                grid-column: span 1;
-            }
 
             .material-card.featured .card-image-wrap {
-                aspect-ratio: 4/3;
+                aspect-ratio: 16/7;
             }
-        }
 
-        /* Empty state */
-        .stack-empty {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 5rem 1rem;
-            font-family: 'Inter', sans-serif;
-            color: rgba(0, 0, 0, 0.4);
-        }
+            @media (max-width: 1100px) {
+                .material-card.featured {
+                    grid-column: span 2;
+                }
+            }
 
-        /* Article overlay (card-to-article expand) */
-        .article-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: #fff;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
+            @media (max-width: 680px) {
+                .material-card.featured {
+                    grid-column: span 1;
+                }
 
-        .article-close {
-            position: fixed;
-            top: 1.5rem;
-            right: 1.5rem;
-            z-index: 10001;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: #000;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            transition: background 0.2s;
-        }
+                .material-card.featured .card-image-wrap {
+                    aspect-ratio: 4/3;
+                }
+            }
 
-        .article-close:hover {
-            background: #74ACDF;
-        }
+            /* Empty state */
+            .stack-empty {
+                grid-column: 1 / -1;
+                text-align: center;
+                padding: 5rem 1rem;
+                font-family: 'Inter', sans-serif;
+                color: rgba(0, 0, 0, 0.4);
+            }
 
-        .article-hero-img {
-            width: 100%;
-            height: 50vh;
-            object-fit: cover;
-            display: block;
-        }
+            /* Article overlay (card-to-article expand) */
+            .article-overlay {
+                position: fixed;
+                inset: 0;
+                z-index: 9999;
+                background: #fff;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
 
-        .article-content {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 3rem 2rem 6rem;
-        }
+            .article-close {
+                position: fixed;
+                top: 1.5rem;
+                right: 1.5rem;
+                z-index: 10001;
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                background: #000;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.2rem;
+                transition: background 0.2s;
+            }
 
-        .article-badge {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #74ACDF;
-            margin-bottom: 1rem;
-            display: block;
-        }
+            .article-close:hover {
+                background: #74acdf;
+            }
 
-        .article-title {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 800;
-            font-size: clamp(1.75rem, 4vw, 2.75rem);
-            line-height: 1.2;
-            color: #000;
-            margin: 0 0 1.5rem;
-        }
+            .article-hero-img {
+                width: 100%;
+                height: 50vh;
+                object-fit: cover;
+                display: block;
+            }
 
-        .article-meta {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            color: rgba(0, 0, 0, 0.45);
-            margin-bottom: 2.5rem;
-            display: flex;
-            gap: 1rem;
-        }
+            .article-content {
+                max-width: 720px;
+                margin: 0 auto;
+                padding: 3rem 2rem 6rem;
+            }
 
-        .article-body {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: rgba(0, 0, 0, 0.75);
-        }
+            .article-badge {
+                font-family: 'Inter', sans-serif;
+                font-size: 0.7rem;
+                font-weight: 600;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: #74acdf;
+                margin-bottom: 1rem;
+                display: block;
+            }
 
-        .article-body p {
-            margin-bottom: 1.5rem;
-        }
+            .article-title {
+                font-family: 'Outfit', sans-serif;
+                font-weight: 800;
+                font-size: clamp(1.75rem, 4vw, 2.75rem);
+                line-height: 1.2;
+                color: #000;
+                margin: 0 0 1.5rem;
+            }
 
-        .article-ext-link {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 0.9rem 2rem;
-            background: #000;
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.82rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-radius: 2px;
-            transition: background 0.2s;
-        }
+            .article-meta {
+                font-family: 'Inter', sans-serif;
+                font-size: 0.8rem;
+                color: rgba(0, 0, 0, 0.45);
+                margin-bottom: 2.5rem;
+                display: flex;
+                gap: 1rem;
+            }
 
-        .article-ext-link:hover {
-            background: #74ACDF;
-        }
-    </style>
+            .article-body {
+                font-family: 'Inter', sans-serif;
+                font-size: 1.05rem;
+                line-height: 1.8;
+                color: rgba(0, 0, 0, 0.75);
+            }
 
-    <link rel="canonical" href="https://theyolocollective.com/blog.html">
-</head>
+            .article-body p {
+                margin-bottom: 1.5rem;
+            }
 
-<body>
-    <a href="#main-content" class="skip-link">Skip to content</a>
+            .article-ext-link {
+                display: inline-block;
+                margin-top: 2rem;
+                padding: 0.9rem 2rem;
+                background: #000;
+                color: #fff;
+                font-family: 'Inter', sans-serif;
+                font-size: 0.82rem;
+                font-weight: 600;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                text-decoration: none;
+                border-radius: 2px;
+                transition: background 0.2s;
+            }
 
-    <!-- Navigation -->
-    <header class="site-header">
-        <nav class="nav-container">
-            <!-- Left: Logo -->
-            <div class="logo">
-                <a href="index.html">
-                    <img src="logo.svg?v=1771706725" alt="The YOLO Collective logo" class="logo-image">
-                </a>
-            </div>
+            .article-ext-link:hover {
+                background: #74acdf;
+            }
+        </style>
 
-            <ul class="nav-links">
-                <li class="dropdown">
-                    <a href="index.html#explore">Destinations <span class="arrow-down">▼</span></a>
-                    <ul class="dropdown-menu">
+        <link rel="canonical" href="https://theyolocollective.com/blog.html" />
+    </head>
+
+    <body>
+        <a href="#main-content" class="skip-link">Skip to content</a>
+
+        <!-- Navigation -->
+        <header class="site-header">
+            <nav class="nav-container">
+                <!-- Left: Logo -->
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="logo.svg?v=1771706725" alt="The YOLO Collective logo" class="logo-image" />
+                    </a>
+                </div>
+
+                <ul class="nav-links">
+                    <li class="dropdown">
+                        <a href="index.html#explore">Destinations <span class="arrow-down">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="jispa.html">Jispa</a></li>
+                            <li><a href="manali.html">Manali</a></li>
+                            <li><a href="kasol.html">Kasol</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="experience.html">YOLO Experiences</a></li>
+                    <li class="dropdown">
+                        <a href="index.html#company">Adventure Awaits <span class="arrow-down">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="franchise.html">Franchise</a></li>
+                            <li><a href="work-with-us.html">Work With Us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- Right: Navigation Links & CTA -->
+                <div class="nav-right">
+                    <div class="nav-actions">
+                        <a
+                            href="https://wa.me/917018591758"
+                            class="btn-whatsapp"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+                                ></path>
+                            </svg>
+                        </a>
+
+                        <a
+                            href="https://bookingengine.stayflexi.com/group-be/?groupId=28012"
+                            class="btn-primary"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            >Book Your Stay</a
+                        >
+                    </div>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-menu-toggle" aria-label="Open Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Mobile Navigation Drawer -->
+        <!-- Mobile Nav Drawer -->
+        <!-- Mobile Nav Drawer -->
+        <div class="mobile-nav-drawer" role="dialog" aria-label="Mobile navigation">
+            <ul class="mobile-nav-links">
+                <li><a href="experience.html">Experiences</a></li>
+                <li>
+                    <a href="#" class="mobile-dropdown-toggle">Destinations ▼</a>
+                    <ul class="mobile-sub-menu">
                         <li><a href="jispa.html">Jispa</a></li>
                         <li><a href="manali.html">Manali</a></li>
                         <li><a href="kasol.html">Kasol</a></li>
                     </ul>
                 </li>
-                <li><a href="experience.html">YOLO Experiences</a></li>
-                <li class="dropdown">
-                    <a href="index.html#company">Adventure Awaits <span class="arrow-down">▼</span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="about.html">About</a></li>
+                <li>
+                    <a href="#" class="mobile-dropdown-toggle">Adventure Awaits ▼</a>
+                    <ul class="mobile-sub-menu">
+                        <li><a href="about.html">About Us</a></li>
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="franchise.html">Franchise</a></li>
-                        <li><a href="work-with-us.html">Work With Us</a></li>
+                        <li><a href="work-with-us.html">Work with us</a></li>
                     </ul>
                 </li>
+                <li><a href="#" class="btn-primary" id="booking-trigger-mobile">Book Your Stay</a></li>
             </ul>
-
-            <!-- Right: Navigation Links & CTA -->
-            <div class="nav-right">
-
-                <div class="nav-actions">
-                    <a href="https://wa.me/917018591758" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
-                            </path>
-                        </svg>
-                    </a>
-
-
-                    <a href="https://bookingengine.stayflexi.com/group-be/?groupId=28012" class="btn-primary"
-                        target="_blank" rel="noopener noreferrer">Book Your Stay</a>
-                </div>
-
-                <!-- Mobile Menu Toggle -->
-                <button class="mobile-menu-toggle" aria-label="Open Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Mobile Navigation Drawer -->
-    <!-- Mobile Nav Drawer -->
-    <!-- Mobile Nav Drawer -->
-    <div class="mobile-nav-drawer" role="dialog" aria-label="Mobile navigation">
-        <ul class="mobile-nav-links">
-            <li><a href="experience.html">Experiences</a></li>
-            <li>
-                <a href="#" class="mobile-dropdown-toggle">Destinations ▼</a>
-                <ul class="mobile-sub-menu">
-                    <li><a href="jispa.html">Jispa</a></li>
-                    <li><a href="manali.html">Manali</a></li>
-                    <li><a href="kasol.html">Kasol</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="mobile-dropdown-toggle">Adventure Awaits ▼</a>
-                <ul class="mobile-sub-menu">
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="franchise.html">Franchise</a></li>
-                    <li><a href="work-with-us.html">Work with us</a></li>
-                </ul>
-            </li>
-            <li><a href="#" class="btn-primary" id="booking-trigger-mobile">Book Your Stay</a></li>
-        </ul>
-    </div>
-
-    <!-- Main Content -->
-    <main id="main-content">
-        <!-- Hero Section -->
-        <section class="blog-hero">
-            <div class="blog-hero-bg">
-                <img src="assets/images/IMG_3229.webp" alt="Himalayan mountain peaks at blue hour" fetchpriority="high"
-                    decoding="async" style="width: 100%; height: 60vh; object-fit: cover; display: block;" />
-            </div>
-        </section>
-
-        <!-- React root: Shifting Stack Journal Feed -->
-        <section class="journal-section">
-            <div class="journal-header">
-                <p class="journal-eyebrow">Material Journal</p>
-                <h2 class="journal-title">Field Notes from the Himalayas</h2>
-            </div>
-            <div id="journal-root"></div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container footer-content">
-            <div class="footer-links-group">
-                <h4>Adventure Awaits</h4>
-                <a href="about.html" class="footer-link">About Us</a>
-                <a href="work-with-us.html" class="footer-link">Work with Us</a>
-                <a href="franchise.html" class="footer-link">Franchise</a>
-                <a href="blog.html" class="footer-link">Blog</a>
-            </div>
-            <div class="footer-links-group">
-                <h4>Support</h4>
-                <a href="mailto:hello@theyolocollective.com" class="footer-link">Contact Us</a>
-                <a href="https://wa.me/917018591758" target="_blank" class="footer-link">WhatsApp</a>
-            </div>
-            <div class="footer-brand" style="text-align: right;">
-                <h3>The YOLO Collective</h3>
-                <p>One Collective. Three Ways to Wander.</p>
-                <div class="footer-social" style="justify-content: flex-end; margin-top: 1rem;">
-                    <a href="https://www.instagram.com/theyolocollective" class="social-link" title="Instagram"
-                        target="_blank" rel="noopener noreferrer">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" title="Facebook">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                        </svg>
-                    </a>
-                </div>
-                <p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.6;">&copy; 2026 The YOLO Collective.</p>
-            </div>
         </div>
-    </footer>
 
-    <script src="config.js"></script>
-    <script src="script.js?v=3"></script>
+        <!-- Main Content -->
+        <main id="main-content">
+            <!-- Hero Section -->
+            <section class="blog-hero">
+                <div class="blog-hero-bg">
+                    <img
+                        src="assets/images/IMG_3229.webp"
+                        alt="Himalayan mountain peaks at blue hour"
+                        fetchpriority="high"
+                        decoding="async"
+                        style="width: 100%; height: 60vh; object-fit: cover; display: block"
+                    />
+                </div>
+            </section>
 
-    <!-- ══════════════════════════════════════════════════════
+            <!-- React root: Shifting Stack Journal Feed -->
+            <section class="journal-section">
+                <div class="journal-header">
+                    <p class="journal-eyebrow">Material Journal</p>
+                    <h2 class="journal-title">Field Notes from the Himalayas</h2>
+                </div>
+                <div id="journal-root"></div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="container footer-content">
+                <div class="footer-links-group">
+                    <h4>Adventure Awaits</h4>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="work-with-us.html" class="footer-link">Work with Us</a>
+                    <a href="franchise.html" class="footer-link">Franchise</a>
+                    <a href="blog.html" class="footer-link">Blog</a>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Support</h4>
+                    <a href="mailto:hello@theyolocollective.com" class="footer-link">Contact Us</a>
+                    <a href="https://wa.me/917018591758" target="_blank" class="footer-link">WhatsApp</a>
+                </div>
+                <div class="footer-brand" style="text-align: right">
+                    <h3>The YOLO Collective</h3>
+                    <p>One Collective. Three Ways to Wander.</p>
+                    <div class="footer-social" style="justify-content: flex-end; margin-top: 1rem">
+                        <a
+                            href="https://www.instagram.com/theyolocollective"
+                            class="social-link"
+                            title="Instagram"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" title="Facebook">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.6">&copy; 2026 The YOLO Collective.</p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="config.js"></script>
+        <script src="script.js?v=3"></script>
+
+        <!-- ══════════════════════════════════════════════════════
          SHIFTING STACK — React + Framer Motion Blog Engine
          Compiled at runtime via @babel/standalone (CDN)
          ══════════════════════════════════════════════════════ -->
-    <script type="text/babel" data-presets="react">
-        (() => {
-            const { useState, useEffect, useRef, useCallback } = React;
-            const { motion, AnimatePresence, useMotionValue, useTransform, useSpring } = Motion;
+        <script type="text/babel" data-presets="react">
+            (() => {
+                const { useState, useEffect, useRef, useCallback } = React;
+                const { motion, AnimatePresence, useMotionValue, useTransform, useSpring } = Motion;
 
-            /* ─── Tilt Card Hook ─── */
-            function useTilt(strength = 12) {
-                const ref = useRef(null);
-                const x = useMotionValue(0);
-                const y = useMotionValue(0);
-                const rotateX = useTransform(y, [-0.5, 0.5], [strength, -strength]);
-                const rotateY = useTransform(x, [-0.5, 0.5], [-strength, strength]);
-                const springRotateX = useSpring(rotateX, { stiffness: 200, damping: 25 });
-                const springRotateY = useSpring(rotateY, { stiffness: 200, damping: 25 });
-                const scale = useSpring(1, { stiffness: 260, damping: 24 });
+                /* ─── Tilt Card Hook ─── */
+                function useTilt(strength = 12) {
+                    const ref = useRef(null);
+                    const x = useMotionValue(0);
+                    const y = useMotionValue(0);
+                    const rotateX = useTransform(y, [-0.5, 0.5], [strength, -strength]);
+                    const rotateY = useTransform(x, [-0.5, 0.5], [-strength, strength]);
+                    const springRotateX = useSpring(rotateX, { stiffness: 200, damping: 25 });
+                    const springRotateY = useSpring(rotateY, { stiffness: 200, damping: 25 });
+                    const scale = useSpring(1, { stiffness: 260, damping: 24 });
 
-                const onMouseMove = useCallback((e) => {
-                    const rect = ref.current?.getBoundingClientRect();
-                    if (!rect) return;
-                    x.set((e.clientX - rect.left) / rect.width - 0.5);
-                    y.set((e.clientY - rect.top) / rect.height - 0.5);
-                }, [x, y]);
+                    const onMouseMove = useCallback(
+                        (e) => {
+                            const rect = ref.current?.getBoundingClientRect();
+                            if (!rect) return;
+                            x.set((e.clientX - rect.left) / rect.width - 0.5);
+                            y.set((e.clientY - rect.top) / rect.height - 0.5);
+                        },
+                        [x, y]
+                    );
 
-                const onMouseEnter = useCallback(() => { scale.set(1.022); }, [scale]);
-                const onMouseLeave = useCallback(() => {
-                    x.set(0); y.set(0); scale.set(1);
-                }, [x, y, scale]);
+                    const onMouseEnter = useCallback(() => {
+                        scale.set(1.022);
+                    }, [scale]);
+                    const onMouseLeave = useCallback(() => {
+                        x.set(0);
+                        y.set(0);
+                        scale.set(1);
+                    }, [x, y, scale]);
 
-                return { ref, rotateX: springRotateX, rotateY: springRotateY, scale, onMouseMove, onMouseEnter, onMouseLeave };
-            }
-
-            /* ─── Single Card ─── */
-            function MaterialCard({ post, index, onOpen }) {
-                const tilt = useTilt(post.featured ? 6 : 10);
-
-                return (
-                    <motion.div
-                        layout
-                        layoutId={`card-${post.id}`}
-                        className={`material-card${post.featured ? " featured" : ""}`}
-                        initial={{ opacity: 0, y: 32 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20, scale: 0.96 }}
-                        transition={{
-                            layout: { type: "spring", stiffness: 340, damping: 34 },
-                            opacity: { duration: 0.3, delay: index * 0.06 },
-                            y: { duration: 0.4, delay: index * 0.06, ease: [0.25, 0.46, 0.45, 0.94] }
-                        }}
-                        style={{
-                            rotateX: tilt.rotateX,
-                            rotateY: tilt.rotateY,
-                            scale: tilt.scale,
-                            transformPerspective: 900,
-                            transformStyle: "preserve-3d",
-                            willChange: "transform",
-                        }}
-                        ref={tilt.ref}
-                        onMouseMove={tilt.onMouseMove}
-                        onMouseEnter={tilt.onMouseEnter}
-                        onMouseLeave={tilt.onMouseLeave}
-                        onClick={() => onOpen(post)}
-                        role="article"
-                        tabIndex={0}
-                        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") onOpen(post); }}
-                        aria-label={`Read: ${post.title}`}
-                    >
-                        <div className="card-image-wrap">
-                            <img src={post.image} alt={post.imageAlt} loading="lazy" decoding="async" />
-                            <span className="card-badge">{post.tag}</span>
-                        </div>
-                        <div className="card-body">
-                            <div className="card-meta">
-                                <span>{post.category}</span>
-                                <span className="card-meta-dot" />
-                                <span>{post.date}</span>
-                                <span className="card-meta-dot" />
-                                <span>{post.readTime}</span>
-                            </div>
-                            <h3 className="card-heading">{post.title}</h3>
-                            <p className="card-excerpt">{post.excerpt}</p>
-                            <span className="card-cta">
-                                Read Story <span className="card-cta-arrow">→</span>
-                            </span>
-                        </div>
-                    </motion.div>
-                );
-            }
-
-            /* ─── Article Overlay ─── */
-            function ArticleOverlay({ post, onClose }) {
-                const overlayRef = useRef(null);
-
-                useEffect(() => {
-                    document.body.style.overflow = "hidden";
-                    overlayRef.current?.focus();
-                    const onKey = (e) => { if (e.key === "Escape") onClose(); };
-                    window.addEventListener("keydown", onKey);
-                    return () => {
-                        document.body.style.overflow = "";
-                        window.removeEventListener("keydown", onKey);
+                    return {
+                        ref,
+                        rotateX: springRotateX,
+                        rotateY: springRotateY,
+                        scale,
+                        onMouseMove,
+                        onMouseEnter,
+                        onMouseLeave
                     };
-                }, [onClose]);
-
-                return (
-                    <motion.div
-                        className="article-overlay"
-                        layoutId={`card-${post.id}`}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ type: "spring", stiffness: 280, damping: 32 }}
-                        ref={overlayRef}
-                        tabIndex={-1}
-                        aria-modal="true"
-                        role="dialog"
-                        aria-label={post.title}
-                    >
-                        <button className="article-close" onClick={onClose} aria-label="Close article">✕</button>
-                        <img className="article-hero-img" src={post.image} alt={post.imageAlt} />
-                        <div className="article-content">
-                            <span className="article-badge">{post.category} · {post.tag}</span>
-                            <h1 className="article-title">{post.title}</h1>
-                            <div className="article-meta">
-                                <span>{post.date}</span>
-                                <span>·</span>
-                                <span>{post.readTime}</span>
-                            </div>
-                            <div className="article-body">
-                                {(post.body || []).map((para, i) => <p key={i}>{para}</p>)}
-                            </div>
-                            {post.url && (
-                                <a className="article-ext-link" href={post.url} target="_blank" rel="noopener noreferrer">
-                                    Read Full Story →
-                                </a>
-                            )}
-                        </div>
-                    </motion.div>
-                );
-            }
-
-            /* ─── Filter Pill ─── */
-            function FilterPill({ label, active, onClick }) {
-                return (
-                    <motion.button
-                        className={`filter-pill${active ? " active" : ""}`}
-                        onClick={onClick}
-                        whileTap={{ scale: 0.94 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 22 }}
-                    >
-                        {label}
-                    </motion.button>
-                );
-            }
-
-            /* ─── Main App ─── */
-            function JournalFeed() {
-                const [posts, setPosts] = useState([]);
-                const [loading, setLoading] = useState(true);
-                const [activeCategory, setActiveCategory] = useState("All");
-                const [openPost, setOpenPost] = useState(null);
-
-                // Fetch blog posts from API
-                useEffect(() => {
-                    fetch(config.apiBaseUrl + '/api/blogs')
-                        .then(res => res.json())
-                        .then(data => { setPosts(data); setLoading(false); })
-                        .catch(() => { setLoading(false); });
-                }, []);
-
-                const allCategories = ["All", ...Array.from(new Set(posts.map(p => p.category)))];
-
-                const filtered = activeCategory === "All"
-                    ? posts
-                    : posts.filter(p => p.category === activeCategory);
-
-                const handleOpen = useCallback((post) => {
-                    setOpenPost(post);
-                    window.history.pushState({ postId: post.id }, "", `#story-${post.id}`);
-                }, []);
-
-                const handleClose = useCallback(() => {
-                    setOpenPost(null);
-                    window.history.pushState({}, "", window.location.pathname);
-                }, []);
-
-                useEffect(() => {
-                    const onPop = () => { if (!window.location.hash) setOpenPost(null); };
-                    window.addEventListener("popstate", onPop);
-                    return () => window.removeEventListener("popstate", onPop);
-                }, []);
-
-                if (loading) {
-                    return <div style={{ textAlign: 'center', padding: '4rem', color: 'rgba(0,0,0,0.4)', fontFamily: 'Inter,sans-serif' }}>Loading stories...</div>;
                 }
 
-                return (
-                    <>
-                        {/* Filter Bar */}
-                        <div className="filter-bar" role="group" aria-label="Filter blog posts by category">
-                            {allCategories.map((cat) => (
-                                <FilterPill
-                                    key={cat}
-                                    label={cat}
-                                    active={activeCategory === cat}
-                                    onClick={() => setActiveCategory(cat)}
-                                />
-                            ))}
-                        </div>
+                /* ─── Single Card ─── */
+                function MaterialCard({ post, index, onOpen }) {
+                    const tilt = useTilt(post.featured ? 6 : 10);
 
-                        {/* Card Grid */}
-                        <motion.div className="stack-grid" layout>
-                            <AnimatePresence mode="popLayout">
-                                {filtered.length === 0 ? (
-                                    <motion.div
-                                        className="stack-empty"
-                                        key="empty"
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        exit={{ opacity: 0 }}
+                    return (
+                        <motion.div
+                            layout
+                            layoutId={`card-${post.id}`}
+                            className={`material-card${post.featured ? ' featured' : ''}`}
+                            initial={{ opacity: 0, y: 32 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20, scale: 0.96 }}
+                            transition={{
+                                layout: { type: 'spring', stiffness: 340, damping: 34 },
+                                opacity: { duration: 0.3, delay: index * 0.06 },
+                                y: { duration: 0.4, delay: index * 0.06, ease: [0.25, 0.46, 0.45, 0.94] }
+                            }}
+                            style={{
+                                rotateX: tilt.rotateX,
+                                rotateY: tilt.rotateY,
+                                scale: tilt.scale,
+                                transformPerspective: 900,
+                                transformStyle: 'preserve-3d',
+                                willChange: 'transform'
+                            }}
+                            ref={tilt.ref}
+                            onMouseMove={tilt.onMouseMove}
+                            onMouseEnter={tilt.onMouseEnter}
+                            onMouseLeave={tilt.onMouseLeave}
+                            onClick={() => onOpen(post)}
+                            role="article"
+                            tabIndex={0}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') onOpen(post);
+                            }}
+                            aria-label={`Read: ${post.title}`}
+                        >
+                            <div className="card-image-wrap">
+                                <img src={post.image} alt={post.imageAlt} loading="lazy" decoding="async" />
+                                <span className="card-badge">{post.tag}</span>
+                            </div>
+                            <div className="card-body">
+                                <div className="card-meta">
+                                    <span>{post.category}</span>
+                                    <span className="card-meta-dot" />
+                                    <span>{post.date}</span>
+                                    <span className="card-meta-dot" />
+                                    <span>{post.readTime}</span>
+                                </div>
+                                <h3 className="card-heading">{post.title}</h3>
+                                <p className="card-excerpt">{post.excerpt}</p>
+                                <span className="card-cta">
+                                    Read Story <span className="card-cta-arrow">→</span>
+                                </span>
+                            </div>
+                        </motion.div>
+                    );
+                }
+
+                /* ─── Article Overlay ─── */
+                function ArticleOverlay({ post, onClose }) {
+                    const overlayRef = useRef(null);
+
+                    useEffect(() => {
+                        document.body.style.overflow = 'hidden';
+                        overlayRef.current?.focus();
+                        const onKey = (e) => {
+                            if (e.key === 'Escape') onClose();
+                        };
+                        window.addEventListener('keydown', onKey);
+                        return () => {
+                            document.body.style.overflow = '';
+                            window.removeEventListener('keydown', onKey);
+                        };
+                    }, [onClose]);
+
+                    return (
+                        <motion.div
+                            className="article-overlay"
+                            layoutId={`card-${post.id}`}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ type: 'spring', stiffness: 280, damping: 32 }}
+                            ref={overlayRef}
+                            tabIndex={-1}
+                            aria-modal="true"
+                            role="dialog"
+                            aria-label={post.title}
+                        >
+                            <button className="article-close" onClick={onClose} aria-label="Close article">
+                                ✕
+                            </button>
+                            <img className="article-hero-img" src={post.image} alt={post.imageAlt} />
+                            <div className="article-content">
+                                <span className="article-badge">
+                                    {post.category} · {post.tag}
+                                </span>
+                                <h1 className="article-title">{post.title}</h1>
+                                <div className="article-meta">
+                                    <span>{post.date}</span>
+                                    <span>·</span>
+                                    <span>{post.readTime}</span>
+                                </div>
+                                <div className="article-body">
+                                    {(post.body || []).map((para, i) => (
+                                        <p key={i}>{para}</p>
+                                    ))}
+                                </div>
+                                {post.url && (
+                                    <a
+                                        className="article-ext-link"
+                                        href={post.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                     >
-                                        No stories in this category yet.
-                                    </motion.div>
-                                ) : (
-                                    filtered.map((post, i) => (
-                                        <MaterialCard
-                                            key={post.id}
-                                            post={post}
-                                            index={i}
-                                            onOpen={handleOpen}
-                                        />
-                                    ))
+                                        Read Full Story →
+                                    </a>
+                                )}
+                            </div>
+                        </motion.div>
+                    );
+                }
+
+                /* ─── Filter Pill ─── */
+                function FilterPill({ label, active, onClick }) {
+                    return (
+                        <motion.button
+                            className={`filter-pill${active ? ' active' : ''}`}
+                            onClick={onClick}
+                            whileTap={{ scale: 0.94 }}
+                            transition={{ type: 'spring', stiffness: 400, damping: 22 }}
+                        >
+                            {label}
+                        </motion.button>
+                    );
+                }
+
+                /* ─── Main App ─── */
+                function JournalFeed() {
+                    const [posts, setPosts] = useState([]);
+                    const [loading, setLoading] = useState(true);
+                    const [activeCategory, setActiveCategory] = useState('All');
+                    const [openPost, setOpenPost] = useState(null);
+
+                    // Fetch blog posts from API
+                    useEffect(() => {
+                        fetch(config.apiBaseUrl + '/api/blogs')
+                            .then((res) => res.json())
+                            .then((data) => {
+                                setPosts(data);
+                                setLoading(false);
+                            })
+                            .catch(() => {
+                                setLoading(false);
+                            });
+                    }, []);
+
+                    const allCategories = ['All', ...Array.from(new Set(posts.map((p) => p.category)))];
+
+                    const filtered =
+                        activeCategory === 'All' ? posts : posts.filter((p) => p.category === activeCategory);
+
+                    const handleOpen = useCallback((post) => {
+                        setOpenPost(post);
+                        window.history.pushState({ postId: post.id }, '', `#story-${post.id}`);
+                    }, []);
+
+                    const handleClose = useCallback(() => {
+                        setOpenPost(null);
+                        window.history.pushState({}, '', window.location.pathname);
+                    }, []);
+
+                    useEffect(() => {
+                        const onPop = () => {
+                            if (!window.location.hash) setOpenPost(null);
+                        };
+                        window.addEventListener('popstate', onPop);
+                        return () => window.removeEventListener('popstate', onPop);
+                    }, []);
+
+                    if (loading) {
+                        return (
+                            <div
+                                style={{
+                                    textAlign: 'center',
+                                    padding: '4rem',
+                                    color: 'rgba(0,0,0,0.4)',
+                                    fontFamily: 'Inter,sans-serif'
+                                }}
+                            >
+                                Loading stories...
+                            </div>
+                        );
+                    }
+
+                    return (
+                        <>
+                            {/* Filter Bar */}
+                            <div className="filter-bar" role="group" aria-label="Filter blog posts by category">
+                                {allCategories.map((cat) => (
+                                    <FilterPill
+                                        key={cat}
+                                        label={cat}
+                                        active={activeCategory === cat}
+                                        onClick={() => setActiveCategory(cat)}
+                                    />
+                                ))}
+                            </div>
+
+                            {/* Card Grid */}
+                            <motion.div className="stack-grid" layout>
+                                <AnimatePresence mode="popLayout">
+                                    {filtered.length === 0 ? (
+                                        <motion.div
+                                            className="stack-empty"
+                                            key="empty"
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            exit={{ opacity: 0 }}
+                                        >
+                                            No stories in this category yet.
+                                        </motion.div>
+                                    ) : (
+                                        filtered.map((post, i) => (
+                                            <MaterialCard key={post.id} post={post} index={i} onOpen={handleOpen} />
+                                        ))
+                                    )}
+                                </AnimatePresence>
+                            </motion.div>
+
+                            {/* Article Overlay */}
+                            <AnimatePresence>
+                                {openPost && (
+                                    <ArticleOverlay
+                                        key={`overlay-${openPost.id}`}
+                                        post={openPost}
+                                        onClose={handleClose}
+                                    />
                                 )}
                             </AnimatePresence>
-                        </motion.div>
+                        </>
+                    );
+                }
 
-                        {/* Article Overlay */}
-                        <AnimatePresence>
-                            {openPost && (
-                                <ArticleOverlay
-                                    key={`overlay-${openPost.id}`}
-                                    post={openPost}
-                                    onClose={handleClose}
-                                />
-                            )}
-                        </AnimatePresence>
-                    </>
-                );
-            }
-
-            /* ─── Mount ─── */
-            const root = ReactDOM.createRoot(document.getElementById("journal-root"));
-            root.render(<JournalFeed />);
-        })();
-    </script>
-</body>
-
+                /* ─── Mount ─── */
+                const root = ReactDOM.createRoot(document.getElementById('journal-root'));
+                root.render(<JournalFeed />);
+            })();
+        </script>
+    </body>
 </html>

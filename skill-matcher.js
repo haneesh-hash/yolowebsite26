@@ -1,4 +1,3 @@
-
 // Skill Matcher Logic using Matter.js
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -59,9 +58,9 @@ function initSkillMatcher() {
     const frameY = height - 50; // Positioned near bottom
 
     // Create the "Frame" (U-shape)
-    // We use static bodies. 
+    // We use static bodies.
     // Visual style: We want a thin line, but physics needs thickness.
-    // Solution: Render is separate from physics if using sprites or custom loop, 
+    // Solution: Render is separate from physics if using sprites or custom loop,
     // but with basic Render, we have to live with the body shape.
     // We will make the walls visible with the specified border.
 
@@ -79,7 +78,7 @@ function initSkillMatcher() {
         isStatic: true,
         render: { fillStyle: highlightColor, strokeStyle: frameColor, lineWidth: 2, visible: false } // Hidden initially, we'll toggle or use a separate visual
     });
-    // We actually want the "Frame" to look like a frame. 
+    // We actually want the "Frame" to look like a frame.
     // Let's make the physics walls slightly invisible or styled nicely.
     // To match "0px border-radius, 2px solid black border", we can just render the bodies as is.
 
@@ -112,8 +111,8 @@ function initSkillMatcher() {
     const skillBodies = [];
 
     skills.forEach((skill, i) => {
-        const x = (Math.random() * (width - 100)) + 50;
-        const y = (Math.random() * -200) - 50; // Start above top
+        const x = Math.random() * (width - 100) + 50;
+        const y = Math.random() * -200 - 50; // Start above top
 
         // Measure text approx ? No, just standard size for now
         const boxW = 120;
@@ -126,7 +125,7 @@ function initSkillMatcher() {
             render: {
                 fillStyle: blockColor,
                 strokeStyle: blockStroke,
-                lineWidth: 1,
+                lineWidth: 1
                 // We can't do box-shadow easily in default renderer
             }
         });
@@ -151,8 +150,8 @@ function initSkillMatcher() {
     });
 
     // Fix scrolling issue with mouse
-    mouse.element.removeEventListener("mousewheel", mouse.mousewheel);
-    mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel);
+    mouse.element.removeEventListener('mousewheel', mouse.mousewheel);
+    mouse.element.removeEventListener('DOMMouseScroll', mouse.mousewheel);
 
     Composite.add(world, mouseConstraint);
 
@@ -164,11 +163,11 @@ function initSkillMatcher() {
         // (Handled via CSS on the frame body or DOM?? We can just draw a rect)
 
         // Draw Text on blocks
-        context.font = "14px Inter, sans-serif";
-        context.textAlign = "center";
-        context.textBaseline = "middle";
+        context.font = '14px Inter, sans-serif';
+        context.textAlign = 'center';
+        context.textBaseline = 'middle';
 
-        skillBodies.forEach(body => {
+        skillBodies.forEach((body) => {
             const { x, y } = body.position;
             const angle = body.angle;
 
@@ -181,13 +180,13 @@ function initSkillMatcher() {
             // We draw a rect offset by 4,4 first
             // Since we are inside translate/rotate, simple offset works relative to body center?
             // Actually it's cleaner to draw the shadow before the body, but standard renderer draws body.
-            // So we are drawing ON TOP of the standard body. 
-            // Better: use 'beforeRender' to draw shadow? 
-            // But standard render will draw over it. 
+            // So we are drawing ON TOP of the standard body.
+            // Better: use 'beforeRender' to draw shadow?
+            // But standard render will draw over it.
             // We just draw the text here. Visual fidelity of 'shadow' might be missed or we just accept 'border' for now.
             // Let's leave shadow for now and ensure Text is crisp.
 
-            context.fillStyle = "#000000";
+            context.fillStyle = '#000000';
             context.fillText(body.plugin.text, 0, 0);
             context.restore();
         });
@@ -215,11 +214,13 @@ function initSkillMatcher() {
         };
 
         let insideCount = 0;
-        skillBodies.forEach(body => {
-            if (body.position.x > bounds.minX &&
+        skillBodies.forEach((body) => {
+            if (
+                body.position.x > bounds.minX &&
                 body.position.x < bounds.maxX &&
                 body.position.y > bounds.minY &&
-                body.position.y < bounds.maxY) {
+                body.position.y < bounds.maxY
+            ) {
                 insideCount++;
             }
         });
@@ -249,7 +250,7 @@ function initSkillMatcher() {
         // Change instruction text
         const instruction = document.getElementById('skill-matcher-instruction');
         if (instruction) {
-            instruction.innerText = "Processing...";
+            instruction.innerText = 'Processing...';
             setTimeout(() => {
                 instruction.style.opacity = '0';
             }, 500);
