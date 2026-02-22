@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLO Social - Advertising Board Concepts V3</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;800&family=Inter:wght@300;400;600&display=swap');
+
+        :root {
+            --skyblue: #039BE5;
+            --black: #111;
+            --white: #fff;
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px;
+            background: #f0f0f0;
+            font-family: var(--font-body);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .header-text {
+            text-align: center;
+            margin-bottom: -20px;
+        }
+
+        .header-text h1 {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 2.5rem;
+            color: var(--black);
+            margin: 0;
+        }
+
+        .header-text p {
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .billboard {
+            width: 100%;
+            max-width: 1200px;
+            height: 600px;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .board-title {
+            position: absolute;
+            top: -30px;
+            left: 0;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .svg-defs {
+            display: none;
+        }
+
+        .logo-wrap {
+            width: 300px;
+        }
+
+        .tagline {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        /* CONCEPT 1 */
+        .bb-1 {
+            background-image: url('assets/images/IMG_0303.webp');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 60px;
+        }
+
+        .bb-1::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.1) 100%);
+            z-index: 1;
+        }
+
+        .bb-1 .content {
+            position: relative;
+            z-index: 2;
+            color: var(--white);
+            max-width: 500px;
+        }
+
+        /* Monochrome White */
+        .bb-1 .logo-wrap svg text,
+        .bb-1 .logo-wrap svg path,
+        .bb-1 .logo-wrap svg circle {
+            fill: var(--white);
+        }
+
+        .bb-1 .logo-wrap svg line {
+            stroke: var(--white);
+        }
+
+        .bb-1 .headline {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin: 30px 0 20px;
+        }
+
+        .bb-1 .info-bar {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-left: 4px solid var(--skyblue);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .bb-1 .info-item {
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bb-1 .highlight {
+            color: var(--skyblue);
+            font-weight: 600;
+        }
+
+        /* CONCEPT 2 */
+        .bb-2 {
+            background: var(--skyblue);
+            display: flex;
+            color: var(--black);
+            padding: 60px;
+            box-sizing: border-box;
+            background-image: radial-gradient(circle at top right, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+        }
+
+        .bb-2 .left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .bb-2 .right {
+            flex: 1;
+            position: relative;
+        }
+
+        .bb-2 .headline {
+            font-family: var(--font-heading);
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 0.9;
+            text-transform: uppercase;
+            color: var(--black);
+        }
+
+        .bb-2 .headline span {
+            color: transparent;
+            -webkit-text-stroke: 2px var(--black);
+        }
+
+        /* Monochrome Black */
+        .bb-2 .logo-wrap svg text,
+        .bb-2 .logo-wrap svg path,
+        .bb-2 .logo-wrap svg circle {
+            fill: var(--black);
+        }
+
+        .bb-2 .logo-wrap svg line {
+            stroke: var(--black);
+        }
+
+        .bb-2 .specs {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            text-align: right;
+            font-family: var(--font-heading);
+        }
+
+        .bb-2 .spec-num {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+
+        .bb-2 .spec-label {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+
+        /* CONCEPT 3 (Full Color) */
+        .bb-3 {
+            background: #111;
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .bb-3::before {
+            content: '2050M';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-heading);
+            font-size: 24rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.03);
+            z-index: 0;
+            white-space: nowrap;
+        }
+
+        .bb-3 .content {
+            z-index: 1;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bb-3 .logo-wrap {
+            width: 450px;
+            margin-bottom: 15px;
+        }
+
+        /* Full Color */
+        .bb-3 .logo-wrap svg .river {
+            fill: var(--skyblue);
+        }
+
+        .bb-3 .logo-wrap svg .mountain {
+            fill: #333;
+        }
+
+        .bb-3 .logo-wrap svg .hiker,
+        .bb-3 .logo-wrap svg .yo,
+        .bb-3 .logo-wrap svg .o,
+        .bb-3 .logo-wrap svg .sub {
+            fill: var(--white);
+        }
+
+        .bb-3 .logo-wrap svg line.hiker {
+            stroke: var(--white);
+            stroke-width: 2px;
+        }
+
+        .bb-3 .call-to-action {
+            display: flex;
+            gap: 60px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+        }
+
+        .bb-3 .cta-box {
+            text-align: center;
+        }
+
+        .bb-3 .cta-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--skyblue);
+            margin-bottom: 5px;
+        }
+
+        .bb-3 .cta-value {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 600;
+        }
+
+        /* CONCEPT 4 (Full Color) */
+        .bb-4 {
+            background: #F4F1EA;
+            display: flex;
+            align-items: stretch;
+            padding: 40px;
+        }
+
+        .bb-4 .ticket-main {
+            flex: 2;
+            border: 2px dashed #ccc;
+            border-right: none;
+            border-radius: 20px 0 0 20px;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            background: white;
+        }
+
+        .bb-4 .ticket-stub {
+            flex: 1;
+            background: var(--skyblue);
+            border-radius: 0 20px 20px 0;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+            position: relative;
+        }
+
+        .bb-4 .ticket-stub::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 0;
+            height: 100%;
+            width: 30px;
+            background-image: radial-gradient(circle at center, #F4F1EA 10px, transparent 11px);
+            background-size: 30px 40px;
+            background-position: center;
+        }
+
+        /* Full Color */
+        .bb-4 .logo-wrap svg .river {
+            fill: var(--skyblue);
+        }
+
+        .bb-4 .logo-wrap svg .mountain {
+            fill: #ccc;
+        }
+
+        .bb-4 .logo-wrap svg .hiker,
+        .bb-4 .logo-wrap svg .yo,
+        .bb-4 .logo-wrap svg .o,
+        .bb-4 .logo-wrap svg .sub {
+            fill: var(--black);
+        }
+
+        .bb-4 .logo-wrap svg line.hiker {
+            stroke: var(--black);
+            stroke-width: 2px;
+        }
+
+        .bb-4 .flight-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: auto;
+        }
+
+        .bb-4 .dest {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .bb-4 .dest-label {
+            font-size: 1rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .bb-4 .barcode {
+            height: 60px;
+            width: 100%;
+            background: repeating-linear-gradient(90deg, #000, #000 4px, transparent 4px, transparent 8px, #000 8px, #000 14px, transparent 14px, transparent 16px);
+            margin-top: 30px;
+            opacity: 0.8;
+        }
+
+        .bb-4 .stub-data {
+            margin-bottom: 30px;
+        }
+
+        .bb-4 .stub-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        .bb-4 .stub-val {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        /* CONCEPT 5 */
+        .bb-5 {
+            background: var(--white);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 0;
+        }
+
+        .bb-5 .text-panel {
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 1px solid #eee;
+        }
+
+        .bb-5 .image-panel {
+            background-image: url('assets/images/IMG_3229.webp');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Monochrome Black */
+        .bb-5 .logo-wrap svg text,
+        .bb-5 .logo-wrap svg path,
+        .bb-5 .logo-wrap svg circle {
+            fill: var(--black);
+        }
+
+        .bb-5 .logo-wrap svg line {
+            stroke: var(--black);
+        }
+
+        .bb-5 .grid-text {
+            font-size: 2.2rem;
+            font-weight: 300;
+            line-height: 1.3;
+            color: #333;
+            margin: 30px 0;
+        }
+
+        .bb-5 .data-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            border-top: 2px solid var(--black);
+            padding-top: 20px;
+        }
+
+        .bb-5 .data-item h4 {
+            margin: 0 0 5px 0;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+        }
+
+        .bb-5 .data-item p {
+            margin: 0;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--black);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header-text">
+        <h1>Advertising Board Concepts V3</h1>
+        <p>5 final variations focusing on Taglines and specific logo treatments.</p>
+    </div>
+
+    <!-- SVG Defines -->
+    <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <g id="social-logo-base">
+                <g transform="translate(80, 50)">
+                    <text class="yo" x="0" y="150" font-family="Arial, sans-serif" font-weight="900" font-size="140"
+                        letter-spacing="-5">YO</text>
+                    <g transform="translate(-40, 0)">
+                        <path class="river"
+                            d="M260,30 L300,30 L300,120 Q300,150 330,150 L370,150 L370,180 L330,180 Q270,180 260,120 Z" />
+                        <path class="mountain" d="M320,150 L370,60 L420,150" opacity="0.5" />
+                        <g transform="translate(320, 80) scale(0.9)">
+                            <circle class="hiker" cx="5" cy="0" r="6" />
+                            <path class="hiker" d="M0,8 L10,30 L-10,30 Z" />
+                            <line class="hiker" x1="8" y1="15" x2="20" y2="40" stroke-width="2" />
+                        </g>
+                    </g>
+                    <text class="o" x="340" y="150" font-family="Arial, sans-serif" font-weight="900"
+                        font-size="140">O</text>
+                    <text class="sub" x="220" y="240" font-family="Arial, sans-serif" font-weight="300" font-size="34"
+                        letter-spacing="8" text-anchor="middle">SOCIAL</text>
+                </g>
+            </g>
+        </defs>
+    </svg>
+
+    <div style="width: 100%; display: flex; flex-direction: column; align-items: center; gap: 80px;">
+
+        <!-- 1. Monochrome White + Tagline -->
+        <div style="position: relative; width: 100%; max-width: 1200px;">
+            <div class="board-title">Concept 1: The Cinematic Window (Monochrome White)</div>
+            <div class="billboard bb-1">
+                <div class="content">
+                    <div class="logo-wrap">
+                        <svg viewBox="0 0 600 300">
+                            <use href="#social-logo-base"></use>
+                        </svg>
+                    </div>
+                    <div class="tagline" style="color: white; font-size: 1.4rem;">Live Your Adventure</div>
+                    <div class="headline">Find your tribe<br>at the summit.</div>
+
+                    <div class="info-bar">
+                        <div class="info-item"><span class="highlight">O</span> Manali, Himachal Pradesh</div>
+                        <div class="info-item"><span class="highlight">▲</span> Altitude: 2050m | 6726 ft</div>
+                        <div class="info-item"
+                            style="margin-top: 10px; font-weight: 600; font-family: var(--font-heading); font-size: 1.5rem;">
+                            📞 +91 7018591758
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Monochrome Black + Tagline -->
+        <div style="position: relative; width: 100%; max-width: 1200px;">
+            <div class="board-title">Concept 2: The Typographic Bold (Monochrome Black)</div>
+            <div class="billboard bb-2">
+                <div class="left">
+                    <div>
+                        <div class="logo-wrap" style="width: 250px;">
+                            <svg viewBox="0 0 600 300">
+                                <use href="#social-logo-base"></use>
+                            </svg>
+                        </div>
+                        <div class="tagline" style="color: var(--black); font-size: 1.2rem; margin-top: 0;">Live Your
+                            Adventure</div>
+                    </div>
+                    <div>
+                        <div
+                            style="font-family: var(--font-heading); font-size: 2.5rem; font-weight: 800; margin-bottom: 10px;">
+                            MANALI, HP</div>
+                        <div style="font-size: 1.2rem; font-weight: 600;">CALL: +91 7018591758</div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="headline">
+                        HIGH<br><span>ENERGY</span><br>STAYS.
+                    </div>
+                    <div class="specs">
+                        <div class="spec-label">Altitude</div>
+                        <div class="spec-num">2050<span style="font-size:2rem">M</span></div>
+                        <div style="font-size: 1.2rem; margin-top: -10px;">(6,726 FT)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Full Color + Tagline (Requested) -->
+        <div style="position: relative; width: 100%; max-width: 1200px;">
+            <div class="board-title">Concept 3: The Dark Altitude (Full Color Variant)</div>
+            <div class="billboard bb-3" id="target_3">
+                <div class="content">
+                    <div class="logo-wrap">
+                        <svg viewBox="0 0 600 300">
+                            <use href="#social-logo-base"></use>
+                        </svg>
+                    </div>
+                    <div class="tagline" style="color: #aaa;">Live Your Adventure</div>
+
+                    <div class="call-to-action">
+                        <div class="cta-box">
+                            <div class="cta-label">Elevation</div>
+                            <div class="cta-value">2050m</div>
+                        </div>
+                        <div class="cta-box">
+                            <div class="cta-label">Location</div>
+                            <div class="cta-value">Manali</div>
+                        </div>
+                        <div class="cta-box">
+                            <div class="cta-label">Direct Line</div>
+                            <div class="cta-value" style="color: var(--skyblue);">7018591758</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Full Color + Tagline (Requested) -->
+        <div style="position: relative; width: 100%; max-width: 1200px;">
+            <div class="board-title">Concept 4: The Boarding Pass (Full Color Variant)</div>
+            <div class="billboard bb-4" id="target_4">
+                <div class="ticket-main">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div style="display: flex; flex-direction: column;">
+                            <div class="logo-wrap"><svg viewBox="0 0 600 300">
+                                    <use href="#social-logo-base"></use>
+                                </svg></div>
+                            <div class="tagline" style="color: var(--skyblue); font-size: 1.2rem; margin-top: -10px;">
+                                Live Your Adventure</div>
+                        </div>
+                        <div
+                            style="text-align: right; color: #888; font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">
+                            Admit One<br>Backpacker
+                        </div>
+                    </div>
+                    <div class="flight-info">
+                        <div>
+                            <div class="dest-label">Destination</div>
+                            <div class="dest">MANALI</div>
+                            <div style="font-size: 1.2rem; font-weight: 600; color: #555;">ALT: 2050 METERS (6726 FT)
+                            </div>
+                        </div>
+                        <div style="font-size: 4rem; color: #ddd; margin-bottom: 20px;">✈</div>
+                    </div>
+                    <div class="barcode"></div>
+                </div>
+                <div class="ticket-stub">
+                    <div class="stub-data">
+                        <div class="stub-label">Destination</div>
+                        <div class="stub-val" style="font-size:2.5rem;">MNL</div>
+                    </div>
+                    <div class="stub-data">
+                        <div class="stub-label">Altitude</div>
+                        <div class="stub-val" style="font-size:1.8rem;">2050m</div>
+                    </div>
+                    <div class="stub-data">
+                        <div class="stub-label">Book Now</div>
+                        <div class="stub-val" style="font-size:1.4rem;">+91 7018591758</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Monochrome Black + Tagline -->
+        <div style="position: relative; width: 100%; max-width: 1200px;">
+            <div class="board-title">Concept 5: The Swiss Architecture Grid (Monochrome Black)</div>
+            <div class="billboard bb-5" id="target_5">
+                <div class="text-panel">
+                    <div>
+                        <div class="logo-wrap" style="width: 250px; margin-bottom: 5px;">
+                            <svg viewBox="0 0 600 300">
+                                <use href="#social-logo-base"></use>
+                            </svg>
+                        </div>
+                        <div class="tagline" style="color: var(--black); font-size: 1.1rem; margin-top: 0;">Live Your
+                            Adventure</div>
+                    </div>
+
+                    <div class="grid-text">A community-driven sanctuary for the modern nomad.</div>
+
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <h4>Location</h4>
+                            <p>Manali, IN</p>
+                        </div>
+                        <div class="data-item">
+                            <h4>Altitude</h4>
+                            <p>2050m / 6726ft</p>
+                        </div>
+                        <div class="data-item">
+                            <h4>Category</h4>
+                            <p>Social Hostel</p>
+                        </div>
+                        <div class="data-item">
+                            <h4>Reservations</h4>
+                            <p style="color: var(--skyblue); font-weight: 800;">7018591758</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="image-panel"></div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
