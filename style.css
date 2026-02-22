@@ -169,12 +169,10 @@
     /* Semantic Theme Variables (Day Mode Default) */
     --bg-page: var(--white);
     --bg-secondary: var(--gray-50);
-    --top-overlay-gradient: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.15) 0%,
-        rgba(0, 0, 0, 0.3) 50%,
-        rgba(0, 0, 0, 0.5) 100%
-    );
+    --top-overlay-gradient: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.15) 0%,
+            rgba(0, 0, 0, 0.3) 50%,
+            rgba(0, 0, 0, 0.5) 100%);
     --text-main: var(--black);
     --text-muted: var(--gray-600);
     --heading-color: var(--black);
@@ -502,7 +500,7 @@ p {
     gap: 2.5rem;
 }
 
-.nav-links > li {
+.nav-links>li {
     position: relative;
 }
 
@@ -633,6 +631,7 @@ p {
 
 /* Pulsing glow */
 @keyframes booking-glow {
+
     0%,
     100% {
         box-shadow:
@@ -650,6 +649,7 @@ p {
 
 /* Subtle scale breathing */
 @keyframes booking-breathe {
+
     0%,
     100% {
         transform: scale(1);
@@ -668,14 +668,12 @@ p {
     left: -100%;
     width: 60%;
     height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0) 30%,
-        rgba(255, 255, 255, 0.45) 50%,
-        rgba(255, 255, 255, 0) 70%,
-        transparent 100%
-    );
+    background: linear-gradient(120deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0) 30%,
+            rgba(255, 255, 255, 0.45) 50%,
+            rgba(255, 255, 255, 0) 70%,
+            transparent 100%);
     animation: booking-shimmer 3s ease-in-out infinite;
     animation-delay: 1s;
     pointer-events: none;
@@ -1008,6 +1006,7 @@ p {
 
 /* ── Hero CTA — "Begin Your Journey" Animated Button ── */
 @keyframes hero-btn-glow {
+
     0%,
     100% {
         box-shadow:
@@ -1070,14 +1069,12 @@ p {
     border-radius: inherit;
     padding: 1.5px;
     /* border thickness */
-    background: linear-gradient(
-        270deg,
-        rgba(255, 255, 255, 0.6),
-        var(--skyblue),
-        rgba(255, 255, 255, 0.3),
-        var(--skyblue),
-        rgba(255, 255, 255, 0.6)
-    );
+    background: linear-gradient(270deg,
+            rgba(255, 255, 255, 0.6),
+            var(--skyblue),
+            rgba(255, 255, 255, 0.3),
+            var(--skyblue),
+            rgba(255, 255, 255, 0.6));
     background-size: 400% 100%;
     animation: hero-btn-border-dance 6s ease infinite;
     -webkit-mask:
@@ -1099,14 +1096,12 @@ p {
     left: -100%;
     width: 60%;
     height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.08) 40%,
-        rgba(255, 255, 255, 0.15) 50%,
-        rgba(255, 255, 255, 0.08) 60%,
-        transparent 100%
-    );
+    background: linear-gradient(120deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.08) 40%,
+            rgba(255, 255, 255, 0.15) 50%,
+            rgba(255, 255, 255, 0.08) 60%,
+            transparent 100%);
     animation: hero-btn-shimmer 4s ease-in-out infinite;
     animation-delay: 1.5s;
     z-index: 2;
@@ -1151,14 +1146,12 @@ p {
 
 #hero-booking-trigger:hover::before {
     padding: 2px;
-    background: linear-gradient(
-        270deg,
-        var(--skyblue),
-        rgba(255, 255, 255, 0.9),
-        var(--skyblue),
-        rgba(255, 255, 255, 0.9),
-        var(--skyblue)
-    );
+    background: linear-gradient(270deg,
+            var(--skyblue),
+            rgba(255, 255, 255, 0.9),
+            var(--skyblue),
+            rgba(255, 255, 255, 0.9),
+            var(--skyblue));
     background-size: 400% 100%;
     animation: hero-btn-border-dance 2s ease infinite;
 }
@@ -1223,6 +1216,7 @@ p {
 }
 
 @keyframes scrollBounce {
+
     0%,
     100% {
         transform: translateX(-50%) translateY(0);
@@ -1361,7 +1355,7 @@ p {
 }
 
 .brand-panel-content .label-text {
-    color: var(--skyblue);
+    color: var(--white);
     margin-bottom: 0.75rem;
 }
 
@@ -1391,13 +1385,13 @@ p {
     gap: 8px;
     margin-top: 1.5rem;
     padding: 10px 0;
-    color: var(--skyblue);
+    color: var(--white);
     font-family: var(--font-body);
     font-weight: 400;
     font-size: 0.78rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    border-bottom: 1px solid var(--skyblue);
+    border-bottom: 1px solid var(--white);
     opacity: 0;
     transform: translateY(10px);
     transition: all var(--duration) var(--ease-out);
@@ -1406,6 +1400,11 @@ p {
 .brand-panel:hover .btn-explore {
     opacity: 1;
     transform: translateY(0);
+}
+
+.brand-panel-content .btn-explore:hover {
+    color: var(--skyblue);
+    border-bottom: 1px solid var(--skyblue);
 }
 
 .btn-explore .arrow {
@@ -1527,7 +1526,7 @@ p {
     margin-bottom: 1.5rem;
 }
 
-.concierge-section > .container > p {
+.concierge-section>.container>p {
     margin: 0 auto 4rem;
 }
 
@@ -1716,6 +1715,7 @@ p {
 }
 
 @keyframes pulse {
+
     0%,
     100% {
         opacity: 0.5;
@@ -1839,7 +1839,7 @@ p {
     margin-bottom: 0.75rem;
 }
 
-.footer-brand > p {
+.footer-brand>p {
     font-size: 0.85rem;
     color: var(--gray-500);
     max-width: 300px;
@@ -1946,6 +1946,7 @@ p {
 }
 
 @keyframes fabPulse {
+
     0%,
     100% {
         box-shadow: 0 4px 20px var(--skyblue-glow);
@@ -1973,6 +1974,7 @@ p {
 }
 
 @keyframes dotPulse {
+
     0%,
     100% {
         transform: scale(1);
@@ -2278,6 +2280,7 @@ p {
 }
 
 @media (max-width: 900px) {
+
     /* Header mobile */
     .nav-links {
         display: none;
@@ -2354,13 +2357,12 @@ p {
     left: -100%;
     width: 200%;
     height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent 0%,
-        rgba(116, 172, 223, 0.4) 40%,
-        /* Skyblue at 40% opacity - VERY VISIBLE */ rgba(116, 172, 223, 0.4) 60%,
-        transparent 100%
-    );
+    background: linear-gradient(120deg,
+            transparent 0%,
+            rgba(116, 172, 223, 0.4) 40%,
+            /* Skyblue at 40% opacity - VERY VISIBLE */
+            rgba(116, 172, 223, 0.4) 60%,
+            transparent 100%);
     transform: skewX(-20deg);
     transition: left 0.7s cubic-bezier(0.22, 1, 0.36, 1);
     /* Weighted motion */
@@ -2981,6 +2983,7 @@ p {
 
 /* Responsive */
 @media (max-width: 900px) {
+
     .prop-showcase-card,
     .prop-showcase-card--flip {
         grid-template-columns: 1fr;
@@ -4257,10 +4260,10 @@ a.mj-card.mj-card--link {
 }
 
 /* Floating Label Logic */
-.form-group input:focus ~ label,
-.form-group input:not(:placeholder-shown) ~ label,
-.form-group textarea:focus ~ label,
-.form-group textarea:not(:placeholder-shown) ~ label {
+.form-group input:focus~label,
+.form-group input:not(:placeholder-shown)~label,
+.form-group textarea:focus~label,
+.form-group textarea:not(:placeholder-shown)~label {
     top: -24px;
     left: 0;
     font-size: 0.75rem;

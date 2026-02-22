@@ -1,855 +1,753 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <link rel="icon" type="image/svg+xml" href="logo.svg?v=1771706725" />
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>The YOLO Collective | Curated Stays and Experiences</title>
 
-        <!-- SEO -->
-        <meta
-            name="description"
-            content="Experience the pulse of the Himalayas with The YOLO Collective. Choose from social hostels in Manali, luxury glamping in Jispa, or riverside sanctuaries in Kasol. Join the tribe."
-        />
-        <meta name="google-site-verification" content="dtK3R6rCRzu7J7F4ZqNCMyYaLVHUpqOq2zE_K_XG2Us" />
+<head>
+    <link rel="icon" type="image/svg+xml" href="logo.svg?v=1771706725" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The YOLO Collective | Curated Stays and Experiences</title>
 
-        <!-- Open Graph / Social -->
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="The YOLO Collective | Curated Stays and Experiences" />
-        <meta
-            property="og:description"
-            content="Experience the pulse of the Himalayas with The YOLO Collective. Choose from social hostels in Manali, luxury glamping in Jispa, or riverside sanctuaries in Kasol."
-        />
-        <meta property="og:image" content="https://theyolocollective.com/assets/images/IMG_3229.webp" />
-        <meta property="og:url" content="https://theyolocollective.com/" />
-        <meta name="twitter:card" content="summary_large_image" />
+    <!-- SEO -->
+    <meta name="description"
+        content="Experience the pulse of the Himalayas with The YOLO Collective. Choose from social hostels in Manali, luxury glamping in Jispa, or riverside sanctuaries in Kasol. Join the tribe." />
+    <meta name="google-site-verification" content="dtK3R6rCRzu7J7F4ZqNCMyYaLVHUpqOq2zE_K_XG2Us" />
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="style.css?v=5" />
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="The YOLO Collective | Curated Stays and Experiences" />
+    <meta property="og:description"
+        content="Experience the pulse of the Himalayas with The YOLO Collective. Choose from social hostels in Manali, luxury glamping in Jispa, or riverside sanctuaries in Kasol." />
+    <meta property="og:image" content="https://theyolocollective.com/assets/images/IMG_3229.webp" />
+    <meta property="og:url" content="https://theyolocollective.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
 
-        <!-- GSAP for scroll-triggered animations & 3D effects -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js" defer></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css?v=5" />
 
-        <link rel="canonical" href="https://theyolocollective.com/" />
-    </head>
+    <!-- GSAP for scroll-triggered animations & 3D effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js" defer></script>
 
-    <body>
-        <a href="#main-content" class="skip-link">Skip to content</a>
+    <link rel="canonical" href="https://theyolocollective.com/" />
+</head>
 
-        <!-- ═══════════════════════════════════════════
+<body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- ═══════════════════════════════════════════
          GLASSMORPHISM HEADER
          ═══════════════════════════════════════════ -->
-        <header class="site-header">
-            <nav class="nav-container">
-                <!-- Logo -->
-                <div class="logo">
-                    <a href="index.html">
-                        <img src="logo.svg?v=1771706725" alt="The YOLO Collective logo" class="logo-image" />
-                    </a>
-                </div>
+    <header class="site-header">
+        <nav class="nav-container">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="index.html">
+                    <img src="logo.svg?v=1771706725" alt="The YOLO Collective logo" class="logo-image" />
+                </a>
+            </div>
 
-                <!-- Center Nav -->
-                <ul class="nav-links">
-                    <li class="dropdown">
-                        <a href="#explore">Destinations <span class="arrow-down">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="jispa.html">Jispa</a></li>
-                            <li><a href="manali.html">Manali</a></li>
-                            <li><a href="kasol.html">Kasol</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="experience.html">YOLO Experiences</a></li>
-                    <li><a href="blog.html">Blogs</a></li>
-                    <li class="dropdown">
-                        <a href="#company">Inside YOLO <span class="arrow-down">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="franchise.html">Franchise</a></li>
-                            <li><a href="work-with-us.html">Work With Us</a></li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <!-- Right Actions -->
-                <div class="nav-right">
-                    <div class="nav-actions">
-                        <a
-                            href="https://wa.me/917018591758"
-                            class="btn-whatsapp"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="WhatsApp"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path
-                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
-                                />
-                            </svg>
-                        </a>
-
-                        <a href="#" class="btn-primary" id="booking-trigger">Book Your Stay</a>
-                    </div>
-
-                    <!-- Mobile Hamburger -->
-                    <button class="mobile-menu-toggle" aria-label="Open Menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
-            </nav>
-        </header>
-
-        <!-- Mobile Nav Drawer -->
-        <div class="mobile-nav-drawer" role="dialog" aria-label="Mobile navigation">
-            <ul class="mobile-nav-links">
-                <li><a href="experience.html">YOLO Experiences</a></li>
-                <li>
-                    <a href="#" class="mobile-dropdown-toggle">Destinations ▼</a>
-                    <ul class="mobile-sub-menu">
+            <!-- Center Nav -->
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="#explore">Destinations <span class="arrow-down">▼</span></a>
+                    <ul class="dropdown-menu">
                         <li><a href="jispa.html">Jispa</a></li>
                         <li><a href="manali.html">Manali</a></li>
                         <li><a href="kasol.html">Kasol</a></li>
                     </ul>
                 </li>
+                <li><a href="experience.html">YOLO Experiences</a></li>
                 <li><a href="blog.html">Blogs</a></li>
-                <li>
-                    <a href="#" class="mobile-dropdown-toggle">Inside YOLO ▼</a>
-                    <ul class="mobile-sub-menu">
-                        <li><a href="about.html">About Us</a></li>
+                <li class="dropdown">
+                    <a href="#company">Inside YOLO <span class="arrow-down">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="about.html">About</a></li>
                         <li><a href="franchise.html">Franchise</a></li>
-                        <li><a href="work-with-us.html">Work with us</a></li>
+                        <li><a href="work-with-us.html">Work With Us</a></li>
                     </ul>
                 </li>
-                <li><a href="#" class="btn-primary" id="booking-trigger-mobile">Book Your Stay</a></li>
             </ul>
-        </div>
 
-        <!-- Mobile Bottom Nav -->
-        <nav class="mobile-bottom-nav">
-            <a href="#" class="nav-item">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                </svg>
-                <span>Home</span>
-            </a>
-            <a href="experience.html" class="nav-item">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <polygon
-                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    ></polygon>
-                </svg>
-                <span>Experiences</span>
-            </a>
-            <a href="#" class="nav-item highlight" id="booking-trigger-bottom">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-                <span>Book</span>
-            </a>
-            <a href="https://wa.me/917018591758" class="nav-item" target="_blank">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path
-                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
-                    ></path>
-                </svg>
-                <span>Chat</span>
-            </a>
-        </nav>
-
-        <!-- ═══════════════════════════════════════════
-         HERO — Full-Bleed Cinematic Video
-         ═══════════════════════════════════════════ -->
-        <main id="main-content">
-            <section class="hero">
-                <div class="hero-bg-placeholder">
-                    <video autoplay muted loop playsinline class="hero-video" fetchpriority="high">
-                        <source src="assets/images/hero.mp4" type="video/mp4" />
-                    </video>
-                    <div class="overlay"></div>
-                </div>
-                <div class="hero-content">
-                    <p class="subtitle">The YOLO Collective</p>
-                    <h1>Live your Adventure</h1>
-                    <a href="#explore" class="btn-primary" id="hero-booking-trigger">
-                        <span class="btn-text">Begin Your Journey</span>
-                        <svg
-                            class="btn-arrow"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        >
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                            <polyline points="12 5 19 12 12 19" />
+            <!-- Right Actions -->
+            <div class="nav-right">
+                <div class="nav-actions">
+                    <a href="https://wa.me/917018591758" class="btn-whatsapp" target="_blank" rel="noopener noreferrer"
+                        aria-label="WhatsApp">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path
+                                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
                         </svg>
                     </a>
-                </div>
-                <div class="scroll-indicator">
-                    <span>Scroll</span>
-                    <div class="scroll-line"></div>
-                </div>
-            </section>
 
-            <section class="vibe-section section" id="vibe-section">
-                <div class="container reveal">
-                    <div class="vibe-header">
-                        <h2>Choose Your Vibe</h2>
-                    </div>
-                    <div class="vibe-bubbles">
-                        <!-- Social -->
-                        <a class="vibe-bubble" href="#explore">
-                            <div class="vibe-emoji vibe-color-social">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="40"
-                                    height="40"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                >
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="9" cy="7" r="4"></circle>
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                </svg>
-                            </div>
-                            <span class="vibe-label">Social</span>
-                        </a>
-
-                        <!-- Outdoors (Geodesic Dome prominently) -->
-                        <a class="vibe-bubble vibe-bubble--center" href="#explore">
-                            <div class="vibe-emoji vibe-color-outdoors">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="54"
-                                    height="54"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="1.2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                >
-                                    <path d="M3 19h18" />
-                                    <path d="M3 19a9 9 0 0 1 18 0" />
-                                    <path d="M7 19l2.5-6.5L12 10l2.5 2.5L17 19" />
-                                    <path d="M4.5 14l5-1.5L12 10l2.5 2.5 5 1.5" />
-                                    <path d="M9.5 12.5L12 19l2.5-6.5" />
-                                </svg>
-                            </div>
-                            <span class="vibe-label">Outdoors</span>
-                        </a>
-
-                        <!-- Homes -->
-                        <a class="vibe-bubble" href="#explore">
-                            <div class="vibe-emoji vibe-color-homes">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="40"
-                                    height="40"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                >
-                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                </svg>
-                            </div>
-                            <span class="vibe-label">Homes</span>
-                        </a>
-                    </div>
+                    <a href="#" class="btn-primary" id="booking-trigger">Book Your Stay</a>
                 </div>
 
-                <style>
-                    .vibe-subtitle {
-                        font-family: 'Inter', sans-serif;
-                        font-size: 1.05rem;
-                        color: rgba(0, 0, 0, 0.45);
-                        margin: 0.75rem 0 3rem;
-                        text-align: center;
-                        letter-spacing: 0.1em;
-                        text-transform: uppercase;
+                <!-- Mobile Hamburger -->
+                <button class="mobile-menu-toggle" aria-label="Open Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Nav Drawer -->
+    <div class="mobile-nav-drawer" role="dialog" aria-label="Mobile navigation">
+        <ul class="mobile-nav-links">
+            <li><a href="experience.html">YOLO Experiences</a></li>
+            <li>
+                <a href="#" class="mobile-dropdown-toggle">Destinations ▼</a>
+                <ul class="mobile-sub-menu">
+                    <li><a href="jispa.html">Jispa</a></li>
+                    <li><a href="manali.html">Manali</a></li>
+                    <li><a href="kasol.html">Kasol</a></li>
+                </ul>
+            </li>
+            <li><a href="blog.html">Blogs</a></li>
+            <li>
+                <a href="#" class="mobile-dropdown-toggle">Inside YOLO ▼</a>
+                <ul class="mobile-sub-menu">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="franchise.html">Franchise</a></li>
+                    <li><a href="work-with-us.html">Work with us</a></li>
+                </ul>
+            </li>
+            <li><a href="#" class="btn-primary" id="booking-trigger-mobile">Book Your Stay</a></li>
+        </ul>
+    </div>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="mobile-bottom-nav">
+        <a href="#" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>Home</span>
+        </a>
+        <a href="experience.html" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                </polygon>
+            </svg>
+            <span>Experiences</span>
+        </a>
+        <a href="#" class="nav-item highlight" id="booking-trigger-bottom">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>Book</span>
+        </a>
+        <a href="https://wa.me/917018591758" class="nav-item" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                </path>
+            </svg>
+            <span>Chat</span>
+        </a>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════
+         HERO — Full-Bleed Cinematic Video
+         ═══════════════════════════════════════════ -->
+    <main id="main-content">
+        <section class="hero">
+            <div class="hero-bg-placeholder">
+                <video autoplay muted loop playsinline class="hero-video" fetchpriority="high">
+                    <source src="assets/images/hero.mp4" type="video/mp4" />
+                </video>
+                <div class="overlay"></div>
+            </div>
+            <div class="hero-content">
+
+                <h1>Live your Adventure</h1>
+                <a href="#explore" class="btn-primary" id="hero-booking-trigger">
+                    <span class="btn-text">Begin Your Journey</span>
+                    <svg class="btn-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                </a>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <section class="vibe-section section" id="vibe-section">
+            <div class="container reveal">
+                <div class="vibe-header">
+                    <h2>Choose Your Vibe</h2>
+                </div>
+                <div class="vibe-bubbles">
+                    <!-- Social -->
+                    <a class="vibe-bubble" href="#explore">
+                        <div class="vibe-emoji vibe-color-social">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <span class="vibe-label">Social</span>
+                    </a>
+
+                    <!-- Outdoors (Geodesic Dome prominently) -->
+                    <a class="vibe-bubble vibe-bubble--center" href="#explore">
+                        <div class="vibe-emoji vibe-color-outdoors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="54" height="54" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M3 19h18" />
+                                <path d="M3 19a9 9 0 0 1 18 0" />
+                                <path d="M7 19l2.5-6.5L12 10l2.5 2.5L17 19" />
+                                <path d="M4.5 14l5-1.5L12 10l2.5 2.5 5 1.5" />
+                                <path d="M9.5 12.5L12 19l2.5-6.5" />
+                            </svg>
+                        </div>
+                        <span class="vibe-label">Outdoors</span>
+                    </a>
+
+                    <!-- Homes -->
+                    <a class="vibe-bubble" href="#explore">
+                        <div class="vibe-emoji vibe-color-homes">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                        </div>
+                        <span class="vibe-label">Homes</span>
+                    </a>
+                </div>
+            </div>
+
+            <style>
+                .vibe-subtitle {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 1.05rem;
+                    color: rgba(0, 0, 0, 0.45);
+                    margin: 0.75rem 0 3rem;
+                    text-align: center;
+                    letter-spacing: 0.1em;
+                    text-transform: uppercase;
+                }
+
+                .vibe-bubbles {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 3rem;
+                    margin: 2rem auto;
+                }
+
+                .vibe-bubble {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-decoration: none;
+                    gap: 1rem;
+                    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                }
+
+                .vibe-emoji {
+                    width: 90px;
+                    height: 90px;
+                    background: var(--white);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 3rem;
+                    color: var(--black);
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+                    border: 1px solid rgba(0, 0, 0, 0.05);
+                    transition: all 0.4s ease;
+                }
+
+                .vibe-bubble--center .vibe-emoji {
+                    width: 110px;
+                    height: 110px;
+                    font-size: 3.5rem;
+                    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+                }
+
+                .vibe-label {
+                    font-family: var(--font-heading);
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                    color: var(--black);
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    opacity: 0.8;
+                    transition: opacity 0.3s ease;
+                }
+
+                /* --- Colorful SVG Icon Styles --- */
+                .vibe-color-social {
+                    color: #ff5a5f;
+                    /* Vibrant Coral Red */
+                    box-shadow: 0 10px 30px rgba(255, 90, 95, 0.15);
+                }
+
+                .vibe-color-outdoors {
+                    color: #00a699;
+                    /* Vibrant Teal/Emerald */
+                    box-shadow: 0 15px 40px rgba(0, 166, 153, 0.2);
+                }
+
+                .vibe-color-homes {
+                    color: #fc642d;
+                    /* Vibrant Sunset Orange */
+                    box-shadow: 0 10px 30px rgba(252, 100, 45, 0.15);
+                }
+
+                /* Hover States */
+                .vibe-bubble:hover {
+                    transform: translateY(-10px);
+                }
+
+                .vibe-bubble:hover .vibe-color-social {
+                    transform: scale(1.1);
+                    box-shadow: 0 15px 35px rgba(255, 90, 95, 0.3);
+                }
+
+                .vibe-bubble:hover .vibe-color-outdoors {
+                    transform: scale(1.1);
+                    box-shadow: 0 20px 45px rgba(0, 166, 153, 0.35);
+                }
+
+                .vibe-bubble:hover .vibe-color-homes {
+                    transform: scale(1.1);
+                    box-shadow: 0 15px 35px rgba(252, 100, 45, 0.3);
+                }
+
+                .vibe-bubble:hover .vibe-label {
+                    opacity: 1;
+                }
+
+                /* Floating Animation loops */
+                .vibe-bubble:nth-child(1) .vibe-emoji {
+                    animation: floatBubble 4s ease-in-out infinite;
+                }
+
+                .vibe-bubble:nth-child(2) .vibe-emoji {
+                    animation: floatBubble 5s ease-in-out infinite 1s;
+                }
+
+                .vibe-bubble:nth-child(3) .vibe-emoji {
+                    animation: floatBubble 4.5s ease-in-out infinite 0.5s;
+                }
+
+                @keyframes floatBubble {
+
+                    0%,
+                    100% {
+                        transform: translateY(0);
                     }
 
+                    50% {
+                        transform: translateY(-8px);
+                    }
+                }
+
+                @media (max-width: 768px) {
                     .vibe-bubbles {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        gap: 3rem;
-                        margin: 2rem auto;
-                    }
-
-                    .vibe-bubble {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        text-decoration: none;
-                        gap: 1rem;
-                        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                        gap: 1.5rem;
                     }
 
                     .vibe-emoji {
-                        width: 90px;
-                        height: 90px;
-                        background: var(--white);
-                        border-radius: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 3rem;
-                        color: var(--black);
-                        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-                        border: 1px solid rgba(0, 0, 0, 0.05);
-                        transition: all 0.4s ease;
+                        width: 72px;
+                        height: 72px;
+                        font-size: 2.6rem;
                     }
 
                     .vibe-bubble--center .vibe-emoji {
-                        width: 110px;
-                        height: 110px;
-                        font-size: 3.5rem;
-                        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+                        width: 80px;
+                        height: 80px;
+                        font-size: 2.8rem;
                     }
+                }
+            </style>
+        </section>
 
-                    .vibe-label {
-                        font-family: var(--font-heading);
-                        font-size: 1.1rem;
-                        font-weight: 600;
-                        color: var(--black);
-                        text-transform: uppercase;
-                        letter-spacing: 0.05em;
-                        opacity: 0.8;
-                        transition: opacity 0.3s ease;
-                    }
-
-                    /* --- Colorful SVG Icon Styles --- */
-                    .vibe-color-social {
-                        color: #ff5a5f;
-                        /* Vibrant Coral Red */
-                        box-shadow: 0 10px 30px rgba(255, 90, 95, 0.15);
-                    }
-
-                    .vibe-color-outdoors {
-                        color: #00a699;
-                        /* Vibrant Teal/Emerald */
-                        box-shadow: 0 15px 40px rgba(0, 166, 153, 0.2);
-                    }
-
-                    .vibe-color-homes {
-                        color: #fc642d;
-                        /* Vibrant Sunset Orange */
-                        box-shadow: 0 10px 30px rgba(252, 100, 45, 0.15);
-                    }
-
-                    /* Hover States */
-                    .vibe-bubble:hover {
-                        transform: translateY(-10px);
-                    }
-
-                    .vibe-bubble:hover .vibe-color-social {
-                        transform: scale(1.1);
-                        box-shadow: 0 15px 35px rgba(255, 90, 95, 0.3);
-                    }
-
-                    .vibe-bubble:hover .vibe-color-outdoors {
-                        transform: scale(1.1);
-                        box-shadow: 0 20px 45px rgba(0, 166, 153, 0.35);
-                    }
-
-                    .vibe-bubble:hover .vibe-color-homes {
-                        transform: scale(1.1);
-                        box-shadow: 0 15px 35px rgba(252, 100, 45, 0.3);
-                    }
-
-                    .vibe-bubble:hover .vibe-label {
-                        opacity: 1;
-                    }
-
-                    /* Floating Animation loops */
-                    .vibe-bubble:nth-child(1) .vibe-emoji {
-                        animation: floatBubble 4s ease-in-out infinite;
-                    }
-
-                    .vibe-bubble:nth-child(2) .vibe-emoji {
-                        animation: floatBubble 5s ease-in-out infinite 1s;
-                    }
-
-                    .vibe-bubble:nth-child(3) .vibe-emoji {
-                        animation: floatBubble 4.5s ease-in-out infinite 0.5s;
-                    }
-
-                    @keyframes floatBubble {
-                        0%,
-                        100% {
-                            transform: translateY(0);
-                        }
-
-                        50% {
-                            transform: translateY(-8px);
-                        }
-                    }
-
-                    @media (max-width: 768px) {
-                        .vibe-bubbles {
-                            gap: 1.5rem;
-                        }
-
-                        .vibe-emoji {
-                            width: 72px;
-                            height: 72px;
-                            font-size: 2.6rem;
-                        }
-
-                        .vibe-bubble--center .vibe-emoji {
-                            width: 80px;
-                            height: 80px;
-                            font-size: 2.8rem;
-                        }
-                    }
-                </style>
-            </section>
-
-            <!-- ═══════════════════════════════════════════
+        <!-- ═══════════════════════════════════════════
              THREE-WAY BRAND SELECTOR
              ═══════════════════════════════════════════ -->
-            <section id="explore" class="brand-selector">
-                <!-- Social House -->
-                <a href="social.html" class="brand-panel" data-brand="social">
-                    <div class="brand-panel-bg">
-                        <img src="assets/images/threepane_social.JPG" alt="YOLO Social House" loading="lazy" />
-                    </div>
-                    <div class="brand-panel-overlay"></div>
-                    <div class="brand-panel-content">
-                        <p class="label-text">Social Stays & Hostels</p>
-                        <h2>YOLO Social</h2>
-                        <p>High-energy, design-led hostels for digital nomads and solo travelers. Find your tribe.</p>
-                        <span class="btn-explore">Explore <span class="arrow">→</span></span>
-                    </div>
-                </a>
+        <section id="explore" class="brand-selector">
+            <!-- Social House -->
+            <a href="social.html" class="brand-panel" data-brand="social">
+                <div class="brand-panel-bg">
+                    <img src="assets/images/threepane_social.JPG" alt="YOLO Social House" loading="lazy" />
+                </div>
+                <div class="brand-panel-overlay"></div>
+                <div class="brand-panel-content">
+                    <p class="label-text">Social Stays & Co-working</p>
+                    <h2>YOLO Social</h2>
+                    <p>High-energy, design-led hostels for digital nomads and solo travelers. Find your tribe.</p>
+                    <span class="btn-explore">Explore <span class="arrow">→</span></span>
+                </div>
+            </a>
 
-                <!-- Outdoors -->
-                <a href="outdoors.html" class="brand-panel" data-brand="outdoors">
-                    <div class="brand-panel-bg">
-                        <img
-                            src="assets/images/domecover.JPG"
-                            alt="Luxury geodesic glamping dome at YOLO Outdoors Jispa"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                    </div>
-                    <div class="brand-panel-overlay"></div>
-                    <div class="brand-panel-content">
-                        <p class="label-text">Nature Luxury Stays</p>
-                        <h2>YOLO Outdoors</h2>
-                        <p>Epic, cinematic luxury riverside domes under the Milky Way. For milestone celebrations.</p>
-                        <span class="btn-explore">Explore <span class="arrow">→</span></span>
-                    </div>
-                </a>
+            <!-- Outdoors -->
+            <a href="outdoors.html" class="brand-panel" data-brand="outdoors">
+                <div class="brand-panel-bg">
+                    <img src="assets/images/domecover.JPG" alt="Luxury geodesic glamping dome at YOLO Outdoors Jispa"
+                        loading="lazy" decoding="async" />
+                </div>
+                <div class="brand-panel-overlay"></div>
+                <div class="brand-panel-content">
+                    <p class="label-text">Nature Luxury Stays</p>
+                    <h2>YOLO Outdoors</h2>
+                    <p>Epic, cinematic luxury riverside domes under the Milky Way. For milestone celebrations.</p>
+                    <span class="btn-explore">Explore <span class="arrow">→</span></span>
+                </div>
+            </a>
 
-                <!-- Homes -->
-                <a href="homes.html" class="brand-panel" data-brand="homes">
-                    <div class="brand-panel-bg">
-                        <img
-                            src="assets/images/threepane_homes.JPG"
-                            alt="YOLO Homes boutique property amid cedar forests"
-                            loading="lazy"
-                        />
-                    </div>
-                    <div class="brand-panel-overlay"></div>
-                    <div class="brand-panel-content">
-                        <p class="label-text">Boutique Mountain Homes</p>
-                        <h2>YOLO Homes</h2>
-                        <p>Homely, intimate sanctuaries where architecture meets the wild. Slow-paced luxury.</p>
-                        <span class="btn-explore">Explore <span class="arrow">→</span></span>
-                    </div>
-                </a>
-            </section>
+            <!-- Homes -->
+            <a href="homes.html" class="brand-panel" data-brand="homes">
+                <div class="brand-panel-bg">
+                    <img src="assets/images/threepane_homes.JPG" alt="YOLO Homes boutique property amid cedar forests"
+                        loading="lazy" />
+                </div>
+                <div class="brand-panel-overlay"></div>
+                <div class="brand-panel-content">
+                    <p class="label-text">Boutique Mountain Homes</p>
+                    <h2>YOLO Homes</h2>
+                    <p>Homely, intimate sanctuaries where architecture meets the wild. Slow-paced luxury.</p>
+                    <span class="btn-explore">Explore <span class="arrow">→</span></span>
+                </div>
+            </a>
+        </section>
 
-            <!-- ═══════════════════════════════════════════
+        <!-- ═══════════════════════════════════════════
              MOUNTAIN CONCIERGE
              ═══════════════════════════════════════════ -->
-            <!-- ═══════════════════════════════════════════
+        <!-- ═══════════════════════════════════════════
          ACTIVITIES GRID — CHOOSE YOUR JOURNEY
          ═══════════════════════════════════════════ -->
-            <section class="mj-section mj-section--light">
-                <div class="mj-container">
-                    <h2 class="mj-heading">Choose Your Experience.</h2>
+        <section class="mj-section mj-section--light">
+            <div class="mj-container">
+                <h2 class="mj-heading">Choose Your Experience.</h2>
 
-                    <div class="mj-grid-3">
-                        <!-- 1. Parvati Valley Escape (Featured) -->
-                        <div class="mj-card mj-card--link" style="outline: 2px solid #74acdf">
-                            <a href="experience-parvati.html">
-                                <div
-                                    class="mj-card__image"
-                                    style="background-image: url('assets/images/IMG_3230.webp')"
-                                >
-                                    <span class="mj-card__badge">Featured</span>
-                                </div>
-                                <div class="mj-card__body">
-                                    <p class="mj-card__meta">Valley Escape</p>
-                                    <h3 class="mj-card__title">Parvati Valley Escape</h3>
-                                    <p class="mj-card__excerpt">
-                                        Drift into the emerald heart of Parvati — a valley of waterfalls, hot springs,
-                                        and rare silence that rewires the restless mind.
-                                    </p>
-                                    <span class="mj-card__cta">Explore &rarr;</span>
-                                </div>
-                            </a>
-                        </div>
-
-                        <!-- 2. Lahaul Getaway (New) -->
-                        <div class="mj-card mj-card--link">
-                            <a href="experience-lahaul.html">
-                                <div
-                                    class="mj-card__image"
-                                    style="background-image: url('assets/images/domecover.JPG')"
-                                >
-                                    <span class="mj-card__badge">New</span>
-                                </div>
-                                <div class="mj-card__body">
-                                    <p class="mj-card__meta">Valley Escape</p>
-                                    <h3 class="mj-card__title">Lahaul Getaway</h3>
-                                    <p class="mj-card__excerpt">
-                                        Cross the Rohtang into Lahaul — a high-altitude world of barley fields, gompas,
-                                        and road-less horizons that few travellers dare to reach.
-                                    </p>
-                                    <span class="mj-card__cta">Explore &rarr;</span>
-                                </div>
-                            </a>
-                        </div>
-
-                        <!-- 3. Spiti Escape -->
-                        <div class="mj-card mj-card--link">
-                            <a href="experience-spiti.html">
-                                <div
-                                    class="mj-card__image"
-                                    style="background-image: url('assets/images/IMG_3229.webp')"
-                                >
-                                    <span class="mj-card__badge">Escape</span>
-                                </div>
-                                <div class="mj-card__body">
-                                    <p class="mj-card__meta">Remote Valley</p>
-                                    <h3 class="mj-card__title">Spiti Escape</h3>
-                                    <p class="mj-card__excerpt">
-                                        Journey into the cold desert of Spiti — monasteries perched on cliffs, fossil
-                                        riverbeds, and a sky so vast it makes you feel small and free.
-                                    </p>
-                                    <span class="mj-card__cta">Explore &rarr;</span>
-                                </div>
-                            </a>
-                        </div>
-
-                        <!-- 4. Guided Hikes -->
-                        <div class="mj-card mj-card--link">
-                            <a href="experience-hikes.html">
-                                <div
-                                    class="mj-card__image"
-                                    style="background-image: url('assets/images/IMG_3684.webp')"
-                                >
-                                    <span class="mj-card__badge">Hiking</span>
-                                </div>
-                                <div class="mj-card__body">
-                                    <p class="mj-card__meta">On Foot</p>
-                                    <h3 class="mj-card__title">Guided Hikes</h3>
-                                    <p class="mj-card__excerpt">
-                                        Let a local guide lead you through forest trails and mountain passes that no map
-                                        has named — stories come free with every step.
-                                    </p>
-                                    <span class="mj-card__cta">Explore &rarr;</span>
-                                </div>
-                            </a>
-                        </div>
-
-                        <!-- 5. Stargazing -->
-                        <div class="mj-card mj-card--link">
-                            <a href="experience-stargazing.html">
-                                <div
-                                    class="mj-card__image"
-                                    style="background-image: url('assets/images/IMG_3229.webp')"
-                                >
-                                    <span class="mj-card__badge">Night Sky</span>
-                                </div>
-                                <div class="mj-card__body">
-                                    <p class="mj-card__meta">After Dark</p>
-                                    <h3 class="mj-card__title">Stargazing</h3>
-                                    <p class="mj-card__excerpt">
-                                        At 2,000 metres with zero light pollution, the Milky Way is not a photograph —
-                                        it is the ceiling above you. Bring a blanket.
-                                    </p>
-                                    <span class="mj-card__cta">Explore &rarr;</span>
-                                </div>
-                            </a>
-                        </div>
-
-                        <!-- 6. Village Walks -->
-                        <div class="mj-card mj-card--link">
-                            <a href="experience-village.html">
-                                <div
-                                    class="mj-card__image"
-                                    style="background-image: url('assets/images/IMG_3228.webp')"
-                                >
-                                    <span class="mj-card__badge">Culture</span>
-                                </div>
-                                <div class="mj-card__body">
-                                    <p class="mj-card__meta">Local Life</p>
-                                    <h3 class="mj-card__title">Village Walks</h3>
-                                    <p class="mj-card__excerpt">
-                                        Walk through Kasol and Rasol villages, meet farmers, share chai, and see the
-                                        Himalayas the way people actually live in them.
-                                    </p>
-                                    <span class="mj-card__cta">Explore &rarr;</span>
-                                </div>
-                            </a>
-                        </div>
+                <div class="mj-grid-3">
+                    <!-- 1. Parvati Valley Escape (Featured) -->
+                    <div class="mj-card mj-card--link" style="outline: 2px solid #74acdf">
+                        <a href="experience-parvati.html">
+                            <div class="mj-card__image" style="background-image: url('assets/images/IMG_3230.webp')">
+                                <span class="mj-card__badge">Featured</span>
+                            </div>
+                            <div class="mj-card__body">
+                                <p class="mj-card__meta">Valley Escape</p>
+                                <h3 class="mj-card__title">Parvati Valley Escape</h3>
+                                <p class="mj-card__excerpt">
+                                    Drift into the emerald heart of Parvati — a valley of waterfalls, hot springs,
+                                    and rare silence that rewires the restless mind.
+                                </p>
+                                <span class="mj-card__cta">Explore &rarr;</span>
+                            </div>
+                        </a>
                     </div>
-                    <!-- /mj-grid-3 -->
 
-                    <div style="text-align: center; margin-top: 3rem">
-                        <a href="experience.html" class="btn-primary">Explore More</a>
+                    <!-- 2. Lahaul Getaway (New) -->
+                    <div class="mj-card mj-card--link">
+                        <a href="experience-lahaul.html">
+                            <div class="mj-card__image" style="background-image: url('assets/images/domecover.JPG')">
+                                <span class="mj-card__badge">New</span>
+                            </div>
+                            <div class="mj-card__body">
+                                <p class="mj-card__meta">Valley Escape</p>
+                                <h3 class="mj-card__title">Lahaul Getaway</h3>
+                                <p class="mj-card__excerpt">
+                                    Cross the Rohtang into Lahaul — a high-altitude world of barley fields, gompas,
+                                    and road-less horizons that few travellers dare to reach.
+                                </p>
+                                <span class="mj-card__cta">Explore &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- 3. Spiti Escape -->
+                    <div class="mj-card mj-card--link">
+                        <a href="experience-spiti.html">
+                            <div class="mj-card__image" style="background-image: url('assets/images/IMG_3229.webp')">
+                                <span class="mj-card__badge">Escape</span>
+                            </div>
+                            <div class="mj-card__body">
+                                <p class="mj-card__meta">Remote Valley</p>
+                                <h3 class="mj-card__title">Spiti Escape</h3>
+                                <p class="mj-card__excerpt">
+                                    Journey into the cold desert of Spiti — monasteries perched on cliffs, fossil
+                                    riverbeds, and a sky so vast it makes you feel small and free.
+                                </p>
+                                <span class="mj-card__cta">Explore &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- 4. Guided Hikes -->
+                    <div class="mj-card mj-card--link">
+                        <a href="experience-hikes.html">
+                            <div class="mj-card__image" style="background-image: url('assets/images/IMG_3684.webp')">
+                                <span class="mj-card__badge">Hiking</span>
+                            </div>
+                            <div class="mj-card__body">
+                                <p class="mj-card__meta">On Foot</p>
+                                <h3 class="mj-card__title">Guided Hikes</h3>
+                                <p class="mj-card__excerpt">
+                                    Let a local guide lead you through forest trails and mountain passes that no map
+                                    has named — stories come free with every step.
+                                </p>
+                                <span class="mj-card__cta">Explore &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- 5. Stargazing -->
+                    <div class="mj-card mj-card--link">
+                        <a href="experience-stargazing.html">
+                            <div class="mj-card__image" style="background-image: url('assets/images/IMG_3229.webp')">
+                                <span class="mj-card__badge">Night Sky</span>
+                            </div>
+                            <div class="mj-card__body">
+                                <p class="mj-card__meta">After Dark</p>
+                                <h3 class="mj-card__title">Stargazing</h3>
+                                <p class="mj-card__excerpt">
+                                    At 2,000 metres with zero light pollution, the Milky Way is not a photograph —
+                                    it is the ceiling above you. Bring a blanket.
+                                </p>
+                                <span class="mj-card__cta">Explore &rarr;</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- 6. Village Walks -->
+                    <div class="mj-card mj-card--link">
+                        <a href="experience-village.html">
+                            <div class="mj-card__image" style="background-image: url('assets/images/IMG_3228.webp')">
+                                <span class="mj-card__badge">Culture</span>
+                            </div>
+                            <div class="mj-card__body">
+                                <p class="mj-card__meta">Local Life</p>
+                                <h3 class="mj-card__title">Village Walks</h3>
+                                <p class="mj-card__excerpt">
+                                    Walk through Kasol and Rasol villages, meet farmers, share chai, and see the
+                                    Himalayas the way people actually live in them.
+                                </p>
+                                <span class="mj-card__cta">Explore &rarr;</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
-                <!-- /mj-container -->
-            </section>
+                <!-- /mj-grid-3 -->
 
-            <!-- ═══════════════════════════════════════════
+                <div style="text-align: center; margin-top: 3rem">
+                    <a href="experience.html" class="btn-primary">Explore More</a>
+                </div>
+            </div>
+            <!-- /mj-container -->
+        </section>
+
+        <!-- ═══════════════════════════════════════════
              TESTIMONIALS — Tribe Talk
              ═══════════════════════════════════════════ -->
-            <!-- ═══════════════════════════════════════════
+        <!-- ═══════════════════════════════════════════
              TESTIMONIALS — Cairn Stack
              ═══════════════════════════════════════════ -->
-            <!-- ═══════════════════════════════════════════
+        <!-- ═══════════════════════════════════════════
              TESTIMONIALS — Floating Glass Masonry
              ═══════════════════════════════════════════ -->
-            <section class="glass-testimonials-section section">
-                <div class="container">
-                    <h2>Guests Love Us:</h2>
+        <section class="glass-testimonials-section section">
+            <div class="container">
+                <h2>Guests Love Us:</h2>
 
-                    <div class="glass-grid">
-                        <!-- Column 1 -->
-                        <div class="glass-column">
-                            <div class="glass-card">
-                                <div class="glass-card-content">
-                                    <p class="glass-quote">
-                                        "The stars here felt close enough to touch. I’ve never slept so soundly."
-                                    </p>
-                                    <div class="glass-meta">
-                                        <span class="glass-name">Sarah Jenkins</span>
-                                        <span class="glass-badge">Verified Stay</span>
-                                        <img src="assets/icons/google.svg" alt="Google Review" class="glass-icon" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="glass-card">
-                                <div class="glass-card-content">
-                                    <p class="glass-quote">
-                                        "A masterpiece of silence. The architecture disappears into the landscape."
-                                    </p>
-                                    <div class="glass-meta">
-                                        <span class="glass-name">David Chen</span>
-                                        <img src="assets/icons/google.svg" alt="Google Review" class="glass-icon" />
-                                    </div>
+                <div class="glass-grid">
+                    <!-- Column 1 -->
+                    <div class="glass-column">
+                        <div class="glass-card">
+                            <div class="glass-card-content">
+                                <p class="glass-quote">
+                                    "The stars here felt close enough to touch. I’ve never slept so soundly."
+                                </p>
+                                <div class="glass-meta">
+                                    <span class="glass-name">Sarah Jenkins</span>
+                                    <span class="glass-badge">Verified Stay</span>
+                                    <img src="assets/icons/google.svg" alt="Google Review" class="glass-icon" />
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Column 2 -->
-                        <div class="glass-column" style="margin-top: 4rem">
-                            <div class="glass-card">
-                                <div class="glass-card-content">
-                                    <p class="glass-quote">
-                                        "YOLO Manali isn't just a hostel, it's a design sanctuary. The community is
-                                        electric."
-                                    </p>
-                                    <div class="glass-meta">
-                                        <span class="glass-name">Priya Sharma</span>
-                                        <span class="glass-badge">Verified Stay</span>
-                                        <img src="assets/icons/google.svg" alt="Google Review" class="glass-icon" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="glass-card">
-                                <div class="glass-card-content">
-                                    <p class="glass-quote">
-                                        "I came for two days and stayed for two weeks. It rewires your brain."
-                                    </p>
-                                    <div class="glass-meta">
-                                        <span class="glass-name">Marcus T.</span>
-                                        <img src="assets/icons/google.svg" alt="Google Review" class="glass-icon" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Column 3 -->
-                        <div class="glass-column" style="margin-top: 2rem">
-                            <div class="glass-card">
-                                <div class="glass-card-content">
-                                    <p class="glass-quote">
-                                        "Woke up to the Milky Way through the dome ceiling. Unforgettable."
-                                    </p>
-                                    <div class="glass-meta">
-                                        <span class="glass-name">Elena Rodriguez</span>
-                                        <span class="glass-badge">Verified Stay</span>
-                                        <img src="assets/icons/google.svg" alt="Google Review" class="glass-icon" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="glass-card">
-                                <div class="glass-card-content">
-                                    <p class="glass-quote">"Raw luxury. No other way to describe it."</p>
-                                    <div class="glass-meta">
-                                        <span class="glass-name">Karthik R.</span>
-                                        <img src="assets/icons/google.svg" alt="Google Review" class="glass-icon" />
-                                    </div>
+                        <div class="glass-card">
+                            <div class="glass-card-content">
+                                <p class="glass-quote">
+                                    "A masterpiece of silence. The architecture disappears into the landscape."
+                                </p>
+                                <div class="glass-meta">
+                                    <span class="glass-name">David Chen</span>
+                                    <img src="assets/icons/google.svg" alt="Google Review" class="glass-icon" />
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="glass-cta-container reveal">
-                        <a href="#" class="btn-primary" id="final-booking-trigger">Secure Your Stay</a>
+                    <!-- Column 2 -->
+                    <div class="glass-column" style="margin-top: 4rem">
+                        <div class="glass-card">
+                            <div class="glass-card-content">
+                                <p class="glass-quote">
+                                    "YOLO Manali isn't just a hostel, it's a design sanctuary. The community is
+                                    electric."
+                                </p>
+                                <div class="glass-meta">
+                                    <span class="glass-name">Priya Sharma</span>
+                                    <span class="glass-badge">Verified Stay</span>
+                                    <img src="assets/icons/google.svg" alt="Google Review" class="glass-icon" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass-card">
+                            <div class="glass-card-content">
+                                <p class="glass-quote">
+                                    "I came for two days and stayed for two weeks. It rewires your brain."
+                                </p>
+                                <div class="glass-meta">
+                                    <span class="glass-name">Marcus T.</span>
+                                    <img src="assets/icons/google.svg" alt="Google Review" class="glass-icon" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 3 -->
+                    <div class="glass-column" style="margin-top: 2rem">
+                        <div class="glass-card">
+                            <div class="glass-card-content">
+                                <p class="glass-quote">
+                                    "Woke up to the Milky Way through the dome ceiling. Unforgettable."
+                                </p>
+                                <div class="glass-meta">
+                                    <span class="glass-name">Elena Rodriguez</span>
+                                    <span class="glass-badge">Verified Stay</span>
+                                    <img src="assets/icons/google.svg" alt="Google Review" class="glass-icon" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass-card">
+                            <div class="glass-card-content">
+                                <p class="glass-quote">"Raw luxury. No other way to describe it."</p>
+                                <div class="glass-meta">
+                                    <span class="glass-name">Karthik R.</span>
+                                    <img src="assets/icons/google.svg" alt="Google Review" class="glass-icon" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
-        </main>
 
-        <!-- ═══════════════════════════════════════════
+                <div class="glass-cta-container reveal">
+                    <a href="#" class="btn-primary" id="final-booking-trigger">Secure Your Stay</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ═══════════════════════════════════════════
          FOOTER — Premium Clean
          ═══════════════════════════════════════════ -->
-        <footer class="site-footer">
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-brand">
-                        <h3>The YOLO Collective</h3>
-                        <p>
-                            One Collective. Three Ways to Wander. Thoughtfully crafted mountain stays, homes, and
-                            experiences across the Himalayas.
-                        </p>
-                        <div class="footer-social">
-                            <a
-                                href="https://www.instagram.com/theyolocollective"
-                                class="social-link"
-                                title="Instagram"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                                </svg>
-                            </a>
-                            <a href="#" class="social-link" title="Facebook">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="footer-links-group">
-                        <h4>Destinations</h4>
-                        <a href="jispa.html" class="footer-link">Jispa</a>
-                        <a href="manali.html" class="footer-link">Manali</a>
-                        <a href="kasol.html" class="footer-link">Kasol</a>
-                    </div>
-                    <div class="footer-links-group">
-                        <h4>Inside YOLO</h4>
-                        <a href="about.html" class="footer-link">About Us</a>
-                        <a href="work-with-us.html" class="footer-link">Work with Us</a>
-                        <a href="franchise.html" class="footer-link">Franchise</a>
-                        <a href="blog.html" class="footer-link">Blogs</a>
-                    </div>
-                    <div class="footer-links-group">
-                        <h4>Support</h4>
-                        <a href="mailto:hello@theyolocollective.com" class="footer-link">Contact Us</a>
-                        <a href="https://wa.me/917018591758" target="_blank" class="footer-link">WhatsApp</a>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>The YOLO Collective</h3>
+                    <p>
+                        One Collective. Three Ways to Wander. Thoughtfully crafted mountain stays, homes, and
+                        experiences across the Himalayas.
+                    </p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/theyolocollective" class="social-link" title="Instagram"
+                            target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" title="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
                     </div>
                 </div>
-                <div class="footer-bottom">
-                    <p>&copy; 2026 The YOLO Collective. All rights reserved.</p>
+                <div class="footer-links-group">
+                    <h4>Destinations</h4>
+                    <a href="jispa.html" class="footer-link">Jispa</a>
+                    <a href="manali.html" class="footer-link">Manali</a>
+                    <a href="kasol.html" class="footer-link">Kasol</a>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Inside YOLO</h4>
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="work-with-us.html" class="footer-link">Work with Us</a>
+                    <a href="franchise.html" class="footer-link">Franchise</a>
+                    <a href="blog.html" class="footer-link">Blogs</a>
+                </div>
+                <div class="footer-links-group">
+                    <h4>Support</h4>
+                    <a href="mailto:hello@theyolocollective.com" class="footer-link">Contact Us</a>
+                    <a href="https://wa.me/917018591758" target="_blank" class="footer-link">WhatsApp</a>
                 </div>
             </div>
-        </footer>
+            <div class="footer-bottom">
+                <p>&copy; 2026 The YOLO Collective. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-        <!-- ═══════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════
          WHATSAPP FAB — Skyblue Pulse
          ═══════════════════════════════════════════ -->
-        <a href="https://wa.me/917018591758" class="whatsapp-fab" target="_blank" title="Chat with us">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path
-                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
-                />
-            </svg>
-        </a>
+    <a href="https://wa.me/917018591758" class="whatsapp-fab" target="_blank" title="Chat with us">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+        </svg>
+    </a>
 
-        <!-- ═══════════════════════════════════════════
+    <!-- ═══════════════════════════════════════════
          BOOKING OVERLAY — Slide-Over Panel
          ═══════════════════════════════════════════ -->
-        <div class="booking-backdrop" id="booking-backdrop"></div>
-        <div class="booking-overlay" id="booking-overlay" role="dialog" aria-modal="true" aria-label="Book your stay">
-            <div class="booking-overlay-header">
-                <h3>Book Your Stay</h3>
-                <button class="booking-close" id="booking-close" aria-label="Close">&times;</button>
-            </div>
-            <iframe
-                src=""
-                data-src="https://bookingengine.stayflexi.com/group-be/?groupId=28012"
-                title="YOLO Booking Engine"
-            ></iframe>
+    <div class="booking-backdrop" id="booking-backdrop"></div>
+    <div class="booking-overlay" id="booking-overlay" role="dialog" aria-modal="true" aria-label="Book your stay">
+        <div class="booking-overlay-header">
+            <h3>Book Your Stay</h3>
+            <button class="booking-close" id="booking-close" aria-label="Close">&times;</button>
         </div>
+        <iframe src="" data-src="https://bookingengine.stayflexi.com/group-be/?groupId=28012"
+            title="YOLO Booking Engine"></iframe>
+    </div>
 
-        <!-- Scripts -->
-        <script src="script.js"></script>
+    <!-- Scripts -->
+    <script src="script.js"></script>
 
-        <!-- JSON-LD Schema -->
-        <script type="application/ld+json">
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
                 "@graph": [
@@ -905,5 +803,6 @@
                 ]
             }
         </script>
-    </body>
+</body>
+
 </html>
