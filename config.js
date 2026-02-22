@@ -5,7 +5,7 @@
 
 const config = {
     // Current environment: 'local' | 'production'
-    env: 'local',
+    env: 'production',
 
     // API Endpoints
     apiUrls: {
