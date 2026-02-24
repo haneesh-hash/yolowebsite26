@@ -638,6 +638,36 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
     initPropertyGallery();
+
+    // ═══════════════════════════════════════════
+    // 14. MOBILE BOTTOM NAV — Active State & iOS Fixes
+    // ═══════════════════════════════════════════
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const bottomNavItems = document.querySelectorAll('.mobile-bottom-nav .nav-item');
+
+    bottomNavItems.forEach((item) => {
+        const href = item.getAttribute('href');
+        if (href && href !== '#') {
+            if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+                item.classList.add('active');
+            } else if (item.id !== 'booking-trigger-bottom') {
+                item.classList.remove('active');
+                item.classList.remove('highlight');
+            }
+        }
+    });
+
+    window.addEventListener('pageshow', (event) => {
+        if (event.persisted) {
+            document.querySelectorAll('a').forEach(link => link.blur());
+            const overlay = document.getElementById('booking-overlay');
+            if (overlay && overlay.classList.contains('active')) {
+                const backdrop = document.getElementById('booking-backdrop');
+                overlay.classList.remove('active');
+                if (backdrop) backdrop.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+    });
 });

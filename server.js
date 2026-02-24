@@ -145,6 +145,16 @@ app.put('/api/blogs/:id', adminAuth, upload.single('image'), (req, res) => {
     if (index === -1) return res.status(404).json({ error: 'Blog not found' });
 
     const existing = blogs[index];
+    const newImagePath = req.file ? `assets/images/${req.file.filename}` : req.body.image || existing.image;
+
+    // Cleanup old image if replaced by a new upload
+    if (req.file && existing.image && existing.image.startsWith('assets/images/')) {
+        const oldImageFullPath = path.join(__dirname, existing.image);
+        if (fs.existsSync(oldImageFullPath)) {
+            try { fs.unlinkSync(oldImageFullPath); } catch (e) { console.error('Error deleting old image:', e); }
+        }
+    }
+
     blogs[index] = {
         ...existing,
         featured: req.body.featured !== undefined ? req.body.featured === 'true' : existing.featured,
@@ -154,7 +164,7 @@ app.put('/api/blogs/:id', adminAuth, upload.single('image'), (req, res) => {
         readTime: req.body.readTime || existing.readTime,
         title: req.body.title || existing.title,
         excerpt: req.body.excerpt || existing.excerpt,
-        image: req.file ? `assets/images/${req.file.filename}` : req.body.image || existing.image,
+        image: newImagePath,
         imageAlt: req.body.imageAlt !== undefined ? req.body.imageAlt : existing.imageAlt,
         url: req.body.url !== undefined ? req.body.url : existing.url,
         body: req.body.body
@@ -174,6 +184,15 @@ app.delete('/api/blogs/:id', adminAuth, (req, res) => {
     if (index === -1) return res.status(404).json({ error: 'Blog not found' });
     const deleted = blogs.splice(index, 1)[0];
     writeJSON(BLOGS_FILE, blogs);
+
+    // Cleanup image
+    if (deleted.image && deleted.image.startsWith('assets/images/')) {
+        const oldImageFullPath = path.join(__dirname, deleted.image);
+        if (fs.existsSync(oldImageFullPath)) {
+            try { fs.unlinkSync(oldImageFullPath); } catch (e) { console.error('Error deleting image:', e); }
+        }
+    }
+
     res.json({ message: 'Blog deleted', blog: deleted });
 });
 
@@ -223,6 +242,16 @@ app.put('/api/experiences/:id', adminAuth, upload.single('image'), (req, res) =>
     if (index === -1) return res.status(404).json({ error: 'Experience not found' });
 
     const existing = experiences[index];
+    const newImagePath = req.file ? `assets/images/${req.file.filename}` : req.body.image || existing.image;
+
+    // Cleanup old image if replaced by a new upload
+    if (req.file && existing.image && existing.image.startsWith('assets/images/')) {
+        const oldImageFullPath = path.join(__dirname, existing.image);
+        if (fs.existsSync(oldImageFullPath)) {
+            try { fs.unlinkSync(oldImageFullPath); } catch (e) { console.error('Error deleting old image:', e); }
+        }
+    }
+
     experiences[index] = {
         ...existing,
         category: req.body.category || existing.category,
@@ -231,7 +260,7 @@ app.put('/api/experiences/:id', adminAuth, upload.single('image'), (req, res) =>
         meta: req.body.meta || existing.meta,
         title: req.body.title || existing.title,
         excerpt: req.body.excerpt || existing.excerpt,
-        image: req.file ? `assets/images/${req.file.filename}` : req.body.image || existing.image,
+        image: newImagePath,
         link: req.body.link || existing.link,
         featured: req.body.featured !== undefined ? req.body.featured === 'true' : existing.featured,
         wide: req.body.wide !== undefined ? req.body.wide === 'true' : existing.wide
@@ -247,6 +276,15 @@ app.delete('/api/experiences/:id', adminAuth, (req, res) => {
     if (index === -1) return res.status(404).json({ error: 'Experience not found' });
     const deleted = experiences.splice(index, 1)[0];
     writeJSON(EXPERIENCES_FILE, experiences);
+
+    // Cleanup image
+    if (deleted.image && deleted.image.startsWith('assets/images/')) {
+        const oldImageFullPath = path.join(__dirname, deleted.image);
+        if (fs.existsSync(oldImageFullPath)) {
+            try { fs.unlinkSync(oldImageFullPath); } catch (e) { console.error('Error deleting image:', e); }
+        }
+    }
+
     res.json({ message: 'Experience deleted', experience: deleted });
 });
 

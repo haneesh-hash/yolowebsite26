@@ -1,1648 +1,1508 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <link rel="icon" type="image/svg+xml" href="logo.svg?v=1771706725" />
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Our Story | The YOLO Collective | Born from the Mountains</title>
-        <meta
-            name="description"
-            content="Born in the Himalayas. The YOLO Collective is redefining mountain hospitality — from boutique hostels to private homes and wild outdoor escapes. This is our story."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Our Story | The YOLO Collective" />
-        <meta property="og:description" content="Born in the Himalayas. Redefining mountain hospitality." />
-        <meta property="og:image" content="https://theyolocollective.com/assets/images/IMG_3229.webp" />
-        <meta property="og:url" content="https://theyolocollective.com/about.html" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <link rel="stylesheet" href="style.css?v=4" />
-        <style>
-            /* ── ABOUT PAGE SPECIFIC ── */
 
-            /* Parallax Hero */
-            .about-hero {
-                height: 90vh;
-                min-height: 560px;
-                position: relative;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                overflow: hidden;
+<head>
+    <link rel="icon" type="image/svg+xml" href="logo.svg?v=1771706725" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Our Story | The YOLO Collective | Born from the Mountains</title>
+    <meta name="description"
+        content="Born in the Himalayas. The YOLO Collective is redefining mountain hospitality — from boutique hostels to private homes and wild outdoor escapes. This is our story." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Our Story | The YOLO Collective" />
+    <meta property="og:description" content="Born in the Himalayas. Redefining mountain hospitality." />
+    <meta property="og:image" content="https://theyolocollective.com/assets/images/IMG_3229.webp" />
+    <meta property="og:url" content="https://theyolocollective.com/about.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="style.css?v=4" />
+    <style>
+        /* ── ABOUT PAGE SPECIFIC ── */
+
+        /* Parallax Hero */
+        .about-hero {
+            height: 100vh;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding: clamp(2rem, 5vw, 5rem);
+            padding-bottom: 8rem;
+            overflow: hidden;
+        }
+
+        .about-hero__bg {
+            position: absolute;
+            inset: 0;
+            will-change: transform;
+        }
+
+        .about-hero__bg img {
+            width: 100%;
+            height: 120%;
+            object-fit: cover;
+            object-position: center 30%;
+            transform: translateY(0);
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.2) 100%);
+            z-index: 1;
+        }
+
+        .about-hero__content {
+            position: relative;
+            z-index: 2;
+            text-align: left;
+            color: #fff;
+            max-width: 1000px;
+            transition: transform 0.1s ease-out;
+        }
+
+        .about-hero__eyebrow {
+            display: inline-block;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #fff;
+            padding: 0.6rem 1.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 40px;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-hero__title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(4rem, 12vw, 9rem);
+            font-weight: 800;
+            line-height: 0.9;
+            margin: 0 0 1.5rem;
+            letter-spacing: -0.04em;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+            background: linear-gradient(90deg, #fff, #74acdf, #fff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shine 6s linear infinite;
+            text-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .about-hero__title span {
+            display: block;
+            color: #fff;
+            -webkit-text-stroke: 0;
+            text-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .about-hero__subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            max-width: 600px;
+            border-left: 3px solid #74acdf;
+            padding-left: 1.5rem;
+            margin-left: 0.25rem;
+        }
+
+        .about-hero__scroll-hint {
+            position: absolute;
+            bottom: 2.5rem;
+            left: clamp(2rem, 5vw, 5rem);
+            transform: none;
+            z-index: 2;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .scroll-line {
+            width: 48px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            animation: scrollRight 1.8s ease-in-out infinite;
+        }
+
+        @keyframes scrollRight {
+            0% {
+                left: -100%;
             }
 
-            .about-hero__bg {
-                position: absolute;
-                inset: 0;
-                will-change: transform;
+            100% {
+                left: 100%;
             }
+        }
 
-            .about-hero__bg img {
-                width: 100%;
-                height: 120%;
-                object-fit: cover;
-                object-position: center 30%;
-                transform: translateY(0);
-            }
+        /* ── Stats Section ── */
+        .about-stats {
+            background: #000;
+            padding: 5rem clamp(1.5rem, 5vw, 5rem);
+        }
 
-            .about-hero::before {
-                content: '';
-                position: absolute;
-                inset: 0;
-                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.65) 100%);
-                z-index: 1;
-            }
+        .about-stats__grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
 
-            .about-hero__content {
-                position: relative;
-                z-index: 2;
-                text-align: center;
-                color: #fff;
-                padding: 2rem;
-            }
+        .about-stat {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            opacity: 0;
+            transform: translateY(30px);
+            transition:
+                opacity 0.7s ease,
+                transform 0.7s ease;
+        }
 
-            .about-hero__eyebrow {
-                display: inline-block;
-                font-family: 'Outfit', sans-serif;
-                font-size: 0.65rem;
-                font-weight: 700;
-                letter-spacing: 0.22em;
-                text-transform: uppercase;
-                color: rgba(255, 255, 255, 0.6);
-                margin-bottom: 1.25rem;
-            }
+        .about-stat:last-child {
+            border-right: none;
+        }
 
-            .about-hero__title {
-                font-family: 'Outfit', sans-serif;
-                font-size: clamp(3.5rem, 9vw, 7rem);
-                font-weight: 800;
-                line-height: 1;
-                margin: 0 0 1rem;
-                letter-spacing: -0.02em;
-            }
+        .about-stat.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-            .about-hero__subtitle {
-                font-size: clamp(1rem, 2vw, 1.2rem);
-                letter-spacing: 0.25em;
-                text-transform: uppercase;
-                opacity: 0.75;
-                font-weight: 300;
-            }
+        .about-stat__number {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+            display: block;
+        }
 
-            .about-hero__scroll-hint {
-                position: absolute;
-                bottom: 2.5rem;
-                left: 50%;
-                transform: translateX(-50%);
-                z-index: 2;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 0.5rem;
-                color: rgba(255, 255, 255, 0.5);
-                font-size: 0.65rem;
-                letter-spacing: 0.2em;
-                text-transform: uppercase;
-            }
+        .about-stat__suffix {
+            color: #74acdf;
+        }
 
-            .scroll-line {
-                width: 1px;
-                height: 48px;
-                background: rgba(255, 255, 255, 0.3);
-                position: relative;
-                overflow: hidden;
-            }
+        .about-stat__label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 0.75rem;
+            display: block;
+        }
 
-            .scroll-line::after {
-                content: '';
-                position: absolute;
-                top: -100%;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: #fff;
-                animation: scrollDown 1.8s ease-in-out infinite;
-            }
-
-            @keyframes scrollDown {
-                0% {
-                    top: -100%;
-                }
-
-                100% {
-                    top: 100%;
-                }
-            }
-
-            /* ── Stats Section ── */
-            .about-stats {
-                background: #000;
-                padding: 5rem clamp(1.5rem, 5vw, 5rem);
-            }
-
+        @media (max-width: 768px) {
             .about-stats__grid {
-                max-width: 1100px;
-                margin: 0 auto;
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 2rem;
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .about-stat {
-                text-align: center;
-                padding: 2rem 1rem;
-                border-right: 1px solid rgba(255, 255, 255, 0.08);
-                opacity: 0;
-                transform: translateY(30px);
-                transition:
-                    opacity 0.7s ease,
-                    transform 0.7s ease;
-            }
-
-            .about-stat:last-child {
+            .about-stat:nth-child(2) {
                 border-right: none;
             }
 
-            .about-stat.in-view {
-                opacity: 1;
-                transform: translateY(0);
+            .about-stat:nth-child(1),
+            .about-stat:nth-child(2) {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             }
+        }
 
-            .about-stat__number {
-                font-family: 'Outfit', sans-serif;
-                font-size: clamp(2.5rem, 5vw, 4rem);
-                font-weight: 800;
-                color: #fff;
-                line-height: 1;
-                display: block;
+        @media (max-width: 480px) {
+            .about-stats__grid {
+                grid-template-columns: 1fr 1fr;
             }
+        }
 
-            .about-stat__suffix {
-                color: #74acdf;
-            }
+        /* ── Reveal utility ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition:
+                opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-            .about-stat__label {
-                font-family: 'Outfit', sans-serif;
-                font-size: 0.65rem;
-                font-weight: 700;
-                letter-spacing: 0.2em;
-                text-transform: uppercase;
-                color: rgba(255, 255, 255, 0.4);
-                margin-top: 0.75rem;
-                display: block;
-            }
+        .reveal.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-            @media (max-width: 768px) {
-                .about-stats__grid {
-                    grid-template-columns: repeat(2, 1fr);
-                }
+        .reveal-delay-1 {
+            transition-delay: 0.1s;
+        }
 
-                .about-stat:nth-child(2) {
-                    border-right: none;
-                }
+        .reveal-delay-2 {
+            transition-delay: 0.2s;
+        }
 
-                .about-stat:nth-child(1),
-                .about-stat:nth-child(2) {
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-                }
-            }
+        .reveal-delay-3 {
+            transition-delay: 0.35s;
+        }
 
-            @media (max-width: 480px) {
-                .about-stats__grid {
-                    grid-template-columns: 1fr 1fr;
-                }
-            }
+        /* ── Origin Timeline ── */
+        .about-timeline {
+            padding: 7rem clamp(1.5rem, 5vw, 5rem);
+            background: #fff;
+            overflow: hidden;
+        }
 
-            /* ── Reveal utility ── */
-            .reveal {
-                opacity: 0;
-                transform: translateY(40px);
-                transition:
-                    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            }
+        .about-timeline__inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
-            .reveal.in-view {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
 
-            .reveal-delay-1 {
-                transition-delay: 0.1s;
-            }
+        .timeline-list {
+            position: relative;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
 
-            .reveal-delay-2 {
-                transition-delay: 0.2s;
-            }
+        .timeline-list::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(0, 0, 0, 0.1);
+            transform: translateX(-50%);
+        }
 
-            .reveal-delay-3 {
-                transition-delay: 0.35s;
-            }
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 60px 1fr;
+            gap: 0 1.5rem;
+            margin-bottom: 4rem;
+            align-items: start;
+        }
 
-            /* ── Origin Timeline ── */
-            .about-timeline {
-                padding: 7rem clamp(1.5rem, 5vw, 5rem);
-                background: #fff;
-                overflow: hidden;
-            }
+        .timeline-item:nth-child(odd) .timeline-content {
+            grid-column: 1;
+            text-align: right;
+        }
 
-            .about-timeline__inner {
-                max-width: 900px;
-                margin: 0 auto;
-            }
+        .timeline-item:nth-child(odd) .timeline-empty {
+            grid-column: 3;
+        }
 
-            .timeline-header {
-                text-align: center;
-                margin-bottom: 5rem;
-            }
+        .timeline-item:nth-child(even) .timeline-content {
+            grid-column: 3;
+            text-align: left;
+        }
 
-            .timeline-list {
-                position: relative;
-                padding: 0;
-                margin: 0;
-                list-style: none;
-            }
+        .timeline-item:nth-child(even) .timeline-empty {
+            grid-column: 1;
+        }
 
+        .timeline-item:nth-child(even) .timeline-dot-col {
+            grid-column: 2;
+        }
+
+        .timeline-dot-col {
+            grid-column: 2;
+            grid-row: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .timeline-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #74acdf;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 2px #74acdf;
+            flex-shrink: 0;
+            margin-top: 0.35rem;
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-dot {
+            transform: scale(1.4);
+            box-shadow: 0 0 0 4px rgba(116, 172, 223, 0.3);
+        }
+
+        .timeline-content {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition:
+                opacity 0.7s ease,
+                transform 0.7s ease;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            transform: translateX(30px);
+        }
+
+        .timeline-content.in-view {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-year {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #74acdf;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .timeline-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            line-height: 1.2;
+            margin: 0 0 0.5rem;
+        }
+
+        .timeline-body {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(0, 0, 0, 0.55);
+            margin: 0;
+        }
+
+        @media (max-width: 640px) {
             .timeline-list::before {
-                content: '';
-                position: absolute;
-                left: 50%;
-                top: 0;
-                bottom: 0;
-                width: 1px;
-                background: rgba(0, 0, 0, 0.1);
-                transform: translateX(-50%);
+                left: 20px;
             }
 
             .timeline-item {
-                display: grid;
-                grid-template-columns: 1fr 60px 1fr;
-                gap: 0 1.5rem;
-                margin-bottom: 4rem;
-                align-items: start;
+                grid-template-columns: 44px 1fr;
+                gap: 0 1rem;
             }
 
-            .timeline-item:nth-child(odd) .timeline-content {
-                grid-column: 1;
-                text-align: right;
-            }
-
-            .timeline-item:nth-child(odd) .timeline-empty {
-                grid-column: 3;
-            }
-
+            .timeline-item:nth-child(odd) .timeline-content,
             .timeline-item:nth-child(even) .timeline-content {
-                grid-column: 3;
-                text-align: left;
-            }
-
-            .timeline-item:nth-child(even) .timeline-empty {
-                grid-column: 1;
-            }
-
-            .timeline-item:nth-child(even) .timeline-dot-col {
                 grid-column: 2;
+                text-align: left;
+                transform: translateX(20px);
+            }
+
+            .timeline-item:nth-child(odd) .timeline-empty,
+            .timeline-item:nth-child(even) .timeline-empty {
+                display: none;
             }
 
             .timeline-dot-col {
-                grid-column: 2;
+                grid-column: 1;
                 grid-row: 1;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
             }
+        }
 
-            .timeline-dot {
-                width: 14px;
-                height: 14px;
-                border-radius: 50%;
-                background: #74acdf;
-                border: 3px solid #fff;
-                box-shadow: 0 0 0 2px #74acdf;
-                flex-shrink: 0;
-                margin-top: 0.35rem;
-                transition:
-                    transform 0.3s ease,
-                    box-shadow 0.3s ease;
-            }
+        /* ── Pillars Enhanced ── */
+        .about-pillars {
+            padding: 7rem clamp(1.5rem, 5vw, 5rem);
+            background: #f9f9f9;
+        }
 
-            .timeline-item:hover .timeline-dot {
-                transform: scale(1.4);
-                box-shadow: 0 0 0 4px rgba(116, 172, 223, 0.3);
-            }
+        .about-pillars__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-            .timeline-content {
-                opacity: 0;
-                transform: translateX(-30px);
-                transition:
-                    opacity 0.7s ease,
-                    transform 0.7s ease;
-            }
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3.5rem;
+        }
 
-            .timeline-item:nth-child(even) .timeline-content {
-                transform: translateX(30px);
-            }
+        .pillar-card {
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 2.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition:
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s ease,
+                border-color 0.3s ease;
+        }
 
-            .timeline-content.in-view {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #74acdf;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-            .timeline-year {
-                font-family: 'Outfit', sans-serif;
-                font-size: 0.65rem;
-                font-weight: 700;
-                letter-spacing: 0.2em;
-                text-transform: uppercase;
-                color: #74acdf;
-                display: block;
-                margin-bottom: 0.4rem;
-            }
+        .pillar-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
 
-            .timeline-title {
-                font-family: 'Outfit', sans-serif;
-                font-weight: 800;
-                font-size: 1.2rem;
-                line-height: 1.2;
-                margin: 0 0 0.5rem;
-            }
+        .pillar-card:hover::before {
+            transform: scaleX(1);
+        }
 
-            .timeline-body {
-                font-size: 0.9rem;
-                line-height: 1.7;
-                color: rgba(0, 0, 0, 0.55);
-                margin: 0;
-            }
+        .pillar-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(116, 172, 223, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition:
+                background 0.3s ease,
+                transform 0.3s ease;
+        }
 
-            @media (max-width: 640px) {
-                .timeline-list::before {
-                    left: 20px;
-                }
+        .pillar-card:hover .pillar-icon {
+            background: rgba(116, 172, 223, 0.2);
+            transform: scale(1.08);
+        }
 
-                .timeline-item {
-                    grid-template-columns: 44px 1fr;
-                    gap: 0 1rem;
-                }
+        .pillar-icon svg {
+            color: #74acdf;
+        }
 
-                .timeline-item:nth-child(odd) .timeline-content,
-                .timeline-item:nth-child(even) .timeline-content {
-                    grid-column: 2;
-                    text-align: left;
-                    transform: translateX(20px);
-                }
+        .pillar-name {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.35rem;
+            margin: 0 0 0.75rem;
+        }
 
-                .timeline-item:nth-child(odd) .timeline-empty,
-                .timeline-item:nth-child(even) .timeline-empty {
-                    display: none;
-                }
+        .pillar-body {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: rgba(0, 0, 0, 0.55);
+            margin: 0 0 1.5rem;
+        }
 
-                .timeline-dot-col {
-                    grid-column: 1;
-                    grid-row: 1;
-                }
-            }
+        .pillar-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #000;
+            text-decoration: none;
+            transition:
+                color 0.2s ease,
+                gap 0.2s ease;
+        }
 
-            /* ── Pillars Enhanced ── */
-            .about-pillars {
-                padding: 7rem clamp(1.5rem, 5vw, 5rem);
-                background: #f9f9f9;
-            }
+        .pillar-card:hover .pillar-link {
+            color: #74acdf;
+            gap: 0.8rem;
+        }
 
-            .about-pillars__inner {
-                max-width: 1200px;
-                margin: 0 auto;
-            }
-
+        @media (max-width: 768px) {
             .pillars-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 2rem;
-                margin-top: 3.5rem;
+                grid-template-columns: 1fr;
             }
+        }
 
-            .pillar-card {
-                background: #fff;
-                border: 1px solid rgba(0, 0, 0, 0.08);
-                padding: 2.5rem 2rem;
-                position: relative;
-                overflow: hidden;
-                cursor: pointer;
-                transition:
-                    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                    box-shadow 0.4s ease,
-                    border-color 0.3s ease;
-            }
+        /* ── Founder Quote ── */
+        .about-quote {
+            padding: 8rem clamp(1.5rem, 5vw, 5rem);
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
 
-            .pillar-card::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 3px;
-                background: #74acdf;
-                transform: scaleX(0);
-                transform-origin: left;
-                transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            }
+        .about-quote::before {
+            content: '"';
+            position: absolute;
+            top: -2rem;
+            left: clamp(1rem, 5vw, 5rem);
+            font-family: Georgia, serif;
+            font-size: 20rem;
+            line-height: 1;
+            color: rgba(116, 172, 223, 0.06);
+            pointer-events: none;
+            user-select: none;
+        }
 
-            .pillar-card:hover {
-                transform: translateY(-6px);
-                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-            }
+        .about-quote__inner {
+            max-width: 860px;
+            margin: 0 auto;
+            position: relative;
+        }
 
-            .pillar-card:hover::before {
-                transform: scaleX(1);
-            }
+        .about-quote__text {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-style: italic;
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            line-height: 1.55;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0 0 2.5rem;
+        }
 
-            .pillar-icon {
-                width: 56px;
-                height: 56px;
-                background: rgba(116, 172, 223, 0.1);
-                border-radius: 12px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-bottom: 1.5rem;
-                transition:
-                    background 0.3s ease,
-                    transform 0.3s ease;
-            }
+        .about-quote__attr {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
-            .pillar-card:hover .pillar-icon {
-                background: rgba(116, 172, 223, 0.2);
-                transform: scale(1.08);
-            }
+        .about-quote__line {
+            width: 40px;
+            height: 1px;
+            background: #74acdf;
+        }
 
-            .pillar-icon svg {
-                color: #74acdf;
-            }
+        .about-quote__name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+        }
 
-            .pillar-name {
-                font-family: 'Outfit', sans-serif;
-                font-weight: 800;
-                font-size: 1.35rem;
-                margin: 0 0 0.75rem;
-            }
+        /* ── Values Section ── */
+        .about-values {
+            padding: 7rem clamp(1.5rem, 5vw, 5rem);
+            background: #fff;
+        }
 
-            .pillar-body {
-                font-size: 0.95rem;
-                line-height: 1.75;
-                color: rgba(0, 0, 0, 0.55);
-                margin: 0 0 1.5rem;
-            }
+        .about-values__inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
 
-            .pillar-link {
-                display: inline-flex;
-                align-items: center;
-                gap: 0.5rem;
-                font-family: 'Outfit', sans-serif;
-                font-size: 0.75rem;
-                font-weight: 700;
-                letter-spacing: 0.1em;
-                text-transform: uppercase;
-                color: #000;
-                text-decoration: none;
-                transition:
-                    color 0.2s ease,
-                    gap 0.2s ease;
-            }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 3.5rem;
+        }
 
-            .pillar-card:hover .pillar-link {
-                color: #74acdf;
-                gap: 0.8rem;
-            }
+        .value-item {
+            padding: 2.25rem;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            position: relative;
+            cursor: default;
+            transition:
+                border-color 0.3s ease,
+                background 0.3s ease;
+        }
 
-            @media (max-width: 768px) {
-                .pillars-grid {
-                    grid-template-columns: 1fr;
-                }
-            }
+        .value-item:hover {
+            border-color: #74acdf;
+            background: rgba(116, 172, 223, 0.03);
+        }
 
-            /* ── Founder Quote ── */
-            .about-quote {
-                padding: 8rem clamp(1.5rem, 5vw, 5rem);
-                background: #000;
-                position: relative;
-                overflow: hidden;
-            }
+        .value-num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(0, 0, 0, 0.2);
+            margin-bottom: 1rem;
+            display: block;
+        }
 
-            .about-quote::before {
-                content: '"';
-                position: absolute;
-                top: -2rem;
-                left: clamp(1rem, 5vw, 5rem);
-                font-family: Georgia, serif;
-                font-size: 20rem;
-                line-height: 1;
-                color: rgba(116, 172, 223, 0.06);
-                pointer-events: none;
-                user-select: none;
-            }
+        .value-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.3rem;
+            margin: 0 0 0.75rem;
+        }
 
-            .about-quote__inner {
-                max-width: 860px;
-                margin: 0 auto;
-                position: relative;
-            }
+        .value-body {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(0, 0, 0, 0.55);
+            margin: 0;
+        }
 
-            .about-quote__text {
-                font-family: Georgia, 'Times New Roman', serif;
-                font-style: italic;
-                font-size: clamp(1.4rem, 3vw, 2.2rem);
-                line-height: 1.55;
-                color: rgba(255, 255, 255, 0.9);
-                margin: 0 0 2.5rem;
-            }
-
-            .about-quote__attr {
-                display: flex;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .about-quote__line {
-                width: 40px;
-                height: 1px;
-                background: #74acdf;
-            }
-
-            .about-quote__name {
-                font-family: 'Outfit', sans-serif;
-                font-size: 0.75rem;
-                font-weight: 700;
-                letter-spacing: 0.2em;
-                text-transform: uppercase;
-                color: rgba(255, 255, 255, 0.5);
-            }
-
-            /* ── Values Section ── */
-            .about-values {
-                padding: 7rem clamp(1.5rem, 5vw, 5rem);
-                background: #fff;
-            }
-
-            .about-values__inner {
-                max-width: 1100px;
-                margin: 0 auto;
-            }
-
+        @media (max-width: 640px) {
             .values-grid {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-                margin-top: 3.5rem;
+                grid-template-columns: 1fr;
             }
+        }
 
-            .value-item {
-                padding: 2.25rem;
-                border: 1px solid rgba(0, 0, 0, 0.08);
-                position: relative;
-                cursor: default;
-                transition:
-                    border-color 0.3s ease,
-                    background 0.3s ease;
-            }
+        /* ── Gallery Strip ── */
+        .about-gallery {
+            padding: 0;
+            overflow: hidden;
+            background: #000;
+        }
 
-            .value-item:hover {
-                border-color: #74acdf;
-                background: rgba(116, 172, 223, 0.03);
-            }
+        .gallery-strip {
+            display: flex;
+            gap: 4px;
+        }
 
-            .value-num {
-                font-family: 'Outfit', sans-serif;
-                font-size: 0.6rem;
-                font-weight: 700;
-                letter-spacing: 0.2em;
-                text-transform: uppercase;
-                color: rgba(0, 0, 0, 0.2);
-                margin-bottom: 1rem;
-                display: block;
-            }
+        .gallery-strip__item {
+            flex: 1;
+            height: 340px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
 
-            .value-title {
-                font-family: 'Outfit', sans-serif;
-                font-weight: 800;
-                font-size: 1.3rem;
-                margin: 0 0 0.75rem;
-            }
+        .gallery-strip__item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition:
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.4s ease;
+            filter: grayscale(40%);
+        }
 
-            .value-body {
-                font-size: 0.95rem;
-                line-height: 1.7;
-                color: rgba(0, 0, 0, 0.55);
-                margin: 0;
-            }
+        .gallery-strip__item:hover img {
+            transform: scale(1.06);
+            filter: grayscale(0%);
+        }
 
-            @media (max-width: 640px) {
-                .values-grid {
-                    grid-template-columns: 1fr;
-                }
-            }
-
-            /* ── Gallery Strip ── */
-            .about-gallery {
-                padding: 0;
-                overflow: hidden;
-                background: #000;
-            }
-
+        @media (max-width: 640px) {
             .gallery-strip {
-                display: flex;
-                gap: 4px;
+                flex-direction: column;
             }
 
             .gallery-strip__item {
-                flex: 1;
-                height: 340px;
-                overflow: hidden;
-                position: relative;
-                cursor: pointer;
+                height: 220px;
+                flex: none;
             }
+        }
 
-            .gallery-strip__item img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition:
-                    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                    filter 0.4s ease;
-                filter: grayscale(40%);
-            }
+        /* ── Philosophy Enhanced ── */
+        .about-philosophy {
+            padding: 7rem clamp(1.5rem, 5vw, 5rem);
+            background: #f9f9f9;
+        }
 
-            .gallery-strip__item:hover img {
-                transform: scale(1.06);
-                filter: grayscale(0%);
-            }
+        .about-philosophy__inner {
+            max-width: 780px;
+            margin: 0 auto;
+            text-align: center;
+        }
 
-            @media (max-width: 640px) {
-                .gallery-strip {
-                    flex-direction: column;
-                }
+        .philosophy-accordion {
+            margin-top: 3rem;
+            text-align: left;
+        }
 
-                .gallery-strip__item {
-                    height: 220px;
-                    flex: none;
-                }
-            }
+        .accordion-item {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
 
-            /* ── Philosophy Enhanced ── */
-            .about-philosophy {
-                padding: 7rem clamp(1.5rem, 5vw, 5rem);
-                background: #f9f9f9;
-            }
+        .accordion-trigger {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 1.4rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-align: left;
+            transition: color 0.2s ease;
+        }
 
-            .about-philosophy__inner {
-                max-width: 780px;
-                margin: 0 auto;
-                text-align: center;
-            }
+        .accordion-trigger:hover {
+            color: #74acdf;
+        }
 
-            .philosophy-accordion {
-                margin-top: 3rem;
-                text-align: left;
-            }
+        .accordion-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 50%;
+            transition:
+                transform 0.35s ease,
+                background 0.2s ease,
+                border-color 0.2s ease;
+        }
 
-            .accordion-item {
-                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-                overflow: hidden;
-            }
+        .accordion-trigger[aria-expanded='true'] .accordion-icon {
+            transform: rotate(45deg);
+            background: #74acdf;
+            border-color: #74acdf;
+        }
 
-            .accordion-trigger {
-                width: 100%;
-                background: none;
-                border: none;
-                padding: 1.4rem 0;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                cursor: pointer;
-                font-family: 'Outfit', sans-serif;
-                font-weight: 700;
-                font-size: 1.05rem;
-                text-align: left;
-                transition: color 0.2s ease;
-            }
+        .accordion-trigger[aria-expanded='true'] .accordion-icon svg {
+            stroke: #fff;
+        }
 
-            .accordion-trigger:hover {
-                color: #74acdf;
-            }
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-            .accordion-icon {
-                width: 24px;
-                height: 24px;
-                flex-shrink: 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border: 1px solid rgba(0, 0, 0, 0.15);
-                border-radius: 50%;
-                transition:
-                    transform 0.35s ease,
-                    background 0.2s ease,
-                    border-color 0.2s ease;
-            }
+        .accordion-body p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: rgba(0, 0, 0, 0.6);
+            padding-bottom: 1.4rem;
+            margin: 0;
+        }
+    </style>
 
-            .accordion-trigger[aria-expanded='true'] .accordion-icon {
-                transform: rotate(45deg);
-                background: #74acdf;
-                border-color: #74acdf;
-            }
+    <link rel="canonical" href="https://theyolocollective.com/about.html" />
+</head>
 
-            .accordion-trigger[aria-expanded='true'] .accordion-icon svg {
-                stroke: #fff;
-            }
+<body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
 
-            .accordion-body {
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-            }
-
-            .accordion-body p {
-                font-size: 0.95rem;
-                line-height: 1.8;
-                color: rgba(0, 0, 0, 0.6);
-                padding-bottom: 1.4rem;
-                margin: 0;
-            }
-        </style>
-
-        <link rel="canonical" href="https://theyolocollective.com/about.html" />
-    </head>
-
-    <body>
-        <a href="#main-content" class="skip-link">Skip to content</a>
-
-        <!-- Navigation -->
-        <header class="site-header">
-            <nav class="nav-container">
-                <div class="logo">
-                    <a href="index.html">
-                        <img src="logo.svg?v=1771706725" alt="The YOLO Collective logo" class="logo-image" />
-                    </a>
-                </div>
-                <ul class="nav-links">
-                    <li class="dropdown">
-                        <a href="index.html#explore">Destinations <span class="arrow-down">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="jispa.html">Jispa</a></li>
-                            <li><a href="manali.html">Manali</a></li>
-                            <li><a href="kasol.html">Kasol</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="experience.html">YOLO Experiences</a></li>
-                    <li><a href="blog.html">Blogs</a></li>
-                    <li class="dropdown">
-                        <a href="index.html#company">Inside YOLO <span class="arrow-down">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="franchise.html">Franchise</a></li>
-                            <li><a href="work-with-us.html">Work With Us</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <div class="nav-right">
-                    <div class="nav-actions">
-                        <a
-                            href="https://wa.me/917018591758"
-                            class="btn-whatsapp"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <path
-                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
-                                ></path>
-                            </svg>
-                        </a>
-                        <a
-                            href="https://bookingengine.stayflexi.com/group-be/?groupId=28012"
-                            class="btn-primary"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            >Book Your Stay</a
-                        >
-                    </div>
-                    <button class="mobile-menu-toggle" aria-label="Open Menu">
-                        <span></span><span></span><span></span>
-                    </button>
-                </div>
-            </nav>
-        </header>
-
-        <!-- Mobile Navigation Drawer -->
-        <div class="mobile-nav-drawer" role="dialog" aria-label="Mobile navigation">
-            <ul class="mobile-nav-links">
-                <li><a href="experience.html">Experiences</a></li>
-                <li>
-                    <a href="#" class="mobile-dropdown-toggle">Destinations ▼</a>
-                    <ul class="mobile-sub-menu">
+    <!-- Navigation -->
+    <header class="site-header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="logo.svg?v=1771706725" alt="The YOLO Collective logo" class="logo-image" />
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="index.html#explore">Destinations <span class="arrow-down">▼</span></a>
+                    <ul class="dropdown-menu">
                         <li><a href="jispa.html">Jispa</a></li>
                         <li><a href="manali.html">Manali</a></li>
                         <li><a href="kasol.html">Kasol</a></li>
                     </ul>
                 </li>
+                <li><a href="experience.html">YOLO Experiences</a></li>
                 <li><a href="blog.html">Blogs</a></li>
-                <li>
-                    <a href="#" class="mobile-dropdown-toggle">Inside YOLO ▼</a>
-                    <ul class="mobile-sub-menu">
-                        <li><a href="about.html">About Us</a></li>
+                <li class="dropdown">
+                    <a href="index.html#company">Inside YOLO <span class="arrow-down">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="about.html">About</a></li>
                         <li><a href="franchise.html">Franchise</a></li>
-                        <li><a href="work-with-us.html">Work with us</a></li>
+                        <li><a href="work-with-us.html">Work With Us</a></li>
                     </ul>
                 </li>
-                <li><a href="#" class="btn-primary" id="booking-trigger-mobile">Book Your Stay</a></li>
             </ul>
-        </div>
-
-        <!-- Mobile Bottom Navigation -->
-        <nav class="mobile-bottom-nav">
-            <a href="index.html" class="nav-item">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                </svg>
-                <span>Home</span>
-            </a>
-            <a href="experience.html" class="nav-item">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <polygon
-                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    ></polygon>
-                </svg>
-                <span>Experiences</span>
-            </a>
-            <a href="about.html" class="nav-item active">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="12" y1="16" x2="12" y2="12"></line>
-                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                </svg>
-                <span>About</span>
-            </a>
-            <a
-                href="https://bookingengine.stayflexi.com/group-be/?groupId=28012"
-                class="nav-item highlight"
-                target="_blank"
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-                <span>Book</span>
-            </a>
-            <a href="https://wa.me/917018591758" class="nav-item" target="_blank">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                >
-                    <path
-                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
-                    ></path>
-                </svg>
-                <span>Chat</span>
-            </a>
+            <div class="nav-right">
+                <div class="nav-actions">
+                    <a href="https://wa.me/917018591758" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="https://bookingengine.stayflexi.com/group-be/?groupId=28012" class="btn-primary"
+                        target="_blank" rel="noopener noreferrer">Book Your Stay</a>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Open Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </nav>
+    </header>
 
-        <main id="main-content">
-            <!-- ① Hero -->
-            <section class="about-hero" id="about-hero">
-                <div class="about-hero__bg" id="heroParallax">
-                    <img
-                        src="assets/images/IMG_3229.webp"
-                        alt="Himalayan mountain peaks at blue hour"
-                        fetchpriority="high"
-                        decoding="async"
-                    />
-                </div>
-                <div class="about-hero__content">
-                    <span class="about-hero__eyebrow reveal">The YOLO Collective Story</span>
-                    <h1 class="about-hero__title reveal reveal-delay-1">Our<br />Story.</h1>
-                    <p class="about-hero__subtitle reveal reveal-delay-2">
-                        Born from the Mountains. Built for the Soul.
-                    </p>
-                </div>
-                <div class="about-hero__scroll-hint">
-                    <div class="scroll-line"></div>
-                    <span>Scroll</span>
-                </div>
-            </section>
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer" role="dialog" aria-label="Mobile navigation">
+        <ul class="mobile-nav-links">
+            <li><a href="experience.html">Experiences</a></li>
+            <li>
+                <a href="#" class="mobile-dropdown-toggle">Destinations ▼</a>
+                <ul class="mobile-sub-menu">
+                    <li><a href="jispa.html">Jispa</a></li>
+                    <li><a href="manali.html">Manali</a></li>
+                    <li><a href="kasol.html">Kasol</a></li>
+                </ul>
+            </li>
+            <li><a href="blog.html">Blogs</a></li>
+            <li>
+                <a href="#" class="mobile-dropdown-toggle">Inside YOLO ▼</a>
+                <ul class="mobile-sub-menu">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="franchise.html">Franchise</a></li>
+                    <li><a href="work-with-us.html">Work with us</a></li>
+                </ul>
+            </li>
+            <li><a href="#" class="btn-primary" id="booking-trigger-mobile">Book Your Stay</a></li>
+        </ul>
+    </div>
 
-            <!-- ② Stats Counter -->
-            <section class="about-stats" aria-label="Key numbers">
-                <div class="about-stats__grid">
-                    <div class="about-stat" data-target="3" data-suffix="+" data-label="Destinations">
-                        <span class="about-stat__number"
-                            ><span class="counter">0</span><span class="about-stat__suffix">+</span></span
-                        >
-                        <span class="about-stat__label">Destinations</span>
-                    </div>
-                    <div class="about-stat" data-target="70000" data-suffix="+" data-label="Guests Hosted">
-                        <span class="about-stat__number"
-                            ><span class="counter">0</span><span class="about-stat__suffix">+</span></span
-                        >
-                        <span class="about-stat__label">Guests Hosted</span>
-                    </div>
-                    <div class="about-stat" data-target="12" data-suffix="" data-label="Curated Experiences">
-                        <span class="about-stat__number"
-                            ><span class="counter">0</span><span class="about-stat__suffix"></span
-                        ></span>
-                        <span class="about-stat__label">Curated Experiences</span>
-                    </div>
-                    <div class="about-stat" data-target="4.9" data-suffix="★" data-label="Average Rating">
-                        <span class="about-stat__number"
-                            ><span class="counter">0</span><span class="about-stat__suffix">★</span></span
-                        >
-                        <span class="about-stat__label">Average Rating</span>
-                    </div>
-                </div>
-            </section>
+    <!-- Mobile Bottom Navigation -->
+        <nav class="mobile-bottom-nav">
+        <a href="index.html" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>Home</span>
+        </a>
+        <a href="experience.html" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                </polygon>
+            </svg>
+            <span>Experiences</span>
+        </a>
+        <a href="#" class="nav-item highlight" id="booking-trigger-bottom">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>Book</span>
+        </a>
+        <a href="https://wa.me/917018591758" class="nav-item" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                </path>
+            </svg>
+            <span>Chat</span>
+        </a>
+    </nav>
 
-            <!-- ③ Vision -->
-            <section class="mj-section mj-center" style="padding: 7rem 0">
-                <div class="mj-container--narrow">
-                    <span class="mj-eyebrow reveal">High Altitude, Modern Soul</span>
-                    <h2 class="mj-heading reveal reveal-delay-1">The Vision.</h2>
-                    <div class="mj-divider reveal reveal-delay-2"></div>
-                    <p class="mj-body reveal reveal-delay-2">
-                        The YOLO Collective is a mountain lifestyle hospitality platform — creating architecturally
-                        inspired stays, intimate homes, and immersive outdoor experiences across some of the world's
-                        most extraordinary high-altitude destinations.
-                    </p>
-                    <p class="mj-body reveal">
-                        Born in the Himalayas, our vision is to design spaces that bring people closer to nature without
-                        compromising comfort, community, or modern aesthetics. Each property is thoughtfully crafted to
-                        blend contemporary architecture with the raw beauty of its surroundings — offering guests more
-                        than just a place to stay, but a way to truly experience the mountains.
-                    </p>
-                    <p class="mj-body reveal">
-                        As we grow, our ambition is to shape a new era of mountain living — where travel, design, and
-                        adventure converge to create a global network of stays, homes, and experiences built for those
-                        who refuse to settle.
-                    </p>
-                </div>
-            </section>
+    <main id="main-content">
+        <!-- ① Hero -->
+        <section class="about-hero" id="about-hero">
+            <div class="about-hero__bg" id="heroParallax">
+                <img src="assets/images/aboutus.png" alt="Himalayan mountain peaks at blue hour" fetchpriority="high"
+                    decoding="async" />
+            </div>
+            <div class="about-hero__content">
+                <span class="about-hero__eyebrow reveal">The YOLO Collective Story</span>
+                <h1 class="about-hero__title reveal reveal-delay-1">Our<br />Story.</h1>
+                <p class="about-hero__subtitle reveal reveal-delay-2">
+                    Born from the Mountains. Built for the Soul.
+                </p>
+            </div>
+            <div class="about-hero__scroll-hint">
+                <div class="scroll-line"></div>
+                <span>Scroll</span>
+            </div>
+        </section>
 
-            <!-- ④ Origin Timeline -->
-            <section class="about-timeline">
-                <div class="about-timeline__inner">
-                    <div class="timeline-header">
-                        <span class="mj-eyebrow reveal">The YOLO Journey</span>
-                        <h2 class="mj-heading reveal reveal-delay-1">Our Journey.</h2>
-                    </div>
-                    <ol class="timeline-list">
-                        <li class="timeline-item">
-                            <div class="timeline-content">
-                                <span class="timeline-year">2017 — The Beginning 🎒</span>
-                                <h3 class="timeline-title">A Backpack, a Dream, and Zero Business Plan</h3>
-                                <p class="timeline-body">
-                                    The YOLO Collective was born — not in a boardroom, but in the Himalayas. One hostel.
-                                    One wild idea: what if a place could make strangers feel like family? No corporate
-                                    playbook. Just vibes, mountains, and a door that never closed. The movement started
-                                    here.
-                                </p>
-                            </div>
-                            <div class="timeline-dot-col">
-                                <div class="timeline-dot"></div>
-                            </div>
-                            <div class="timeline-empty"></div>
-                        </li>
-                        <li class="timeline-item">
-                            <div class="timeline-empty"></div>
-                            <div class="timeline-dot-col">
-                                <div class="timeline-dot"></div>
-                            </div>
-                            <div class="timeline-content">
-                                <span class="timeline-year">2019 — The Expansion 🌿</span>
-                                <h3 class="timeline-title">Parvati Valley Said "Welcome Home"</h3>
-                                <p class="timeline-body">
-                                    Word spread faster than mountain mist. YOLO landed in Parvati Valley and the magic
-                                    doubled. Two valleys. One tribe. From bonfire jam sessions in Manali to Parvati's
-                                    legendary river trails — backpacking officially became a lifestyle. The community
-                                    didn't just grow, it exploded.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="timeline-item">
-                            <div class="timeline-content">
-                                <span class="timeline-year">2023 — Plot Twist 🏔️</span>
-                                <h3 class="timeline-title">YOLO Outdoors: Where Luxury Met the Wild</h3>
-                                <p class="timeline-body">
-                                    We asked: "What if you could sleep under the Milky Way in a geodesic dome, with a
-                                    hot shower waiting?" YOLO Outdoors was born — and it broke every rule about mountain
-                                    stays. Architectural domes. Riverside sunsets. Raw nature with refined comfort. Not
-                                    just backpacking anymore — we were building experiences you can't find on any
-                                    booking app.
-                                </p>
-                            </div>
-                            <div class="timeline-dot-col">
-                                <div class="timeline-dot"></div>
-                            </div>
-                            <div class="timeline-empty"></div>
-                        </li>
-                        <li class="timeline-item">
-                            <div class="timeline-empty"></div>
-                            <div class="timeline-dot-col">
-                                <div class="timeline-dot"></div>
-                            </div>
-                            <div class="timeline-content">
-                                <span class="timeline-year">2025 — The Glow Up ✨</span>
-                                <h3 class="timeline-title">The YOLO Collective: The Full Picture</h3>
-                                <p class="timeline-body">
-                                    The biggest chapter yet. We evolved from a hostel brand into a full-blown mountain
-                                    lifestyle platform. The YOLO Collective brings it all under one roof — community
-                                    stays (Social), wilderness luxury (Outdoors), and curated private homes (Homes).
-                                    From backpacks to blueprints. From hostels to holistic living. Same soul. Bigger
-                                    canvas.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="timeline-item">
-                            <div class="timeline-content">
-                                <span class="timeline-year">What's Next → 🏡</span>
-                                <h3 class="timeline-title">YOLO Homes: Your Mountain Escape, Designed</h3>
-                                <p class="timeline-body">
-                                    Not every adventure needs to be loud. Sometimes the boldest move is slowing down.
-                                    YOLO Homes brings curated mountain homes with intentional design, long-stay comfort,
-                                    and the kind of quiet that actually recharges you. Private. Peaceful. Perfectly you.
-                                    Because sometimes the wildest thing you can do is… exhale.
-                                </p>
-                            </div>
-                            <div class="timeline-dot-col">
-                                <div class="timeline-dot"></div>
-                            </div>
-                            <div class="timeline-empty"></div>
-                        </li>
-                    </ol>
+        <!-- ② Stats Counter -->
+        <section class="about-stats" aria-label="Key numbers">
+            <div class="about-stats__grid">
+                <div class="about-stat" data-target="3" data-suffix="+" data-label="Destinations">
+                    <span class="about-stat__number"><span class="counter">0</span><span
+                            class="about-stat__suffix">+</span></span>
+                    <span class="about-stat__label">Destinations</span>
                 </div>
-            </section>
-
-            <!-- ⑤ Gallery Strip -->
-            <section class="about-gallery" aria-label="The YOLO Collective photography">
-                <div class="gallery-strip">
-                    <div class="gallery-strip__item">
-                        <img src="assets/images/IMG_3230.webp" alt="Mountain vista at sunrise" loading="lazy" />
-                    </div>
-                    <div class="gallery-strip__item">
-                        <img src="assets/images/IMG_3237.webp" alt="The YOLO Collective common area" loading="lazy" />
-                    </div>
-                    <div class="gallery-strip__item">
-                        <img src="assets/images/IMG_3241.webp" alt="Himalayan landscape" loading="lazy" />
-                    </div>
-                    <div class="gallery-strip__item">
-                        <img src="assets/images/IMG_3684.webp" alt="Scenic mountain view" loading="lazy" />
-                    </div>
+                <div class="about-stat" data-target="70000" data-suffix="+" data-label="Guests Hosted">
+                    <span class="about-stat__number"><span class="counter">0</span><span
+                            class="about-stat__suffix">+</span></span>
+                    <span class="about-stat__label">Guests Hosted</span>
                 </div>
-            </section>
-
-            <!-- ⑥ Three Pillars Enhanced -->
-            <section class="about-pillars">
-                <div class="about-pillars__inner">
-                    <div style="text-align: center; max-width: 600px; margin: 0 auto 0">
-                        <span class="mj-eyebrow reveal">One Spirit, Three Experiences</span>
-                        <h2 class="mj-heading reveal reveal-delay-1">Our World.</h2>
-                        <p class="mj-body reveal reveal-delay-2">
-                            Every traveler seeks a different rhythm. The YOLO Collective is structured into three
-                            distinct pillars, each designed with an uncompromising commitment to mountain luxury.
-                        </p>
-                    </div>
-                    <div class="pillars-grid">
-                        <div class="pillar-card reveal">
-                            <div class="pillar-icon">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="26"
-                                    height="26"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                >
-                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="9" cy="7" r="4"></circle>
-                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                </svg>
-                            </div>
-                            <p class="pillar-name">YOLO Social</p>
-                            <p class="pillar-body">
-                                Boutique hostels designed for the tribe — vibrant shared spaces, curated social events,
-                                and a community that turns strangers into lifelong friends. Base camps for the bold.
-                            </p>
-                            <a href="jispa.html" class="pillar-link">Explore stays <span>→</span></a>
-                        </div>
-                        <div class="pillar-card reveal reveal-delay-1">
-                            <div class="pillar-icon">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="26"
-                                    height="26"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                >
-                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                </svg>
-                            </div>
-                            <p class="pillar-name">YOLO Homes</p>
-                            <p class="pillar-body">
-                                Private, architecturally-designed mountain homes for slow travel and meaningful
-                                sanctuary stays. Each home is a retreat — crafted to disappear into its landscape and
-                                reawaken your senses.
-                            </p>
-                            <a href="homes.html" class="pillar-link">View homes <span>→</span></a>
-                        </div>
-                        <div class="pillar-card reveal reveal-delay-2">
-                            <div class="pillar-icon">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="26"
-                                    height="26"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                >
-                                    <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
-                                </svg>
-                            </div>
-                            <p class="pillar-name">YOLO Outdoors</p>
-                            <p class="pillar-body">
-                                Nature-immersive luxury through uniquely designed wilderness accommodations. Geodesic
-                                domes, riverside escapes, and stargazing perches — where the sky is the ceiling and the
-                                mountains are the wallpaper.
-                            </p>
-                            <a href="outdoors.html" class="pillar-link">Discover outdoors <span>→</span></a>
-                        </div>
-                    </div>
+                <div class="about-stat" data-target="12" data-suffix="" data-label="Curated Experiences">
+                    <span class="about-stat__number"><span class="counter">0</span><span
+                            class="about-stat__suffix"></span></span>
+                    <span class="about-stat__label">Curated Experiences</span>
                 </div>
-            </section>
-
-            <!-- ⑦ Founder Quote -->
-            <section class="about-quote">
-                <div class="about-quote__inner">
-                    <p class="about-quote__text reveal">
-                        "We didn't build hotels. We built a feeling — the feeling you get when you arrive somewhere that
-                        feels like it was designed just for you, by people who actually love the mountains as much as
-                        you do."
-                    </p>
-                    <div class="about-quote__attr reveal reveal-delay-1">
-                        <div class="about-quote__line"></div>
-                        <span class="about-quote__name">Founder, The YOLO Collective · Manali, Himachal Pradesh</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ⑧ Values -->
-            <section class="about-values">
-                <div class="about-values__inner">
-                    <div style="text-align: center; max-width: 600px; margin: 0 auto 0">
-                        <span class="mj-eyebrow reveal">What we stand for</span>
-                        <h2 class="mj-heading reveal reveal-delay-1">Our Values.</h2>
-                    </div>
-                    <div class="values-grid">
-                        <div class="value-item reveal">
-                            <span class="value-num">01</span>
-                            <h3 class="value-title">Nature First</h3>
-                            <p class="value-body">
-                                Every design decision starts with the landscape. We build around nature, never over it.
-                                Our properties leave minimal footprints and maximum impressions.
-                            </p>
-                        </div>
-                        <div class="value-item reveal reveal-delay-1">
-                            <span class="value-num">02</span>
-                            <h3 class="value-title">Community Over Transaction</h3>
-                            <p class="value-body">
-                                We don't count guests; we build communities. Our spaces are designed to foster real
-                                human connection — shared meals, epic trail stories, and friendships that outlast the
-                                trip.
-                            </p>
-                        </div>
-                        <div class="value-item reveal reveal-delay-2">
-                            <span class="value-num">03</span>
-                            <h3 class="value-title">Design with Intent</h3>
-                            <p class="value-body">
-                                Aesthetics are not a luxury — they're a philosophy. From the curvature of a doorframe to
-                                the scent that greets you at check-in, every detail is considered, purposeful, and
-                                alive.
-                            </p>
-                        </div>
-                        <div class="value-item reveal reveal-delay-3">
-                            <span class="value-num">04</span>
-                            <h3 class="value-title">Adventure as a Way of Life</h3>
-                            <p class="value-body">
-                                We believe the best version of yourself lives just beyond your comfort zone — on the
-                                ridge line, at 4am watching the alpenglow, or around a fire with people you met
-                                yesterday and will know forever.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ⑨ Philosophy Accordion -->
-            <section class="about-philosophy">
-                <div class="about-philosophy__inner">
-                    <span class="mj-eyebrow reveal">Service as Art</span>
-                    <h2 class="mj-heading reveal reveal-delay-1">The Philosophy of the Host.</h2>
-                    <p class="mj-body reveal reveal-delay-2">
-                        At The YOLO Collective, service is an art form. We don't have "guests" — we have residents of
-                        the mountains. Here's how we think about hospitality.
-                    </p>
-
-                    <div class="philosophy-accordion reveal">
-                        <div class="accordion-item">
-                            <button
-                                class="accordion-trigger"
-                                aria-expanded="false"
-                                id="acc1-trigger"
-                                aria-controls="acc1-body"
-                            >
-                                The Himalayan Host Philosophy
-                                <span class="accordion-icon">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2.5"
-                                    >
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg>
-                                </span>
-                            </button>
-                            <div class="accordion-body" id="acc1-body" role="region" aria-labelledby="acc1-trigger">
-                                <p>
-                                    Our Himalayan Host philosophy ensures that your experience is seamless — from the
-                                    seated welcome ritual with mountain herb tea, to the signature scent of cedarwood
-                                    that lingers in our halls. We are not concierges; we are local guides who happen to
-                                    run beautiful spaces. We provide the frame; the mountains provide the masterpiece.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button
-                                class="accordion-trigger"
-                                aria-expanded="false"
-                                id="acc2-trigger"
-                                aria-controls="acc2-body"
-                            >
-                                Slow Travel, Deep Connection
-                                <span class="accordion-icon">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2.5"
-                                    >
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg>
-                                </span>
-                            </button>
-                            <div class="accordion-body" id="acc2-body" role="region" aria-labelledby="acc2-trigger">
-                                <p>
-                                    We actively discourage rushing. Our itineraries are unhurried by design — built
-                                    around the rhythm of the mountains, not the anxiety of a checklist. We believe the
-                                    best memories come from lingering: one more cup of chai, one more sunset, one more
-                                    conversation that stretches long past midnight.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button
-                                class="accordion-trigger"
-                                aria-expanded="false"
-                                id="acc3-trigger"
-                                aria-controls="acc3-body"
-                            >
-                                Local at Heart
-                                <span class="accordion-icon">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2.5"
-                                    >
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg>
-                                </span>
-                            </button>
-                            <div class="accordion-body" id="acc3-body" role="region" aria-labelledby="acc3-trigger">
-                                <p>
-                                    Every rupee you spend at The YOLO Collective flows back into the communities that
-                                    surround us. We source ingredients from local farms, hire from local villages, and
-                                    partner with guides and artisans who've called these valleys home for generations.
-                                    Responsible travel isn't a tagline for us — it's a practice.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <button
-                                class="accordion-trigger"
-                                aria-expanded="false"
-                                id="acc4-trigger"
-                                aria-controls="acc4-body"
-                            >
-                                Sustainability & Stewardship
-                                <span class="accordion-icon">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="14"
-                                        height="14"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2.5"
-                                    >
-                                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    </svg>
-                                </span>
-                            </button>
-                            <div class="accordion-body" id="acc4-body" role="region" aria-labelledby="acc4-trigger">
-                                <p>
-                                    The Himalayas are not a backdrop — they are sacred ground. All The YOLO Collective
-                                    properties operate on low-waste principles, use solar where possible, and run active
-                                    trail-clean initiatives with every guest group. We leave our mountains better than
-                                    we found them.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ⑩ Final CTA -->
-            <section class="mj-final-cta">
-                <div class="mj-container mj-center">
-                    <span class="mj-eyebrow reveal">Ready to begin?</span>
-                    <h2 class="mj-heading reveal reveal-delay-1">Join the Journey.</h2>
-                    <p class="mj-body reveal reveal-delay-2">
-                        The mountains are calling. Your story starts the moment you arrive.
-                    </p>
-                    <div class="reveal reveal-delay-3">
-                        <a
-                            href="https://bookingengine.stayflexi.com/group-be/?groupId=28012"
-                            class="btn-primary"
-                            target="_blank"
-                            >Book Your Stay</a
-                        >
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Footer -->
-        <footer class="site-footer">
-            <div class="container footer-content">
-                <div class="footer-links-group">
-                    <h4>Inside YOLO</h4>
-                    <a href="about.html" class="footer-link">About Us</a>
-                    <a href="work-with-us.html" class="footer-link">Work with Us</a>
-                    <a href="franchise.html" class="footer-link">Franchise</a>
-                    <a href="blog.html" class="footer-link">Blogs</a>
-                </div>
-                <div class="footer-links-group">
-                    <h4>Support</h4>
-                    <a href="mailto:hello@theyolocollective.com" class="footer-link">Contact Us</a>
-                    <a href="https://wa.me/917018591758" target="_blank" class="footer-link">WhatsApp</a>
-                </div>
-                <div class="footer-brand" style="text-align: right">
-                    <h3>The YOLO Collective</h3>
-                    <p>One Collective. Three Ways to Wander.</p>
-                    <div class="footer-social" style="justify-content: flex-end; margin-top: 1rem">
-                        <a
-                            href="https://www.instagram.com/theyolocollective"
-                            class="social-link"
-                            title="Instagram"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link" title="Facebook">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </a>
-                    </div>
-                    <p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.6">&copy; 2026 The YOLO Collective.</p>
+                <div class="about-stat" data-target="4.9" data-suffix="★" data-label="Average Rating">
+                    <span class="about-stat__number"><span class="counter">0</span><span
+                            class="about-stat__suffix">★</span></span>
+                    <span class="about-stat__label">Average Rating</span>
                 </div>
             </div>
-        </footer>
+        </section>
 
-        <!-- WhatsApp FAB -->
-        <a href="https://wa.me/917018591758" class="whatsapp-fab" target="_blank" title="Chat with us">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            >
-                <path
-                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
-                ></path>
-            </svg>
-        </a>
+        <!-- ③ Vision -->
+        <section class="mj-section mj-center" style="padding: 7rem 0">
+            <div class="mj-container--narrow">
+                <span class="mj-eyebrow reveal">High Altitude, Modern Soul</span>
+                <h2 class="mj-heading reveal reveal-delay-1">The Vision.</h2>
+                <div class="mj-divider reveal reveal-delay-2"></div>
+                <p class="mj-body reveal reveal-delay-2">
+                    The YOLO Collective is a mountain lifestyle hospitality platform — creating architecturally
+                    inspired stays, intimate homes, and immersive outdoor experiences across some of the world's
+                    most extraordinary high-altitude destinations.
+                </p>
+                <p class="mj-body reveal">
+                    Born in the Himalayas, our vision is to design spaces that bring people closer to nature without
+                    compromising comfort, community, or modern aesthetics. Each property is thoughtfully crafted to
+                    blend contemporary architecture with the raw beauty of its surroundings — offering guests more
+                    than just a place to stay, but a way to truly experience the mountains.
+                </p>
+                <p class="mj-body reveal">
+                    As we grow, our ambition is to shape a new era of mountain living — where travel, design, and
+                    adventure converge to create a global network of stays, homes, and experiences built for those
+                    who refuse to settle.
+                </p>
+            </div>
+        </section>
 
-        <script src="script.js?v=3"></script>
-        <script>
-            // ── Intersection Observer for all reveal + stat elements ──
-            const io = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('in-view');
-                            io.unobserve(entry.target);
-                        }
-                    });
-                },
-                { threshold: 0.15 }
-            );
+        <!-- ④ Origin Timeline -->
+        <section class="about-timeline">
+            <div class="about-timeline__inner">
+                <div class="timeline-header">
+                    <span class="mj-eyebrow reveal">The YOLO Journey</span>
+                    <h2 class="mj-heading reveal reveal-delay-1">Our Journey.</h2>
+                </div>
+                <ol class="timeline-list">
+                    <li class="timeline-item">
+                        <div class="timeline-content">
+                            <span class="timeline-year">2017 — The Beginning 🎒</span>
+                            <h3 class="timeline-title">A Backpack, a Dream, and Zero Business Plan</h3>
+                            <p class="timeline-body">
+                                The YOLO Collective was born — not in a boardroom, but in the Himalayas. One hostel.
+                                One wild idea: what if a place could make strangers feel like family? No corporate
+                                playbook. Just vibes, mountains, and a door that never closed. The movement started
+                                here.
+                            </p>
+                        </div>
+                        <div class="timeline-dot-col">
+                            <div class="timeline-dot"></div>
+                        </div>
+                        <div class="timeline-empty"></div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-empty"></div>
+                        <div class="timeline-dot-col">
+                            <div class="timeline-dot"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="timeline-year">2019 — The Expansion 🌿</span>
+                            <h3 class="timeline-title">Parvati Valley Said "Welcome Home"</h3>
+                            <p class="timeline-body">
+                                Word spread faster than mountain mist. YOLO landed in Parvati Valley and the magic
+                                doubled. Two valleys. One tribe. From bonfire jam sessions in Manali to Parvati's
+                                legendary river trails — backpacking officially became a lifestyle. The community
+                                didn't just grow, it exploded.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-content">
+                            <span class="timeline-year">2023 — Plot Twist 🏔️</span>
+                            <h3 class="timeline-title">YOLO Outdoors: Where Luxury Met the Wild</h3>
+                            <p class="timeline-body">
+                                We asked: "What if you could sleep under the Milky Way in a geodesic dome, with a
+                                hot shower waiting?" YOLO Outdoors was born — and it broke every rule about mountain
+                                stays. Architectural domes. Riverside sunsets. Raw nature with refined comfort. Not
+                                just backpacking anymore — we were building experiences you can't find on any
+                                booking app.
+                            </p>
+                        </div>
+                        <div class="timeline-dot-col">
+                            <div class="timeline-dot"></div>
+                        </div>
+                        <div class="timeline-empty"></div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-empty"></div>
+                        <div class="timeline-dot-col">
+                            <div class="timeline-dot"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <span class="timeline-year">2025 — The Glow Up ✨</span>
+                            <h3 class="timeline-title">The YOLO Collective: The Full Picture</h3>
+                            <p class="timeline-body">
+                                The biggest chapter yet. We evolved from a hostel brand into a full-blown mountain
+                                lifestyle platform. The YOLO Collective brings it all under one roof — community
+                                stays (Social), wilderness luxury (Outdoors), and curated private homes (Homes).
+                                From backpacks to blueprints. From hostels to holistic living. Same soul. Bigger
+                                canvas.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-content">
+                            <span class="timeline-year">What's Next → 🏡</span>
+                            <h3 class="timeline-title">YOLO Homes: Your Mountain Escape, Designed</h3>
+                            <p class="timeline-body">
+                                Not every adventure needs to be loud. Sometimes the boldest move is slowing down.
+                                YOLO Homes brings curated mountain homes with intentional design, long-stay comfort,
+                                and the kind of quiet that actually recharges you. Private. Peaceful. Perfectly you.
+                                Because sometimes the wildest thing you can do is… exhale.
+                            </p>
+                        </div>
+                        <div class="timeline-dot-col">
+                            <div class="timeline-dot"></div>
+                        </div>
+                        <div class="timeline-empty"></div>
+                    </li>
+                </ol>
+            </div>
+        </section>
 
-            document.querySelectorAll('.reveal, .about-stat, .timeline-content').forEach((el) => io.observe(el));
+        <!-- ⑤ Gallery Strip -->
+        <section class="about-gallery" aria-label="The YOLO Collective photography">
+            <div class="gallery-strip">
+                <div class="gallery-strip__item">
+                    <img src="assets/images/IMG_3230.webp" alt="Mountain vista at sunrise" loading="lazy" />
+                </div>
+                <div class="gallery-strip__item">
+                    <img src="assets/images/IMG_3237.webp" alt="The YOLO Collective common area" loading="lazy" />
+                </div>
+                <div class="gallery-strip__item">
+                    <img src="assets/images/IMG_3241.webp" alt="Himalayan landscape" loading="lazy" />
+                </div>
+                <div class="gallery-strip__item">
+                    <img src="assets/images/IMG_3684.webp" alt="Scenic mountain view" loading="lazy" />
+                </div>
+            </div>
+        </section>
 
-            // ── Stagger stat reveal delays ──
-            document.querySelectorAll('.about-stat').forEach((el, i) => {
-                el.style.transitionDelay = i * 0.12 + 's';
+        <!-- ⑥ Three Pillars Enhanced -->
+        <section class="about-pillars">
+            <div class="about-pillars__inner">
+                <div style="text-align: center; max-width: 600px; margin: 0 auto 0">
+                    <span class="mj-eyebrow reveal">One Spirit, Three Experiences</span>
+                    <h2 class="mj-heading reveal reveal-delay-1">Our World.</h2>
+                    <p class="mj-body reveal reveal-delay-2">
+                        Every traveler seeks a different rhythm. The YOLO Collective is structured into three
+                        distinct pillars, each designed with an uncompromising commitment to mountain luxury.
+                    </p>
+                </div>
+                <div class="pillars-grid">
+                    <div class="pillar-card reveal">
+                        <div class="pillar-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <p class="pillar-name">YOLO Social</p>
+                        <p class="pillar-body">
+                            Boutique hostels designed for the tribe — vibrant shared spaces, curated social events,
+                            and a community that turns strangers into lifelong friends. Base camps for the bold.
+                        </p>
+                        <a href="jispa.html" class="pillar-link">Explore stays <span>→</span></a>
+                    </div>
+                    <div class="pillar-card reveal reveal-delay-1">
+                        <div class="pillar-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                        </div>
+                        <p class="pillar-name">YOLO Homes</p>
+                        <p class="pillar-body">
+                            Private, architecturally-designed mountain homes for slow travel and meaningful
+                            sanctuary stays. Each home is a retreat — crafted to disappear into its landscape and
+                            reawaken your senses.
+                        </p>
+                        <a href="homes.html" class="pillar-link">View homes <span>→</span></a>
+                    </div>
+                    <div class="pillar-card reveal reveal-delay-2">
+                        <div class="pillar-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+                            </svg>
+                        </div>
+                        <p class="pillar-name">YOLO Outdoors</p>
+                        <p class="pillar-body">
+                            Nature-immersive luxury through uniquely designed wilderness accommodations. Geodesic
+                            domes, riverside escapes, and stargazing perches — where the sky is the ceiling and the
+                            mountains are the wallpaper.
+                        </p>
+                        <a href="outdoors.html" class="pillar-link">Discover outdoors <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ⑦ Founder Quote -->
+        <section class="about-quote">
+            <div class="about-quote__inner">
+                <p class="about-quote__text reveal">
+                    "We didn't build hotels. We built a feeling — the feeling you get when you arrive somewhere that
+                    feels like it was designed just for you, by people who actually love the mountains as much as
+                    you do."
+                </p>
+                <div class="about-quote__attr reveal reveal-delay-1">
+                    <div class="about-quote__line"></div>
+                    <span class="about-quote__name">Founder, The YOLO Collective · Manali, Himachal Pradesh</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ⑧ Values -->
+        <section class="about-values">
+            <div class="about-values__inner">
+                <div style="text-align: center; max-width: 600px; margin: 0 auto 0">
+                    <span class="mj-eyebrow reveal">What we stand for</span>
+                    <h2 class="mj-heading reveal reveal-delay-1">Our Values.</h2>
+                </div>
+                <div class="values-grid">
+                    <div class="value-item reveal">
+                        <span class="value-num">01</span>
+                        <h3 class="value-title">Nature First</h3>
+                        <p class="value-body">
+                            Every design decision starts with the landscape. We build around nature, never over it.
+                            Our properties leave minimal footprints and maximum impressions.
+                        </p>
+                    </div>
+                    <div class="value-item reveal reveal-delay-1">
+                        <span class="value-num">02</span>
+                        <h3 class="value-title">Community Over Transaction</h3>
+                        <p class="value-body">
+                            We don't count guests; we build communities. Our spaces are designed to foster real
+                            human connection — shared meals, epic trail stories, and friendships that outlast the
+                            trip.
+                        </p>
+                    </div>
+                    <div class="value-item reveal reveal-delay-2">
+                        <span class="value-num">03</span>
+                        <h3 class="value-title">Design with Intent</h3>
+                        <p class="value-body">
+                            Aesthetics are not a luxury — they're a philosophy. From the curvature of a doorframe to
+                            the scent that greets you at check-in, every detail is considered, purposeful, and
+                            alive.
+                        </p>
+                    </div>
+                    <div class="value-item reveal reveal-delay-3">
+                        <span class="value-num">04</span>
+                        <h3 class="value-title">Adventure as a Way of Life</h3>
+                        <p class="value-body">
+                            We believe the best version of yourself lives just beyond your comfort zone — on the
+                            ridge line, at 4am watching the alpenglow, or around a fire with people you met
+                            yesterday and will know forever.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ⑨ Philosophy Accordion -->
+        <section class="about-philosophy">
+            <div class="about-philosophy__inner">
+                <span class="mj-eyebrow reveal">Service as Art</span>
+                <h2 class="mj-heading reveal reveal-delay-1">The Philosophy of the Host.</h2>
+                <p class="mj-body reveal reveal-delay-2">
+                    At The YOLO Collective, service is an art form. We don't have "guests" — we have residents of
+                    the mountains. Here's how we think about hospitality.
+                </p>
+
+                <div class="philosophy-accordion reveal">
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false" id="acc1-trigger"
+                            aria-controls="acc1-body">
+                            The Himalayan Host Philosophy
+                            <span class="accordion-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="accordion-body" id="acc1-body" role="region" aria-labelledby="acc1-trigger">
+                            <p>
+                                Our Himalayan Host philosophy ensures that your experience is seamless — from the
+                                seated welcome ritual with mountain herb tea, to the signature scent of cedarwood
+                                that lingers in our halls. We are not concierges; we are local guides who happen to
+                                run beautiful spaces. We provide the frame; the mountains provide the masterpiece.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false" id="acc2-trigger"
+                            aria-controls="acc2-body">
+                            Slow Travel, Deep Connection
+                            <span class="accordion-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="accordion-body" id="acc2-body" role="region" aria-labelledby="acc2-trigger">
+                            <p>
+                                We actively discourage rushing. Our itineraries are unhurried by design — built
+                                around the rhythm of the mountains, not the anxiety of a checklist. We believe the
+                                best memories come from lingering: one more cup of chai, one more sunset, one more
+                                conversation that stretches long past midnight.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false" id="acc3-trigger"
+                            aria-controls="acc3-body">
+                            Local at Heart
+                            <span class="accordion-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="accordion-body" id="acc3-body" role="region" aria-labelledby="acc3-trigger">
+                            <p>
+                                Every rupee you spend at The YOLO Collective flows back into the communities that
+                                surround us. We source ingredients from local farms, hire from local villages, and
+                                partner with guides and artisans who've called these valleys home for generations.
+                                Responsible travel isn't a tagline for us — it's a practice.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger" aria-expanded="false" id="acc4-trigger"
+                            aria-controls="acc4-body">
+                            Sustainability & Stewardship
+                            <span class="accordion-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="accordion-body" id="acc4-body" role="region" aria-labelledby="acc4-trigger">
+                            <p>
+                                The Himalayas are not a backdrop — they are sacred ground. All The YOLO Collective
+                                properties operate on low-waste principles, use solar where possible, and run active
+                                trail-clean initiatives with every guest group. We leave our mountains better than
+                                we found them.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ⑩ Final CTA -->
+        <section class="mj-final-cta">
+            <div class="mj-container mj-center">
+                <span class="mj-eyebrow reveal">Ready to begin?</span>
+                <h2 class="mj-heading reveal reveal-delay-1">Join the Journey.</h2>
+                <p class="mj-body reveal reveal-delay-2">
+                    The mountains are calling. Your story starts the moment you arrive.
+                </p>
+                <div class="reveal reveal-delay-3">
+                    <a href="https://bookingengine.stayflexi.com/group-be/?groupId=28012" class="btn-primary"
+                        target="_blank">Book Your Stay</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-links-group">
+                <h4>Inside YOLO</h4>
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="work-with-us.html" class="footer-link">Work with Us</a>
+                <a href="franchise.html" class="footer-link">Franchise</a>
+                <a href="blog.html" class="footer-link">Blogs</a>
+            </div>
+            <div class="footer-links-group">
+                <h4>Support</h4>
+                <a href="mailto:hello@theyolocollective.com" class="footer-link">Contact Us</a>
+                <a href="https://wa.me/917018591758" target="_blank" class="footer-link">WhatsApp</a>
+            </div>
+            <div class="footer-brand" style="text-align: right">
+                <h3>The YOLO Collective</h3>
+                <p>One Collective. Three Ways to Wander.</p>
+                <div class="footer-social" style="justify-content: flex-end; margin-top: 1rem">
+                    <a href="https://www.instagram.com/theyolocollective" class="social-link" title="Instagram"
+                        target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" title="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                </div>
+                <p style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.6">&copy; 2026 The YOLO Collective.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp FAB -->
+    <a href="https://wa.me/917018591758" class="whatsapp-fab" target="_blank" title="Chat with us">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path
+                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+            </path>
+        </svg>
+    </a>
+
+    <script src="script.js?v=3"></script>
+    <script>
+        // ── Interactive Hero Text Parallax ──
+        const heroContent = document.querySelector('.about-hero__content');
+        const aboutHero = document.getElementById('about-hero');
+        if (heroContent && aboutHero) {
+            aboutHero.addEventListener('mousemove', (e) => {
+                const x = (window.innerWidth / 2 - e.pageX) / 25;
+                const y = (window.innerHeight / 2 - e.pageY) / 25;
+                heroContent.style.transform = `translate(${x}px, ${y}px)`;
             });
+            aboutHero.addEventListener('mouseleave', () => {
+                heroContent.style.transform = `translate(0px, 0px)`;
+            });
+        }
 
-            // ── Counter animation ──
-            function animateCounter(el, target, isFloat) {
-                const duration = 1800;
-                const start = performance.now();
-                function step(now) {
-                    const pct = Math.min((now - start) / duration, 1);
-                    const ease = 1 - Math.pow(1 - pct, 3);
-                    const val = isFloat ? (ease * target).toFixed(1) : Math.round(ease * target);
-                    el.textContent = val;
-                    if (pct < 1) requestAnimationFrame(step);
-                }
-                requestAnimationFrame(step);
-            }
-
-            const statObs = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            const stat = entry.target;
-                            const target = parseFloat(stat.dataset.target);
-                            const isFloat = String(target).includes('.');
-                            const counter = stat.querySelector('.counter');
-                            animateCounter(counter, target, isFloat);
-                            statObs.unobserve(stat);
-                        }
-                    });
-                },
-                { threshold: 0.5 }
-            );
-
-            document.querySelectorAll('.about-stat').forEach((el) => statObs.observe(el));
-
-            // ── Parallax Hero ──
-            const heroBg = document.getElementById('heroParallax');
-            if (heroBg) {
-                window.addEventListener(
-                    'scroll',
-                    () => {
-                        const scrollY = window.scrollY;
-                        const hero = document.getElementById('about-hero');
-                        if (scrollY < hero.offsetHeight + 200) {
-                            heroBg.querySelector('img').style.transform = `translateY(${scrollY * 0.35}px)`;
-                        }
-                    },
-                    { passive: true }
-                );
-            }
-
-            // ── Accordion ──
-            document.querySelectorAll('.accordion-trigger').forEach((btn) => {
-                btn.addEventListener('click', () => {
-                    const expanded = btn.getAttribute('aria-expanded') === 'true';
-                    // close all
-                    document.querySelectorAll('.accordion-trigger').forEach((b) => {
-                        b.setAttribute('aria-expanded', 'false');
-                        document.getElementById(b.getAttribute('aria-controls')).style.maxHeight = '0';
-                    });
-                    if (!expanded) {
-                        btn.setAttribute('aria-expanded', 'true');
-                        const body = document.getElementById(btn.getAttribute('aria-controls'));
-                        body.style.maxHeight = body.scrollHeight + 'px';
+        // ── Intersection Observer for all reveal + stat elements ──
+        const io = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        io.unobserve(entry.target);
                     }
                 });
-            });
+            },
+            { threshold: 0.15 }
+        );
 
-            // ── Stagger reveal delays for children ──
-            document.querySelectorAll('.timeline-content').forEach((el, i) => {
-                el.style.transitionDelay = 0.1 + (i % 3) * 0.12 + 's';
+        document.querySelectorAll('.reveal, .about-stat, .timeline-content').forEach((el) => io.observe(el));
+
+        // ── Stagger stat reveal delays ──
+        document.querySelectorAll('.about-stat').forEach((el, i) => {
+            el.style.transitionDelay = i * 0.12 + 's';
+        });
+
+        // ── Counter animation ──
+        function animateCounter(el, target, isFloat) {
+            const duration = 1800;
+            const start = performance.now();
+            function step(now) {
+                const pct = Math.min((now - start) / duration, 1);
+                const ease = 1 - Math.pow(1 - pct, 3);
+                const val = isFloat ? (ease * target).toFixed(1) : Math.round(ease * target);
+                el.textContent = val;
+                if (pct < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
+
+        const statObs = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const stat = entry.target;
+                        const target = parseFloat(stat.dataset.target);
+                        const isFloat = String(target).includes('.');
+                        const counter = stat.querySelector('.counter');
+                        animateCounter(counter, target, isFloat);
+                        statObs.unobserve(stat);
+                    }
+                });
+            },
+            { threshold: 0.5 }
+        );
+
+        document.querySelectorAll('.about-stat').forEach((el) => statObs.observe(el));
+
+        // ── Parallax Hero ──
+        const heroBg = document.getElementById('heroParallax');
+        if (heroBg) {
+            window.addEventListener(
+                'scroll',
+                () => {
+                    const scrollY = window.scrollY;
+                    const hero = document.getElementById('about-hero');
+                    if (scrollY < hero.offsetHeight + 200) {
+                        heroBg.querySelector('img').style.transform = `translateY(${scrollY * 0.35}px)`;
+                    }
+                },
+                { passive: true }
+            );
+        }
+
+        // ── Accordion ──
+        document.querySelectorAll('.accordion-trigger').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const expanded = btn.getAttribute('aria-expanded') === 'true';
+                // close all
+                document.querySelectorAll('.accordion-trigger').forEach((b) => {
+                    b.setAttribute('aria-expanded', 'false');
+                    document.getElementById(b.getAttribute('aria-controls')).style.maxHeight = '0';
+                });
+                if (!expanded) {
+                    btn.setAttribute('aria-expanded', 'true');
+                    const body = document.getElementById(btn.getAttribute('aria-controls'));
+                    body.style.maxHeight = body.scrollHeight + 'px';
+                }
             });
-        </script>
-    </body>
+        });
+
+        // ── Stagger reveal delays for children ──
+        document.querySelectorAll('.timeline-content').forEach((el, i) => {
+            el.style.transitionDelay = 0.1 + (i % 3) * 0.12 + 's';
+        });
+    </script>
+</body>
+
 </html>
