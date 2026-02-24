@@ -793,17 +793,22 @@
 
         <!-- ═══════ IMAGES PANEL ═══════ -->
         <div id="panel-images" class="panel">
-            <div class="page-header">
+            <div class="page-header" style="margin-bottom: 1rem;">
                 <div>
                     <h2 class="page-title">Property Images</h2>
                     <p class="page-subtitle">Upload and manage images for each property</p>
                 </div>
+                <button class="btn btn-danger" id="deletePropertyBtn" onclick="deleteCurrentProperty()"
+                    style="display: none;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                    Delete Property
+                </button>
             </div>
             <div class="prop-tabs" id="propTabs">
-                <button class="prop-tab active" data-prop="general" onclick="switchProperty('general')">General</button>
-                <button class="prop-tab" data-prop="manali" onclick="switchProperty('manali')">Manali</button>
-                <button class="prop-tab" data-prop="kasol" onclick="switchProperty('kasol')">Kasol</button>
-                <button class="prop-tab" data-prop="jispa" onclick="switchProperty('jispa')">Jispa</button>
+                <div class="loading" style="padding: 0.5rem;">Loading properties...</div>
             </div>
             <div style="margin-bottom: 1.5rem;">
                 <div class="file-upload" id="propFileUpload">
@@ -1271,9 +1276,54 @@
             try {
                 const res = await fetch(config.apiBaseUrl + '/api/properties');
                 propertyImages = await res.json();
+                renderPropertyTabs();
+                // Ensure currentProperty is valid, default to 'general' or first property
+                if (!propertyImages[currentProperty]) {
+                    currentProperty = Object.keys(propertyImages)[0] || 'general';
+                }
                 renderPropertyImages();
             } catch (e) {
                 showToast('Failed to load property images', 'error');
+            }
+        }
+
+        function renderPropertyTabs() {
+            const tabsContainer = document.getElementById('propTabs');
+            const properties = Object.keys(propertyImages);
+
+            if (properties.length === 0) {
+                tabsContainer.innerHTML = '<div style="color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">No properties found.</div>';
+            } else {
+                tabsContainer.innerHTML = properties.map(prop => {
+                    // Format name nicely (e.g., 'homes-manali' -> 'Homes Manali')
+                    const displayName = prop === 'general' ? 'General' : prop.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                    const activeClass = prop === currentProperty ? 'active' : '';
+                    return `<button class="prop-tab ${activeClass}" data-prop="${prop}" onclick="switchProperty('${prop}')">${displayName}</button>`;
+                }).join('');
+            }
+            // Add "+ New Property" button
+            tabsContainer.innerHTML += `<button class="prop-tab" style="border-style: dashed;" onclick="createNewProperty()">+ New</button>`;
+        }
+
+        async function createNewProperty() {
+            const name = prompt('Enter new property name (e.g., "homes-goa"):');
+            if (!name) return;
+
+            try {
+                const res = await fetch(config.apiBaseUrl + '/api/properties/categories', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name })
+                });
+
+                if (!res.ok) throw new Error(await res.text());
+
+                const data = await res.json();
+                showToast('Property created successfully!');
+                currentProperty = data.property; // Switch to the new property
+                loadPropertyImages(); // Reload
+            } catch (e) {
+                showToast('Failed to create property: ' + (e.message || 'Unknown error'), 'error');
             }
         }
 
@@ -1298,6 +1348,14 @@
                     </div>
                 </div>
             `}).join('');
+            
+            // Toggle Delete Property button visibility
+            const deleteBtn = document.getElementById('deletePropertyBtn');
+            if (currentProperty === 'general') {
+                deleteBtn.style.display = 'none';
+            } else {
+                deleteBtn.style.display = 'inline-flex';
+            }
         }
 
         // File upload click handler
@@ -1332,12 +1390,29 @@
         async function deletePropertyImage(prop, filename) {
             if (!confirm(`Delete ${filename}?`)) return;
             try {
-                const res = await fetch(config.apiBaseUrl + `/api/properties/${prop}/images/${encodeURIComponent(filename)}`, { method: 'DELETE' });
+                // BUGFIX: Frontend shouldn't encode a filename twice, or encode what is already safe
+                const res = await fetch(config.apiBaseUrl + `/api/properties/${prop}/images/${filename}`, { method: 'DELETE' });
                 if (!res.ok) throw new Error('Delete failed');
                 showToast('Image deleted');
                 loadPropertyImages();
             } catch (e) {
                 showToast('Error deleting image', 'error');
+            }
+        }
+        
+        async function deleteCurrentProperty() {
+            if (currentProperty === 'general') return;
+            if (!confirm(`Are you sure you want to delete the property "${currentProperty}" AND all of its images? This cannot be undone.`)) return;
+            
+            try {
+                const res = await fetch(config.apiBaseUrl + `/api/properties/categories/${currentProperty}`, { method: 'DELETE' });
+                if (!res.ok) throw new Error(await res.text());
+                
+                showToast(`Property "${currentProperty}" deleted`);
+                currentProperty = 'general'; // Default back to general
+                loadPropertyImages();
+            } catch (e) {
+                showToast('Error deleting property: ' + (e.message || 'Unknown error'), 'error');
             }
         }
 

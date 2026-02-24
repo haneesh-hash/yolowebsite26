@@ -254,12 +254,32 @@ app.delete('/api/experiences/:id', adminAuth, (req, res) => {
 //  PROPERTY IMAGES API
 // ════════════════════════════════════════════════════════
 
-const PROPERTIES = ['manali', 'kasol', 'jispa', 'general'];
+const PROPERTIES_FILE = path.join(DATA_DIR, 'properties.json');
+const DEFAULT_PROPERTIES = ['general', 'manali', 'kasol', 'jispa'];
+
+function getProperties() {
+    let properties;
+    if (fs.existsSync(PROPERTIES_FILE)) {
+        properties = readJSON(PROPERTIES_FILE);
+        if (!Array.isArray(properties) || properties.length === 0) {
+            properties = DEFAULT_PROPERTIES;
+        }
+    } else {
+        properties = DEFAULT_PROPERTIES;
+        writeJSON(PROPERTIES_FILE, properties);
+    }
+    // Ensure 'general' is always included as a fallback
+    if (!properties.includes('general')) {
+        properties.unshift('general');
+    }
+    return properties;
+}
 
 // GET list properties and their images
 app.get('/api/properties', (req, res) => {
     const result = {};
-    PROPERTIES.forEach((prop) => {
+    const propertiesList = getProperties();
+    propertiesList.forEach((prop) => {
         const propDir = prop === 'general' ? IMAGES_DIR : path.join(IMAGES_DIR, prop);
         if (fs.existsSync(propDir)) {
             result[prop] = fs
@@ -277,10 +297,69 @@ app.get('/api/properties', (req, res) => {
     res.json(result);
 });
 
+// POST add new property
+app.post('/api/properties/categories', adminAuth, (req, res) => {
+    const { name } = req.body;
+    if (!name || typeof name !== 'string') {
+        return res.status(400).json({ error: 'Property name is required' });
+    }
+
+    // Sanitize property name for filesystem
+    const sanitizedName = name.trim().toLowerCase().replace(/[^a-z0-9-_]/g, '-').replace(/-+/g, '-');
+    if (!sanitizedName) {
+        return res.status(400).json({ error: 'Invalid property name' });
+    }
+
+    const properties = getProperties();
+    if (properties.includes(sanitizedName)) {
+        return res.status(400).json({ error: 'Property already exists' });
+    }
+
+    properties.push(sanitizedName);
+    writeJSON(PROPERTIES_FILE, properties);
+
+    // Create directory for the property
+    const propDir = path.join(IMAGES_DIR, sanitizedName);
+    if (!fs.existsSync(propDir)) fs.mkdirSync(propDir, { recursive: true });
+
+    res.status(201).json({ message: 'Property added successfully', property: sanitizedName });
+});
+
+// DELETE remove a property category
+app.delete('/api/properties/categories/:category', adminAuth, (req, res) => {
+    const category = req.params.category;
+    if (!category || typeof category !== 'string') {
+        return res.status(400).json({ error: 'Property name is required' });
+    }
+    if (category === 'general') {
+        return res.status(403).json({ error: 'Cannot delete the general property category' });
+    }
+
+    let properties = getProperties();
+    const index = properties.indexOf(category);
+
+    if (index === -1) {
+        return res.status(404).json({ error: 'Property not found' });
+    }
+
+    // Remove from array and save
+    properties.splice(index, 1);
+    writeJSON(PROPERTIES_FILE, properties);
+
+    // Remove directory and its contents
+    const propDir = path.join(IMAGES_DIR, category);
+    if (fs.existsSync(propDir)) {
+        fs.rmSync(propDir, { recursive: true, force: true });
+    }
+
+    res.json({ message: 'Property deleted successfully', property: category });
+});
+
 // POST upload image to a property
 app.post('/api/properties/:property/images', adminAuth, upload.single('image'), (req, res) => {
-    if (!PROPERTIES.includes(req.params.property)) {
-        return res.status(400).json({ error: `Invalid property. Options: ${PROPERTIES.join(', ')}` });
+    const propertiesList = getProperties();
+    if (!propertiesList.includes(req.params.property)) {
+        return res.status(400).json({ error: `Invalid property. Options: ${propertiesList.join(', ')}` });
     }
     if (!req.file) {
         return res.status(400).json({ error: 'No file uploaded' });
@@ -298,7 +377,8 @@ app.post('/api/properties/:property/images', adminAuth, upload.single('image'), 
 
 // DELETE property image
 app.delete('/api/properties/:property/images/:filename', adminAuth, (req, res) => {
-    if (!PROPERTIES.includes(req.params.property)) {
+    const propertiesList = getProperties();
+    if (!propertiesList.includes(req.params.property)) {
         return res.status(400).json({ error: 'Invalid property' });
     }
     const safeName = path.basename(req.params.filename);
