@@ -289,7 +289,141 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ─── 10. Initialize All Modules ────────────────────────────
+    // ─── 10. Room Photo Gallery Lightbox ─────────────────────────
+    // Click a room card image → opens fullscreen gallery with nav.
+
+    function initRoomGallery() {
+        const gallery = document.querySelector('.room-gallery');
+        if (!gallery) return;
+
+        const overlay   = gallery.querySelector('.room-gallery__overlay');
+        const closeBtn  = gallery.querySelector('.room-gallery__close');
+        const titleEl   = gallery.querySelector('.room-gallery__title');
+        const counterEl = gallery.querySelector('.room-gallery__counter');
+        const mainImg   = gallery.querySelector('.room-gallery__image');
+        const thumbsCtn = gallery.querySelector('.room-gallery__thumbs');
+        const prevBtn   = gallery.querySelector('.room-gallery__nav--prev');
+        const nextBtn   = gallery.querySelector('.room-gallery__nav--next');
+
+        let images = [];
+        let currentIndex = 0;
+        let isAnimating = false;
+
+        /* --- Show a specific slide --- */
+        function showSlide(index, animate) {
+            if (animate === undefined) animate = true;
+            if (index < 0 || index >= images.length || isAnimating) return;
+            currentIndex = index;
+            counterEl.textContent = (index + 1) + ' / ' + images.length;
+
+            // Update nav arrow states
+            prevBtn.classList.toggle('disabled', index === 0);
+            nextBtn.classList.toggle('disabled', index === images.length - 1);
+
+            // Update active thumbnail
+            thumbsCtn.querySelectorAll('.room-gallery__thumb').forEach(function (t, i) {
+                t.classList.toggle('active', i === index);
+            });
+
+            if (animate) {
+                isAnimating = true;
+                mainImg.classList.add('fading');
+                setTimeout(function () {
+                    mainImg.src = images[index];
+                    mainImg.alt = 'Photo ' + (index + 1);
+                    mainImg.classList.remove('fading');
+                    setTimeout(function () { isAnimating = false; }, 200);
+                }, 200);
+            } else {
+                mainImg.src = images[index];
+                mainImg.alt = 'Photo ' + (index + 1);
+            }
+        }
+
+        function nextSlide() { showSlide(currentIndex + 1); }
+        function prevSlide() { showSlide(currentIndex - 1); }
+
+        /* --- Open gallery --- */
+        function openGallery(roomName, imageSrcs) {
+            images = imageSrcs;
+            currentIndex = 0;
+            titleEl.textContent = roomName;
+
+            // Build thumbnails
+            thumbsCtn.innerHTML = '';
+            images.forEach(function (src, i) {
+                var thumb = document.createElement('div');
+                thumb.className = 'room-gallery__thumb' + (i === 0 ? ' active' : '');
+                thumb.innerHTML = '<img src="' + src + '" alt="Thumbnail ' + (i + 1) + '" loading="lazy" />';
+                thumb.addEventListener('click', function () { showSlide(i); });
+                thumbsCtn.appendChild(thumb);
+            });
+
+            showSlide(0, false);
+            gallery.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        /* --- Close gallery --- */
+        function closeGallery() {
+            gallery.classList.remove('active');
+            document.body.style.overflow = '';
+            images = [];
+            isAnimating = false;
+        }
+
+        /* --- Event listeners --- */
+        closeBtn.addEventListener('click', closeGallery);
+        overlay.addEventListener('click', closeGallery);
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
+        // Keyboard
+        document.addEventListener('keydown', function (e) {
+            if (!gallery.classList.contains('active')) return;
+            if (e.key === 'Escape')     closeGallery();
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft')  prevSlide();
+        });
+
+        // Touch swipe on main image
+        var touchStartX = 0;
+        var stage = gallery.querySelector('.room-gallery__stage');
+
+        stage.addEventListener('touchstart', function (e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        stage.addEventListener('touchend', function (e) {
+            var diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) nextSlide(); else prevSlide();
+            }
+        }, { passive: true });
+
+        /* --- Hook into room cards --- */
+        document.querySelectorAll('.pp-rooms__card[data-gallery]').forEach(function (card) {
+            var imageArea = card.querySelector('.pp-rooms__card-image');
+            if (!imageArea) return;
+
+            imageArea.addEventListener('click', function (e) {
+                // Don't open gallery if clicking the Reserve link
+                if (e.target.closest('a')) return;
+
+                try {
+                    var imgs = JSON.parse(card.getAttribute('data-gallery'));
+                    var roomName = card.getAttribute('data-room-name') || 'Room Photos';
+                    if (imgs && imgs.length) {
+                        openGallery(roomName, imgs);
+                    }
+                } catch (err) {
+                    console.warn('Room gallery: invalid data-gallery JSON', err);
+                }
+            });
+        });
+    }
+
+    // ─── 11. Initialize All Modules ────────────────────────────
     // Each function checks for required elements before running.
 
     initScrollReveal();
@@ -301,4 +435,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initStoryParallax();
     initGlanceParallax();
     initSmoothScroll();
+    initRoomGallery();
 });

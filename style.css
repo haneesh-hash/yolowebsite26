@@ -5981,6 +5981,283 @@ a.mj-card.mj-card--link {
     transform: translateX(3px);
 }
 
+/* ── Room Card Gallery Hint ── */
+.pp-rooms__card-image {
+    cursor: pointer;
+}
+
+.pp-rooms__card-gallery-hint {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 0.35rem 0.65rem;
+    border-radius: 4px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.pp-rooms__card-gallery-hint svg {
+    width: 14px;
+    height: 14px;
+    stroke: #fff;
+    flex-shrink: 0;
+}
+
+.pp-rooms__card:hover .pp-rooms__card-gallery-hint {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Room Card Unit Count ── */
+.pp-rooms__card-units {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--skyblue-dark);
+    background: rgba(116, 172, 223, 0.1);
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+    display: inline-block;
+    margin-top: 0.15rem;
+}
+
+
+/* ═══════════════════════════════════════════════════
+   ROOM PHOTO GALLERY LIGHTBOX
+   ═══════════════════════════════════════════════════ */
+
+.room-gallery {
+    position: fixed;
+    inset: 0;
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s var(--ease-out), visibility 0.4s var(--ease-out);
+}
+
+.room-gallery.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.room-gallery__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.room-gallery__container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 960px;
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 1.5rem;
+}
+
+/* Header */
+.room-gallery__header {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+    gap: 1rem;
+}
+
+.room-gallery__title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+    flex: 1;
+}
+
+.room-gallery__counter {
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+}
+
+.room-gallery__close {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: transform 0.3s var(--ease-out), background 0.3s;
+    opacity: 0.7;
+}
+
+.room-gallery__close:hover {
+    transform: rotate(90deg);
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Main Viewer */
+.room-gallery__viewer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-height: 0;
+}
+
+.room-gallery__stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.room-gallery__image {
+    max-width: 100%;
+    max-height: 65vh;
+    object-fit: contain;
+    border-radius: 3px;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.3s var(--ease-smooth), transform 0.3s var(--ease-smooth);
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.room-gallery__image.fading {
+    opacity: 0;
+    transform: scale(0.97);
+}
+
+/* Navigation Arrows */
+.room-gallery__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+    transition: background 0.3s var(--ease-out), transform 0.3s var(--ease-out), opacity 0.3s;
+}
+
+.room-gallery__nav:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.room-gallery__nav:active {
+    transform: translateY(-50%) scale(0.92);
+}
+
+.room-gallery__nav--prev { left: -64px; }
+.room-gallery__nav--next { right: -64px; }
+
+.room-gallery__nav.disabled {
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+/* Thumbnail Strip */
+.room-gallery__thumbs {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    padding: 1.25rem 0 0.75rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.room-gallery__thumbs::-webkit-scrollbar { height: 0; }
+
+.room-gallery__thumb {
+    width: 64px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 3px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    opacity: 0.4;
+    transition: opacity 0.3s var(--ease-out), border-color 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+}
+
+.room-gallery__thumb.active {
+    opacity: 1;
+    border-color: var(--skyblue);
+    transform: scale(1.08);
+}
+
+.room-gallery__thumb:hover:not(.active) {
+    opacity: 0.7;
+}
+
+.room-gallery__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ── Room Gallery Responsive ── */
+@media (max-width: 1080px) {
+    .room-gallery__nav--prev { left: 0.75rem; }
+    .room-gallery__nav--next { right: 0.75rem; }
+    .room-gallery__nav {
+        width: 40px;
+        height: 40px;
+        background: rgba(0, 0, 0, 0.5);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+}
+
+@media (max-width: 768px) {
+    .room-gallery__container { padding: 0 1rem; }
+    .room-gallery__image { max-height: 50vh; }
+    .room-gallery__nav { width: 36px; height: 36px; }
+    .room-gallery__nav svg { width: 18px; height: 18px; }
+    .room-gallery__thumb { width: 48px; height: 34px; }
+    .room-gallery__title { font-size: 1rem; }
+
+    /* Gallery hint always visible on mobile (no hover) */
+    .pp-rooms__card-gallery-hint {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 /* ═══════════════════════════════════════════════════
    7. AMENITY CATEGORIES  (pp-amenities)
@@ -7155,6 +7432,15 @@ a.mj-card.mj-card--link {
 
 .dark-mode .pp-rooms__card-cta {
     border-top-color: var(--gray-800);
+}
+
+.dark-mode .pp-rooms__card-units {
+    color: var(--skyblue-light);
+    background: rgba(116, 172, 223, 0.12);
+}
+
+.dark-mode .room-gallery__overlay {
+    background: rgba(0, 0, 0, 0.96);
 }
 
 .dark-mode .pp-location__fact-icon {
