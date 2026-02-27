@@ -9,7 +9,13 @@
       "Bash(npm run lint)",
       "Bash(npm run build:*)",
       "Bash(grep:*)",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(perl -pi -e 's|assets/images/IMG_0303\\\\.webp|assets/images/IMG_3221.webp|g' social.html)",
+      "Bash(perl -pi -e 's|assets/images/IMG_3224\\\\.webp|assets/images/IMG_3223.webp|g' social.html)",
+      "Bash(unzip -o \"/Users/haneesh/yolowebsite26/assets/YOLO Outdoors - JISPA-20260227T124128Z-1-001.zip\" \"*.JPG\" \"*.jpg\" -d /tmp/jispa_extract)",
+      "Bash(python3 -:*)"
     ]
   }
 }

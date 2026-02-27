@@ -29,6 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('revealed');
+                    // Also reveal any pp-reveal-stagger children (e.g. day cards inside scroll strips)
+                    entry.target.querySelectorAll('.pp-reveal-stagger').forEach(function(child) {
+                        child.classList.add('revealed');
+                    });
                     observer.unobserve(entry.target);
                 }
             });
@@ -423,8 +427,102 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ─── 11. Initialize All Modules ────────────────────────────
+    // ─── 11. Day Cards — Drag Scroll + 3D Tilt ─────────────────
+
+    function initDayCards() {
+        var strip = document.querySelector('.pp-day__strip');
+        if (!strip) return;
+
+        // Drag-to-scroll (same pattern as initDragScroll)
+        var isDown = false, startX, scrollStart;
+
+        strip.addEventListener('mousedown', function (e) {
+            isDown = true;
+            strip.classList.add('grabbing');
+            startX = e.pageX - strip.offsetLeft;
+            scrollStart = strip.scrollLeft;
+        });
+
+        strip.addEventListener('mouseleave', function () { isDown = false; strip.classList.remove('grabbing'); });
+        strip.addEventListener('mouseup', function () { isDown = false; strip.classList.remove('grabbing'); });
+
+        strip.addEventListener('mousemove', function (e) {
+            if (!isDown) return;
+            e.preventDefault();
+            var x = e.pageX - strip.offsetLeft;
+            strip.scrollLeft = scrollStart - (x - startX) * 1.5;
+        });
+
+        // 3D tilt on hover (desktop only)
+        if (window.innerWidth > 768) {
+            var cards = document.querySelectorAll('.pp-day__card');
+            cards.forEach(function (card) {
+                card.addEventListener('mousemove', function (e) {
+                    if (isDown) return; // skip during drag
+                    var rect = card.getBoundingClientRect();
+                    var cx = (e.clientX - rect.left) / rect.width - 0.5;
+                    var cy = (e.clientY - rect.top) / rect.height - 0.5;
+                    card.style.transform = 'perspective(800px) rotateY(' + (cx * 12) + 'deg) rotateX(' + (-cy * 8) + 'deg) translateY(-4px)';
+                });
+                card.addEventListener('mouseleave', function () {
+                    card.style.transform = '';
+                });
+            });
+        }
+    }
+
+    // ─── 12. Initialize All Modules ────────────────────────────
     // Each function checks for required elements before running.
+
+    // ─── 13. Amenities Load More / Collapse ─────────────────────
+    // Shows first row (5 cards) initially; toggle button expands/collapses.
+
+    function initAmenitiesLoadMore() {
+        var section = document.querySelector('.pp-amenities');
+        if (!section) return;
+
+        var allCards = Array.from(section.querySelectorAll('.pp-amenities__card'));
+        var INITIAL = 5; // exactly one row of the 5-column grid
+        if (allCards.length <= INITIAL) return;
+
+        // Hide cards beyond the first row
+        allCards.slice(INITIAL).forEach(function(card) {
+            card.classList.add('pp-amenities__card--hidden');
+        });
+
+        // Insert toggle button
+        var btn = document.createElement('button');
+        btn.className = 'pp-amenities__load-more';
+        var remaining = allCards.length - INITIAL;
+        btn.textContent = 'Show ' + remaining + ' More Amenities';
+        btn.setAttribute('aria-expanded', 'false');
+        var inner = section.querySelector('.pp-amenities__inner');
+        inner.appendChild(btn);
+
+        btn.addEventListener('click', function() {
+            var expanded = btn.getAttribute('aria-expanded') === 'true';
+            if (!expanded) {
+                // Expand — show all cards
+                allCards.forEach(function(card) {
+                    card.classList.remove('pp-amenities__card--hidden');
+                });
+                btn.textContent = 'Show Less';
+                btn.setAttribute('aria-expanded', 'true');
+            } else {
+                // Collapse — hide cards beyond first row
+                allCards.slice(INITIAL).forEach(function(card) {
+                    card.classList.add('pp-amenities__card--hidden');
+                });
+                btn.textContent = 'Show ' + remaining + ' More Amenities';
+                btn.setAttribute('aria-expanded', 'false');
+                // Scroll back up to the amenities header
+                var header = section.querySelector('.pp-amenities__header');
+                if (header) {
+                    header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    }
 
     initScrollReveal();
     initTimeline();
@@ -436,4 +534,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initGlanceParallax();
     initSmoothScroll();
     initRoomGallery();
+    initDayCards();
+    initAmenitiesLoadMore();
 });
