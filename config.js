@@ -10,6 +10,7 @@ const config = {
         production: 'https://yolocollective-api.onrender.com'
     },
 
+    // Auto-detect: use relative paths on localhost, production URL elsewhere
     get apiBaseUrl() {
         // Auto-detect: use local server when running on localhost
         const isLocal = typeof window !== 'undefined' &&

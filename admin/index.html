@@ -714,6 +714,7 @@
         </nav>
         <div class="sidebar-footer">
             <a href="/">← Back to Site</a>
+            <button onclick="logout()" style="display:block;margin-top:0.5rem;background:transparent;border:none;color:var(--danger);cursor:pointer;font-size:0.75rem;padding:0;font-family:inherit;">Sign Out</button>
         </div>
     </aside>
 
@@ -977,6 +978,28 @@
         </div>
     </div>
 
+    <!-- ═══════ LOGIN OVERLAY ═══════ -->
+    <div class="modal-overlay active" id="loginOverlay" style="z-index:2000;align-items:center;padding:2rem 1rem;">
+        <div class="modal" style="max-width:420px;">
+            <div class="modal-header" style="border-bottom:none;margin-bottom:0.5rem;">
+                <h2>YOLO Admin</h2>
+            </div>
+            <p style="color:var(--text-muted);font-size:0.82rem;margin-bottom:1.5rem;">Sign in to manage content</p>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="loginUser" required autocomplete="username" placeholder="admin">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPass" required autocomplete="current-password" placeholder="••••••••">
+                </div>
+                <div id="loginError" style="color:var(--danger);font-size:0.82rem;margin-bottom:0.75rem;display:none;"></div>
+                <button type="submit" class="btn btn-primary" style="width:100%;" id="loginBtn">Sign In</button>
+            </form>
+        </div>
+    </div>
+
     <!-- Toast Container -->
     <div class="toast-container" id="toastContainer"></div>
 
@@ -987,6 +1010,70 @@
         let experiences = [];
         let propertyImages = {};
         let currentProperty = 'general';
+        let adminCredentials = null; // base64-encoded "user:pass"
+
+        // ─── Auth ───
+        function authFetch(url, options = {}) {
+            if (!adminCredentials) {
+                showLoginOverlay();
+                return Promise.reject(new Error('Not authenticated'));
+            }
+            const headers = Object.assign({}, options.headers, {
+                'Authorization': 'Basic ' + adminCredentials
+            });
+            return fetch(url, Object.assign({}, options, { headers }));
+        }
+
+        function showLoginOverlay() {
+            document.getElementById('loginOverlay').classList.add('active');
+            document.getElementById('loginError').style.display = 'none';
+            document.getElementById('loginBtn').textContent = 'Sign In';
+            document.getElementById('loginBtn').disabled = false;
+        }
+
+        function logout() {
+            adminCredentials = null;
+            sessionStorage.removeItem('adminCreds');
+            showLoginOverlay();
+        }
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('loginUser').value.trim();
+            const pass = document.getElementById('loginPass').value;
+            if (!user || !pass) return;
+
+            const creds = btoa(user + ':' + pass);
+            const btn = document.getElementById('loginBtn');
+            const errEl = document.getElementById('loginError');
+            btn.textContent = 'Signing in…';
+            btn.disabled = true;
+            errEl.style.display = 'none';
+
+            try {
+                const res = await fetch(config.apiBaseUrl + '/api/admin/verify', {
+                    headers: { 'Authorization': 'Basic ' + creds }
+                });
+                if (res.status === 401) {
+                    errEl.textContent = 'Invalid username or password.';
+                    errEl.style.display = 'block';
+                    btn.textContent = 'Sign In';
+                    btn.disabled = false;
+                } else {
+                    adminCredentials = creds;
+                    sessionStorage.setItem('adminCreds', creds);
+                    document.getElementById('loginOverlay').classList.remove('active');
+                    loadBlogs();
+                    loadExperiences();
+                    loadPropertyImages();
+                }
+            } catch (err) {
+                errEl.textContent = 'Connection error. Is the server running?';
+                errEl.style.display = 'block';
+                btn.textContent = 'Sign In';
+                btn.disabled = false;
+            }
+        }
 
         // ─── Toast ───
         function showToast(message, type = 'success') {
@@ -1046,7 +1133,7 @@
             }
             tbody.innerHTML = blogs.map(b => `
                 <tr>
-                    <td><img class="table-img" src="/${b.image}" alt="${b.imageAlt || ''}" onerror="this.style.display='none'"></td>
+                    <td><img class="table-img" src="${config.apiBaseUrl}/${b.image}" alt="${b.imageAlt || ''}" onerror="this.style.display='none'"></td>
                     <td style="color:var(--text-primary);font-weight:500;max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escHtml(b.title)}</td>
                     <td><span class="badge badge-accent">${escHtml(b.category)}</span></td>
                     <td>${escHtml(b.tag)}</td>
@@ -1115,25 +1202,27 @@
             try {
                 const url = config.apiBaseUrl + (editId ? `/api/blogs/${editId}` : '/api/blogs');
                 const method = editId ? 'PUT' : 'POST';
-                const res = await fetch(url, { method, body: formData });
+                const res = await authFetch(url, { method, body: formData });
                 if (!res.ok) throw new Error(await res.text());
                 showToast(editId ? 'Blog updated!' : 'Blog created!');
                 closeBlogModal();
                 loadBlogs();
             } catch (e) {
-                showToast('Error saving blog: ' + e.message, 'error');
+                if (e.message !== 'Not authenticated')
+                    showToast('Error saving blog: ' + e.message, 'error');
             }
         }
 
         async function deleteBlog(id) {
             if (!confirm('Delete this blog post?')) return;
             try {
-                const res = await fetch(config.apiBaseUrl + `/api/blogs/${id}`, { method: 'DELETE' });
+                const res = await authFetch(config.apiBaseUrl + `/api/blogs/${id}`, { method: 'DELETE' });
                 if (!res.ok) throw new Error('Delete failed');
                 showToast('Blog deleted');
                 loadBlogs();
             } catch (e) {
-                showToast('Error deleting blog', 'error');
+                if (e.message !== 'Not authenticated')
+                    showToast('Error deleting blog', 'error');
             }
         }
 
@@ -1177,7 +1266,7 @@
             }
             tbody.innerHTML = experiences.map(e => `
                 <tr>
-                    <td><img class="table-img" src="/${e.image}" alt="${e.title}" onerror="this.style.display='none'"></td>
+                    <td><img class="table-img" src="${config.apiBaseUrl}/${e.image}" alt="${e.title}" onerror="this.style.display='none'"></td>
                     <td style="color:var(--text-primary);font-weight:500;">${escHtml(e.title)}</td>
                     <td><span class="badge badge-accent">${escHtml(e.category)}</span></td>
                     <td>${escHtml(e.badge)}</td>
@@ -1239,25 +1328,27 @@
             try {
                 const url = config.apiBaseUrl + (editId ? `/api/experiences/${editId}` : '/api/experiences');
                 const method = editId ? 'PUT' : 'POST';
-                const res = await fetch(url, { method, body: formData });
+                const res = await authFetch(url, { method, body: formData });
                 if (!res.ok) throw new Error(await res.text());
                 showToast(editId ? 'Experience updated!' : 'Experience created!');
                 closeExpModal();
                 loadExperiences();
             } catch (e) {
-                showToast('Error saving experience: ' + e.message, 'error');
+                if (e.message !== 'Not authenticated')
+                    showToast('Error saving experience: ' + e.message, 'error');
             }
         }
 
         async function deleteExp(id) {
             if (!confirm('Delete this experience?')) return;
             try {
-                const res = await fetch(config.apiBaseUrl + `/api/experiences/${id}`, { method: 'DELETE' });
+                const res = await authFetch(config.apiBaseUrl + `/api/experiences/${id}`, { method: 'DELETE' });
                 if (!res.ok) throw new Error('Delete failed');
                 showToast('Experience deleted');
                 loadExperiences();
             } catch (e) {
-                showToast('Error deleting experience', 'error');
+                if (e.message !== 'Not authenticated')
+                    showToast('Error deleting experience', 'error');
             }
         }
 
@@ -1277,7 +1368,6 @@
                 const res = await fetch(config.apiBaseUrl + '/api/properties');
                 propertyImages = await res.json();
                 renderPropertyTabs();
-                // Ensure currentProperty is valid, default to 'general' or first property
                 if (!propertyImages[currentProperty]) {
                     currentProperty = Object.keys(propertyImages)[0] || 'general';
                 }
@@ -1295,13 +1385,11 @@
                 tabsContainer.innerHTML = '<div style="color: var(--text-muted); font-size: 0.85rem; padding: 0.5rem;">No properties found.</div>';
             } else {
                 tabsContainer.innerHTML = properties.map(prop => {
-                    // Format name nicely (e.g., 'homes-manali' -> 'Homes Manali')
                     const displayName = prop === 'general' ? 'General' : prop.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
                     const activeClass = prop === currentProperty ? 'active' : '';
                     return `<button class="prop-tab ${activeClass}" data-prop="${prop}" onclick="switchProperty('${prop}')">${displayName}</button>`;
                 }).join('');
             }
-            // Add "+ New Property" button
             tabsContainer.innerHTML += `<button class="prop-tab" style="border-style: dashed;" onclick="createNewProperty()">+ New</button>`;
         }
 
@@ -1310,7 +1398,7 @@
             if (!name) return;
 
             try {
-                const res = await fetch(config.apiBaseUrl + '/api/properties/categories', {
+                const res = await authFetch(config.apiBaseUrl + '/api/properties/categories', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ name })
@@ -1320,16 +1408,22 @@
 
                 const data = await res.json();
                 showToast('Property created successfully!');
-                currentProperty = data.property; // Switch to the new property
-                loadPropertyImages(); // Reload
+                currentProperty = data.property;
+                loadPropertyImages();
             } catch (e) {
-                showToast('Failed to create property: ' + (e.message || 'Unknown error'), 'error');
+                if (e.message !== 'Not authenticated')
+                    showToast('Failed to create property: ' + (e.message || 'Unknown error'), 'error');
             }
         }
 
         function renderPropertyImages() {
             const grid = document.getElementById('propImageGrid');
             const images = propertyImages[currentProperty] || [];
+
+            // Always update delete button visibility (before any early returns)
+            const deleteBtn = document.getElementById('deletePropertyBtn');
+            deleteBtn.style.display = currentProperty === 'general' ? 'none' : 'inline-flex';
+
             if (images.length === 0) {
                 grid.innerHTML = '<div class="loading">No images for this property yet.</div>';
                 return;
@@ -1337,7 +1431,6 @@
             grid.innerHTML = images.map(img => {
                 const safeFilename = img.filename.replace(/'/g, "\\'").replace(/"/g, '&quot;');
                 const displayFilename = img.filename.length > 16 ? img.filename.slice(0, 16) + '...' : img.filename;
-                // Prepend base URL for images rendered in the admin dashboard so they load correctly from backend
                 const imageUrl = config.apiBaseUrl ? `${config.apiBaseUrl}/${encodeURI(img.path)}` : `/${encodeURI(img.path)}`;
                 return `
                 <div class="image-card">
@@ -1348,14 +1441,6 @@
                     </div>
                 </div>
             `}).join('');
-            
-            // Toggle Delete Property button visibility
-            const deleteBtn = document.getElementById('deletePropertyBtn');
-            if (currentProperty === 'general') {
-                deleteBtn.style.display = 'none';
-            } else {
-                deleteBtn.style.display = 'inline-flex';
-            }
         }
 
         // File upload click handler
@@ -1373,7 +1458,7 @@
             formData.append('image', file);
 
             try {
-                const res = await fetch(config.apiBaseUrl + `/api/properties/${currentProperty}/images`, {
+                const res = await authFetch(config.apiBaseUrl + `/api/properties/${currentProperty}/images`, {
                     method: 'POST',
                     body: formData
                 });
@@ -1383,36 +1468,38 @@
                 fileInput.value = '';
                 loadPropertyImages();
             } catch (e) {
-                showToast('Upload failed: ' + e.message, 'error');
+                if (e.message !== 'Not authenticated')
+                    showToast('Upload failed: ' + e.message, 'error');
             }
         }
 
         async function deletePropertyImage(prop, filename) {
             if (!confirm(`Delete ${filename}?`)) return;
             try {
-                // BUGFIX: Frontend shouldn't encode a filename twice, or encode what is already safe
-                const res = await fetch(config.apiBaseUrl + `/api/properties/${prop}/images/${filename}`, { method: 'DELETE' });
+                const res = await authFetch(config.apiBaseUrl + `/api/properties/${prop}/images/${filename}`, { method: 'DELETE' });
                 if (!res.ok) throw new Error('Delete failed');
                 showToast('Image deleted');
                 loadPropertyImages();
             } catch (e) {
-                showToast('Error deleting image', 'error');
+                if (e.message !== 'Not authenticated')
+                    showToast('Error deleting image', 'error');
             }
         }
-        
+
         async function deleteCurrentProperty() {
             if (currentProperty === 'general') return;
             if (!confirm(`Are you sure you want to delete the property "${currentProperty}" AND all of its images? This cannot be undone.`)) return;
-            
+
             try {
-                const res = await fetch(config.apiBaseUrl + `/api/properties/categories/${currentProperty}`, { method: 'DELETE' });
+                const res = await authFetch(config.apiBaseUrl + `/api/properties/categories/${currentProperty}`, { method: 'DELETE' });
                 if (!res.ok) throw new Error(await res.text());
-                
+
                 showToast(`Property "${currentProperty}" deleted`);
-                currentProperty = 'general'; // Default back to general
+                currentProperty = 'general';
                 loadPropertyImages();
             } catch (e) {
-                showToast('Error deleting property: ' + (e.message || 'Unknown error'), 'error');
+                if (e.message !== 'Not authenticated')
+                    showToast('Error deleting property: ' + (e.message || 'Unknown error'), 'error');
             }
         }
 
@@ -1426,9 +1513,17 @@
 
         // ─── Init ───
         document.addEventListener('DOMContentLoaded', () => {
+            // Load public data regardless of auth (GET endpoints are public)
             loadBlogs();
             loadExperiences();
             loadPropertyImages();
+
+            // Restore session credentials
+            const storedCreds = sessionStorage.getItem('adminCreds');
+            if (storedCreds) {
+                adminCredentials = storedCreds;
+                document.getElementById('loginOverlay').classList.remove('active');
+            }
         });
 
         // File input display names

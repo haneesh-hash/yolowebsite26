@@ -5,7 +5,7 @@
 
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-        <title>YOLO Homes | Boutique Mountain Sanctuaries | Kasol & Manali</title>
+        <title>YOLO Homes | Boutique Mountain Sanctuaries | Kasol &amp; Manali</title>
         <meta
             name="description"
             content="YOLO Homes brings you curated comfort in the Himalayas. Choose between our Kasol sanctuary in the Parvati Valley or our Manali orchard escape. Homely warmth meets contemporary design."
@@ -16,9 +16,9 @@
         <meta property="og:title" content="YOLO Homes | Boutique Mountain Sanctuaries" />
         <meta
             property="og:description"
-            content="Curated comfort in the Himalayas. YOLO Homes Kasol & Manali — where homely warmth meets contemporary design."
+            content="Curated comfort in the Himalayas. YOLO Homes Kasol &amp; Manali — where homely warmth meets contemporary design."
         />
-        <meta property="og:image" content="https://theyolocollective.com/assets/images/IMG_3686.webp" />
+        <meta property="og:image" content="https://theyolocollective.com/assets/images/threepane_homes.JPG" />
         <meta property="og:url" content="https://theyolocollective.com/homes-hub.html" />
         <meta name="twitter:card" content="summary_large_image" />
 
@@ -26,6 +26,203 @@
         <link rel="stylesheet" href="style.css?v=3" />
 
         <link rel="canonical" href="https://theyolocollective.com/homes-hub.html" />
+
+        <style>
+            /* ─── Location Tab Bar ─────────────────────────────────── */
+            .homes-tab-bar {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 0.75rem;
+                padding: 2rem 1rem;
+                background: var(--bg, #fafaf8);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+                position: sticky;
+                top: 64px;
+                z-index: 50;
+                flex-wrap: wrap;
+            }
+            .homes-tab-bar__label {
+                font-size: 0.78rem;
+                font-weight: 600;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: rgba(0, 0, 0, 0.4);
+                margin-right: 0.5rem;
+            }
+            .homes-tab {
+                padding: 0.6rem 1.8rem;
+                border-radius: 100px;
+                font-size: 0.88rem;
+                font-weight: 600;
+                letter-spacing: 0.04em;
+                border: 2px solid rgba(0, 0, 0, 0.15);
+                background: transparent;
+                cursor: pointer;
+                transition: all 0.25s ease;
+                color: rgba(0, 0, 0, 0.55);
+                font-family: inherit;
+            }
+            .homes-tab.active {
+                background: #2c2c2c;
+                color: #fff;
+                border-color: #2c2c2c;
+            }
+            .homes-tab:not(.active):hover {
+                border-color: #2c2c2c;
+                color: #2c2c2c;
+            }
+
+            /* ─── Location Sections ────────────────────────────────── */
+            .homes-location-section {
+                display: none;
+            }
+            .homes-location-section.active {
+                display: block;
+            }
+
+            /* ─── Property Compare Cards ──────────────────────────── */
+            .homes-intro-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2px;
+                background: rgba(0,0,0,0.06);
+            }
+            @media (max-width: 768px) {
+                .homes-intro-grid { grid-template-columns: 1fr; }
+            }
+            .homes-intro-card {
+                position: relative;
+                overflow: hidden;
+                aspect-ratio: 4/3;
+                cursor: pointer;
+                text-decoration: none;
+                display: block;
+            }
+            .homes-intro-card img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.6s ease;
+            }
+            .homes-intro-card:hover img {
+                transform: scale(1.04);
+            }
+            .homes-intro-card__overlay {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                padding: 2.5rem 2rem;
+                color: #fff;
+            }
+            .homes-intro-card__tag {
+                font-size: 0.72rem;
+                font-weight: 700;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                opacity: 0.75;
+                margin-bottom: 0.4rem;
+            }
+            .homes-intro-card__title {
+                font-size: clamp(1.4rem, 3vw, 2rem);
+                font-weight: 700;
+                line-height: 1.15;
+                margin-bottom: 0.6rem;
+            }
+            .homes-intro-card__desc {
+                font-size: 0.88rem;
+                opacity: 0.8;
+                line-height: 1.55;
+                max-width: 32ch;
+                margin-bottom: 1.25rem;
+            }
+            .homes-intro-card__cta {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.4rem;
+                font-size: 0.82rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                border: 1.5px solid rgba(255,255,255,0.7);
+                border-radius: 100px;
+                padding: 0.45rem 1.2rem;
+                color: #fff;
+                transition: background 0.2s, border-color 0.2s;
+            }
+            .homes-intro-card:hover .homes-intro-card__cta {
+                background: rgba(255,255,255,0.15);
+                border-color: #fff;
+            }
+
+            /* ─── Shared Section Headings ─────────────────────────── */
+            .homes-section-header {
+                text-align: center;
+                padding: 4rem 1rem 1rem;
+            }
+            .homes-section-header .pp-eyebrow {
+                font-size: 0.75rem;
+                font-weight: 700;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                color: rgba(0,0,0,0.4);
+                display: block;
+                margin-bottom: 0.75rem;
+            }
+            .homes-section-header h2 {
+                font-size: clamp(1.6rem, 4vw, 2.4rem);
+                font-weight: 700;
+                line-height: 1.2;
+                color: #1a1a1a;
+            }
+
+            /* ─── Compare Table ───────────────────────────────────── */
+            .homes-compare {
+                padding: 3rem 0 5rem;
+                background: #fff;
+            }
+            .homes-compare__table {
+                max-width: 800px;
+                margin: 2.5rem auto 0;
+                border-collapse: collapse;
+                width: 100%;
+                font-size: 0.9rem;
+            }
+            .homes-compare__table th,
+            .homes-compare__table td {
+                padding: 1rem 1.5rem;
+                text-align: center;
+                border-bottom: 1px solid rgba(0,0,0,0.06);
+            }
+            .homes-compare__table th {
+                font-weight: 700;
+                font-size: 0.82rem;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                color: rgba(0,0,0,0.5);
+                background: #fafaf8;
+            }
+            .homes-compare__table th:first-child,
+            .homes-compare__table td:first-child {
+                text-align: left;
+                font-weight: 600;
+                color: rgba(0,0,0,0.75);
+            }
+            .homes-compare__check {
+                color: #2c8a5c;
+                font-weight: 700;
+            }
+            .homes-compare__dash {
+                color: rgba(0,0,0,0.25);
+            }
+            @media (max-width: 600px) {
+                .homes-compare__table th,
+                .homes-compare__table td { padding: 0.75rem 0.75rem; font-size: 0.82rem; }
+            }
+        </style>
     </head>
 
     <body>
@@ -34,7 +231,6 @@
         <!-- Navigation -->
         <header class="site-header">
             <nav class="nav-container">
-                <!-- Left: Logo -->
                 <div class="logo">
                     <a href="index.html">
                         <img src="logo.svg?v=1771706725" alt="The YOLO Collective logo" class="logo-image" />
@@ -43,7 +239,7 @@
 
                 <ul class="nav-links">
                     <li class="dropdown">
-                        <a href="index.html#explore">Destinations <span class="arrow-down">▼</span></a>
+                        <a href="index.html#explore">Destinations <span class="arrow-down">&#9660;</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="jispa.html">Jispa</a></li>
                             <li><a href="manali.html">Manali</a></li>
@@ -53,7 +249,7 @@
                     <li><a href="experience.html">YOLO Experiences</a></li>
                     <li><a href="blog.html">Blogs</a></li>
                     <li class="dropdown">
-                        <a href="index.html#company">Inside YOLO <span class="arrow-down">▼</span></a>
+                        <a href="index.html#company">Inside YOLO <span class="arrow-down">&#9660;</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="about.html">About</a></li>
                             <li><a href="franchise.html">Franchise</a></li>
@@ -62,7 +258,6 @@
                     </li>
                 </ul>
 
-                <!-- Right: Navigation Links & CTA -->
                 <div class="nav-right">
                     <div class="nav-actions">
                         <a
@@ -71,23 +266,10 @@
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <path
-                                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
-                                ></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
                             </svg>
                         </a>
-
                         <a
                             href="https://bookingengine.stayflexi.com/group-be/?groupId=28012"
                             class="btn-primary"
@@ -96,8 +278,6 @@
                             >Book Your Stay</a
                         >
                     </div>
-
-                    <!-- Mobile Menu Toggle -->
                     <button class="mobile-menu-toggle" aria-label="Open Menu">
                         <span></span>
                         <span></span>
@@ -112,7 +292,7 @@
             <ul class="mobile-nav-links">
                 <li><a href="experience.html">Experiences</a></li>
                 <li>
-                    <a href="#" class="mobile-dropdown-toggle">Destinations ▼</a>
+                    <a href="#" class="mobile-dropdown-toggle">Destinations &#9660;</a>
                     <ul class="mobile-sub-menu">
                         <li><a href="jispa.html">Jispa</a></li>
                         <li><a href="manali.html">Manali</a></li>
@@ -121,7 +301,7 @@
                 </li>
                 <li><a href="blog.html">Blogs</a></li>
                 <li>
-                    <a href="#" class="mobile-dropdown-toggle">Inside YOLO ▼</a>
+                    <a href="#" class="mobile-dropdown-toggle">Inside YOLO &#9660;</a>
                     <ul class="mobile-sub-menu">
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="franchise.html">Franchise</a></li>
@@ -133,242 +313,677 @@
         </div>
 
         <!-- Mobile Bottom Nav -->
-            <nav class="mobile-bottom-nav">
-        <a href="index.html" class="nav-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                <polyline points="9 22 9 12 15 12 15 22"></polyline>
-            </svg>
-            <span>Home</span>
-        </a>
-        <a href="experience.html" class="nav-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <polygon
-                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                </polygon>
-            </svg>
-            <span>Experiences</span>
-        </a>
-        <a href="#" class="nav-item highlight" id="booking-trigger-bottom">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-            <span>Book</span>
-        </a>
-        <a href="https://wa.me/917018591758" class="nav-item" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path
-                    d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
-                </path>
-            </svg>
-            <span>Chat</span>
-        </a>
-    </nav>
+        <nav class="mobile-bottom-nav">
+            <a href="index.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span>Home</span>
+            </a>
+            <a href="experience.html" class="nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                <span>Experiences</span>
+            </a>
+            <a href="#" class="nav-item highlight" id="booking-trigger-bottom">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span>Book</span>
+            </a>
+            <a href="https://wa.me/917018591758" class="nav-item" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+                <span>Chat</span>
+            </a>
+        </nav>
 
         <!-- Main Content -->
         <main id="main-content">
-            <!-- Hero Section -->
-            <section class="page-hero">
-                <div class="page-hero-bg">
-                    <img
-                        src="assets/images/IMG_3686.webp"
-                        alt="YOLO Homes boutique mountain sanctuary"
-                        fetchpriority="high"
-                        decoding="async"
-                    />
-                </div>
-                <div class="hero-content">
+
+            <!-- ═══ 1. HERO ═══ -->
+            <section class="pp-hero">
+                <img
+                    src="assets/images/threepane_homes.JPG"
+                    alt="YOLO Homes boutique mountain sanctuary"
+                    fetchpriority="high"
+                    decoding="async"
+                />
+                <div class="pp-hero__gradient"></div>
+                <div class="pp-hero__badge">
+                    <p>YOLO Homes &mdash; Kasol &amp; Manali, Himachal Pradesh</p>
                     <h1>YOLO Homes</h1>
-                    <p class="subtitle">Curated Comfort in the Mountains.</p>
+                    <p>Curated Comfort in the Mountains.</p>
+                    <div class="pp-hero__tags">
+                        <span>&#127968; Boutique Stays</span>
+                        <span>&#127957; Parvati Valley</span>
+                        <span>&#127822; Apple Orchards</span>
+                        <span>&#10024; Luxury</span>
+                        <span>&#127807; Organic</span>
+                    </div>
+                </div>
+                <div class="pp-hero__scroll-hint">
+                    <span>Scroll</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
                 </div>
             </section>
 
-            <!-- Intro Section -->
-            <section class="mj-section mj-center">
-                <div class="mj-container--narrow">
-                    <span class="mj-eyebrow">Our Sanctuaries</span>
-                    <h2 class="mj-heading">Where Homely Warmth Meets Contemporary Design.</h2>
-                    <p class="mj-body">
-                        We believe the perfect mountain stay blends timeless comfort with modern luxury. Our handcrafted
-                        homes are designed for travelers seeking stillness — spaces where natural light, tactile textures,
-                        and personalized service create moments of pure peace. Whether you choose our sanctuary in the
-                        Parvati Valley or our orchard escape near Manali, you'll find the same philosophy: curated
-                        comfort that feels like home.
-                    </p>
+            <!-- ═══ 2. INTRO GLANCE BAR ═══ -->
+            <section class="pp-glance pp-reveal">
+                <div class="pp-glance__inner">
+                    <div class="pp-glance__item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <span class="pp-glance__item-label">Locations</span>
+                        <span class="pp-glance__item-value">Kasol &amp; Manali</span>
+                    </div>
+                    <div class="pp-glance__divider"></div>
+                    <div class="pp-glance__item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        <span class="pp-glance__item-label">Properties</span>
+                        <span class="pp-glance__item-value">2 Homes</span>
+                    </div>
+                    <div class="pp-glance__divider"></div>
+                    <div class="pp-glance__item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        <span class="pp-glance__item-label">Season</span>
+                        <span class="pp-glance__item-value">Year-Round</span>
+                    </div>
+                    <div class="pp-glance__divider"></div>
+                    <div class="pp-glance__item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        <span class="pp-glance__item-label">Starting</span>
+                        <span class="pp-glance__item-value">&#8377;3,500/night</span>
+                    </div>
+                    <div class="pp-glance__divider"></div>
+                    <div class="pp-glance__item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        <span class="pp-glance__item-label">Rating</span>
+                        <span class="pp-glance__item-value">4.8&#9733;</span>
+                    </div>
                 </div>
             </section>
 
-            <!-- Choose Your Homes Section -->
-            <section class="mj-section mj-section--light">
-                <div class="mj-container">
-                    <span class="mj-eyebrow">Choose Your Sanctuary</span>
-                    <h2 class="mj-heading" style="text-align: center">YOLO Homes Locations.</h2>
+            <!-- ═══ 3. CHOOSE YOUR SANCTUARY ═══ -->
+            <div class="homes-intro-grid">
+                <!-- Kasol Card -->
+                <a href="homes.html" class="homes-intro-card">
+                    <img src="assets/images/kasol/kasol-1771671362722.jpg" alt="YOLO Homes Kasol in the Parvati Valley" loading="lazy" decoding="async" />
+                    <div class="homes-intro-card__overlay">
+                        <span class="homes-intro-card__tag">Parvati Valley &bull; 1,600m</span>
+                        <h2 class="homes-intro-card__title">YOLO Homes Kasol</h2>
+                        <p class="homes-intro-card__desc">Riverside serenity in the heart of the Parvati Valley. Pine forests, river sounds, and the YOLO Library.</p>
+                        <span class="homes-intro-card__cta">Explore Kasol &rarr;</span>
+                    </div>
+                </a>
+                <!-- Manali Card -->
+                <a href="homes-manali.html" class="homes-intro-card">
+                    <img src="assets/images/manali/manali1.JPG" alt="YOLO Homes Manali orchard sanctuary" loading="lazy" decoding="async" />
+                    <div class="homes-intro-card__overlay">
+                        <span class="homes-intro-card__tag">Manali &bull; 2,050m</span>
+                        <h2 class="homes-intro-card__title">YOLO Homes Manali</h2>
+                        <p class="homes-intro-card__desc">Tucked in old apple orchards. Sun-drenched balconies, mountain views, and pure tranquility.</p>
+                        <span class="homes-intro-card__cta">Explore Manali &rarr;</span>
+                    </div>
+                </a>
+            </div>
 
-                    <div class="mj-grid-2" style="margin-top: 3rem; gap: 2.5rem">
-                        <!-- Kasol Card -->
-                        <a href="homes.html" class="mj-card" style="text-decoration: none; color: inherit">
-                            <div class="mj-card__image">
-                                <img
-                                    src="assets/images/IMG_3686.webp"
-                                    alt="YOLO Homes Kasol in the Parvati Valley"
-                                    loading="lazy"
-                                    decoding="async"
-                                />
+            <!-- ═══ 4. LOCATION TABS ═══ -->
+            <div class="homes-tab-bar pp-reveal" id="locationTabBar">
+                <span class="homes-tab-bar__label">Explore:</span>
+                <button class="homes-tab active" data-tab="kasol" onclick="switchHomesTab('kasol')">YOLO Homes Kasol</button>
+                <button class="homes-tab" data-tab="manali" onclick="switchHomesTab('manali')">YOLO Homes Manali</button>
+            </div>
+
+            <!-- ═══════════════════════════════════════════════════════
+                 KASOL SECTION
+            ═══════════════════════════════════════════════════════════ -->
+            <div class="homes-location-section active" id="kasol-section">
+
+                <!-- Kasol Story -->
+                <section class="pp-story pp-reveal">
+                    <div class="pp-story__row">
+                        <div class="pp-story__visual">
+                            <img src="assets/images/kasol/kasol-1771671362722.jpg" alt="YOLO Homes Kasol surrounded by pines in the Parvati Valley" loading="lazy" />
+                        </div>
+                        <div class="pp-story__content">
+                            <blockquote class="pp-story__quote">
+                                Let the river tell you to slow down. Let the pines tell you to breathe.
+                            </blockquote>
+                            <p class="pp-story__body">
+                                YOLO Homes Kasol sits in the heart of the Parvati Valley at 1,600 metres &mdash; a modern sanctuary built for those who crave stillness without sacrificing comfort. Cedar-scented rooms, handpicked linens, an organic garden, and the sound of the Parvati River as your constant companion. We've designed every corner to let the mountains in while keeping you warm, fed, and deeply at ease.
+                            </p>
+                            <span class="pp-story__vibe">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                Parvati Valley &bull; Pine forests &bull; Riverside tranquility
+                            </span>
+                            <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                                <a href="homes.html" class="pp-rooms__card-cta" style="display:inline-flex;">View Full Property</a>
+                                <a href="https://bookingengine.stayflexi.com/group-be/?groupId=28012" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.82rem;font-weight:700;letter-spacing:0.06em;color:rgba(0,0,0,0.6);text-decoration:none;border:1.5px solid rgba(0,0,0,0.2);border-radius:100px;padding:0.6rem 1.4rem;transition:all 0.2s;">
+                                    Book Now &rarr;
+                                </a>
                             </div>
-                            <div class="mj-card__body">
-                                <span class="mj-card__meta">Parvati Valley Sanctuary</span>
-                                <h3 class="mj-card__title">YOLO Homes Kasol</h3>
-                                <p class="mj-card__excerpt">
-                                    Nestled in the heart of the Parvati Valley. Premium linens, cedarwood scents, and
-                                    riverside serenity. The modern sanctuary where nature and comfort converge.
-                                </p>
-                                <div style="margin-top: 1rem">
-                                    <ul style="font-size: 0.9rem; line-height: 1.6; color: rgba(0,0,0,0.65)">
-                                        <li>✓ Riverside location</li>
-                                        <li>✓ Organic garden</li>
-                                        <li>✓ Private butler service</li>
-                                        <li>✓ The Library lounge</li>
-                                    </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Kasol Gallery -->
+                <section class="pp-bento pp-reveal">
+                    <div class="pp-bento__header">
+                        <h2>Kasol — Explore the Space</h2>
+                    </div>
+                    <div class="pp-bento__grid">
+                        <div class="pp-bento__item pp-bento__item--hero">
+                            <img src="assets/images/kasol/kasol-1771671362722.jpg" alt="YOLO Homes Kasol main view" loading="lazy" />
+                            <span class="pp-bento__label">The Sanctuary</span>
+                        </div>
+                        <div class="pp-bento__item">
+                            <img src="assets/images/IMG_3686.webp" alt="Riverside views at YOLO Homes Kasol" loading="lazy" />
+                            <span class="pp-bento__label">Riverside Views</span>
+                        </div>
+                        <div class="pp-bento__item">
+                            <img src="assets/images/IMG_3685.webp" alt="Mountain scenery near YOLO Homes Kasol" loading="lazy" />
+                            <span class="pp-bento__label">Mountain Scenery</span>
+                        </div>
+                        <div class="pp-bento__item pp-bento__item--tall">
+                            <img src="assets/images/yolohomes-1771671317056.jpg" alt="Interior of YOLO Homes Kasol" loading="lazy" />
+                            <span class="pp-bento__label">Curated Interiors</span>
+                        </div>
+                        <div class="pp-bento__item">
+                            <img src="assets/images/IMG_3682.webp" alt="Parvati Valley from YOLO Homes Kasol" loading="lazy" />
+                            <span class="pp-bento__label">Parvati Valley</span>
+                        </div>
+                        <div class="pp-bento__item">
+                            <img src="assets/images/IMG_3684.webp" alt="YOLO Homes Kasol garden" loading="lazy" />
+                            <span class="pp-bento__label">Organic Garden</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Kasol Stay Options -->
+                <section class="pp-rooms pp-reveal">
+                    <div class="pp-rooms__header">
+                        <h2>Kasol — Stay Options</h2>
+                    </div>
+                    <div class="pp-rooms__scroll">
+                        <div class="pp-rooms__card pp-reveal-stagger"
+                             data-room-name="Riverside Room"
+                             data-gallery='["assets/images/kasol/kasol-1771671362722.jpg","assets/images/IMG_3686.webp","assets/images/IMG_3682.webp"]'>
+                            <div class="pp-rooms__card-image">
+                                <img src="assets/images/kasol/kasol-1771671362722.jpg" alt="Riverside Room at YOLO Homes Kasol" loading="lazy" />
+                                <div class="pp-rooms__card-gallery-hint">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                                    <span>3 Photos</span>
                                 </div>
-                                <span class="mj-card__cta">Explore Kasol →</span>
                             </div>
-                        </a>
-
-                        <!-- Manali Card -->
-                        <a href="homes-manali.html" class="mj-card" style="text-decoration: none; color: inherit">
-                            <div class="mj-card__image">
-                                <img
-                                    src="assets/images/IMG_3685.webp"
-                                    alt="YOLO Homes Manali orchard sanctuary"
-                                    loading="lazy"
-                                    decoding="async"
-                                />
-                            </div>
-                            <div class="mj-card__body">
-                                <span class="mj-card__meta">Orchard Escape</span>
-                                <h3 class="mj-card__title">YOLO Homes Manali</h3>
-                                <p class="mj-card__excerpt">
-                                    Tucked away in old apple orchards far from the bustle. Quiet luxury designed for
-                                    stillness, sun-drenched balconies, and the rustle of leaves. Pure tranquility.
-                                </p>
-                                <div style="margin-top: 1rem">
-                                    <ul style="font-size: 0.9rem; line-height: 1.6; color: rgba(0,0,0,0.65)">
-                                        <li>✓ Orchard setting</li>
-                                        <li>✓ Private grounds</li>
-                                        <li>✓ Personalized service</li>
-                                        <li>✓ Mountain views</li>
-                                    </ul>
+                            <div class="pp-rooms__card-body">
+                                <h3>Riverside Room</h3>
+                                <p>King bed, river-facing balcony, cedarwood interiors, premium linens. Wake up to the sound of the Parvati.</p>
+                                <div class="pp-rooms__card-meta">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                        2 Guests
+                                    </span>
                                 </div>
-                                <span class="mj-card__cta">Explore Manali →</span>
+                                <a href="https://bookingengine.stayflexi.com/group-be/?groupId=28012" class="pp-rooms__card-cta" target="_blank" rel="noopener noreferrer">Reserve</a>
                             </div>
-                        </a>
+                        </div>
+                        <div class="pp-rooms__card pp-reveal-stagger"
+                             data-room-name="Forest Suite"
+                             data-gallery='["assets/images/yolohomes-1771671317056.jpg","assets/images/IMG_3683.webp","assets/images/IMG_3684.webp"]'>
+                            <div class="pp-rooms__card-image">
+                                <img src="assets/images/yolohomes-1771671317056.jpg" alt="Forest Suite at YOLO Homes Kasol" loading="lazy" />
+                                <div class="pp-rooms__card-gallery-hint">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                                    <span>3 Photos</span>
+                                </div>
+                            </div>
+                            <div class="pp-rooms__card-body">
+                                <h3>Forest Suite</h3>
+                                <p>Pine forest views, private sit-out, en-suite bath with heated water. Curated books and a reading corner.</p>
+                                <div class="pp-rooms__card-meta">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                        2 Guests
+                                    </span>
+                                </div>
+                                <a href="https://bookingengine.stayflexi.com/group-be/?groupId=28012" class="pp-rooms__card-cta" target="_blank" rel="noopener noreferrer">Reserve</a>
+                            </div>
+                        </div>
+                        <div class="pp-rooms__card pp-reveal-stagger"
+                             data-room-name="Garden Room"
+                             data-gallery='["assets/images/IMG_3684.webp","assets/images/IMG_3682.webp","assets/images/kasol/kasol-1771671362722.jpg"]'>
+                            <div class="pp-rooms__card-image">
+                                <img src="assets/images/IMG_3684.webp" alt="Garden Room at YOLO Homes Kasol" loading="lazy" />
+                                <div class="pp-rooms__card-gallery-hint">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                                    <span>3 Photos</span>
+                                </div>
+                            </div>
+                            <div class="pp-rooms__card-body">
+                                <h3>Garden Room</h3>
+                                <p>Opens onto the organic garden. Double beds, natural light, private entry. Perfect for the solo traveller or couple.</p>
+                                <div class="pp-rooms__card-meta">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                        2 Guests
+                                    </span>
+                                </div>
+                                <a href="https://bookingengine.stayflexi.com/group-be/?groupId=28012" class="pp-rooms__card-cta" target="_blank" rel="noopener noreferrer">Reserve</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Kasol Amenities -->
+                <section class="pp-amenities pp-reveal">
+                    <div class="pp-amenities__inner">
+                        <div class="pp-amenities__header">
+                            <h2>Kasol Amenities</h2>
+                        </div>
+                        <div class="pp-amenities__group">
+                            <h3 class="pp-amenities__group-title">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                Comfort
+                            </h3>
+                            <div class="pp-amenities__list pp-reveal-stagger">
+                                <span class="pp-amenities__pill">Premium Linens</span>
+                                <span class="pp-amenities__pill">Heated Rooms</span>
+                                <span class="pp-amenities__pill">Hot Water</span>
+                                <span class="pp-amenities__pill">Private Butler</span>
+                                <span class="pp-amenities__pill">Welcome Drink</span>
+                                <span class="pp-amenities__pill">The Library Lounge</span>
+                            </div>
+                        </div>
+                        <div class="pp-amenities__group">
+                            <h3 class="pp-amenities__group-title">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                Experiences
+                            </h3>
+                            <div class="pp-amenities__list pp-reveal-stagger">
+                                <span class="pp-amenities__pill">Riverside Walks</span>
+                                <span class="pp-amenities__pill">Organic Garden</span>
+                                <span class="pp-amenities__pill">Village Day Trips</span>
+                                <span class="pp-amenities__pill">Yoga Sessions</span>
+                                <span class="pp-amenities__pill">Star Gazing</span>
+                            </div>
+                        </div>
+                        <div class="pp-amenities__group">
+                            <h3 class="pp-amenities__group-title">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+                                Dining
+                            </h3>
+                            <div class="pp-amenities__list pp-reveal-stagger">
+                                <span class="pp-amenities__pill">Farm-to-Table Meals</span>
+                                <span class="pp-amenities__pill">Artisan Coffee</span>
+                                <span class="pp-amenities__pill">Himalayan Cuisine</span>
+                                <span class="pp-amenities__pill">Evening Chai</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+            <!-- end kasol-section -->
+
+            <!-- ═══════════════════════════════════════════════════════
+                 MANALI SECTION
+            ═══════════════════════════════════════════════════════════ -->
+            <div class="homes-location-section" id="manali-section">
+
+                <!-- Manali Story -->
+                <section class="pp-story pp-reveal">
+                    <div class="pp-story__row">
+                        <div class="pp-story__visual">
+                            <img src="assets/images/manali/manali1.JPG" alt="YOLO Homes Manali amid apple orchards" loading="lazy" />
+                        </div>
+                        <div class="pp-story__content">
+                            <blockquote class="pp-story__quote">
+                                Tuck yourself away in the orchards. The mountains will find you anyway.
+                            </blockquote>
+                            <p class="pp-story__body">
+                                YOLO Homes Manali is our orchard escape &mdash; a quiet luxury property tucked inside old apple orchards at 2,050 metres, far from the bustle of the main bazaar. Sun-drenched balconies, mountain views in every direction, and a personalized service philosophy that puts your peace first. Come for the stillness. Stay for the warmth.
+                            </p>
+                            <span class="pp-story__vibe">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                Manali &bull; Apple orchards &bull; Mountain panoramas
+                            </span>
+                            <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                                <a href="homes-manali.html" class="pp-rooms__card-cta" style="display:inline-flex;">View Full Property</a>
+                                <a href="https://bookingengine.stayflexi.com/group-be/?groupId=28012" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.82rem;font-weight:700;letter-spacing:0.06em;color:rgba(0,0,0,0.6);text-decoration:none;border:1.5px solid rgba(0,0,0,0.2);border-radius:100px;padding:0.6rem 1.4rem;transition:all 0.2s;">
+                                    Book Now &rarr;
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Manali Gallery -->
+                <section class="pp-bento pp-reveal">
+                    <div class="pp-bento__header">
+                        <h2>Manali — Explore the Space</h2>
+                    </div>
+                    <div class="pp-bento__grid">
+                        <div class="pp-bento__item pp-bento__item--hero">
+                            <img src="assets/images/manali/manali.JPG" alt="YOLO Homes Manali main view" loading="lazy" />
+                            <span class="pp-bento__label">The Orchard Escape</span>
+                        </div>
+                        <div class="pp-bento__item">
+                            <img src="assets/images/manali/manali1.JPG" alt="Apple orchard at YOLO Homes Manali" loading="lazy" />
+                            <span class="pp-bento__label">Apple Orchard</span>
+                        </div>
+                        <div class="pp-bento__item">
+                            <img src="assets/images/manali/manali11.JPG" alt="Mountain views from YOLO Homes Manali" loading="lazy" />
+                            <span class="pp-bento__label">Mountain Views</span>
+                        </div>
+                        <div class="pp-bento__item pp-bento__item--tall">
+                            <img src="assets/images/manali/IMG_1720-1771927294398.jpg" alt="Luxury interior at YOLO Homes Manali" loading="lazy" />
+                            <span class="pp-bento__label">Luxury Interiors</span>
+                        </div>
+                        <div class="pp-bento__item">
+                            <img src="assets/images/manali/IMG_9937.JPG" alt="Balcony view at YOLO Homes Manali" loading="lazy" />
+                            <span class="pp-bento__label">Private Balcony</span>
+                        </div>
+                        <div class="pp-bento__item">
+                            <img src="assets/images/manali/IMG_9138 2.JPG" alt="Grounds of YOLO Homes Manali" loading="lazy" />
+                            <span class="pp-bento__label">Private Grounds</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Manali Stay Options -->
+                <section class="pp-rooms pp-reveal">
+                    <div class="pp-rooms__header">
+                        <h2>Manali — Stay Options</h2>
+                    </div>
+                    <div class="pp-rooms__scroll">
+                        <div class="pp-rooms__card pp-reveal-stagger"
+                             data-room-name="Orchard Suite"
+                             data-gallery='["assets/images/manali/manali1.JPG","assets/images/manali/manali.JPG","assets/images/manali/manali11.JPG"]'>
+                            <div class="pp-rooms__card-image">
+                                <img src="assets/images/manali/manali1.JPG" alt="Orchard Suite at YOLO Homes Manali" loading="lazy" />
+                                <div class="pp-rooms__card-gallery-hint">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                                    <span>3 Photos</span>
+                                </div>
+                            </div>
+                            <div class="pp-rooms__card-body">
+                                <h3>Orchard Suite</h3>
+                                <p>King bed, private balcony overlooking apple orchards, mountain-view windows, heated floors and a reading nook.</p>
+                                <div class="pp-rooms__card-meta">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                        2 Guests
+                                    </span>
+                                </div>
+                                <a href="https://bookingengine.stayflexi.com/group-be/?groupId=28012" class="pp-rooms__card-cta" target="_blank" rel="noopener noreferrer">Reserve</a>
+                            </div>
+                        </div>
+                        <div class="pp-rooms__card pp-reveal-stagger"
+                             data-room-name="Mountain View Room"
+                             data-gallery='["assets/images/manali/manali11.JPG","assets/images/manali/IMG_9937.JPG","assets/images/manali/manali.JPG"]'>
+                            <div class="pp-rooms__card-image">
+                                <img src="assets/images/manali/manali11.JPG" alt="Mountain View Room at YOLO Homes Manali" loading="lazy" />
+                                <div class="pp-rooms__card-gallery-hint">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                                    <span>3 Photos</span>
+                                </div>
+                            </div>
+                            <div class="pp-rooms__card-body">
+                                <h3>Mountain View Room</h3>
+                                <p>Floor-to-ceiling Himalayan panorama. Dual beds, warm interiors, and a sun-drenched sit-out. Perfect for small groups.</p>
+                                <div class="pp-rooms__card-meta">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                        3 Guests
+                                    </span>
+                                </div>
+                                <a href="https://bookingengine.stayflexi.com/group-be/?groupId=28012" class="pp-rooms__card-cta" target="_blank" rel="noopener noreferrer">Reserve</a>
+                            </div>
+                        </div>
+                        <div class="pp-rooms__card pp-reveal-stagger"
+                             data-room-name="Garden Cottage"
+                             data-gallery='["assets/images/manali/IMG_1720-1771927294398.jpg","assets/images/manali/IMG_9138 2.JPG","assets/images/manali/manali1.JPG"]'>
+                            <div class="pp-rooms__card-image">
+                                <img src="assets/images/manali/IMG_1720-1771927294398.jpg" alt="Garden Cottage at YOLO Homes Manali" loading="lazy" />
+                                <div class="pp-rooms__card-gallery-hint">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                                    <span>3 Photos</span>
+                                </div>
+                            </div>
+                            <div class="pp-rooms__card-body">
+                                <h3>Garden Cottage</h3>
+                                <p>Standalone cottage surrounded by the orchard. Private entry, king bed, fireplace, and full privacy.</p>
+                                <div class="pp-rooms__card-meta">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                        2 Guests
+                                    </span>
+                                </div>
+                                <a href="https://bookingengine.stayflexi.com/group-be/?groupId=28012" class="pp-rooms__card-cta" target="_blank" rel="noopener noreferrer">Reserve</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Manali Amenities -->
+                <section class="pp-amenities pp-reveal">
+                    <div class="pp-amenities__inner">
+                        <div class="pp-amenities__header">
+                            <h2>Manali Amenities</h2>
+                        </div>
+                        <div class="pp-amenities__group">
+                            <h3 class="pp-amenities__group-title">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                Comfort
+                            </h3>
+                            <div class="pp-amenities__list pp-reveal-stagger">
+                                <span class="pp-amenities__pill">Premium Linens</span>
+                                <span class="pp-amenities__pill">Fireplace Rooms</span>
+                                <span class="pp-amenities__pill">Heated Floors</span>
+                                <span class="pp-amenities__pill">Private Balconies</span>
+                                <span class="pp-amenities__pill">Welcome Basket</span>
+                                <span class="pp-amenities__pill">Personalised Service</span>
+                            </div>
+                        </div>
+                        <div class="pp-amenities__group">
+                            <h3 class="pp-amenities__group-title">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                Experiences
+                            </h3>
+                            <div class="pp-amenities__list pp-reveal-stagger">
+                                <span class="pp-amenities__pill">Orchard Walks</span>
+                                <span class="pp-amenities__pill">Manali Day Trips</span>
+                                <span class="pp-amenities__pill">Photography Spots</span>
+                                <span class="pp-amenities__pill">High-Altitude Treks</span>
+                                <span class="pp-amenities__pill">Solang Valley Excursions</span>
+                            </div>
+                        </div>
+                        <div class="pp-amenities__group">
+                            <h3 class="pp-amenities__group-title">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+                                Dining
+                            </h3>
+                            <div class="pp-amenities__list pp-reveal-stagger">
+                                <span class="pp-amenities__pill">Orchard-Fresh Produce</span>
+                                <span class="pp-amenities__pill">Himachali Thali</span>
+                                <span class="pp-amenities__pill">Artisan Coffee Bar</span>
+                                <span class="pp-amenities__pill">Bonfire Evenings</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+            <!-- end manali-section -->
+
+            <!-- ═══ 5. ANIMATED COUNTERS ═══ -->
+            <section class="pp-counter pp-reveal">
+                <div class="pp-counter__inner">
+                    <div class="pp-counter__item" data-target="4.8" data-suffix="">
+                        <span class="pp-counter__number">0</span><span class="pp-counter__suffix">&#9733;</span>
+                        <span class="pp-counter__label">Guest Rating</span>
+                    </div>
+                    <div class="pp-counter__item" data-target="2" data-suffix="">
+                        <span class="pp-counter__number">0</span><span class="pp-counter__suffix"></span>
+                        <span class="pp-counter__label">Himalayan Homes</span>
+                    </div>
+                    <div class="pp-counter__item" data-target="365" data-suffix="">
+                        <span class="pp-counter__number">0</span><span class="pp-counter__suffix"></span>
+                        <span class="pp-counter__label">Days Open</span>
+                    </div>
+                    <div class="pp-counter__item" data-target="100" data-suffix="">
+                        <span class="pp-counter__number">0</span><span class="pp-counter__suffix">%</span>
+                        <span class="pp-counter__label">Curated Experience</span>
                     </div>
                 </div>
             </section>
 
-            <!-- Philosophy Section -->
-            <section class="mj-section">
-                <div class="mj-container">
-                    <span class="mj-eyebrow">Our Design Philosophy</span>
-                    <h2 class="mj-heading">Curated Comfort.</h2>
+            <!-- ═══ 6. COMPARE TABLE ═══ -->
+            <section class="homes-compare pp-reveal">
+                <div class="homes-section-header">
+                    <span class="pp-eyebrow">Side by Side</span>
+                    <h2>Which Sanctuary is Right for You?</h2>
+                </div>
+                <div style="overflow-x: auto; padding: 0 1rem;">
+                    <table class="homes-compare__table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Kasol</th>
+                                <th>Manali</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Altitude</td>
+                                <td>1,600m</td>
+                                <td>2,050m</td>
+                            </tr>
+                            <tr>
+                                <td>Season</td>
+                                <td>Year-Round</td>
+                                <td>Year-Round</td>
+                            </tr>
+                            <tr>
+                                <td>Setting</td>
+                                <td>Riverside &amp; Pine Forest</td>
+                                <td>Apple Orchards</td>
+                            </tr>
+                            <tr>
+                                <td>Riverside Location</td>
+                                <td class="homes-compare__check">&#10003;</td>
+                                <td class="homes-compare__dash">&mdash;</td>
+                            </tr>
+                            <tr>
+                                <td>Mountain Panoramas</td>
+                                <td class="homes-compare__check">&#10003;</td>
+                                <td class="homes-compare__check">&#10003;</td>
+                            </tr>
+                            <tr>
+                                <td>Organic Garden</td>
+                                <td class="homes-compare__check">&#10003;</td>
+                                <td class="homes-compare__dash">&mdash;</td>
+                            </tr>
+                            <tr>
+                                <td>Orchard Setting</td>
+                                <td class="homes-compare__dash">&mdash;</td>
+                                <td class="homes-compare__check">&#10003;</td>
+                            </tr>
+                            <tr>
+                                <td>Fireplace Rooms</td>
+                                <td class="homes-compare__dash">&mdash;</td>
+                                <td class="homes-compare__check">&#10003;</td>
+                            </tr>
+                            <tr>
+                                <td>The Library Lounge</td>
+                                <td class="homes-compare__check">&#10003;</td>
+                                <td class="homes-compare__dash">&mdash;</td>
+                            </tr>
+                            <tr>
+                                <td>Butler Service</td>
+                                <td class="homes-compare__check">&#10003;</td>
+                                <td class="homes-compare__check">&#10003;</td>
+                            </tr>
+                            <tr>
+                                <td>Farm-to-Table Dining</td>
+                                <td class="homes-compare__check">&#10003;</td>
+                                <td class="homes-compare__check">&#10003;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
-                    <div class="mj-grid-3" style="margin-top: 2rem">
-                        <div class="mj-feature-card">
-                            <span class="mj-feature-card__tag">Design</span>
-                            <h3 class="mj-feature-card__title">Contemporary Minimalism</h3>
-                            <p class="mj-feature-card__body">
-                                No unnecessary clutter. Every element serves a purpose. Natural materials, soft lighting,
-                                and clean lines create spaces that calm the mind.
-                            </p>
-                        </div>
-                        <div class="mj-feature-card">
-                            <span class="mj-feature-card__tag">Comfort</span>
-                            <h3 class="mj-feature-card__title">Thoughtful Details</h3>
-                            <p class="mj-feature-card__body">
-                                Premium linens, heated blankets, in-house libraries, and personalized butler service.
-                                We've thought about every moment of your stay.
-                            </p>
-                        </div>
-                        <div class="mj-feature-card">
-                            <span class="mj-feature-card__tag">Connection</span>
-                            <h3 class="mj-feature-card__title">Local Integration</h3>
-                            <p class="mj-feature-card__body">
-                                Sourced ingredients from organic gardens, partnerships with local artisans, and authentic
-                                experiences that connect you to the mountains.
-                            </p>
-                        </div>
+            <!-- ═══ 7. FINAL CTA ═══ -->
+            <section class="pp-final-cta pp-reveal" style="text-align:center; padding: 6rem 2rem; background: #1a1a1a; color: #fff;">
+                <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.5; display: block; margin-bottom: 1rem;">Ready to Escape?</span>
+                <h2 style="font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; color: #fff; margin-bottom: 1rem; line-height: 1.15;">Your Mountain Home Awaits.</h2>
+                <p style="font-size: 1rem; opacity: 0.65; max-width: 42ch; margin: 0 auto 2.5rem; line-height: 1.7;">
+                    Choose the Parvati Valley or the apple orchards. Either way, you're choosing stillness, comfort, and authentic mountain living.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://bookingengine.stayflexi.com/group-be/?groupId=28012"
+                       class="btn-primary"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       style="background: #fff; color: #1a1a1a;">Book Your Stay</a>
+                    <a href="https://wa.me/917018591758"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.75rem;border:1.5px solid rgba(255,255,255,0.4);border-radius:100px;color:#fff;font-weight:600;font-size:0.9rem;text-decoration:none;transition:border-color 0.2s;">
+                        Chat on WhatsApp
+                    </a>
+                </div>
+            </section>
+
+            <!-- Room Photo Gallery Lightbox -->
+            <div class="room-gallery" role="dialog" aria-modal="true" aria-label="Room photo gallery">
+                <div class="room-gallery__overlay"></div>
+                <div class="room-gallery__container">
+                    <div class="room-gallery__header">
+                        <h3 class="room-gallery__title">Room Photos</h3>
+                        <span class="room-gallery__counter">1 / 3</span>
+                        <button class="room-gallery__close" aria-label="Close gallery">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
                     </div>
-                </div>
-            </section>
-
-            <!-- What Makes Special -->
-            <section class="mj-section mj-section--light">
-                <div class="mj-container">
-                    <span class="mj-eyebrow">Why Choose YOLO Homes</span>
-                    <h2 class="mj-heading">The YOLO Homes Experience.</h2>
-
-                    <div class="mj-grid-2" style="margin-top: 2rem">
-                        <div class="mj-feature-card">
-                            <span class="mj-feature-card__tag">Personal</span>
-                            <h3 class="mj-feature-card__title">Private Butler Service</h3>
-                            <p class="mj-feature-card__body">
-                                Your stay is customized. From meal preferences to local recommendations, our butlers
-                                anticipate your needs before you ask.
-                            </p>
+                    <div class="room-gallery__viewer">
+                        <button class="room-gallery__nav room-gallery__nav--prev" aria-label="Previous photo">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        </button>
+                        <div class="room-gallery__stage">
+                            <img class="room-gallery__image" src="" alt="" />
                         </div>
-                        <div class="mj-feature-card">
-                            <span class="mj-feature-card__tag">Curated</span>
-                            <h3 class="mj-feature-card__title">Hand-Picked Everything</h3>
-                            <p class="mj-feature-card__body">
-                                From books in our library to artisan coffee to mountain guides. Every element is chosen
-                                with intentionality.
-                            </p>
-                        </div>
-                        <div class="mj-feature-card">
-                            <span class="mj-feature-card__tag">Organic</span>
-                            <h3 class="mj-feature-card__title">Farm-to-Table Dining</h3>
-                            <p class="mj-feature-card__body">
-                                Our organic gardens provide fresh vegetables. Meals are prepared with care and seasonal
-                                precision.
-                            </p>
-                        </div>
-                        <div class="mj-feature-card">
-                            <span class="mj-feature-card__tag">Stillness</span>
-                            <h3 class="mj-feature-card__title">Designed for Peace</h3>
-                            <p class="mj-feature-card__body">
-                                No forced socializing. No noise after 10 PM. These are sanctuaries for introverts,
-                                creatives, and seekers of silence.
-                            </p>
-                        </div>
+                        <button class="room-gallery__nav room-gallery__nav--next" aria-label="Next photo">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
                     </div>
+                    <div class="room-gallery__thumbs"></div>
                 </div>
-            </section>
-
-            <!-- Final CTA -->
-            <section class="mj-final-cta">
-                <div class="mj-container mj-center">
-                    <span class="mj-eyebrow">Ready to Escape?</span>
-                    <h2 class="mj-heading">Your Sanctuary Awaits.</h2>
-                    <p class="mj-body">
-                        Choose between the Parvati Valley or the apple orchards. Either way, you're choosing stillness,
-                        comfort, and authentic mountain living.
-                    </p>
-                    <a href="https://bookingengine.stayflexi.com/group-be/?groupId=28012" class="btn-primary"
-                        target="_blank">Book Your Sanctuary</a>
-                </div>
-            </section>
+            </div>
         </main>
 
         <!-- Footer -->
         <footer class="site-footer">
             <div class="container footer-content">
+                <div class="footer-links-group">
+                    <h4>YOLO Homes</h4>
+                    <a href="homes.html" class="footer-link">Kasol</a>
+                    <a href="homes-manali.html" class="footer-link">Manali</a>
+                    <a href="outdoors.html" class="footer-link">YOLO Outdoors</a>
+                    <a href="social.html" class="footer-link">YOLO Social</a>
+                </div>
                 <div class="footer-links-group">
                     <h4>Inside YOLO</h4>
                     <a href="about.html" class="footer-link">About Us</a>
@@ -385,41 +1000,15 @@
                     <h3>The YOLO Collective</h3>
                     <p>One Collective. Three Ways to Wander.</p>
                     <div class="footer-social" style="justify-content: flex-end; margin-top: 1rem">
-                        <a
-                            href="https://www.instagram.com/theyolocollective"
-                            class="social-link"
-                            title="Instagram"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
+                        <a href="https://www.instagram.com/theyolocollective" class="social-link" title="Instagram" target="_blank" rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                             </svg>
                         </a>
                         <a href="#" class="social-link" title="Facebook">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                             </svg>
                         </a>
@@ -437,7 +1026,7 @@
                 "name": "YOLO Homes - Boutique Mountain Sanctuaries",
                 "description": "Curated comfort in the Himalayas. YOLO Homes Kasol & Manali — boutique mountain sanctuaries designed for stillness.",
                 "url": "https://theyolocollective.com/homes-hub.html",
-                "image": "https://theyolocollective.com/assets/images/IMG_3686.webp",
+                "image": "https://theyolocollective.com/assets/images/threepane_homes.JPG",
                 "organization": {
                     "@type": "Organization",
                     "name": "The YOLO Collective",
@@ -448,5 +1037,53 @@
         </script>
 
         <script src="script.js?v=3"></script>
+        <script src="property-page.js?v=1"></script>
+
+        <script>
+            function switchHomesTab(tab) {
+                // Update button states
+                document.querySelectorAll('.homes-tab').forEach(function(btn) {
+                    btn.classList.toggle('active', btn.dataset.tab === tab);
+                });
+                // Show/hide sections
+                document.querySelectorAll('.homes-location-section').forEach(function(section) {
+                    section.classList.toggle('active', section.id === tab + '-section');
+                });
+                // Force-reveal all pp-reveal elements in the newly visible section.
+                // They were in display:none during IntersectionObserver setup so they
+                // never fired — we reveal them immediately on tab switch instead.
+                var newSection = document.getElementById(tab + '-section');
+                if (newSection) {
+                    newSection.querySelectorAll('.pp-reveal').forEach(function(el) {
+                        el.classList.add('revealed');
+                    });
+                    newSection.querySelectorAll('.pp-reveal-stagger').forEach(function(el) {
+                        el.classList.add('revealed');
+                    });
+                }
+                // Scroll tab bar into view if it's above viewport
+                var tabBar = document.getElementById('locationTabBar');
+                if (tabBar && tabBar.getBoundingClientRect().top < 0) {
+                    tabBar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+
+            // On page load: force-reveal Kasol section elements that may have been
+            // missed by IntersectionObserver (e.g. elements already in viewport on load)
+            window.addEventListener('load', function() {
+                var kasolSection = document.getElementById('kasol-section');
+                if (!kasolSection) return;
+                // Short delay to let property-page.js IntersectionObserver initialize
+                setTimeout(function() {
+                    kasolSection.querySelectorAll('.pp-reveal:not(.revealed)').forEach(function(el) {
+                        var rect = el.getBoundingClientRect();
+                        // Reveal if already above or in the viewport
+                        if (rect.top < window.innerHeight) {
+                            el.classList.add('revealed');
+                        }
+                    });
+                }, 300);
+            });
+        </script>
     </body>
 </html>
