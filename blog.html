@@ -227,6 +227,7 @@
             margin: 0 0 1.25rem;
             display: -webkit-box;
             -webkit-line-clamp: 3;
+            line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -494,7 +495,7 @@
     </div>
 
     <!-- Mobile Bottom Navigation -->
-        <nav class="mobile-bottom-nav">
+    <nav class="mobile-bottom-nav">
         <a href="index.html" class="nav-item">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -697,9 +698,6 @@
                             </div>
                             <h3 className="card-heading">{post.title}</h3>
                             <p className="card-excerpt">{post.excerpt}</p>
-                            <span className="card-cta">
-                                Read Story <span className="card-cta-arrow">→</span>
-                            </span>
                         </div>
                     </motion.div>
                 );
@@ -755,16 +753,6 @@
                                     <p key={i}>{para}</p>
                                 ))}
                             </div>
-                            {post.url && (
-                                <a
-                                    className="article-ext-link"
-                                    href={post.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Read Full Story →
-                                </a>
-                            )}
                         </div>
                     </motion.div>
                 );
