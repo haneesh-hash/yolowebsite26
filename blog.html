@@ -24,11 +24,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="style.css?v=3" />
 
-    <!-- React + Framer Motion via CDN (no build step) -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/framer-motion@11/dist/framer-motion.js"></script>
+    <!-- No CDN scripts needed — blog engine is vanilla JS -->
 
     <style>
         /* ─── Material Journal — Shifting Stack Blog Engine ─── */
@@ -598,290 +594,228 @@
     <script src="script.js?v=3"></script>
 
     <!-- ══════════════════════════════════════════════════════
-         SHIFTING STACK — React + Framer Motion Blog Engine
-         Compiled at runtime via @babel/standalone (CDN)
+         SHIFTING STACK — Vanilla JS Blog Engine
+         Zero dependencies. CSS transitions replace Framer Motion.
          ══════════════════════════════════════════════════════ -->
-    <script type="text/babel" data-presets="react">
+    <script>
         (() => {
-            const { useState, useEffect, useRef, useCallback } = React;
-            const { motion, AnimatePresence, useMotionValue, useTransform, useSpring } = Motion;
 
-            /* ─── Tilt Card Hook ─── */
-            function useTilt(strength = 12) {
-                const ref = useRef(null);
-                const x = useMotionValue(0);
-                const y = useMotionValue(0);
-                const rotateX = useTransform(y, [-0.5, 0.5], [strength, -strength]);
-                const rotateY = useTransform(x, [-0.5, 0.5], [-strength, strength]);
-                const springRotateX = useSpring(rotateX, { stiffness: 200, damping: 25 });
-                const springRotateY = useSpring(rotateY, { stiffness: 200, damping: 25 });
-                const scale = useSpring(1, { stiffness: 260, damping: 24 });
+            /* ─────────────────────────────────────────────────────
+               VANILLA JS BLOG ENGINE
+               Features: filter pills, tilt-on-hover, staggered
+               fade-in, article overlay, keyboard + back nav.
+               No external dependencies.
+            ───────────────────────────────────────────────────── */
 
-                const onMouseMove = useCallback(
-                    (e) => {
-                        const rect = ref.current?.getBoundingClientRect();
-                        if (!rect) return;
-                        x.set((e.clientX - rect.left) / rect.width - 0.5);
-                        y.set((e.clientY - rect.top) / rect.height - 0.5);
-                    },
-                    [x, y]
-                );
+            const root = document.getElementById('journal-root');
+            let allPosts = [];
+            let activeCategory = 'All';
+            let openPost = null;
 
-                const onMouseEnter = useCallback(() => {
-                    scale.set(1.022);
-                }, [scale]);
-                const onMouseLeave = useCallback(() => {
-                    x.set(0);
-                    y.set(0);
-                    scale.set(1);
-                }, [x, y, scale]);
-
-                return {
-                    ref,
-                    rotateX: springRotateX,
-                    rotateY: springRotateY,
-                    scale,
-                    onMouseMove,
-                    onMouseEnter,
-                    onMouseLeave
-                };
+            /* ─── Tilt effect (CSS transform, no lib needed) ─── */
+            function applyTilt(el, strength) {
+                el.addEventListener('mousemove', (e) => {
+                    const r = el.getBoundingClientRect();
+                    const x = (e.clientX - r.left) / r.width - 0.5;
+                    const y = (e.clientY - r.top) / r.height - 0.5;
+                    el.style.transform = `perspective(900px) rotateX(${-y * strength}deg) rotateY(${x * strength}deg) scale(1.022)`;
+                });
+                el.addEventListener('mouseleave', () => {
+                    el.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)';
+                });
             }
 
-            /* ─── Single Card ─── */
-            function MaterialCard({ post, index, onOpen }) {
-                const tilt = useTilt(post.featured ? 6 : 10);
+            /* ─── Build a card DOM element ─── */
+            function makeCard(post, index) {
+                const el = document.createElement('div');
+                el.className = 'material-card' + (post.featured ? ' featured' : '');
+                el.setAttribute('role', 'article');
+                el.setAttribute('tabindex', '0');
+                el.setAttribute('aria-label', 'Read: ' + post.title);
+                el.dataset.postId = post.id;
 
-                return (
-                    <motion.div
-                        layout
-                        layoutId={`card-${post.id}`}
-                        className={`material-card${post.featured ? ' featured' : ''}`}
-                        initial={{ opacity: 0, y: 32 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20, scale: 0.96 }}
-                        transition={{
-                            layout: { type: 'spring', stiffness: 340, damping: 34 },
-                            opacity: { duration: 0.3, delay: index * 0.06 },
-                            y: { duration: 0.4, delay: index * 0.06, ease: [0.25, 0.46, 0.45, 0.94] }
-                        }}
-                        style={{
-                            rotateX: tilt.rotateX,
-                            rotateY: tilt.rotateY,
-                            scale: tilt.scale,
-                            transformPerspective: 900,
-                            transformStyle: 'preserve-3d',
-                            willChange: 'transform'
-                        }}
-                        ref={tilt.ref}
-                        onMouseMove={tilt.onMouseMove}
-                        onMouseEnter={tilt.onMouseEnter}
-                        onMouseLeave={tilt.onMouseLeave}
-                        onClick={() => onOpen(post)}
-                        role="article"
-                        tabIndex={0}
-                        onKeyDown={(e) => {
-                            if (e.key === 'Enter' || e.key === ' ') onOpen(post);
-                        }}
-                        aria-label={`Read: ${post.title}`}
-                    >
-                        <div className="card-image-wrap">
-                            <img src={post.image} alt={post.imageAlt} loading="lazy" decoding="async" />
-                            <span className="card-badge">{post.tag}</span>
+                // Staggered fade-in via CSS
+                el.style.opacity = '0';
+                el.style.transform = 'perspective(900px) translateY(32px)';
+                el.style.transition = `opacity 0.35s ease ${index * 0.06}s, transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94) ${index * 0.06}s`;
+                el.style.willChange = 'transform';
+
+                el.innerHTML = `
+                    <div class="card-image-wrap">
+                        <img src="${escHtml(post.image)}" alt="${escHtml(post.imageAlt)}" loading="lazy" decoding="async" />
+                        <span class="card-badge">${escHtml(post.tag)}</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            <span>${escHtml(post.category)}</span>
+                            <span class="card-meta-dot"></span>
+                            <span>${escHtml(post.date)}</span>
+                            <span class="card-meta-dot"></span>
+                            <span>${escHtml(post.readTime)}</span>
                         </div>
-                        <div className="card-body">
-                            <div className="card-meta">
-                                <span>{post.category}</span>
-                                <span className="card-meta-dot" />
-                                <span>{post.date}</span>
-                                <span className="card-meta-dot" />
-                                <span>{post.readTime}</span>
-                            </div>
-                            <h3 className="card-heading">{post.title}</h3>
-                            <p className="card-excerpt">{post.excerpt}</p>
-                        </div>
-                    </motion.div>
-                );
+                        <h3 class="card-heading">${escHtml(post.title)}</h3>
+                        <p class="card-excerpt">${escHtml(post.excerpt)}</p>
+                    </div>`;
+
+                // Trigger fade-in on next frame
+                requestAnimationFrame(() => requestAnimationFrame(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'perspective(900px) translateY(0px)';
+                }));
+
+                applyTilt(el, post.featured ? 6 : 10);
+
+                el.addEventListener('click', () => openArticle(post));
+                el.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') openArticle(post);
+                });
+
+                return el;
             }
 
-            /* ─── Article Overlay ─── */
-            function ArticleOverlay({ post, onClose }) {
-                const overlayRef = useRef(null);
-
-                useEffect(() => {
-                    document.body.style.overflow = 'hidden';
-                    overlayRef.current?.focus();
-                    const onKey = (e) => {
-                        if (e.key === 'Escape') onClose();
-                    };
-                    window.addEventListener('keydown', onKey);
-                    return () => {
-                        document.body.style.overflow = '';
-                        window.removeEventListener('keydown', onKey);
-                    };
-                }, [onClose]);
-
-                return (
-                    <motion.div
-                        className="article-overlay"
-                        layoutId={`card-${post.id}`}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ type: 'spring', stiffness: 280, damping: 32 }}
-                        ref={overlayRef}
-                        tabIndex={-1}
-                        aria-modal="true"
-                        role="dialog"
-                        aria-label={post.title}
-                    >
-                        <button className="article-close" onClick={onClose} aria-label="Close article">
-                            ✕
-                        </button>
-                        <img className="article-hero-img" src={post.image} alt={post.imageAlt} />
-                        <div className="article-content">
-                            <span className="article-badge">
-                                {post.category} · {post.tag}
-                            </span>
-                            <h1 className="article-title">{post.title}</h1>
-                            <div className="article-meta">
-                                <span>{post.date}</span>
-                                <span>·</span>
-                                <span>{post.readTime}</span>
-                            </div>
-                            <div className="article-body">
-                                {(post.body || []).map((para, i) => (
-                                    <p key={i}>{para}</p>
-                                ))}
-                            </div>
-                        </div>
-                    </motion.div>
-                );
+            /* ─── Escape helper ─── */
+            function escHtml(str) {
+                if (!str) return '';
+                return String(str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;');
             }
 
-            /* ─── Filter Pill ─── */
-            function FilterPill({ label, active, onClick }) {
-                return (
-                    <motion.button
-                        className={`filter-pill${active ? ' active' : ''}`}
-                        onClick={onClick}
-                        whileTap={{ scale: 0.94 }}
-                        transition={{ type: 'spring', stiffness: 400, damping: 22 }}
-                    >
-                        {label}
-                    </motion.button>
-                );
+            /* ─── Render the filter bar ─── */
+            function renderFilters(categories) {
+                let bar = document.querySelector('.filter-bar');
+                if (!bar) {
+                    bar = document.createElement('div');
+                    bar.className = 'filter-bar';
+                    bar.setAttribute('role', 'group');
+                    bar.setAttribute('aria-label', 'Filter blog posts by category');
+                    root.prepend(bar);
+                }
+                bar.innerHTML = '';
+                categories.forEach((cat) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'filter-pill' + (cat === activeCategory ? ' active' : '');
+                    btn.textContent = cat;
+                    btn.addEventListener('click', () => {
+                        activeCategory = cat;
+                        renderGrid();
+                        renderFilters(categories);
+                    });
+                    bar.appendChild(btn);
+                });
             }
 
-            /* ─── Main App ─── */
-            function JournalFeed() {
-                const [posts, setPosts] = useState([]);
-                const [loading, setLoading] = useState(true);
-                const [activeCategory, setActiveCategory] = useState('All');
-                const [openPost, setOpenPost] = useState(null);
+            /* ─── Render the card grid ─── */
+            function renderGrid() {
+                let grid = document.querySelector('.stack-grid');
+                if (!grid) {
+                    grid = document.createElement('div');
+                    grid.className = 'stack-grid';
+                    root.appendChild(grid);
+                }
+                grid.innerHTML = '';
 
-                // Fetch blog posts from API
-                useEffect(() => {
-                    fetch(config.apiBaseUrl + '/api/blogs')
-                        .then((res) => res.json())
-                        .then((data) => {
-                            setPosts(data);
-                            setLoading(false);
-                        })
-                        .catch(() => {
-                            setLoading(false);
-                        });
-                }, []);
+                const filtered = activeCategory === 'All'
+                    ? allPosts
+                    : allPosts.filter((p) => p.category === activeCategory);
 
-                const allCategories = ['All', ...Array.from(new Set(posts.map((p) => p.category)))];
-
-                const filtered =
-                    activeCategory === 'All' ? posts : posts.filter((p) => p.category === activeCategory);
-
-                const handleOpen = useCallback((post) => {
-                    setOpenPost(post);
-                    window.history.pushState({ postId: post.id }, '', `#story-${post.id}`);
-                }, []);
-
-                const handleClose = useCallback(() => {
-                    setOpenPost(null);
-                    window.history.pushState({}, '', window.location.pathname);
-                }, []);
-
-                useEffect(() => {
-                    const onPop = () => {
-                        if (!window.location.hash) setOpenPost(null);
-                    };
-                    window.addEventListener('popstate', onPop);
-                    return () => window.removeEventListener('popstate', onPop);
-                }, []);
-
-                if (loading) {
-                    return (
-                        <div
-                            style={{
-                                textAlign: 'center',
-                                padding: '4rem',
-                                color: 'rgba(0,0,0,0.4)',
-                                fontFamily: 'Inter,sans-serif'
-                            }}
-                        >
-                            Loading stories...
-                        </div>
-                    );
+                if (filtered.length === 0) {
+                    const empty = document.createElement('div');
+                    empty.className = 'stack-empty';
+                    empty.textContent = 'No stories in this category yet.';
+                    grid.appendChild(empty);
+                    return;
                 }
 
-                return (
-                    <>
-                        {/* Filter Bar */}
-                        <div className="filter-bar" role="group" aria-label="Filter blog posts by category">
-                            {allCategories.map((cat) => (
-                                <FilterPill
-                                    key={cat}
-                                    label={cat}
-                                    active={activeCategory === cat}
-                                    onClick={() => setActiveCategory(cat)}
-                                />
-                            ))}
-                        </div>
-
-                        {/* Card Grid */}
-                        <motion.div className="stack-grid" layout>
-                            <AnimatePresence mode="popLayout">
-                                {filtered.length === 0 ? (
-                                    <motion.div
-                                        className="stack-empty"
-                                        key="empty"
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        exit={{ opacity: 0 }}
-                                    >
-                                        No stories in this category yet.
-                                    </motion.div>
-                                ) : (
-                                    filtered.map((post, i) => (
-                                        <MaterialCard key={post.id} post={post} index={i} onOpen={handleOpen} />
-                                    ))
-                                )}
-                            </AnimatePresence>
-                        </motion.div>
-
-                        {/* Article Overlay */}
-                        <AnimatePresence>
-                            {openPost && (
-                                <ArticleOverlay
-                                    key={`overlay-${openPost.id}`}
-                                    post={openPost}
-                                    onClose={handleClose}
-                                />
-                            )}
-                        </AnimatePresence>
-                    </>
-                );
+                filtered.forEach((post, i) => grid.appendChild(makeCard(post, i)));
             }
 
-            /* ─── Mount ─── */
-            const root = ReactDOM.createRoot(document.getElementById('journal-root'));
-            root.render(<JournalFeed />);
+            /* ─── Article overlay ─── */
+            function openArticle(post) {
+                openPost = post;
+                window.history.pushState({ postId: post.id }, '', '#story-' + post.id);
+
+                const overlay = document.createElement('div');
+                overlay.className = 'article-overlay';
+                overlay.id = 'article-overlay';
+                overlay.setAttribute('role', 'dialog');
+                overlay.setAttribute('aria-modal', 'true');
+                overlay.setAttribute('aria-label', post.title);
+                overlay.setAttribute('tabindex', '-1');
+
+                // Fade-in
+                overlay.style.opacity = '0';
+                overlay.style.transition = 'opacity 0.28s ease';
+
+                const bodyParagraphs = (post.body || []).map((p) => `<p>${escHtml(p)}</p>`).join('');
+
+                overlay.innerHTML = `
+                    <button class="article-close" aria-label="Close article">✕</button>
+                    <img class="article-hero-img" src="${escHtml(post.image)}" alt="${escHtml(post.imageAlt)}" />
+                    <div class="article-content">
+                        <span class="article-badge">${escHtml(post.category)} · ${escHtml(post.tag)}</span>
+                        <h1 class="article-title">${escHtml(post.title)}</h1>
+                        <div class="article-meta">
+                            <span>${escHtml(post.date)}</span>
+                            <span>·</span>
+                            <span>${escHtml(post.readTime)}</span>
+                        </div>
+                        <div class="article-body">${bodyParagraphs}</div>
+                    </div>`;
+
+                document.body.appendChild(overlay);
+                document.body.style.overflow = 'hidden';
+                overlay.focus();
+
+                requestAnimationFrame(() => requestAnimationFrame(() => {
+                    overlay.style.opacity = '1';
+                }));
+
+                overlay.querySelector('.article-close').addEventListener('click', closeArticle);
+
+                const onKey = (e) => { if (e.key === 'Escape') closeArticle(); };
+                window._blogKeyHandler = onKey;
+                window.addEventListener('keydown', onKey);
+            }
+
+            function closeArticle() {
+                const overlay = document.getElementById('article-overlay');
+                if (!overlay) return;
+                overlay.style.opacity = '0';
+                setTimeout(() => {
+                    overlay.remove();
+                    document.body.style.overflow = '';
+                    openPost = null;
+                    window.history.pushState({}, '', window.location.pathname);
+                }, 280);
+                if (window._blogKeyHandler) {
+                    window.removeEventListener('keydown', window._blogKeyHandler);
+                    window._blogKeyHandler = null;
+                }
+            }
+
+            window.addEventListener('popstate', () => {
+                if (!window.location.hash) closeArticle();
+            });
+
+            /* ─── Bootstrap ─── */
+            root.innerHTML = '<div style="text-align:center;padding:4rem;color:rgba(0,0,0,0.4);font-family:Inter,sans-serif">Loading stories…</div>';
+
+            fetch(config.apiBaseUrl + '/api/blogs')
+                .then((r) => r.json())
+                .then((data) => {
+                    allPosts = data;
+                    root.innerHTML = '';
+                    const cats = ['All', ...Array.from(new Set(data.map((p) => p.category)))];
+                    renderFilters(cats);
+                    renderGrid();
+                })
+                .catch(() => {
+                    root.innerHTML = '<div class="stack-empty">Failed to load stories. Please refresh.</div>';
+                });
+
         })();
     </script>
 </body>
