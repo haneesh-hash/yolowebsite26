@@ -118,7 +118,7 @@
     </div>
 
     <!-- Mobile Bottom Navigation -->
-        <nav class="mobile-bottom-nav">
+    <nav class="mobile-bottom-nav">
         <a href="index.html" class="nav-item">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -184,10 +184,10 @@
                         <div class="slab-bottom">JISPA</div>
                     </div>
 
-                    <!-- Slab 2: HOMES -->
+                    <!-- Slab 2: EXPERIENCE & RESERVATIONS -->
                     <div class="job-slab">
-                        <div class="slab-top-left">HOM-02</div>
-                        <h2 class="slab-title">Property<br>Steward</h2>
+                        <div class="slab-top-left">EXP-02</div>
+                        <h2 class="slab-title">Experience &<br>Reservations Lead</h2>
                         <div class="slab-bottom">MANALI</div>
                     </div>
 
@@ -322,6 +322,58 @@
         </div>
 
         <script>
+            const jobData = {
+                'SOC-01': {
+                    summary: 'Lead the YOLO Social community in Jispa. You will be the cultural architect of our most vibrant property, curating shared experiences and ensuring every guest becomes part of the tribe.',
+                    requirements: [
+                        'Minimum 2 years experience in hospitality or community management.',
+                        'Passion for the outdoors and the YOLO vision.',
+                        'Strong communication and leadership skills.'
+                    ]
+                },
+                'EXP-02': {
+                    summary: 'You are the voice of YOLO Outdoors in Manali. You manage the entire guest journey—from the first booking call to the final check-out. Your goal is to provide a seamless, elevated transition from the city to a raw nature immersion.\n\nKey Responsibilities:\n• Reservations: Handle all incoming calls and inquiries with a calm, professional, and inviting tone.\n• Arrival Coordination: Manage check-in logistics, providing guests with clear directions, weather briefings, and travel advice.\n• Stay Support: Act as primary point of contact during the stay, solving logistical needs with speed and clarity.\n• Departure: Facilitate smooth check-outs, handle billing accurately, and gather authentic guest feedback.',
+                    requirements: [
+                        'Articulate — you speak with simple, elevated vocabulary; no fluff or corporate clichés.',
+                        'Grounded — you understand the Manali/Lahaul landscape and can guide guests confidently.',
+                        'Organized — high attention to detail, never let a booking slip.',
+                        'Premium Mindset — luxury in nature requires intentional warmth and minimalist precision.'
+                    ]
+                },
+                'OUT-03': {
+                    summary: 'Lead curated expeditions and outdoor experiences from Kasol. You will design and guide treks, foraging walks, and hidden trail routes that go far beyond the tourist trail.',
+                    requirements: [
+                        'Minimum 2 years experience in outdoor adventure or expedition leadership.',
+                        'Deep knowledge of Kasol and Parvati Valley terrain.',
+                        'Wilderness first aid certification preferred.'
+                    ]
+                },
+                'CRE-04': {
+                    summary: 'Tell the YOLO story across all platforms. You will capture the raw beauty of our properties and the authentic human moments within them—creating content that converts scrollers into guests.',
+                    requirements: [
+                        'Strong portfolio in travel/lifestyle photography or videography.',
+                        'Proficiency in short-form video editing (Reels, Shorts).',
+                        'Ability to travel across all YOLO locations as needed.'
+                    ]
+                },
+                'FOD-05': {
+                    summary: 'Craft a farm-to-table culinary identity for YOLO Homes in Manali. You will lead the kitchen operation with a focus on local ingredients, minimalist plating, and experiences that feel personal rather than institutional.',
+                    requirements: [
+                        'Minimum 3 years experience in a professional kitchen, ideally boutique hospitality.',
+                        'Passion for regional Himalayan cuisine and sustainable sourcing.',
+                        'Ability to manage a small kitchen team and adapt menus seasonally.'
+                    ]
+                },
+                'CAF-06': {
+                    summary: 'Run the YOLO Social café in Jispa—the communal heart of the property. Your café is where nomads meet, maps get marked, and mornings feel like they matter.',
+                    requirements: [
+                        'Proven barista skills with specialty coffee knowledge.',
+                        'Experience managing café-level operations and inventory.',
+                        'A natural host with warm energy and strong multitasking ability.'
+                    ]
+                }
+            };
+
             document.addEventListener('DOMContentLoaded', () => {
                 const jobSlabs = document.querySelectorAll('.job-slab');
                 const detailOverlay = document.getElementById('job-detail-overlay');
@@ -329,16 +381,27 @@
                 const titleEl = document.getElementById('job-detail-title');
                 const tagEl = document.getElementById('job-detail-tag');
                 const catEl = document.getElementById('job-detail-category');
+                const summaryEl = document.querySelector('.review-summary p');
+                const requirementsEl = document.querySelector('.review-summary ul');
 
                 jobSlabs.forEach(slab => {
                     slab.addEventListener('click', () => {
-                        const code = slab.querySelector('.slab-top-left').innerText;
+                        const code = slab.querySelector('.slab-top-left').innerText.trim();
                         const title = slab.querySelector('.slab-title').innerText.replace('\n', ' ');
                         const cat = slab.querySelector('.slab-bottom').innerText;
+                        const data = jobData[code] || {};
 
                         tagEl.innerText = code;
                         titleEl.innerText = title;
                         catEl.innerText = cat;
+
+                        if (summaryEl && data.summary) {
+                            summaryEl.style.whiteSpace = 'pre-line';
+                            summaryEl.innerText = data.summary;
+                        }
+                        if (requirementsEl && data.requirements) {
+                            requirementsEl.innerHTML = data.requirements.map(r => `<li>${r}</li>`).join('');
+                        }
 
                         detailOverlay.classList.add('active');
                         document.body.style.overflow = 'hidden';
