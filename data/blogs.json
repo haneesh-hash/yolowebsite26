@@ -1,5 +1,24 @@
 [
   {
+    "id": 1,
+    "featured": true,
+    "category": "Travel Tips",
+    "tag": "Hostel Life",
+    "date": "June 15, 2023",
+    "readTime": "5 min read",
+    "title": "5 Reasons Why Staying in a Hostel is the Best Way to Travel",
+    "excerpt": "Staying in a hostel isn't just about the budget; it's about the tribe you build, the stories you share, and the unexpected adventures that happen in the common room at 2am with strangers who become lifelong friends.",
+    "image": "assets/images/IMG_0303.webp",
+    "imageAlt": "YOLO Social House hostel in Old Manali — communal terrace with mountain views",
+    "url": "https://theyolocollective.com/hotel-zante-in-pictures/",
+    "body": [
+      "There is a particular magic that happens in hostel common rooms. A map spread across a table, a conversation that starts with 'where are you headed next?' and suddenly you have a travel companion for the next leg of your journey.",
+      "At YOLO Social in Old Manali, we've watched this happen hundreds of times. The shared kitchen, the rooftop chai, the impromptu bonfire sessions — these are the moments that define a mountain trip more than any hotel room ever could.",
+      "Hostels have evolved. The days of six-bunk dormitories and coin-operated showers are giving way to curated social spaces, high-speed WiFi, and beds that rival boutique hotels. YOLO Social is proof.",
+      "Here are five reasons why your next Himalayan trip should begin at a hostel: the people, the price, the place knowledge, the parties, and the philosophy. The mountains have enough room for everyone — and a hostel is simply the best way to meet them all."
+    ]
+  },
+  {
     "id": 2,
     "featured": false,
     "category": "Modern Sanctuary",
@@ -35,6 +54,25 @@
       "YOLO Homes in Kasol was designed with this traveler in mind. Fiber internet with a dedicated line for video calls, workstations with monitor hookups, and a policy that keeps the common areas quiet until noon.",
       "The mountains are no longer off the grid — they are an alternative grid. The question is not whether you can work from Kasol. The question is whether you can stop working long enough to actually see it.",
       "We lean toward the latter. YOLO exists to remind you why you came here in the first place."
+    ]
+  },
+  {
+    "id": 4,
+    "featured": false,
+    "category": "Himalayan Guide",
+    "tag": "Manali",
+    "date": "March 5, 2023",
+    "readTime": "8 min read",
+    "title": "The Old Manali Neighborhood Guide: Where to Eat, Stay & Wander",
+    "excerpt": "Old Manali is a different world from the main town. Cafe-lined lanes, apple orchards, and the kind of easy mornings that make three-day trips stretch into three weeks.",
+    "image": "assets/images/IMG_3224.webp",
+    "imageAlt": "Stone lane in Old Manali with cafes and mountain peaks in the background",
+    "url": "https://bookingengine.stayflexi.com/group-be/?groupId=28012",
+    "body": [
+      "Cross the old bridge from Manali town and you are in a different era. Old Manali moves slower. The lanes are too narrow for cars, which means the street belongs to foot traffic and the occasional dog.",
+      "The cafe culture here is the best in the mountains. Every few meters, another roof terrace with a view of the Beas valley and a menu that runs from thukpa to espresso. Pick one. Stay for three hours.",
+      "YOLO Social sits at the edge of Old Manali, which means you have the neighborhood as your backyard. We'll point you to the dhabas the tourists don't find and the trails the maps don't show.",
+      "Give yourself more days than you think you need. Old Manali has a way of adjusting your schedule."
     ]
   },
   {

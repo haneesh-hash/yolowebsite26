@@ -88,13 +88,18 @@ app.use(express.static(__dirname));
 //  ADMIN ROUTES
 // ════════════════════════════════════════════════════════
 
-app.get('/admin', adminAuth, (req, res) => {
+app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, 'admin/index.html'));
 });
 
 // Legacy upload page redirect
-app.get('/admin/upload', adminAuth, (req, res) => {
+app.get('/admin/upload', (req, res) => {
     res.redirect('/admin');
+});
+
+// Credential verification endpoint (admin only)
+app.get('/api/admin/verify', adminAuth, (req, res) => {
+    res.json({ ok: true });
 });
 
 // ════════════════════════════════════════════════════════
