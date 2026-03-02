@@ -4,7 +4,7 @@
     <g transform="translate(80, 50)">
         <text x="0" y="150" font-family="Arial, sans-serif" font-weight="900" font-size="140" fill="#FFFFFF" letter-spacing="-5">YO</text>
         <g transform="translate(-40, 0)"> 
-            <path d="M260,30 L300,30 L300,120 Q300,150 330,150 L370,150 L370,180 L330,180 Q270,180 260,120 Z" fill="#039BE5" />
+            <path d="M260,30 L300,30 L300,120 Q300,150 330,150 L370,150 L370,180 L330,180 Q270,180 260,120 Z" fill="#74ACDF" />
             <path d="M320,150 L370,60 L420,150" fill="#CFD8DC" opacity="0.8"/>
             <g transform="translate(320, 80) scale(0.9)">
                     <circle cx="5" cy="0" r="6" fill="#FFFFFF"/>
