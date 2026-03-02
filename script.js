@@ -3,6 +3,87 @@
   GSAP ScrollTrigger + 3D Tilt + Booking Overlay
 */
 
+/* ═══════════════════════════════════════════════════
+   TOP LOADER BAR — YouTube-style skyblue progress line
+   ═══════════════════════════════════════════════════ */
+(function () {
+    // Create the bar element immediately (before DOM ready)
+    const bar = document.createElement('div');
+    bar.id = 'yolo-top-loader';
+    document.documentElement.appendChild(bar);
+
+    let timer = null;
+    let progress = 0;
+
+    function startLoader() {
+        clearInterval(timer);
+        progress = 0;
+        bar.style.transition = 'none';
+        bar.style.width = '0%';
+        bar.classList.remove('done');
+        bar.classList.add('loading');
+
+        // Tick up quickly to ~85% then slow way down (like YouTube)
+        timer = setInterval(function () {
+            if (progress < 70) {
+                progress += 8;
+            } else if (progress < 85) {
+                progress += 2;
+            } else if (progress < 92) {
+                progress += 0.5;
+            } else {
+                clearInterval(timer);
+            }
+            bar.style.transition = 'width 0.25s ease';
+            bar.style.width = progress + '%';
+        }, 120);
+    }
+
+    function finishLoader() {
+        clearInterval(timer);
+        bar.classList.add('done');
+        // Reset after transition completes
+        setTimeout(function () {
+            bar.classList.remove('loading', 'done');
+            bar.style.width = '0%';
+        }, 700);
+    }
+
+    // Show loader on page load itself
+    document.addEventListener('DOMContentLoaded', function () {
+        finishLoader();
+
+        // Hook all internal links (excluding anchors, external, booking, whatsapp)
+        document.querySelectorAll('a[href]').forEach(function (link) {
+            const href = link.getAttribute('href');
+            if (!href) return;
+            // Skip: anchors, external URLs, mailto, tel, booking, whatsapp, javascript
+            if (
+                href.startsWith('#') ||
+                href.startsWith('http') ||
+                href.startsWith('mailto') ||
+                href.startsWith('tel') ||
+                href.startsWith('javascript') ||
+                href.includes('wa.me') ||
+                href.includes('stayflexi')
+            ) return;
+
+            link.addEventListener('click', function (e) {
+                // Don't fire if modifier keys held (open in new tab)
+                if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+                // Don't fire if target is _blank
+                if (link.target === '_blank') return;
+                startLoader();
+            });
+        });
+    });
+
+    // Also fire finish when page becomes visible (bfcache restore)
+    window.addEventListener('pageshow', function (e) {
+        finishLoader();
+    });
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
     if (window.YOLO_INITIALIZED) return;
     window.YOLO_INITIALIZED = true;

@@ -5864,10 +5864,18 @@ a.mj-card.mj-card--link {
     user-select: none;
 }
 
-.pp-day__strip:active { cursor: grabbing; }
+.pp-day__strip:active {
+    cursor: grabbing;
+}
 
-.pp-day__strip::-webkit-scrollbar { height: 4px; }
-.pp-day__strip::-webkit-scrollbar-track { background: transparent; }
+.pp-day__strip::-webkit-scrollbar {
+    height: 4px;
+}
+
+.pp-day__strip::-webkit-scrollbar-track {
+    background: transparent;
+}
+
 .pp-day__strip::-webkit-scrollbar-thumb {
     background: var(--gray-300);
     border-radius: 4px;
@@ -5895,7 +5903,7 @@ a.mj-card.mj-card--link {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.25) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.25) 100%);
     border-radius: 16px;
     pointer-events: none;
 }
@@ -6348,8 +6356,13 @@ a.mj-card.mj-card--link {
     transform: translateY(-50%) scale(0.92);
 }
 
-.room-gallery__nav--prev { left: -64px; }
-.room-gallery__nav--next { right: -64px; }
+.room-gallery__nav--prev {
+    left: -64px;
+}
+
+.room-gallery__nav--next {
+    right: -64px;
+}
 
 .room-gallery__nav.disabled {
     opacity: 0.2;
@@ -6366,7 +6379,9 @@ a.mj-card.mj-card--link {
     -webkit-overflow-scrolling: touch;
 }
 
-.room-gallery__thumbs::-webkit-scrollbar { height: 0; }
+.room-gallery__thumbs::-webkit-scrollbar {
+    height: 0;
+}
 
 .room-gallery__thumb {
     width: 64px;
@@ -6398,8 +6413,14 @@ a.mj-card.mj-card--link {
 
 /* ── Room Gallery Responsive ── */
 @media (max-width: 1080px) {
-    .room-gallery__nav--prev { left: 0.75rem; }
-    .room-gallery__nav--next { right: 0.75rem; }
+    .room-gallery__nav--prev {
+        left: 0.75rem;
+    }
+
+    .room-gallery__nav--next {
+        right: 0.75rem;
+    }
+
     .room-gallery__nav {
         width: 40px;
         height: 40px;
@@ -6409,12 +6430,32 @@ a.mj-card.mj-card--link {
 }
 
 @media (max-width: 768px) {
-    .room-gallery__container { padding: 0 1rem; }
-    .room-gallery__image { max-height: 50vh; }
-    .room-gallery__nav { width: 36px; height: 36px; }
-    .room-gallery__nav svg { width: 18px; height: 18px; }
-    .room-gallery__thumb { width: 48px; height: 34px; }
-    .room-gallery__title { font-size: 1rem; }
+    .room-gallery__container {
+        padding: 0 1rem;
+    }
+
+    .room-gallery__image {
+        max-height: 50vh;
+    }
+
+    .room-gallery__nav {
+        width: 36px;
+        height: 36px;
+    }
+
+    .room-gallery__nav svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .room-gallery__thumb {
+        width: 48px;
+        height: 34px;
+    }
+
+    .room-gallery__title {
+        font-size: 1rem;
+    }
 
     /* Gallery hint always visible on mobile (no hover) */
     .pp-rooms__card-gallery-hint {
@@ -6554,7 +6595,7 @@ a.mj-card.mj-card--link {
     border: 1px solid rgba(255, 255, 255, 0.55);
     cursor: default;
     transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-                box-shadow 0.4s ease;
+        box-shadow 0.4s ease;
     user-select: none;
     position: relative;
     overflow: hidden;
@@ -6566,31 +6607,60 @@ a.mj-card.mj-card--link {
     position: absolute;
     inset: 0;
     background: linear-gradient(120deg,
-        transparent 20%,
-        rgba(255, 255, 255, 0.4) 50%,
-        transparent 80%);
+            transparent 20%,
+            rgba(255, 255, 255, 0.4) 50%,
+            transparent 80%);
     transform: translateX(-120%);
     transition: transform 0.65s ease;
     pointer-events: none;
 }
+
 .pp-amenities__card:hover::after {
     transform: translateX(120%);
 }
 
 /* 5-colour mountain palette — one full row per cycle, perfectly aligned with 5-col grid */
 /* 1 Alpine Sky · 2 Forest Pine · 3 Golden Hour · 4 Dusk Indigo · 5 Glacier Teal */
-.pp-amenities__card:nth-child(5n+1) { background: linear-gradient(145deg, #dbeafe 0%, #93c5fd 100%); }
-.pp-amenities__card:nth-child(5n+2) { background: linear-gradient(145deg, #dcfce7 0%, #86efac 100%); }
-.pp-amenities__card:nth-child(5n+3) { background: linear-gradient(145deg, #fef9c3 0%, #fde047 100%); }
-.pp-amenities__card:nth-child(5n+4) { background: linear-gradient(145deg, #e0e7ff 0%, #a5b4fc 100%); }
-.pp-amenities__card:nth-child(5n+5) { background: linear-gradient(145deg, #ccfbf1 0%, #5eead4 100%); }
+.pp-amenities__card:nth-child(5n+1) {
+    background: linear-gradient(145deg, #dbeafe 0%, #93c5fd 100%);
+}
+
+.pp-amenities__card:nth-child(5n+2) {
+    background: linear-gradient(145deg, #dcfce7 0%, #86efac 100%);
+}
+
+.pp-amenities__card:nth-child(5n+3) {
+    background: linear-gradient(145deg, #fef9c3 0%, #fde047 100%);
+}
+
+.pp-amenities__card:nth-child(5n+4) {
+    background: linear-gradient(145deg, #e0e7ff 0%, #a5b4fc 100%);
+}
+
+.pp-amenities__card:nth-child(5n+5) {
+    background: linear-gradient(145deg, #ccfbf1 0%, #5eead4 100%);
+}
 
 /* Matching icon accent colours */
-.pp-amenities__card:nth-child(5n+1) .pp-amenities__card-icon svg { color: #1d4ed8; }
-.pp-amenities__card:nth-child(5n+2) .pp-amenities__card-icon svg { color: #15803d; }
-.pp-amenities__card:nth-child(5n+3) .pp-amenities__card-icon svg { color: #ca8a04; }
-.pp-amenities__card:nth-child(5n+4) .pp-amenities__card-icon svg { color: #4338ca; }
-.pp-amenities__card:nth-child(5n+5) .pp-amenities__card-icon svg { color: #0f766e; }
+.pp-amenities__card:nth-child(5n+1) .pp-amenities__card-icon svg {
+    color: #1d4ed8;
+}
+
+.pp-amenities__card:nth-child(5n+2) .pp-amenities__card-icon svg {
+    color: #15803d;
+}
+
+.pp-amenities__card:nth-child(5n+3) .pp-amenities__card-icon svg {
+    color: #ca8a04;
+}
+
+.pp-amenities__card:nth-child(5n+4) .pp-amenities__card-icon svg {
+    color: #4338ca;
+}
+
+.pp-amenities__card:nth-child(5n+5) .pp-amenities__card-icon svg {
+    color: #0f766e;
+}
 
 .pp-amenities__card:hover {
     transform: translateY(-9px) scale(1.04);
@@ -6607,8 +6677,8 @@ a.mj-card.mj-card--link {
     background: rgba(255, 255, 255, 0.65);
     margin-bottom: 0.75rem;
     transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-                box-shadow 0.35s ease,
-                background 0.3s ease;
+        box-shadow 0.35s ease,
+        background 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
@@ -6633,10 +6703,23 @@ a.mj-card.mj-card--link {
 }
 
 @keyframes ppIconBounce {
-    0%, 100% { transform: translateY(0); }
-    35% { transform: translateY(-6px); }
-    55% { transform: translateY(-1px); }
-    75% { transform: translateY(-3px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    35% {
+        transform: translateY(-6px);
+    }
+
+    55% {
+        transform: translateY(-1px);
+    }
+
+    75% {
+        transform: translateY(-3px);
+    }
 }
 
 /* Amenities – hidden cards & load-more button */
@@ -7323,8 +7406,13 @@ a.mj-card.mj-card--link {
         padding: 1.25rem 1.15rem;
     }
 
-    .pp-day__title { font-size: 1.05rem; }
-    .pp-day__desc { font-size: 0.8rem; }
+    .pp-day__title {
+        font-size: 1.05rem;
+    }
+
+    .pp-day__desc {
+        font-size: 0.8rem;
+    }
 
     /* Amenities Grid */
     .pp-amenities__grid {
@@ -7562,11 +7650,27 @@ a.mj-card.mj-card--link {
         border-radius: 12px;
     }
 
-    .pp-day__icon { width: 36px; height: 36px; }
-    .pp-day__icon svg { width: 16px; height: 16px; }
-    .pp-day__title { font-size: 0.95rem; }
-    .pp-day__desc { font-size: 0.75rem; }
-    .pp-day__time { font-size: 0.62rem; }
+    .pp-day__icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .pp-day__icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .pp-day__title {
+        font-size: 0.95rem;
+    }
+
+    .pp-day__desc {
+        font-size: 0.75rem;
+    }
+
+    .pp-day__time {
+        font-size: 0.62rem;
+    }
 
     /* Amenities Grid */
     .pp-amenities__grid {
@@ -7875,11 +7979,25 @@ a.mj-card.mj-card--link {
 }
 
 /* Amenities Grid Cards dark mode — 5-colour mountain palette */
-.dark-mode .pp-amenities__card:nth-child(5n+1) { background: linear-gradient(145deg, rgba(29,78,216,0.25) 0%, rgba(59,130,246,0.15) 100%); }
-.dark-mode .pp-amenities__card:nth-child(5n+2) { background: linear-gradient(145deg, rgba(21,128,61,0.25) 0%, rgba(34,197,94,0.15) 100%); }
-.dark-mode .pp-amenities__card:nth-child(5n+3) { background: linear-gradient(145deg, rgba(202,138,4,0.25) 0%, rgba(234,179,8,0.15) 100%); }
-.dark-mode .pp-amenities__card:nth-child(5n+4) { background: linear-gradient(145deg, rgba(67,56,202,0.25) 0%, rgba(99,102,241,0.15) 100%); }
-.dark-mode .pp-amenities__card:nth-child(5n+5) { background: linear-gradient(145deg, rgba(15,118,110,0.25) 0%, rgba(20,184,166,0.15) 100%); }
+.dark-mode .pp-amenities__card:nth-child(5n+1) {
+    background: linear-gradient(145deg, rgba(29, 78, 216, 0.25) 0%, rgba(59, 130, 246, 0.15) 100%);
+}
+
+.dark-mode .pp-amenities__card:nth-child(5n+2) {
+    background: linear-gradient(145deg, rgba(21, 128, 61, 0.25) 0%, rgba(34, 197, 94, 0.15) 100%);
+}
+
+.dark-mode .pp-amenities__card:nth-child(5n+3) {
+    background: linear-gradient(145deg, rgba(202, 138, 4, 0.25) 0%, rgba(234, 179, 8, 0.15) 100%);
+}
+
+.dark-mode .pp-amenities__card:nth-child(5n+4) {
+    background: linear-gradient(145deg, rgba(67, 56, 202, 0.25) 0%, rgba(99, 102, 241, 0.15) 100%);
+}
+
+.dark-mode .pp-amenities__card:nth-child(5n+5) {
+    background: linear-gradient(145deg, rgba(15, 118, 110, 0.25) 0%, rgba(20, 184, 166, 0.15) 100%);
+}
 
 .dark-mode .pp-amenities__card:hover {
     box-shadow: 0 22px 48px rgba(0, 0, 0, 0.4);
@@ -7897,10 +8015,52 @@ a.mj-card.mj-card--link {
     color: rgba(255, 255, 255, 0.75);
 }
 
-.dark-mode .pp-amenities__card:nth-child(5n+1) .pp-amenities__card-icon svg { color: #60a5fa; }
-.dark-mode .pp-amenities__card:nth-child(5n+2) .pp-amenities__card-icon svg { color: #4ade80; }
-.dark-mode .pp-amenities__card:nth-child(5n+3) .pp-amenities__card-icon svg { color: #facc15; }
-.dark-mode .pp-amenities__card:nth-child(5n+4) .pp-amenities__card-icon svg { color: #818cf8; }
-.dark-mode .pp-amenities__card:nth-child(5n+5) .pp-amenities__card-icon svg { color: #2dd4bf; }
+.dark-mode .pp-amenities__card:nth-child(5n+1) .pp-amenities__card-icon svg {
+    color: #60a5fa;
+}
+
+.dark-mode .pp-amenities__card:nth-child(5n+2) .pp-amenities__card-icon svg {
+    color: #4ade80;
+}
+
+.dark-mode .pp-amenities__card:nth-child(5n+3) .pp-amenities__card-icon svg {
+    color: #facc15;
+}
+
+.dark-mode .pp-amenities__card:nth-child(5n+4) .pp-amenities__card-icon svg {
+    color: #818cf8;
+}
+
+.dark-mode .pp-amenities__card:nth-child(5n+5) .pp-amenities__card-icon svg {
+    color: #2dd4bf;
+}
 
 /* End of Property Page Component System */
+
+/* ═══════════════════════════════════════════════════
+   TOP PAGE LOADER BAR — YouTube style
+   ═══════════════════════════════════════════════════ */
+#yolo-top-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--skyblue);
+    z-index: 99999;
+    border-radius: 0 2px 2px 0;
+    box-shadow: 0 0 10px rgba(116, 172, 223, 0.6), 0 0 4px rgba(116, 172, 223, 0.4);
+    transition: width 0.3s ease, opacity 0.4s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#yolo-top-loader.loading {
+    opacity: 1;
+}
+
+#yolo-top-loader.done {
+    width: 100% !important;
+    opacity: 0;
+    transition: width 0.15s ease, opacity 0.5s ease 0.15s;
+}
