@@ -8,8 +8,8 @@
     "readTime": "5 min read",
     "title": "5 Reasons Why Staying in a Hostel is the Best Way to Travel",
     "excerpt": "Staying in a hostel isn't just about the budget; it's about the tribe you build, the stories you share, and the unexpected adventures that happen in the common room at 2am with strangers who become lifelong friends.",
-    "image": "assets/images/IMG_0303.webp",
-    "imageAlt": "YOLO Social House hostel in Old Manali — communal terrace with mountain views",
+    "image": "https://images.pexels.com/photos/4907185/pexels-photo-4907185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "imageAlt": "Travellers walking into a hostel dorm room smiling — social backpacker travel",
     "url": "https://theyolocollective.com/hotel-zante-in-pictures/",
     "body": [
       "There is a particular magic that happens in hostel common rooms. A map spread across a table, a conversation that starts with 'where are you headed next?' and suddenly you have a travel companion for the next leg of your journey.",
@@ -27,8 +27,8 @@
     "readTime": "7 min read",
     "title": "Staying in a Geodesic Dome at Jispa: A Himalayan Escape Like No Other",
     "excerpt": "Experience the last frontier of Lahaul under the Milky Way. Our geodesic domes in Jispa offer a blend of raw adventure and luxury comfort at 10,500 feet — the Bhaga River as your white noise.",
-    "image": "assets/images/domecover.JPG",
-    "imageAlt": "Geodesic glamping dome by the Bhaga River in Jispa at twilight",
+    "image": "https://images.pexels.com/photos/355465/pexels-photo-355465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "imageAlt": "Black silhouette mountains under a star-filled night sky — glamping under the stars",
     "url": "https://theyolocollective.com/staying-in-a-geodesic-dome-at-jispa-a-himalayan-escape-like-no-other/",
     "body": [
       "At 10,500 feet above sea level, the stars do not compete with city lights. They fill the sky — every last corner of it — in a display so dense it looks almost fictional. This is the view from inside a YOLO Outdoors geodesic dome in Jispa.",
@@ -46,8 +46,8 @@
     "readTime": "6 min read",
     "title": "Travel Smarter: How Technology is Changing the Backpacking Experience",
     "excerpt": "The way we wander is evolving. Discover how digital tools are making long-term mountain stays more seamless and accessible for the modern traveler who refuses to choose between connectivity and altitude.",
-    "image": "assets/images/IMG_3686.webp",
-    "imageAlt": "YOLO Homes boutique property with cedar forest backdrop in Kasol",
+    "image": "https://images.pexels.com/photos/9930098/pexels-photo-9930098.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "imageAlt": "Laptop on a desk with a large window view of mountain peaks — digital nomad remote work",
     "url": "https://theyolocollective.com/travel-smarter-how-cryptocurrencies-are-changing-the-backpacking-experience/",
     "body": [
       "The digital nomad in 2024 carries a different kind of kit than their 2012 predecessor. The physical Lonely Planet has given way to offline maps and community-sourced trail data. Cash is supplemented by contactless payments that work even in remote valleys.",
@@ -65,8 +65,8 @@
     "readTime": "8 min read",
     "title": "The Old Manali Neighborhood Guide: Where to Eat, Stay & Wander",
     "excerpt": "Old Manali is a different world from the main town. Cafe-lined lanes, apple orchards, and the kind of easy mornings that make three-day trips stretch into three weeks.",
-    "image": "assets/images/IMG_3224.webp",
-    "imageAlt": "Stone lane in Old Manali with cafes and mountain peaks in the background",
+    "image": "https://images.pexels.com/photos/20402638/pexels-photo-20402638.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "imageAlt": "Person hiking through a narrow pine corridor trail — the walking lanes of mountain Manali",
     "url": "https://bookingengine.stayflexi.com/group-be/?groupId=28012",
     "body": [
       "Cross the old bridge from Manali town and you are in a different era. Old Manali moves slower. The lanes are too narrow for cars, which means the street belongs to foot traffic and the occasional dog.",
@@ -84,8 +84,8 @@
     "readTime": "5 min read",
     "title": "First Timer's Guide to Kasol and Kheerganga",
     "excerpt": "The Parvati Valley trail network starts in Kasol and goes as deep as you're willing to walk. Here's how to approach your first time — and why it will not be your last.",
-    "image": "assets/images/IMG_3682.webp",
-    "imageAlt": "Kasol riverbank with pine forest and Parvati River in golden hour light",
+    "image": "https://images.pexels.com/photos/1374295/pexels-photo-1374295.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "imageAlt": "Sunlit path through tall green pine trees near mountain peaks — Kasol forest trails",
     "url": "https://bookingengine.stayflexi.com/group-be/?groupId=28012",
     "body": [
       "Kasol is the basecamp. From here, every trail in the Parvati Valley becomes accessible — Kheerganga, Tosh, Pulga, Chalal. The river that runs through town tells you exactly how clean the mountains still are.",
@@ -103,14 +103,154 @@
     "readTime": "6 min read",
     "title": "Winter in Lahaul: What Jispa Looks Like When the Pass Closes",
     "excerpt": "When the Rohtang closes in November, Lahaul enters a different season. The road empties, the snow arrives, and Jispa becomes one of the most beautiful places in the subcontinent.",
-    "image": "assets/images/IMG_3692.webp",
-    "imageAlt": "Snow-covered Lahaul valley in winter with frozen Bhaga River near Jispa",
+    "image": "https://images.pexels.com/photos/7403896/pexels-photo-7403896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "imageAlt": "Frozen river flowing between snow-covered mountain peaks in deep winter — Lahaul valley in winter",
     "url": "https://bookingengine.stayflexi.com/group-be/?groupId=28012",
     "body": [
       "Most travelers know Jispa as a transit stop on the Manali-Leh highway. They arrive in June, stay one night, and move north. They are missing the real version.",
       "In winter, Jispa belongs to itself. The highway empties. Snow accumulates on the flanks of peaks that tower over the valley. The Bhaga River narrows and quiets under a skim of ice at the edges.",
       "YOLO Outdoors operates through winter for guests who seek this version. The domes are heated, the views are unobstructed, and the night sky — without summer's dust — is clearer than at any other time of year.",
       "Getting in requires planning. The Atal Tunnel at Rohtang keeps the route open, but conditions change. Contact us before you book and we will walk you through the logistics. The experience is worth every logistical detail."
+    ]
+  },
+  {
+    "id": 7,
+    "featured": false,
+    "category": "Himalayan Guide",
+    "tag": "Hidden Gems",
+    "date": "February 15, 2024",
+    "readTime": "9 min read",
+    "title": "Exploring Malana: The Village That Lives by Its Own Rules",
+    "excerpt": "Tucked into a side valley above the Parvati, Malana is unlike any village in India. Ancient laws, an autonomous democracy older than Athens, and a landscape that stops you mid-sentence — this is the Himalaya at its most unfiltered.",
+    "image": "https://images.pexels.com/photos/13760234/pexels-photo-13760234.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "imageAlt": "Village sign board in Hikkim, a high-altitude Himalayan village in India — Himalayan village life",
+    "url": "https://bookingengine.stayflexi.com/group-be/?groupId=28012",
+    "body": [
+      "There are few places in the Indian Himalayas where time moves on its own terms. Malana, perched at roughly 2,650 metres in the Kullu district of Himachal Pradesh, is one of them. The village operates under a caste-free, self-governed democratic system that predates most of the world's republics — its parliament, the Jamdagni Rishi council, has been legislating local life for centuries before the concept had a name elsewhere. Arriving here is not just travel. It is an encounter with an entirely different civilisation.",
+      "The trek begins from Jari, a small town on the Bhuntar-Manikaran road. From Jari, it is a steep 21-kilometre climb through dense forest — deodar and oak giving way to open ridgeline — before Malana appears suddenly above a gorge. The path is unmarked in places and the altitude gain is significant, so start early and carry more water than you think you need. A shorter approach exists via Rashol Pass if you are coming from Kasol, which the locals prefer and which adds a layer of high alpine drama.",
+      "Inside the village, the rules are clear and must be respected without negotiation. Outsiders are not permitted to touch the walls, houses, or any object belonging to the village. Jamlu Devta — the presiding deity of Malana — is the true authority here, and the cultural protocols that surround his worship are not ceremonial: they are the operating system of daily life. Walk the paths indicated, keep your camera down when locals ask, and approach every interaction as a guest, not a tourist. Those who observe these boundaries tend to find Malana remarkably open; those who don't are escorted out.",
+      "What makes Malana worth every step of the climb is not its notoriety — though that draws plenty of visitors — but its actual texture. The wooden architecture is extraordinary, a style found nowhere else in the region. The weavers produce shawls in patterns passed down without interruption. The views of Deo Tibba (6,001 metres) are some of the finest available to a walker in Himachal. In the evenings, the village smells of woodsmoke and wild herbs, and the light on the stone lanes is the kind that photographers describe as unrepeatable.",
+      "Kasol makes the ideal base for a Malana day trip or overnight. It is roughly 30 kilometres away and well-connected by road to Jari. At YOLO Homes Kasol, we can help you arrange a local guide — essential both for navigation and for cultural context — and brief you on the protocols before you set out. The mountains around Kasol have many layers; Malana is the deepest one."
+    ]
+  },
+  {
+    "id": 8,
+    "featured": false,
+    "category": "Digital Nomad",
+    "tag": "Crypto Travel",
+    "date": "January 20, 2024",
+    "readTime": "7 min read",
+    "title": "We've Accepted Cryptocurrency Since 2020 — Here's Why It Changed Everything",
+    "excerpt": "When the world locked down in 2020, we made a quiet decision that turned out to be a loud statement: The YOLO Collective would accept cryptocurrency for all bookings. Four years on, it's one of the best calls we've ever made.",
+    "image": "https://images.pexels.com/photos/8369588/pexels-photo-8369588.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "imageAlt": "Gold and silver Bitcoin coins scattered around a cryptocurrency chart — digital currency payment",
+    "url": "https://bookingengine.stayflexi.com/group-be/?groupId=28012",
+    "body": [
+      "In March 2020, the world stopped moving and we had a lot of time to think about how travel would restart — and on whose terms. Traditional banking infrastructure had always been a friction point for the international backpackers and digital nomads who make up a meaningful part of our guests. Currency conversion fees, international transaction blocks, and the sheer bureaucracy of cross-border payments were creating unnecessary friction between people who wanted to be here and the mountains waiting for them. We decided to remove that friction.",
+      "Starting in late 2020, The YOLO Collective began accepting Bitcoin (BTC), Ethereum (ETH), and USDT (Tether) for all stays across our three properties — YOLO Social in Old Manali, YOLO Homes in Kasol, and YOLO Outdoors in Jispa. The process is straightforward: at checkout, guests select the crypto payment option, scan a QR code, and the booking confirms once the transaction clears on-chain. No intermediary. No conversion markup. No three-day bank hold.",
+      "The traveler profile that benefits most is one we know well. The location-independent professional who earns in crypto, the Israeli backpacker whose shekel conversion fees add up over a six-month Asia trip, the American freelancer avoiding a 4% international card surcharge, the privacy-conscious traveler who simply prefers not to share card data with every property they visit. For these guests, crypto payment is not a novelty — it is the most sensible option on the table.",
+      "There is also a philosophy at work that goes beyond operational efficiency. The YOLO Collective was built on the idea that the mountains belong to everyone willing to make the effort to reach them. Borderless money aligns with that ethos. A cryptocurrency does not ask where you are from, what your credit history is, or whether your home bank has a relationship with an Indian payment gateway. It simply moves, peer-to-peer, as value should.",
+      "Four years on, crypto payments account for a growing share of our bookings, particularly in the October-to-March shoulder season when our international guest mix increases. We continue to monitor the ecosystem — stablecoins, Layer 2 solutions, and emerging payment rails — and we will expand our accepted currencies as the infrastructure matures. If you would like to book a stay using crypto, reach out directly via WhatsApp or email and we will walk you through the current process. The mountains are patient. The blockchain is fast."
+    ]
+  },
+  {
+    "id": 9,
+    "featured": false,
+    "category": "Season Guide",
+    "tag": "Travel Planning",
+    "date": "December 10, 2023",
+    "readTime": "8 min read",
+    "title": "When Should You Go? The Complete Himalayan Season Guide",
+    "excerpt": "Every season in the Indian Himalayas offers something different — and something irreplaceable. Snow domes in January, wildflower meadows in June, golden trails in October. The wrong time doesn't exist. Only the right reason.",
+    "image": "https://images.pexels.com/photos/6870982/pexels-photo-6870982.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "imageAlt": "Colourful wildflowers blooming on a mountain summit above valley clouds — Himalayan summer season",
+    "url": "https://bookingengine.stayflexi.com/group-be/?groupId=28012",
+    "body": [
+      "The single most common question we receive is: when should I come? The honest answer is that the question is backwards. The right question is: what do you want to feel? The Himalayas are not the same place in every season — they are four distinct destinations that share a geography. Understanding the difference between them is the difference between a good trip and the exact trip you needed.",
+      "April through June is the reopening season. Snowmelt feeds rivers to their loudest, Rohtang Pass clears by May, and the Manali-Leh highway comes back to life. Jispa and the Lahaul Valley turn green almost overnight as temperatures become walkable. This is the season for river-facing dome nights, when the Bhaga runs full and fast alongside YOLO Outdoors, and for long hikes out of Kasol before the summer crowds arrive in earnest. The wildflowers in the Parvati Valley during this window are not documented anywhere adequately. You have to see them yourself.",
+      "July and August are contentious. The monsoon reaches the lower Himalayan valleys but largely spares Lahaul and Spiti — a rain shadow geography that makes these months the best time to go high. Kasol in the monsoon is a different proposition: the pine forest turns an almost absurd shade of green, the river swells, and the mist that drifts through the valley most mornings makes everything feel slightly cinematic. Trail conditions require caution on the upper sections, but the Kheerganga route is passable and the hot springs at the top feel earned in a way they don't in dry season.",
+      "September and October are, by general consensus, the finest months in the Himalayan calendar. The monsoon withdraws, the air clears completely, and the light — the particular quality of post-monsoon Himalayan light — is what photographers travel specifically to find. Trails are open, passes are accessible, the temperatures are manageable at altitude, and the night sky begins its winter sharpness. This is the season when YOLO Outdoors is fully booked weeks in advance, and rightly so.",
+      "November through March is the season most people skip — which is precisely why it is worth understanding. The Atal Tunnel, completed in 2020, keeps the Rohtang Pass route open year-round, meaning Lahaul is now accessible in deep winter. Jispa under snow is a different kind of spectacular: the silence is almost architectural, the frozen edges of the Bhaga River create textures no summer visit replicates, and the stargazing — without the atmospheric dust of warmer months — reaches a clarity that we have heard described as life-changing. YOLO Outdoors operates through winter with fully heated domes. The cold is the point."
+    ]
+  },
+  {
+    "id": 10,
+    "featured": false,
+    "category": "Himalayan Guide",
+    "tag": "Spiti Valley",
+    "date": "November 5, 2023",
+    "readTime": "10 min read",
+    "title": "The Slow Traveler's Guide to Spiti Valley",
+    "excerpt": "Spiti is not a destination you visit quickly. The altitude alone demands patience. But the valley rewards the unhurried — fossil beds, sky-high monasteries, and the particular silence of a place that has resisted the modern world without trying.",
+    "image": "https://images.pexels.com/photos/4639144/pexels-photo-4639144.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "imageAlt": "River flowing against a dramatic snow-capped Himalayan mountain backdrop — high altitude Spiti Valley",
+    "url": "https://bookingengine.stayflexi.com/group-be/?groupId=28012",
+    "body": [
+      "Spiti translates from Tibetan as 'the Middle Land' — the valley that sits between India and Tibet, between the monsoon zone and the high-altitude desert, between the world most people live in and the one most people dream about. At an average elevation above 3,800 metres, it is one of the highest permanently inhabited regions on Earth. The air is thin. The landscape is lunar. The light is unlike anything in the lower mountains — harder, more direct, with shadows that cut like paper edges. You need at minimum seven days to begin to understand it.",
+      "The circuit runs east from Manali over the Rohtang Pass (open June to October via the old road; year-round via Atal Tunnel into Lahaul, then over Kunzum Pass into Spiti). Kaza is the administrative centre and the best base for exploring. From here: Key Monastery, a thousand-year-old citadel at 4,166 metres that clings to a cliff face as though it grew there; Hikkim village, home to the world's highest post office where you can send a postcard that is, objectively, the most dramatic postcard anyone on your mailing list will ever receive; Chicham, connected to the rest of the valley by the highest bridge in Asia. These are not tourist attractions. They are facts about daily life in Spiti.",
+      "The philosophy of slow travel is not optional here — it is enforced by the altitude. AMS (acute mountain sickness) is real and its prevention is simple: ascend gradually, drink water before you think you need to, and take the first day in Kaza as a rest day regardless of how well you feel. The valley will not be going anywhere. The fossils embedded in the hillsides around Langza were laid down 450 million years ago when this land was an ocean floor. Your schedule can wait.",
+      "Pin Valley National Park occupies the southern tributary and offers one of the finest wildlife experiences in the Indian Himalayas — snow leopard tracks in winter, Himalayan foxes, ibex on ridgelines. Chandratal Lake, a glacial body at 4,300 metres on the Spiti-Lahaul boundary, is a four-hour drive from Kaza over rough terrain and is worth every bone-rattling kilometer. Camp here if you can. The reflection of the peaks in the water at dawn is the kind of image that reorders your sense of scale.",
+      "Most Spiti routes begin — or end — at Manali, passing through the Lahaul Valley. Jispa, where YOLO Outdoors operates, sits directly on this corridor and makes a natural acclimatization stop. A night in the domes at 10,500 feet before pushing higher into Spiti is both practically sensible and logistically seamless. We can help you plan the transition — when to stop, how long to stay, what the road conditions look like on your travel dates. Spiti requires planning. We have done this route enough times to know where the margins are."
+    ]
+  },
+  {
+    "id": 11,
+    "featured": false,
+    "category": "Digital Nomad",
+    "tag": "Remote Work",
+    "date": "October 12, 2023",
+    "readTime": "7 min read",
+    "title": "Working from the Mountains: An Honest Digital Nomad Review of Old Manali",
+    "excerpt": "The fantasy is real — but only if you set it up properly. Old Manali in 2024 is a functioning remote work destination, not just an Instagram backdrop. Here is what actually works, what doesn't, and how YOLO Social fits into the picture.",
+    "image": "https://images.pexels.com/photos/5711921/pexels-photo-5711921.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "imageAlt": "Woman working remotely on laptop with coffee cup in a cosy loft setting — digital nomad lifestyle",
+    "url": "https://bookingengine.stayflexi.com/group-be/?groupId=28012",
+    "body": [
+      "The remote work mountain dream has a reputation problem. Too many accounts of it emphasise the aesthetics — the laptop by the window, the pine trees, the chai — without addressing the operational realities. Power outages. Unreliable mobile data. Time zone misalignment. The question of whether your landlord's 'good WiFi' means anything at all. So let's be direct: yes, you can work from Old Manali. But the version where it actually works requires choosing your base carefully.",
+      "YOLO Social was built with this traveler explicitly in mind. The property runs a dedicated fiber line separate from the general-use connection, which means video calls do not stutter when six other guests decide to stream simultaneously. There are workstations with monitor hookups in the common area, a quiet-hours policy that keeps the shared spaces functional until early afternoon, and a strong cell signal that handles 4G reliably enough for backup tethering. The power infrastructure is reinforced with an inverter backup. These are not amenities — they are requirements, and we treat them as such.",
+      "The community around you is, unexpectedly, one of the best productivity tools available. Old Manali in the shoulder seasons — April through June, September through November — fills with a specific type of person: designers, developers, writers, consultants, and freelancers who have made the same calculation you have. The coworking culture is informal but real. Conversations at the communal table lead to collaborations that nobody planned. The serendipity of shared space, which is the original promise of co-working and which sterile city co-working spaces have largely failed to deliver, happens naturally in a mountain hostel.",
+      "The honest constraint is time zones. If you are working with clients in North America, your afternoon calls land in the early hours of the Indian morning — which means your productive window shifts forward and your Manali day begins later. This is not necessarily a problem; it simply means your mornings are yours, which is when the light is best and the trails are empty. Many of our long-stay guests have come to consider this an unexpected gift: the work happens, and the mountains happen, and they do not particularly conflict.",
+      "The practical checklist: bring a portable power bank for day trips, download offline maps, tell your clients you will be in a different time zone three weeks in advance, and do not book accommodation with a checkout time that forces you to scramble before a deadline. At YOLO Social, we offer weekly and monthly rate structures for remote workers that make the economics straightforward. The mountains are not a detour from your life. For many guests who come for a week and stay for a month, they become the life."
+    ]
+  },
+  {
+    "id": 12,
+    "featured": false,
+    "category": "Travel Tips",
+    "tag": "Foraging",
+    "date": "September 8, 2023",
+    "readTime": "6 min read",
+    "title": "What the Himalayan Forest Taught Us About Food: A Forager's Journal",
+    "excerpt": "The Indian Himalayas are not just a landscape — they are a larder. Nettles that make better soup than anything in a supermarket, wild garlic that perfumes entire hillsides, herbs that Ayurvedic traditions have relied on for three thousand years.",
+    "image": "https://images.pexels.com/photos/14534360/pexels-photo-14534360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "imageAlt": "Peaceful footpath winding through a lush green forest — Himalayan forest trail for foraging",
+    "url": "https://bookingengine.stayflexi.com/group-be/?groupId=28012",
+    "body": [
+      "The first thing our foraging guide does, on every walk, is stop and be still for sixty seconds. No talking, no moving, no reaching for a camera. Just standing in the forest and letting it speak at its own pace. After sixty seconds, you begin to notice things you walked straight past: the nettles growing in clusters along the stream edge, the wild garlic that is responsible for the smell you noticed and then forgot about, the watercress in the shallower parts of the water, the ring of mushrooms that appeared overnight after two days of mist. The forest around Kasol is not empty. It is full. We simply have not learned to read it.",
+      "The Parvati Valley and the lower Kullu region support a remarkable range of edible wild plants across the growing season. Stinging nettles (bichu booti in local parlance) are harvested from March through June and cooked into saag — a preparation that removes the sting entirely and produces a flavour more complex than any cultivated leafy green. Wild garlic (Allium victorialis) carpets entire hillside sections in April, its broad flat leaves usable like chives and its bulb milder and more aromatic than the cultivated variety. Dandelion leaves, watercress, wood sorrel, and several species of alpine thyme grow throughout the season and require nothing more than a sharp eye and a cloth bag.",
+      "At The YOLO Collective, our guided foraging experience runs as a half-day walk from YOLO Homes Kasol, led by Ramesh — a local naturalist whose family has been working this land for three generations. The walk covers roughly four kilometres of forest trail and streamside path, with stops to identify, explain, and sometimes taste. What you collect becomes part of a communal meal prepared at the property that evening. The context that Ramesh provides — the Ayurvedic applications, the seasonal rhythms, the relationships between plants and the livestock and wildlife that share the forest — makes the walk something closer to a class than an excursion.",
+      "The ethics of foraging in a shared ecosystem are not complicated but they require stating. Take no more than you need. Take from no plant that appears to be struggling. Never pull roots unless you are certain of what you are doing and have the landowner's consent. Leave the area looking exactly as you found it. These principles are not our invention — they are the principles that allowed these forests to sustain human communities for centuries before foraging became a travel experience. We observe them precisely.",
+      "The foraging walk is available from April through October, with peak availability of the most diverse range of plants occurring in May-June and again in September. Group size is limited to eight to preserve the quality of the experience and minimise environmental impact. Reach out via WhatsApp to check availability and book. Come with good boots, an empty stomach, and a willingness to eat something you picked yourself from a hillside above the Parvati River. It is, without qualification, one of the most grounding things you can do in the mountains."
+    ]
+  },
+  {
+    "id": 13,
+    "featured": false,
+    "category": "Modern Sanctuary",
+    "tag": "Astronomy",
+    "date": "August 22, 2023",
+    "readTime": "8 min read",
+    "title": "The Dark Sky Index: A Complete Guide to Stargazing in Jispa and Lahaul",
+    "excerpt": "At 10,500 feet, the atmosphere is thinner, the light pollution is effectively zero, and the Milky Way is not a smudge on the horizon — it is an arch of cold fire that spans the entire sky. Lahaul is one of the finest dark sky destinations in Asia.",
+    "image": "https://images.pexels.com/photos/1252890/pexels-photo-1252890.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "imageAlt": "Milky Way galaxy stretching across the night sky above a dark landscape — stargazing in the Himalayas",
+    "url": "https://bookingengine.stayflexi.com/group-be/?groupId=28012",
+    "body": [
+      "On the Bortle scale — the nine-point measurement of night sky darkness, from urban glow to pristine dark — Jispa and the surrounding Lahaul Valley register between Class 1 and Class 2. For reference, most city dwellers spend their entire lives under Class 8 or Class 9 skies, in which only the brightest stars and planets are visible against a permanent orange ambient wash. A Class 1 sky is the standard that observatories are built under. It is the sky that astronomers spend careers travelling to find. And it exists, reliably, 365 nights a year above our geodesic domes on the banks of the Bhaga River.",
+      "What you will actually see — because this is more useful than a theoretical darkness rating — is this: The Milky Way as a three-dimensional object, not a flat smear. The galactic core, if you are visiting between April and October, will be directly overhead on clear nights, dense enough that it creates visible structure: dark lanes, star-forming regions, the slight reddish haze of nebulae visible to the naked eye. Andromeda Galaxy — the most distant object visible without optical aid, 2.5 million light-years away — will be identifiable without help, a soft oval above the northeastern horizon. Jupiter and Saturn, when they are in the sky, cast shadows on white paper. Meteor showers, of which the Perseids in August and the Geminids in December are the most reliable, produce dozens of visible events per hour under these conditions.",
+      "The geodesic dome design at YOLO Outdoors was not chosen for aesthetics alone. The panoramic glass panels on the upper section of each dome provide a wide sky view from a lying position — which turns out to be the correct posture for serious stargazing and also, coincidentally, the most comfortable. The domes are heated, which means you will not sacrifice warmth for the view. A red-filtered torch is provided in each unit; red light preserves night-adapted vision in a way white light does not, which matters after about twenty minutes of sky-watching when your eyes have fully dilated.",
+      "The best months for Lahaul stargazing are September through February. In these months, the monsoon has fully withdrawn, atmospheric transparency is at its highest, and the galactic core — which sets in the west in October — is replaced by the rich star fields of Orion, Taurus, and Perseus, which are among the most densely populated sections of the Milky Way's disc. The Pleiades are high overhead. The Orion Nebula is visible as a clear fuzzy patch within Orion's sword, resolved to some extent by the naked eye alone. December's Geminids, peaking around the 13th-14th, regularly produce 120+ meteors per hour under ideal conditions. Under Jispa's skies, conditions are almost always ideal.",
+      "For guests who want to take this further: we maintain a pair of 10x50 binoculars available for guest use, and we can arrange an evening astronomy session with a local guide who operates a Dobsonian telescope for groups. These sessions are bookable in advance and run for approximately ninety minutes beginning about an hour after sunset. Dress for temperatures that can drop to minus fifteen in deep winter, even inside the valley. The sky does not get warmer. The wonder, in our consistent experience of watching guests tilt their heads back and go quiet, gets larger every time."
     ]
   }
 ]
