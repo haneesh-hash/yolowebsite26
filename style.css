@@ -1452,6 +1452,27 @@ p {
     color: var(--black);
 }
 
+@media (max-width: 600px) {
+    .brand-panel-content {
+        padding: 0.75rem;
+    }
+
+    .brand-panel-content h2 {
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .brand-panel-content .label-text {
+        font-size: 0.6rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .brand-panel-content .btn-explore,
+    .brand-panel-actions {
+        display: none;
+    }
+}
+
 /* ═══════════════════════════════════════════════════
    8. CONTENT SECTIONS — Generous Negative Space
    ═══════════════════════════════════════════════════ */
@@ -5344,6 +5365,27 @@ a.mj-card.mj-card--link {
     color: rgba(255, 255, 255, 0.75);
 }
 
+.pp-hero__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.9rem;
+}
+
+.pp-hero__tags span {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 100px;
+    padding: 0.28rem 0.7rem;
+    white-space: nowrap;
+}
+
 .pp-hero__scroll-hint {
     position: absolute;
     bottom: 2rem;
@@ -7290,13 +7332,24 @@ a.mj-card.mj-card--link {
         font-size: clamp(1.5rem, 6vw, 2.25rem);
     }
 
+    .pp-hero__badge p {
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+    }
+
     /* Glance — horizontal scroll */
+    .pp-glance {
+        -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        mask-image: linear-gradient(to right, black 85%, transparent 100%);
+    }
+
     .pp-glance__inner {
         overflow-x: auto;
         justify-content: flex-start;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         padding: 1rem 1.5rem;
+        padding-right: 3rem;
         gap: 0;
     }
 
@@ -7530,8 +7583,7 @@ a.mj-card.mj-card--link {
     }
 
     .pp-hero__scroll-hint {
-        bottom: 1.25rem;
-        font-size: 0.6rem;
+        display: none;
     }
 
     /* Glance */
