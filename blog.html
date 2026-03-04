@@ -31,18 +31,21 @@
         .blog-hero {
             position: relative;
             width: 100%;
+            height: 60vh;
             overflow: hidden;
             background: #0a0a0a;
         }
 
         .blog-hero-bg {
-            position: relative;
-            width: 100%;
+            position: absolute;
+            inset: 0;
+            z-index: 0;
         }
 
         .blog-hero-bg img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             display: block;
         }
 
@@ -692,7 +695,7 @@
         <section class="blog-hero">
             <div class="blog-hero-bg">
                 <img src="assets/images/bloghero.JPG" alt="Stunning aerial view of snowy Himalayan mountain peaks and valleys" fetchpriority="high"
-                    decoding="async" style="width: 100%; height: auto; display: block; object-fit: contain;" />
+                    decoding="async" style="width: 100%; height: 60vh; object-fit: cover; display: block;" />
                 <div class="blog-hero-overlay"></div>
             </div>
             <div class="blog-hero-content">
