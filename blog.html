@@ -31,7 +31,8 @@
         .blog-hero {
             position: relative;
             width: 100%;
-            height: 60vh;
+            height: 80vh;
+            min-height: 480px;
             overflow: hidden;
             background: #0a0a0a;
         }
@@ -64,12 +65,14 @@
 
         .blog-hero-content {
             position: absolute;
-            bottom: 3.5rem;
-            left: 0;
-            right: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             z-index: 2;
             text-align: center;
             padding: 0 1.5rem;
+            width: 100%;
+            max-width: 800px;
             animation: blogHeroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
         }
 
@@ -155,8 +158,8 @@
         }
 
         @keyframes blogHeroFadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translate(-50%, -45%); }
+            to   { opacity: 1; transform: translate(-50%, -50%); }
         }
 
         @keyframes blogWordRotate {
@@ -587,7 +590,7 @@
                 <li><a href="experience.html">YOLO Experiences</a></li>
                 <li><a href="blog.html">Blogs</a></li>
                 <li class="dropdown">
-                    <a href="index.html#company">Inside YOLO <span class="arrow-down">▼</span></a>
+                    <a href="#">Inside YOLO <span class="arrow-down">▼</span></a>
                     <ul class="dropdown-menu">
                         <li><a href="about.html">About</a></li>
                         <li><a href="franchise.html">Franchise</a></li>
@@ -722,7 +725,6 @@
         <!-- React root: Shifting Stack Journal Feed -->
         <section class="journal-section">
             <div class="journal-header">
-                <p class="journal-eyebrow">Material Journal</p>
                 <h2 class="journal-title">Field Notes from the Himalayas</h2>
             </div>
             <div id="journal-root"></div>
@@ -862,6 +864,24 @@
                     .replace(/"/g, '&quot;');
             }
 
+            /* ─── Creative filter label mapping ─── */
+            const filterLabels = {
+                'All': 'Everything',
+                'Travel': 'Wanderlust',
+                'Culture': 'Local Roots',
+                'Adventure': 'Into the Wild',
+                'Wellness': 'Soul & Body',
+                'Food': 'Mountain Bites',
+                'Guides': 'Trail Notes',
+                'Stories': 'Campfire Tales',
+                'Tips': 'Pro Moves',
+                'Nomad': 'Nomad Diaries',
+                'Nature': 'Earth & Sky',
+                'Photography': 'Through the Lens',
+                'Spiritual': 'Inner Trails',
+                'Lifestyle': 'The Good Life',
+            };
+
             /* ─── Render the filter bar ─── */
             function renderFilters(categories) {
                 let bar = document.querySelector('.filter-bar');
@@ -876,7 +896,7 @@
                 categories.forEach((cat) => {
                     const btn = document.createElement('button');
                     btn.className = 'filter-pill' + (cat === activeCategory ? ' active' : '');
-                    btn.textContent = cat;
+                    btn.textContent = filterLabels[cat] || cat;
                     btn.addEventListener('click', () => {
                         activeCategory = cat;
                         renderGrid();
