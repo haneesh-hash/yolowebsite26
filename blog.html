@@ -53,13 +53,11 @@
         .blog-hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0.1) 0%,
-                rgba(0, 0, 0, 0.25) 40%,
-                rgba(0, 0, 0, 0.7) 85%,
-                rgba(0, 0, 0, 0.9) 100%
-            );
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.1) 0%,
+                    rgba(0, 0, 0, 0.25) 40%,
+                    rgba(0, 0, 0, 0.7) 85%,
+                    rgba(0, 0, 0, 0.9) 100%);
             z-index: 1;
         }
 
@@ -82,7 +80,7 @@
             font-weight: 500;
             letter-spacing: 0.3em;
             text-transform: uppercase;
-            color: #74acdf;
+            color: #ffffff;
             margin-bottom: 0.75rem;
         }
 
@@ -158,35 +156,115 @@
         }
 
         @keyframes blogHeroFadeUp {
-            from { opacity: 0; transform: translate(-50%, -45%); }
-            to   { opacity: 1; transform: translate(-50%, -50%); }
+            from {
+                opacity: 0;
+                transform: translate(-50%, -45%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
         }
 
         @keyframes blogWordRotate {
-            0%, 20%   { content: ''; }
-            0%, 18%   { opacity: 1; transform: translateY(0); }
-            20%       { opacity: 0; transform: translateY(-12px); }
-            22%       { opacity: 0; transform: translateY(12px); }
-            24%, 42%  { opacity: 1; transform: translateY(0); }
-            44%       { opacity: 0; transform: translateY(-12px); }
-            46%       { opacity: 0; transform: translateY(12px); }
-            48%, 66%  { opacity: 1; transform: translateY(0); }
-            68%       { opacity: 0; transform: translateY(-12px); }
-            70%       { opacity: 0; transform: translateY(12px); }
-            72%, 90%  { opacity: 1; transform: translateY(0); }
-            92%       { opacity: 0; transform: translateY(-12px); }
-            94%       { opacity: 0; transform: translateY(12px); }
-            96%, 100% { opacity: 1; transform: translateY(0); }
+
+            0%,
+            20% {
+                content: '';
+            }
+
+            0%,
+            18% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            20% {
+                opacity: 0;
+                transform: translateY(-12px);
+            }
+
+            22% {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            24%,
+            42% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            44% {
+                opacity: 0;
+                transform: translateY(-12px);
+            }
+
+            46% {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            48%,
+            66% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            68% {
+                opacity: 0;
+                transform: translateY(-12px);
+            }
+
+            70% {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            72%,
+            90% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            92% {
+                opacity: 0;
+                transform: translateY(-12px);
+            }
+
+            94% {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            96%,
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes blogScrollBounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50%      { transform: translateX(-50%) translateY(5px); }
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(5px);
+            }
         }
 
         @media (max-width: 600px) {
-            .blog-hero-content { bottom: 2.5rem; }
-            .blog-hero-scroll-hint { display: none; }
+            .blog-hero-content {
+                bottom: 2.5rem;
+            }
+
+            .blog-hero-scroll-hint {
+                display: none;
+            }
         }
 
         /* ─── Material Journal — Shifting Stack Blog Engine ─── */
@@ -697,7 +775,8 @@
         <!-- Hero Section -->
         <section class="blog-hero">
             <div class="blog-hero-bg">
-                <img src="assets/images/blogheronew.JPG" alt="Stunning aerial view of snowy Himalayan mountain peaks and valleys" fetchpriority="high"
+                <img src="assets/images/blogheronew.JPG"
+                    alt="Stunning aerial view of snowy Himalayan mountain peaks and valleys" fetchpriority="high"
                     decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
                 <div class="blog-hero-overlay"></div>
             </div>
@@ -1026,19 +1105,31 @@
             if (!el) return;
             let i = 0;
             setInterval(() => {
-                el.style.transition = 'opacity 0.4s, transform 0.4s';
+                // Fade out and slide up
+                el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(-12px)';
+
                 setTimeout(() => {
+                    // Change text
                     i = (i + 1) % words.length;
                     el.textContent = words[i];
+
+                    // Disable transition to instantly move to start position (bottom)
+                    el.style.transition = 'none';
                     el.style.transform = 'translateY(12px)';
-                    requestAnimationFrame(() => {
+
+                    // Force reflow so the browser registers the sudden move
+                    void el.offsetHeight;
+
+                    // Re-enable transition and animate in
+                    window.requestAnimationFrame(() => {
+                        el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
                         el.style.opacity = '1';
                         el.style.transform = 'translateY(0)';
                     });
                 }, 400);
-            }, 2000);
+            }, 2500); // Increased slightly for better reading pace
         })();
     </script>
 </body>
