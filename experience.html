@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>The YOLO Experience — Curated Stays in the Himalayas</title>
+    <title>YOLO Experiences — 12 Adventures from Jispa, Himachal Pradesh</title>
     <meta name="description"
-        content="Curated mountain experiences — valley escapes, guided hikes, stargazing, river rafting, yoga, and more. Discover the Himalayas beyond the ordinary." />
+        content="12 curated adventures from your dome in Jispa — Ladakh expeditions, high-altitude treks, snow passes, river rafting, and sacred monastery walks." />
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/svg+xml" href="logo.svg?v=1771706725" />
 
@@ -128,14 +128,14 @@
     <section class="page-hero" style="background-image: url('assets/images/experinceshero.JPG')">
         <div class="page-hero__content">
             <h1 class="page-hero__title" style="color: #ffffff;">YOLO Experiences.</h1>
-            <p class="page-hero__subtitle" style="color: #ffffff;">Curated Himalayan Journeys for the Intentional Traveller.</p>
+            <p class="page-hero__subtitle" style="color: #ffffff;">12 Curated Adventures from Your Dome in Jispa.</p>
             <div class="hero-vibe-tags" style="margin-top: 1.5rem; justify-content: center">
-                <span class="vibe-tag">Valley Escapes</span>
-                <span class="vibe-tag">Stargazing</span>
-                <span class="vibe-tag">Wellness</span>
-                <span class="vibe-tag">Foraging</span>
-                <span class="vibe-tag">Guided Hikes</span>
-                <span class="vibe-tag">Local Culture</span>
+                <span class="vibe-tag">Ladakh Expeditions</span>
+                <span class="vibe-tag">Snow Passes</span>
+                <span class="vibe-tag">High-Altitude Treks</span>
+                <span class="vibe-tag">River Rafting</span>
+                <span class="vibe-tag">Scenic Drives</span>
+                <span class="vibe-tag">Sacred Walks</span>
             </div>
         </div>
     </section>
@@ -148,9 +148,9 @@
             <p class="mj-eyebrow" style="text-align: center;">Beyond the Stay</p>
             <h2 class="mj-heading">Go Deeper into the Mountains.</h2>
             <p class="mj-body">
-                The Himalayas hold far more than peaks and passes. Ancient valleys, star-drenched skies, river
-                songs, and villages where time moves at its own unhurried pace. Every experience we curate is
-                designed with one intention — to bring you closer to the something you came here searching for.
+                From a single afternoon on the Beas to 10 days through Ladakh — every experience begins and
+                ends at your dome in Jispa. Day trips, multi-day expeditions, trek routes, and passes — curated
+                for those who want to live their adventure, not just plan it.
             </p>
         </div>
     </section>
@@ -158,16 +158,16 @@
     <!-- By the Numbers -->
     <div class="exp-stats-bar">
         <div class="exp-stats-bar__item">
-            <span class="exp-stats-bar__num">9</span>
-            <span class="exp-stats-bar__label">Curated Experiences</span>
+            <span class="exp-stats-bar__num">12</span>
+            <span class="exp-stats-bar__label">Curated Adventures</span>
         </div>
         <div class="exp-stats-bar__item">
-            <span class="exp-stats-bar__num">3</span>
-            <span class="exp-stats-bar__label">Himalayan Valleys</span>
+            <span class="exp-stats-bar__num">5,359m</span>
+            <span class="exp-stats-bar__label">Highest Point</span>
         </div>
         <div class="exp-stats-bar__item">
-            <span class="exp-stats-bar__num">70K+</span>
-            <span class="exp-stats-bar__label">Guests Served</span>
+            <span class="exp-stats-bar__num">5</span>
+            <span class="exp-stats-bar__label">High Passes</span>
         </div>
         <div class="exp-stats-bar__item">
             <span class="exp-stats-bar__num">0</span>
@@ -185,12 +185,11 @@
             <!-- Filter Tabs -->
             <div class="exp-filter-tabs" id="expFilterTabs">
                 <button class="exp-filter-tab active" data-filter="all">All</button>
-                <button class="exp-filter-tab" data-filter="escape">Escapes</button>
+                <button class="exp-filter-tab" data-filter="expedition">Expeditions</button>
+                <button class="exp-filter-tab" data-filter="daytrip">Day Trips</button>
                 <button class="exp-filter-tab" data-filter="trek">Treks</button>
-                <button class="exp-filter-tab" data-filter="wellness">Wellness</button>
+                <button class="exp-filter-tab" data-filter="adventure">Adventure</button>
                 <button class="exp-filter-tab" data-filter="culture">Culture</button>
-                <button class="exp-filter-tab" data-filter="nightsky">Night Sky</button>
-                <button class="exp-filter-tab" data-filter="nature">Nature</button>
             </div>
 
             <div class="mj-grid-3" id="expGrid" style="margin-top: 2rem">
@@ -334,72 +333,87 @@
     <script src="config.js"></script>
     <script src="script.js?v=3"></script>
     <script>
-        // Dynamic experience loading from API
+        // Dynamic experience loading from API with animations
         (function () {
-            const grid = document.getElementById('expGrid');
-            const tabs = document.querySelectorAll('.exp-filter-tab');
+            var grid = document.getElementById('expGrid');
+            var tabs = document.querySelectorAll('.exp-filter-tab');
+
+            // Difficulty color helper
+            function diffColor(d) {
+                if (!d) return '#74ACDF';
+                var dl = d.toLowerCase();
+                if (dl.indexOf('easy') === 0) return '#4CAF50';
+                if (dl.indexOf('moderate') === 0) return '#FF9800';
+                if (dl.indexOf('challenging') > -1) return '#E53935';
+                return '#74ACDF';
+            }
 
             fetch(config.apiBaseUrl + '/api/experiences')
-                .then(function (res) {
-                    return res.json();
-                })
+                .then(function (res) { return res.json(); })
                 .then(function (experiences) {
-                    // Render cards
-                    grid.innerHTML = experiences
-                        .map(function (exp) {
-                            var classes = 'mj-card mj-card--link';
-                            if (exp.wide) classes += ' mj-card--wide';
-                            var styles = '';
-                            if (exp.featured) styles = ' style="outline: 2px solid #74ACDF;"';
+                    grid.innerHTML = experiences.map(function (exp, i) {
+                        var classes = 'mj-card mj-card--link exp-reveal';
+                        if (exp.wide) classes += ' mj-card--wide';
+                        var featStyle = exp.featured ? ' style="outline: 2px solid #74ACDF;"' : '';
 
-                            return (
-                                '<div class="' +
-                                classes +
-                                '" data-category="' +
-                                (exp.filterTag || exp.category) +
-                                '"' +
-                                styles +
-                                '>' +
-                                '<a href="' +
-                                (exp.link || '#') +
-                                '">' +
-                                '<div class="mj-card__image" style="background-image: url(\'' +
-                                exp.image +
-                                '\');">' +
-                                '<span class="mj-card__badge">' +
-                                exp.badge +
-                                '</span>' +
-                                '</div>' +
-                                '<div class="mj-card__body">' +
-                                '<p class="mj-card__meta">' +
-                                (exp.meta || '') +
-                                '</p>' +
-                                '<h3 class="mj-card__title">' +
-                                exp.title +
-                                '</h3>' +
-                                '<p class="mj-card__excerpt">' +
-                                exp.excerpt +
-                                '</p>' +
-                                '<span class="mj-card__cta">Explore &rarr;</span>' +
-                                '</div>' +
-                                '</a>' +
-                                '</div>'
-                            );
-                        })
-                        .join('');
+                        return (
+                            '<div class="' + classes + '" data-category="' +
+                            (exp.filterTag || exp.category) + '"' + featStyle +
+                            ' style="' + (exp.featured ? 'outline:2px solid #74ACDF;' : '') +
+                            'animation-delay:' + (i * 0.07) + 's">' +
+                            '<a href="' + (exp.link || '#') + '">' +
+                            '<div class="mj-card__image" style="background-image:url(\'' + exp.image + '\');">' +
+                            '<span class="mj-card__badge">' + exp.badge + '</span>' +
+                            (exp.duration ? '<div class="mj-card__quick-info">' +
+                                '<span>' + exp.duration + '</span>' +
+                                (exp.difficulty ? '<span style="color:' + diffColor(exp.difficulty) + '">' + exp.difficulty + '</span>' : '') +
+                                '</div>' : '') +
+                            '</div>' +
+                            '<div class="mj-card__body">' +
+                            '<p class="mj-card__meta">' + (exp.meta || '') + '</p>' +
+                            '<h3 class="mj-card__title">' + exp.title + '</h3>' +
+                            '<p class="mj-card__excerpt">' + exp.excerpt + '</p>' +
+                            '<div class="mj-card__footer">' +
+                            (exp.season ? '<span class="mj-card__season">' + exp.season + '</span>' : '') +
+                            '<span class="mj-card__cta">Explore &rarr;</span>' +
+                            '</div>' +
+                            '</div>' +
+                            '</a>' +
+                            '</div>'
+                        );
+                    }).join('');
 
-                    // Re-bind filter tabs
-                    var cards = grid.querySelectorAll('.mj-card');
+                    // Animate cards in on scroll
+                    var cards = grid.querySelectorAll('.exp-reveal');
+                    if ('IntersectionObserver' in window) {
+                        var obs = new IntersectionObserver(function (entries) {
+                            entries.forEach(function (e) {
+                                if (e.isIntersecting) {
+                                    e.target.classList.add('exp-visible');
+                                    obs.unobserve(e.target);
+                                }
+                            });
+                        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+                        cards.forEach(function (c) { obs.observe(c); });
+                    } else {
+                        cards.forEach(function (c) { c.classList.add('exp-visible'); });
+                    }
+
+                    // Filter tabs with animation
                     tabs.forEach(function (tab) {
                         tab.addEventListener('click', function () {
-                            tabs.forEach(function (t) {
-                                t.classList.remove('active');
-                            });
+                            tabs.forEach(function (t) { t.classList.remove('active'); });
                             tab.classList.add('active');
                             var filter = tab.dataset.filter;
+                            var visibleIndex = 0;
                             cards.forEach(function (card) {
                                 if (filter === 'all' || card.dataset.category === filter) {
                                     card.classList.remove('hidden');
+                                    card.style.animationDelay = (visibleIndex * 0.06) + 's';
+                                    card.classList.remove('exp-visible');
+                                    void card.offsetWidth; // trigger reflow
+                                    card.classList.add('exp-visible');
+                                    visibleIndex++;
                                 } else {
                                     card.classList.add('hidden');
                                 }
@@ -408,9 +422,24 @@
                     });
                 })
                 .catch(function () {
-                    grid.innerHTML =
-                        '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:rgba(0,0,0,0.4);">Failed to load experiences.</div>';
+                    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:rgba(0,0,0,0.4);">Failed to load experiences.</div>';
                 });
+
+            // Animate stats numbers on scroll
+            var statsBar = document.querySelector('.exp-stats-bar');
+            if (statsBar && 'IntersectionObserver' in window) {
+                var statsObs = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) {
+                            e.target.querySelectorAll('.exp-stats-bar__num').forEach(function (el) {
+                                el.classList.add('exp-count-up');
+                            });
+                            statsObs.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                statsObs.observe(statsBar);
+            }
         })();
     </script>
 
