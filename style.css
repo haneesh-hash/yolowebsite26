@@ -5165,6 +5165,403 @@ a.mj-card.mj-card--link {
     }
 }
 
+/* ── Experience Cards: Quick Info Overlay ── */
+.mj-card__quick-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem 1rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #fff;
+}
+
+/* ── Experience Cards: Footer with Season ── */
+.mj-card__footer {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.mj-card__season {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(0,0,0,0.35);
+}
+
+/* ── Scroll Reveal Animations ── */
+@keyframes expFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.exp-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.exp-reveal.exp-visible {
+    animation: expFadeUp 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+/* ── Stats Count-up Animation ── */
+@keyframes expCountPop {
+    0% { transform: scale(0.8); opacity: 0; }
+    60% { transform: scale(1.05); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.exp-stats-bar__num {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.exp-stats-bar__num.exp-count-up {
+    animation: expCountPop 0.5s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+.exp-stats-bar__item:nth-child(2) .exp-stats-bar__num.exp-count-up { animation-delay: 0.1s; }
+.exp-stats-bar__item:nth-child(3) .exp-stats-bar__num.exp-count-up { animation-delay: 0.2s; }
+.exp-stats-bar__item:nth-child(4) .exp-stats-bar__num.exp-count-up { animation-delay: 0.3s; }
+
+/* ── Experience Detail Page Styles ── */
+.exp-detail-hero {
+    position: relative;
+    height: 80vh;
+    min-height: 500px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    background-size: cover;
+    background-position: center;
+}
+
+.exp-detail-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.25) 50%, rgba(0,0,0,0.1) 100%);
+    pointer-events: none;
+}
+
+.exp-detail-hero img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+}
+
+.exp-detail-hero__content {
+    position: relative;
+    z-index: 2;
+    padding: 3rem 5%;
+    max-width: 900px;
+    color: #fff;
+}
+
+.exp-detail-hero__eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #74ACDF;
+    margin-bottom: 0.75rem;
+}
+
+.exp-detail-hero__title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+.exp-detail-hero__subtitle {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    max-width: 600px;
+}
+
+/* ── Quick Facts Strip ── */
+.exp-facts-strip {
+    display: flex;
+    background: #0a0a0a;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.exp-facts-strip::-webkit-scrollbar { display: none; }
+
+.exp-fact {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.75rem 1rem;
+    border-right: 1px solid rgba(255,255,255,0.07);
+    min-width: 130px;
+    gap: 0.3rem;
+}
+.exp-fact:last-child { border-right: none; }
+
+.exp-fact__label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+}
+
+.exp-fact__value {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #74ACDF;
+    line-height: 1.2;
+    text-align: center;
+}
+
+/* ── Day-by-Day Itinerary Accordion ── */
+.exp-itinerary {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.exp-day {
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    overflow: hidden;
+}
+
+.exp-day__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    cursor: pointer;
+    transition: color 0.2s;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.exp-day__header:hover { color: #74ACDF; }
+
+.exp-day__num {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #74ACDF;
+    min-width: 60px;
+}
+
+.exp-day__name {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    flex: 1;
+}
+
+.exp-day__toggle {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    color: rgba(0,0,0,0.3);
+}
+
+.exp-day.open .exp-day__toggle {
+    transform: rotate(45deg);
+}
+
+.exp-day__body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), padding 0.3s;
+    padding: 0 0 0 calc(60px + 1rem);
+}
+
+.exp-day.open .exp-day__body {
+    max-height: 500px;
+    padding-bottom: 1.5rem;
+}
+
+.exp-day__body p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--gray-600);
+}
+
+/* ── Highlights Grid ── */
+.exp-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.exp-highlight {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    background: rgba(116,172,223,0.06);
+    border-radius: 8px;
+    border: 1px solid rgba(116,172,223,0.12);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.exp-highlight:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+}
+
+.exp-highlight__icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.exp-highlight__text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--gray-600);
+}
+
+.exp-highlight__text strong {
+    display: block;
+    color: var(--black);
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
+}
+
+/* ── Packing Checklist ── */
+.exp-packing {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.exp-packing__group {
+    margin-bottom: 2rem;
+}
+
+.exp-packing__group-title {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.4);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.exp-pack-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    font-size: 0.92rem;
+    color: var(--gray-600);
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.exp-pack-item:hover { color: var(--black); }
+
+.exp-pack-item.checked {
+    opacity: 0.4;
+    text-decoration: line-through;
+}
+
+.exp-pack-check {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(0,0,0,0.15);
+    border-radius: 4px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-size: 0.7rem;
+    color: transparent;
+}
+
+.exp-pack-item.checked .exp-pack-check {
+    background: #74ACDF;
+    border-color: #74ACDF;
+    color: #fff;
+}
+
+/* ── Detail Page Section Reveals ── */
+.exp-section-reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.8, 0.25, 1),
+                transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.exp-section-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Best Time Banner ── */
+.exp-best-time {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+    padding: 2.5rem 5%;
+    color: #fff;
+    text-align: center;
+}
+
+.exp-best-time__label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.5rem;
+}
+
+.exp-best-time__text {
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto;
+    color: rgba(255,255,255,0.7);
+}
+
+@media (max-width: 768px) {
+    .exp-facts-strip {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .exp-fact {
+        padding: 1.25rem 0.75rem;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .exp-fact:nth-child(even) { border-right: none; }
+    .exp-day__body { padding-left: 0; }
+    .exp-highlights { grid-template-columns: 1fr; }
+}
+
 
 /* ╔══════════════════════════════════════════════════════════════════════════════╗
    ║                                                                            ║
