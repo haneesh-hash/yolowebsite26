@@ -8764,30 +8764,34 @@ body.has-promo .site-header {
     }
 }
 
-/* Mobile: single line, compact */
+/* Mobile: two-line stacked layout */
 @media (max-width: 600px) {
     .promo-bar {
-        padding: 7px 36px 7px 12px;
+        padding: 10px 40px 10px 16px;
     }
     .promo-bar__inner {
+        flex-direction: column;
         gap: 6px;
-        flex-wrap: nowrap;
+        align-items: center;
     }
     .promo-bar__text {
-        font-size: 0.65rem;
+        font-size: 0.75rem;
         white-space: nowrap;
     }
     .promo-bar__code-label {
         display: none;
     }
     .promo-bar__code-value {
-        font-size: 0.75rem;
+        font-size: 0.9rem;
+        letter-spacing: 0.15em;
     }
     .promo-bar__code {
-        padding: 3px 8px;
-        gap: 5px;
+        padding: 5px 16px;
+        gap: 8px;
     }
     .promo-bar__close {
-        right: 8px;
+        right: 10px;
+        font-size: 1.4rem;
+        padding: 6px 10px;
     }
 }
