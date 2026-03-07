@@ -8603,3 +8603,191 @@ a.mj-card.mj-card--link {
     opacity: 0;
     transition: width 0.15s ease, opacity 0.5s ease 0.15s;
 }
+
+/* ═══════════════════════════════════════════════════
+   PROMO ANNOUNCEMENT BAR
+   ═══════════════════════════════════════════════════ */
+.promo-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1100;
+    background: var(--black);
+    border-bottom: 1px solid rgba(116, 172, 223, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 48px 10px 20px;
+    transform: translateY(-100%);
+    animation: promoSlideIn 0.6s var(--ease-out) 1s forwards;
+}
+
+@keyframes promoSlideIn {
+    to { transform: translateY(0); }
+}
+
+.promo-bar.dismissed {
+    animation: promoSlideOut 0.4s var(--ease-out) forwards;
+}
+
+@keyframes promoSlideOut {
+    to { transform: translateY(-100%); }
+}
+
+/* Push header down when promo is visible */
+body.has-promo .site-header {
+    top: var(--promo-height, 42px);
+}
+
+.promo-bar__inner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.promo-bar__text {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.04em;
+}
+
+.promo-bar__text--sub {
+    display: none;
+}
+
+/* The coupon "ticket" */
+.promo-bar__code {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1.5px dashed var(--skyblue);
+    border-radius: 4px;
+    padding: 4px 12px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s var(--ease-out);
+}
+
+.promo-bar__code:hover {
+    background: rgba(116, 172, 223, 0.1);
+    border-color: var(--skyblue-light);
+    transform: scale(1.03);
+}
+
+.promo-bar__code-label {
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.promo-bar__code-value {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--skyblue);
+    letter-spacing: 0.12em;
+}
+
+.promo-bar__copy-icon {
+    color: rgba(255, 255, 255, 0.35);
+    flex-shrink: 0;
+    transition: color 0.2s;
+}
+
+.promo-bar__code:hover .promo-bar__copy-icon {
+    color: var(--skyblue-light);
+}
+
+.promo-bar__copied {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--skyblue);
+    color: var(--black);
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+}
+
+.promo-bar__code.copied .promo-bar__copied {
+    opacity: 1;
+}
+
+.promo-bar__code.copied .promo-bar__code-label,
+.promo-bar__code.copied .promo-bar__code-value,
+.promo-bar__code.copied .promo-bar__copy-icon {
+    opacity: 0;
+}
+
+/* Close button */
+.promo-bar__close {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.promo-bar__close:hover {
+    color: white;
+}
+
+/* Desktop: show the sub-text */
+@media (min-width: 768px) {
+    .promo-bar__text--sub {
+        display: inline;
+    }
+}
+
+/* Mobile: single line, compact */
+@media (max-width: 600px) {
+    .promo-bar {
+        padding: 7px 36px 7px 12px;
+    }
+    .promo-bar__inner {
+        gap: 6px;
+        flex-wrap: nowrap;
+    }
+    .promo-bar__text {
+        font-size: 0.65rem;
+        white-space: nowrap;
+    }
+    .promo-bar__code-label {
+        display: none;
+    }
+    .promo-bar__code-value {
+        font-size: 0.75rem;
+    }
+    .promo-bar__code {
+        padding: 3px 8px;
+        gap: 5px;
+    }
+    .promo-bar__close {
+        right: 8px;
+    }
+}

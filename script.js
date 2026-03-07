@@ -751,4 +751,47 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    /* ═══════════════════════════════════════════════════
+       PROMO BAR — Copy code + dismiss
+       ═══════════════════════════════════════════════════ */
+    const promoBar = document.getElementById('promo-bar');
+    const promoClose = document.getElementById('promo-close');
+    const promoCopy = document.getElementById('promo-copy');
+
+    if (promoBar && !sessionStorage.getItem('promo-dismissed')) {
+        document.body.classList.add('has-promo');
+
+        // Measure actual bar height and set CSS var for header offset
+        function syncPromoHeight() {
+            const h = promoBar.offsetHeight;
+            document.documentElement.style.setProperty('--promo-height', h + 'px');
+        }
+        // Wait for slide-in animation then measure
+        setTimeout(syncPromoHeight, 1100);
+        window.addEventListener('resize', syncPromoHeight);
+
+        // Dismiss
+        if (promoClose) {
+            promoClose.addEventListener('click', () => {
+                promoBar.classList.add('dismissed');
+                document.body.classList.remove('has-promo');
+                document.documentElement.style.setProperty('--promo-height', '0px');
+                sessionStorage.setItem('promo-dismissed', '1');
+            });
+        }
+
+        // Copy code
+        if (promoCopy) {
+            promoCopy.addEventListener('click', () => {
+                navigator.clipboard.writeText('SUMMERYOLO').then(() => {
+                    promoCopy.classList.add('copied');
+                    setTimeout(() => promoCopy.classList.remove('copied'), 1500);
+                });
+            });
+        }
+    } else if (promoBar) {
+        // Already dismissed this session — hide immediately
+        promoBar.style.display = 'none';
+    }
 });
