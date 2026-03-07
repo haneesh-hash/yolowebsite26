@@ -200,7 +200,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function openBooking(e) {
         if (e) e.preventDefault();
-        if (!bookingOverlay) return;
+
+        // On property pages without a booking overlay, open the booking URL directly
+        if (!bookingOverlay) {
+            const bookingBar = document.querySelector('.pp-booking-bar__cta');
+            if (bookingBar && bookingBar.href) {
+                window.open(bookingBar.href, '_blank', 'noopener,noreferrer');
+            }
+            return;
+        }
 
         bookingTriggerElement = e ? e.currentTarget : null;
 
