@@ -3509,9 +3509,45 @@ a.mj-card.mj-card--link {
 }
 
 .isometric-careers-section {
-    padding: var(--spacing-4xl) 0;
+    padding: clamp(80px, 10vh, 140px) 0 var(--spacing-4xl);
     background-color: var(--color-background);
     overflow: hidden;
+}
+
+/* Open Positions Header */
+.open-positions-header {
+    text-align: center;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.open-positions-label {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--skyblue);
+    margin-bottom: 0.75rem;
+}
+
+.open-positions-title {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    text-transform: uppercase;
+    color: var(--black);
+    letter-spacing: 0.06em;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.open-positions-rule {
+    width: 60px;
+    height: 3px;
+    background: var(--skyblue);
+    margin: 1.2rem auto 0;
+    border-radius: 2px;
 }
 
 .isometric-careers-section .portfolio-header {
