@@ -348,7 +348,7 @@
                 return '#74ACDF';
             }
 
-            fetch(config.apiBaseUrl + '/api/experiences')
+            fetch('/data/experiences.json')
                 .then(function (res) { return res.json(); })
                 .then(function (experiences) {
                     grid.innerHTML = experiences.map(function (exp, i) {

@@ -1081,7 +1081,7 @@
             /* ─── Bootstrap ─── */
             root.innerHTML = '<div style="text-align:center;padding:4rem;color:rgba(0,0,0,0.4);font-family:Inter,sans-serif">Loading stories…</div>';
 
-            fetch(config.apiBaseUrl + '/api/blogs')
+            fetch('/data/blogs.json')
                 .then((r) => r.json())
                 .then((data) => {
                     allPosts = data;
