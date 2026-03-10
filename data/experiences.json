@@ -190,17 +190,17 @@
     "id": 12,
     "category": "culture",
     "filterTag": "culture",
-    "badge": "Signature",
-    "meta": "Half Day · 3–4 Hours",
-    "title": "Ranglung Gompa & Sacred Peaks Walk",
-    "excerpt": "The experience that is uniquely YOLO Outdoors. A short walk from your dome to one of the oldest monasteries in Lahaul, then a meditation viewpoint facing the sacred unnamed peak.",
-    "image": "assets/images/IMG_3228.webp",
+    "badge": "✦ Sacred Peak",
+    "meta": "Full Day · Jispa to Lungnak",
+    "title": "Gumbok Rangan — The Sacred Peak of Lungnak",
+    "excerpt": "A standalone sacred spire rising in isolation from the Lungnak Valley floor — one of the most dramatic mountain forms in the Himalayas. A full day from Jispa into the real heart of Ladakh.",
+    "image": "assets/images/IMG_3230.webp",
     "link": "experience-gompa.html",
     "featured": false,
     "wide": false,
-    "duration": "3–4 Hours",
-    "difficulty": "Easy",
-    "season": "Year-round",
-    "altitude": "3,200m"
+    "duration": "Full Day",
+    "difficulty": "Easy–Moderate",
+    "season": "Jun – Oct",
+    "altitude": "~4,000m"
   }
 ]
